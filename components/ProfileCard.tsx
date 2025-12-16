@@ -7,6 +7,7 @@ import { motion, useReducedMotion, useInView } from "framer-motion";
 import { Tooltip } from "react-tooltip";
 import "react-tooltip/dist/react-tooltip.css";
 
+// Icons Import
 import {
   FaWhatsapp,
   FaXTwitter,
@@ -15,7 +16,35 @@ import {
   FaInstagram,
   FaLinkedin,
   FaFacebook,
+  FaHtml5,
+  FaCss3Alt,
+  FaJs,
+  FaReact,
+  FaPython,
+  FaJava,
+  FaNodeJs,
 } from "react-icons/fa6";
+import {
+  SiNestjs,
+  SiMongodb,
+  SiPostgresql,
+  SiCanva,
+  SiFigma,
+  SiAdobephotoshop,
+  SiDavinciresolve,
+  SiPhp,
+  SiTailwindcss,
+  SiVercel,
+  SiAdobeillustrator,
+  SiNetlify,
+  SiExpress,
+} from "react-icons/si";
+
+import { TbSql } from "react-icons/tb";
+import { RiNextjsLine } from "react-icons/ri";
+import { FaGitAlt } from "react-icons/fa";
+import { VscVscode } from "react-icons/vsc";
+
 import { IconType } from "react-icons";
 
 /* ---------------- TYPES ---------------- */
@@ -46,6 +75,36 @@ type TechIcon = {
 // ⛔ keep your existing map here (shortened for clarity)
 const techIcons: Record<string, TechIcon> = {
   github: { icon: FaGithub },
+  html: { icon: FaHtml5 },
+  css: { icon: FaCss3Alt },
+  reactjs: { icon: FaReact },
+  js: { icon: FaJs },
+  nextjs: { icon: RiNextjsLine },
+  nestjs: { icon: SiNestjs },
+  sql: { icon: TbSql },
+  git: { icon: FaGitAlt },
+  vscode: { icon: VscVscode },
+  netlify: { icon: SiNetlify },
+  vercel: { icon: SiVercel },
+  illustrator: { icon: SiAdobeillustrator },
+  tailwindcss: { icon: SiTailwindcss },
+  php: { icon: SiPhp },
+  tailwind: { icon: SiTailwindcss },
+  davinciresolve: { icon: SiDavinciresolve },
+  photoshop: { icon: SiAdobephotoshop },
+  figma: { icon: SiFigma },
+  canva: { icon: SiCanva },
+  postgresql: { icon: SiPostgresql },
+  mongodb: { icon: SiMongodb },
+  python: { icon: FaPython },
+  java: { icon: FaJava },
+  nodejs: { icon: FaNodeJs },
+  expressjs: { icon: SiExpress },
+  express: { icon: SiExpress },
+
+  c: { img: "/icons/c3.png" },
+  cpp: { img: "/icons/cpp.png" },
+  csharp: { img: "/icons/csharp.png" },
 };
 
 /* ---------------- CARD CONTENT ---------------- */
@@ -129,9 +188,20 @@ function CardContent({
                   data-tooltip-id="tech-tooltip"
                   data-tooltip-content={tech}
                 >
-                  {techItem?.icon ? (
+                  {techItem?.img ? (
+                    // Render image if img exists
+                    <Image
+                      src={techItem.img}
+                      alt={tech}
+                      width={28}
+                      height={28}
+                      className="object-contain"
+                    />
+                  ) : techItem?.icon ? (
+                    // Render icon if icon exists
                     <techItem.icon size={24} className="text-cyan-400" />
                   ) : (
+                    // Fallback to text if neither icon nor img exist
                     <span className="text-[10px] text-blue-400">{tech}</span>
                   )}
                 </div>
@@ -145,7 +215,7 @@ function CardContent({
 
       {/* Socials */}
       <div
-        className="mt-4 flex gap-4 flex-wrap justify-center"
+        className="mt-4 flex gap-4 flex-wrap justify-center bg-[#2C333D] p-2 rounded-md"
         onClick={(e) => e.stopPropagation()}
       >
         {github && <Social href={github} icon={<FaGithub />} />}

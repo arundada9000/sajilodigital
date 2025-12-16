@@ -155,7 +155,7 @@ export default function ProfileModal({ profile, onClose }: Props) {
           }}
           onClick={(e) => e.stopPropagation()}
           className={`
-            relative w-full md:max-w-4xl
+            relative w-full md:max-w-4xl 
             ${fullscreen ? "h-full md:h-full" : "h-[95vh] md:h-auto"}
             bg-[#0b0f19]
             rounded-t-3xl md:rounded-2xl
@@ -165,8 +165,8 @@ export default function ProfileModal({ profile, onClose }: Props) {
           `}
         >
           {/* HEADER */}
-          <div className="flex items-center justify-between px-6 py-4 border-b border-white/10">
-            <div className="flex gap-2">
+          <div className="flex items-center justify-between px-6 py-4 border-b border-white/10 cursor-grab">
+            <div className="flex gap-2 cursor-default p-1">
               <span
                 onClick={onClose}
                 title="Close"
@@ -181,7 +181,10 @@ export default function ProfileModal({ profile, onClose }: Props) {
                 className="h-3 w-3 rounded-full bg-green-500 cursor-pointer hover:scale-125"
               />
             </div>
-            <div className="flex gap-2">
+            <div>
+              <p className="text-green-500 font-bold">SajiloDigital Pvt.Ltd</p>
+            </div>
+            <div className="flex gap-4">
               {profile.cv && (
                 <a
                   href={profile.cv}
@@ -212,7 +215,7 @@ export default function ProfileModal({ profile, onClose }: Props) {
                 </button>
               )}
               <button onClick={onClose} title="Close">
-                <FaXmark className="text-gray-400 hover:text-white cursor-pointer" />
+                <FaXmark className="text-gray-400 hover:text-white hover:scale-120 transition duration-150 cursor-pointer" />
               </button>
             </div>
           </div>
@@ -242,7 +245,18 @@ export default function ProfileModal({ profile, onClose }: Props) {
                 <h2 className="text-2xl font-bold text-white">
                   {profile.name}
                 </h2>
-                <p className="text-cyan-400">{profile.role}</p>
+                <motion.p
+                  className="text-cyan-400 text-lg font-semibold "
+                  whileHover={{
+                    scale: 1.05,
+                    textShadow:
+                      "0 0 10px rgba(0, 255, 255, 0.6), 0 0 20px rgba(0, 255, 255, 0.6)",
+                    color: "#00FFFF", // Cyan glowing color
+                  }}
+                  transition={{ duration: 0.3 }}
+                >
+                  {profile.role}
+                </motion.p>
               </div>
 
               {/* TERMINAL BIO */}
@@ -284,7 +298,7 @@ export default function ProfileModal({ profile, onClose }: Props) {
 
               {/* SOCIALS */}
               <motion.div
-                className="mt-4 flex gap-4 flex-wrap justify-center bg-gray-400/80 rounded-md"
+                className="mt-4 flex gap-4 flex-wrap justify-center bg-gray-400/80 rounded-md "
                 onClick={(e) => e.stopPropagation()}
                 variants={socialsContainer}
                 initial="hidden"
@@ -334,7 +348,7 @@ export default function ProfileModal({ profile, onClose }: Props) {
                   <motion.div variants={socialItem}>
                     <Social
                       title="Whatsapp"
-                      href={profile.whatsapp}
+                      href={`tel:${profile.whatsapp}`}
                       icon={<FaWhatsapp size={iconSize} />}
                     />
                   </motion.div>
@@ -390,14 +404,15 @@ function Social({
   icon: React.ReactNode;
 }) {
   return (
-    <a href={href} target="_blank" className="p-2 group rounded-full relative">
+    <a href={href} target="_blank" className="group rounded-full relative">
       <motion.div
+        className="p-2"
         whileHover={{ scale: 1.25, rotate: 5 }}
         whileTap={{ scale: 0.9 }}
       >
         {icon}
       </motion.div>
-      <span className="absolute bottom-3/4 -left-2 p-1 hidden group-hover:block bg-gray-900 text-white text-xs rounded-md py-1">
+      <span className="absolute bottom-3/4 -left-2 p-1 hidden group-hover:block bg-gray-900 text-white text-xs rounded-md">
         {title}
       </span>
     </a>

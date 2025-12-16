@@ -48,19 +48,6 @@ export default function AboutPage() {
           Passionate developers building the future of the web
         </p>
       </motion.div>
-
-      <div className="mt-14 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-        {team.map((member, index) => (
-          <motion.div
-            key={member.name}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: index * 0.2 }}
-          >
-            <ProfileCard {...member} />
-          </motion.div>
-        ))}
-      </div>
     </section>
   );
 }
