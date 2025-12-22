@@ -38,6 +38,9 @@ import {
   SiAdobeillustrator,
   SiNetlify,
   SiExpress,
+  SiAdobepremierepro,
+  SiFramer,
+  SiAdobeaftereffects,
 } from "react-icons/si";
 
 import { TbSql } from "react-icons/tb";
@@ -101,6 +104,9 @@ const techIcons: Record<string, TechIcon> = {
   nodejs: { icon: FaNodeJs },
   expressjs: { icon: SiExpress },
   express: { icon: SiExpress },
+  premierepro: { icon: SiAdobepremierepro },
+  framer: { icon: SiFramer },
+  aftereffects: { icon: SiAdobeaftereffects },
 
   c: { img: "/icons/c3.png" },
   cpp: { img: "/icons/cpp.png" },

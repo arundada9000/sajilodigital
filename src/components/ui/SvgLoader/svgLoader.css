@@ -1,0 +1,218 @@
+.logo-loader-wrapper {
+  display: grid;
+  place-items: center;
+}
+
+.logo-loader {
+  overflow: visible;
+}
+
+.animate-circle {
+  fill: transparent; /* hide fill at start */
+  stroke: #249647; /* line color */
+  stroke-width: 4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+
+  stroke-dasharray: 4000; /* must be BIG */
+  stroke-dashoffset: 4000;
+
+  animation: draw-circle 3s ease forwards, fill-circle 1s ease forwards 2.5s;
+}
+
+@keyframes draw-circle {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes fill-circle {
+  to {
+    fill: #249647;
+  }
+}
+
+.delay-4 {
+  animation-delay: 1.5s, 2.75s;
+}
+
+/* draw */
+.draw {
+  stroke: #249647;
+  stroke-width: 4;
+  fill: transparent;
+  stroke-dasharray: 2000;
+  stroke-dashoffset: 2000;
+  animation: draw-line 2.2s ease forwards, fill-in-green 2s forwards 1.5s;
+}
+@keyframes fill-in-green {
+  from {
+    scale: 0;
+    fill: transparent;
+  }
+  to {
+    scale: 1;
+    fill: #249647;
+  }
+}
+.scale-up {
+  animation: scale-up 2s ease forwards 1.5s;
+}
+@keyframes scale-up {
+  from {
+    scale: 0;
+  }
+  to {
+    scale: 1;
+  }
+}
+@keyframes fill-in-blue {
+  from {
+    scale: 2;
+    fill: transparent;
+  }
+  to {
+    scale: 1;
+    fill: #0866ff;
+  }
+}
+.draw-blue {
+  stroke: #0866ff;
+  animation: fill-in-blue 2s forwards 1.5s;
+}
+
+/* Text paths */
+.logo-text-reveal {
+  opacity: 0;
+  translate: 100px;
+  animation: revealText 1.4s ease forwards;
+  scale: 0.5;
+}
+
+@keyframes revealText {
+  to {
+    opacity: 1;
+    translate: 0;
+    scale: 1;
+  }
+}
+
+.logo-text-glow {
+  animation: glowPulse 2.5s ease-in-out forwards;
+}
+
+@keyframes glowPulse {
+  0% {
+    filter: drop-shadow(0 0 0px #fff);
+  }
+  50% {
+    filter: drop-shadow(0 0 6px #00e5ff);
+  }
+  100% {
+    filter: drop-shadow(0 0 0px #fff);
+  }
+}
+
+.delay-1 {
+  animation-delay: 0.4s;
+}
+.delay-2 {
+  animation-delay: 0.6s;
+}
+.delay-3 {
+  animation-delay: 0.8s;
+}
+
+/* Subtle fill-in at the end */
+.logo-loader path {
+  animation-fill-mode: forwards;
+}
+
+.logo-loader path.draw {
+  animation: draw-line 2.2s ease forwards, fill-in 0.6s ease forwards;
+  animation-delay: inherit, 2s;
+}
+
+@keyframes draw-line {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes fill-in {
+  from {
+    fill: transparent;
+  }
+  to {
+    fill: currentColor;
+  }
+}
+
+/* Loop nicely */
+.logo-loader {
+  animation: reset 3.5s infinite;
+}
+
+@keyframes reset {
+  0%,
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes spin {
+  0% {
+    rotate: 1turn;
+    scale: 1;
+  }
+  50% {
+    scale: 1.25;
+  }
+  100% {
+    scale: 1;
+  }
+}
+
+.svg {
+  overflow: visible;
+  animation: spin 1s ease forwards 2.5s;
+}
+
+.sajilo {
+  transform: translateX(-100vw) scale(0.8);
+  animation: slideInLeft 1.4s ease forwards;
+}
+
+.digital {
+  transform: translateX(100vw) scale(0.8);
+  animation: slideInRight 1.4s ease forwards;
+  animation-delay: 0.2s;
+}
+.vision {
+  transform: translateY(100vh) scale(0.8);
+  animation: slideInBottom 1.4s ease forwards;
+  animation-delay: 0.2s;
+}
+
+@keyframes slideInLeft {
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+@keyframes slideInRight {
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+@keyframes slideInBottom {
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
