@@ -11,8 +11,11 @@ import { searchEngine } from "../../lib/search/searchEngine";
 import VoiceDialog from "../header/VoiceDialog";
 import { voiceControl } from "../../lib/voice/voiceControl";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 export default function Header() {
+  const router = useRouter();
+
   const [isScrolled, setIsScrolled] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -44,7 +47,7 @@ export default function Header() {
 
   const onConfirm = () => {
     if (transcript) {
-      searchEngine.routeTo(transcript);
+      router.push(transcript);
     }
     setVoiceOpen(false);
   };
@@ -103,12 +106,7 @@ export default function Header() {
               <Mic className="w-5 h-5" />
             </button>
 
-            <VoiceDialog
-              open={voiceOpen}
-              transcript={transcript}
-              onClose={() => setVoiceOpen(false)}
-              onConfirm={onConfirm}
-            />
+            <VoiceDialog open={voiceOpen} onClose={() => setVoiceOpen(false)} />
 
             <button
               onClick={() => setSettingsOpen(true)}

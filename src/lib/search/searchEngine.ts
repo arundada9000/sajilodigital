@@ -69,7 +69,6 @@ function score(query: string, entry: Entry) {
 }
 
 /* ---------------- engine ---------------- */
-
 export const searchEngine = {
   suggest(query: string): Entry[] {
     if (!query.trim()) return [];

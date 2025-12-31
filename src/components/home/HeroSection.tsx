@@ -1,3 +1,4 @@
+"use client";
 // import Shuffle from "@/components/Shuffle";
 // import SplitText from "@/components/SplitText";
 
@@ -35,7 +36,6 @@
 //   );
 // }
 
-"use client";
 import useUpsideDownScrollTop from "../../hooks/upSideDownScrollTop";
 
 import { useState, useEffect } from "react";

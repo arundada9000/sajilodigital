@@ -44,12 +44,8 @@ export default async function ServiceDetailPage({
 }: {
   params: { slug: string };
 }) {
-  console.log(services);
-  console.log("Params : " + params.slug);
-
-  const { slug } = await params;
+  const { slug } = params;
   const service = services.find((s) => s.slug === slug);
-  console.log("service : " + service);
 
   if (!service) {
     notFound();

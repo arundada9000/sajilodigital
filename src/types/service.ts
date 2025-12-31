@@ -3,7 +3,7 @@ export interface PricingPlan {
   price: string;
   duration: string;
   popular?: boolean;
-  bestFor: string;
+  bestFor?: string;
   features: string[];
 }
 
