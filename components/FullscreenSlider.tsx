@@ -1,47 +1,61 @@
 "use client";
 import { useState, useEffect, useCallback } from "react";
 
-interface Project {
+export interface Project {
   id: number;
   title: string;
+  slug: string;
+  brand: string;
   image: string;
   link: string;
 }
 
-const projects: Project[] = [
+export const projects: Project[] = [
   {
     id: 1,
     title: "The Regeneration Suite",
+    slug: "regeneration-suite",
+    brand: "Gucci",
     image: "/gallery/slide-1.jpg",
     link: "/gucci",
   },
   {
     id: 2,
     title: "Simplicity & Tactility",
+    slug: "simplicity-tactility",
+    brand: "Samsung",
     image: "/gallery/slide-2.jpg",
     link: "/samsung",
   },
   {
     id: 3,
     title: "Reimagining Loyalty",
+    slug: "reimagining-loyalty",
+    brand: "Rituals",
     image: "/gallery/slide-3.jpg",
     link: "/rituals",
   },
   {
     id: 4,
     title: "Beyond The Canvas",
+    slug: "beyond-the-canvas",
+    brand: "Moco",
     image: "/gallery/slide-4.jpg",
     link: "/moco",
   },
   {
     id: 5,
     title: "Sound Expressed In Full",
+    slug: "sound-expressed",
+    brand: "Sennheiser",
     image: "/gallery/slide-5.jpg",
     link: "/sennheiser",
   },
   {
     id: 6,
     title: "Reinventing Wonder",
+    slug: "reinventing-wonder",
+    brand: "Swarovski",
     image: "/gallery/slide-6.jpg",
     link: "/swarovski",
   },
@@ -117,14 +131,13 @@ const FullscreenSlider = () => {
       {projects.map((project, index) => (
         <div
           key={project.id}
-          className={`absolute inset-0 w-full h-full transition-all duration-[800ms] ease-[cubic-bezier(0.16,1,0.3,1)] ${
-            index === currentIndex
-              ? "opacity-100 scale-100 z-10"
-              : index < currentIndex ||
-                (currentIndex === 0 && index === projects.length - 1)
+          className={`absolute inset-0 w-full h-full transition-all duration-[800ms] ease-[cubic-bezier(0.16,1,0.3,1)] ${index === currentIndex
+            ? "opacity-100 scale-100 z-10"
+            : index < currentIndex ||
+              (currentIndex === 0 && index === projects.length - 1)
               ? "opacity-0 scale-95 z-0"
               : "opacity-0 scale-110 z-0"
-          }`}
+            }`}
         >
           {/* Background Image */}
           <div
@@ -141,11 +154,10 @@ const FullscreenSlider = () => {
             className="absolute inset-0 flex items-center justify-center cursor-pointer group"
           >
             <h2
-              className={`text-3xl md:text-5xl lg:text-6xl font-light text-foreground tracking-tight text-center px-8 transition-all duration-500 ${
-                index === currentIndex
-                  ? "opacity-100 translate-y-0"
-                  : "opacity-0 translate-y-8"
-              }`}
+              className={`text-3xl md:text-5xl lg:text-6xl font-light text-foreground tracking-tight text-center px-8 transition-all duration-500 ${index === currentIndex
+                ? "opacity-100 translate-y-0"
+                : "opacity-0 translate-y-8"
+                }`}
               style={{
                 transitionDelay: index === currentIndex ? "200ms" : "0ms",
               }}
@@ -188,11 +200,10 @@ const FullscreenSlider = () => {
             onClick={() =>
               goToSlide(index, index > currentIndex ? "next" : "prev")
             }
-            className={`w-1.5 h-1.5 rounded-full transition-all duration-300 ${
-              index === currentIndex
-                ? "bg-foreground scale-125"
-                : "bg-foreground/30 hover:bg-foreground/60"
-            }`}
+            className={`w-1.5 h-1.5 rounded-full transition-all duration-300 ${index === currentIndex
+              ? "bg-foreground scale-125"
+              : "bg-foreground/30 hover:bg-foreground/60"
+              }`}
             aria-label={`Go to slide ${index + 1}`}
           />
         ))}

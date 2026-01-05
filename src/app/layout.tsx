@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
 import { Inter, Poppins } from "next/font/google";
+import Header from "../components/layout/Header";
+import Navbar from "../components/layout/Navbar";
+import Footer from "../components/layout/Footer";
 import "./globals.css";
 
 // Font configurations
@@ -106,18 +109,8 @@ export default function RootLayout({
           crossOrigin="anonymous"
         />
       </head>
-      <body className="font-sans antialiased bg-white text-gray-900">
-        {/* Skip to main content for accessibility */}
-        <a
-          href="#main-content"
-          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-blue-600 focus:text-white focus:rounded"
-        >
-          Skip to main content
-        </a>
-
-        <main id="main-content" className="min-h-screen">
-          {children}
-        </main>
+      <body className="font-sans antialiased bg-[#0b0f19] text-white">
+        {children}
 
         {/* Schema.org structured data */}
         <script
@@ -126,29 +119,51 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "Organization",
-              name: "sajilodigital",
+              name: "Sajilo Digital Pvt. Ltd.",
+              alternateName: "Sajilo Digital",
               url: "https://sajilodigital.com.np",
               logo: "https://sajilodigital.com.np/images/logo.png",
               description:
-                "Leading web development company specializing in modern web applications and custom software solutions.",
+                "Sajilo Digital is a leading web development company in Nepal, specializing in modern web applications, custom software solutions, and digital transformation.",
               address: {
                 "@type": "PostalAddress",
-                streetAddress: "123 Tech Street",
-                addressLocality: "Your City",
-                addressRegion: "Your State",
-                postalCode: "12345",
-                addressCountry: "US",
+                streetAddress: "Horizon Chowk",
+                addressLocality: "Butwal",
+                addressRegion: "Lumbini",
+                postalCode: "32907",
+                addressCountry: "NP",
               },
               contactPoint: {
                 "@type": "ContactPoint",
-                telephone: "+1-234-567-8900",
-                contactType: "customer service",
-                email: "info@sajilodigital.com",
+                telephone: "+977-9811420975",
+                contactType: "technical support",
+                email: "arunneupane0000@gmail.com",
+                availableLanguage: ["English", "Nepali"],
               },
+              founder: [
+                {
+                  "@type": "Person",
+                  name: "Bal Gobind Chaudhary",
+                  jobTitle: "CEO & Founder",
+                },
+                {
+                  "@type": "Person",
+                  name: "Pramod Tharu",
+                  jobTitle: "Chairperson",
+                },
+              ],
+              member: [
+                {
+                  "@type": "Person",
+                  name: "Arun Neupane",
+                  jobTitle: "CTO",
+                },
+              ],
               sameAs: [
                 "https://www.linkedin.com/company/sajilodigital",
-                "https://twitter.com/sajilodigital",
+                "https://facebook.com/sajilodigital",
                 "https://github.com/sajilodigital",
+                "https://instagram.com/sajilodigital",
               ],
             }),
           }}

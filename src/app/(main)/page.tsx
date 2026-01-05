@@ -1,47 +1,65 @@
 import type { Metadata } from "next";
-import HeroSection from "../../components/home/HeroSection";
-import CreativeSection from "../../components/home/CreativeSection";
-import FeaturedProjects from "../../components/home/FeaturedProjects";
-import CTASection from "../../components/home/CTASection";
+import HomeHero from "../../components/home/HomeHero";
+import TextTicker from "../../components/home/TextTicker";
+import MissionSection from "../../components/home/MissionSection";
+import SystemArchitecture from "../../components/home/SystemArchitecture";
+import NexusCTA from "../../components/home/NexusCTA";
+import NexusTerminal from "../../components/home/NexusTerminal";
+import Grain from "../../components/ui/Grain";
 
 // SEO Metadata for home page
 export const metadata: Metadata = {
-  title: "Home",
+  title: "Sajilo Digital | Your Vision, Our Innovation",
   description:
-    "Transform your digital presence with expert web development services. We build cutting-edge web applications using Next.js, React, and modern technologies. Get your free consultation today.",
+    "Transform your digital presence with expert web development services in Nepal. We build cutting-edge web applications using Next.js, React, and modern technologies. Get your free consultation today.",
   openGraph: {
-    title: "sajilodigital - Transform Your Digital Presence",
+    title: "Sajilo Digital - Transform Your Digital Presence",
     description:
-      "Expert web development services for modern businesses. Custom web applications, e-commerce solutions, and digital transformation.",
-    url: "https://sajilodigital.com",
+      "Expert web development services for modern businesses. Custom web applications, e-commerce solutions, and digital transformation in Nepal.",
+    url: "https://sajilodigital.com.np",
     images: [
       {
         url: "/images/home-og.jpg",
         width: 1200,
         height: 630,
-        alt: "sajilodigital Home",
+        alt: "Sajilo Digital Home",
       },
     ],
   },
   alternates: {
-    canonical: "https://sajilodigital.com",
+    canonical: "https://sajilodigital.com.np",
   },
 };
 
+const techStack = [
+  "Next.js", "React", "TypeScript", "GSAP", "Framer Motion",
+  "Tailwind CSS", "Node.js", "PostgreSQL", "AWS", "Vercel"
+];
+
+const vibes = [
+  "Innovation", "Scale", "Legacy", "Future",
+  "Architecture", "Performance", "Quality", "Elegance"
+];
+
 export default function HomePage() {
   return (
-    <>
-      {/* Hero Section */}
-      <HeroSection />
+    <div className="relative bg-[#050505]">
+      {/* Cinematic Grain Overlay */}
+      <Grain />
 
-      {/* Creative/Services Showcase Section */}
-      <CreativeSection />
+      <HomeHero />
 
-      {/* Featured Projects */}
-      <FeaturedProjects />
+      <TextTicker items={techStack} speed={30} direction="left" />
 
-      {/* Call to Action */}
-      <CTASection />
+      <MissionSection />
+
+      <SystemArchitecture />
+
+      <TextTicker items={vibes} speed={50} direction="right" />
+
+      <NexusTerminal />
+
+      <NexusCTA />
 
       {/* Additional structured data specific to home page */}
       <script
@@ -50,14 +68,14 @@ export default function HomePage() {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "WebSite",
-            name: "sajilodigital",
-            url: "https://sajilodigital.com",
+            name: "Sajilo Digital",
+            url: "https://sajilodigital.com.np",
             potentialAction: {
               "@type": "SearchAction",
               target: {
                 "@type": "EntryPoint",
                 urlTemplate:
-                  "https://sajilodigital.com/search?q={search_term_string}",
+                  "https://sajilodigital.com.np/search?q={search_term_string}",
               },
               "query-input": "required name=search_term_string",
             },
@@ -72,45 +90,49 @@ export default function HomePage() {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "ProfessionalService",
-            name: "sajilodigital Web Development",
-            image: "https://sajilodigital.com/images/logo.png",
-            "@id": "https://sajilodigital.com",
-            url: "https://sajilodigital.com",
-            telephone: "+1-234-567-8900",
+            name: "Sajilo Digital Web Development",
+            image: "https://sajilodigital.com.np/images/logo.png",
+            "@id": "https://sajilodigital.com.np",
+            url: "https://sajilodigital.com.np",
+            telephone: "+977-9811420975",
             priceRange: "$$",
             address: {
               "@type": "PostalAddress",
-              streetAddress: "123 Tech Street",
-              addressLocality: "Your City",
-              addressRegion: "Your State",
-              postalCode: "12345",
-              addressCountry: "US",
+              streetAddress: "Horizon Chowk",
+              addressLocality: "Butwal",
+              addressRegion: "Lumbini",
+              postalCode: "32907",
+              addressCountry: "NP",
             },
             geo: {
               "@type": "GeoCoordinates",
-              latitude: 40.7128,
-              longitude: -74.006,
+              latitude: 27.7006,
+              longitude: 83.4484,
             },
-            openingHoursSpecification: {
-              "@type": "OpeningHoursSpecification",
-              dayOfWeek: [
-                "Monday",
-                "Tuesday",
-                "Wednesday",
-                "Thursday",
-                "Friday",
-              ],
-              opens: "09:00",
-              closes: "18:00",
-            },
+            openingHoursSpecification: [
+              {
+                "@type": "OpeningHoursSpecification",
+                dayOfWeek: [
+                  "Sunday",
+                  "Monday",
+                  "Tuesday",
+                  "Wednesday",
+                  "Thursday",
+                  "Friday",
+                ],
+                opens: "09:00",
+                closes: "18:00",
+              },
+            ],
             sameAs: [
               "https://www.linkedin.com/company/sajilodigital",
-              "https://twitter.com/sajilodigital",
+              "https://facebook.com/sajilodigital",
               "https://github.com/sajilodigital",
+              "https://instagram.com/sajilodigital",
             ],
           }),
         }}
       />
-    </>
+    </div>
   );
 }
