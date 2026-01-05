@@ -1,9 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Poppins } from "next/font/google";
 import "./globals.css";
-import Header from "../components/layout/Header";
-import Footer from "../components/layout/Footer";
-import Navbar from "../components/layout/Navbar";
 
 // Font configurations
 const inter = Inter({
@@ -118,15 +115,9 @@ export default function RootLayout({
           Skip to main content
         </a>
 
-        <Header />
-
-        <Navbar />
-
         <main id="main-content" className="min-h-screen">
           {children}
         </main>
-
-        <Footer />
 
         {/* Schema.org structured data */}
         <script

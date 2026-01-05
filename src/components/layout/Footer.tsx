@@ -1,19 +1,21 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useState } from "react";
 import {
   Mail,
   Phone,
   MapPin,
-  Linkedin,
   Github,
-  Twitter,
   Facebook,
-  Instagram,
+  Youtube,
   ArrowUp,
   Send,
+  ArrowRight,
+  Instagram,
 } from "lucide-react";
+import { motion } from "framer-motion";
 
 export default function Footer() {
   const [email, setEmail] = useState("");
@@ -22,12 +24,10 @@ export default function Footer() {
   const handleNewsletterSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-
-    // Add your newsletter submission logic here
     setTimeout(() => {
       setIsSubmitting(false);
       setEmail("");
-      alert("Thanks for subscribing!");
+      alert("Welcome to the archive.");
     }, 1000);
   };
 
@@ -38,241 +38,197 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-gray-900 text-gray-300">
-      {/* Main Footer Content */}
-      <div className="container-custom py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
-          {/* Company Info */}
-          <div className="space-y-6">
-            <div className="flex items-center space-x-3">
-              <div className="w-10 h-10 bg-linear-to-br from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-xl">Y</span>
-              </div>
-              <div>
-                <h3 className="font-bold text-white text-lg">Sajilo Digital</h3>
-                <p className="text-xs text-gray-400">
-                  Your Vision, Our Creation
-                </p>
-              </div>
-            </div>
-
-            <p className="text-sm leading-relaxed">
-              Building cutting-edge web solutions that transform businesses. We
-              specialize in modern web development with a focus on performance
-              and user experience.
-            </p>
-
-            {/* Social Links */}
-            <div className="flex space-x-4">
-              <a
-                href="https://linkedin.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-blue-600 transition-colors duration-300"
-                aria-label="LinkedIn"
-              >
-                <Linkedin className="w-5 h-5" />
-              </a>
-              <a
-                href="https://github.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-gray-700 transition-colors duration-300"
-                aria-label="GitHub"
-              >
-                <Github className="w-5 h-5" />
-              </a>
-              <a
-                href="https://twitter.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-blue-400 transition-colors duration-300"
-                aria-label="Twitter"
-              >
-                <Twitter className="w-5 h-5" />
-              </a>
-              <a
-                href="https://facebook.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-blue-700 transition-colors duration-300"
-                aria-label="Facebook"
-              >
-                <Facebook className="w-5 h-5" />
-              </a>
-              <a
-                href="https://instagram.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-pink-600 transition-colors duration-300"
-                aria-label="Instagram"
-              >
-                <Instagram className="w-5 h-5" />
-              </a>
-            </div>
+    <footer className="bg-black text-white selection:bg-white selection:text-black">
+      {/* 1. Large CTA Section */}
+      <div className="max-w-[1800px] mx-auto px-6 md:px-12 pt-32 pb-24 border-b border-white/5">
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-12">
+          <div className="max-w-3xl">
+            <motion.span
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-blue-500 text-[10px] tracking-[0.5em] font-bold uppercase block mb-6"
+            >
+              Collaborations
+            </motion.span>
+            <motion.h2
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              className="text-5xl md:text-8xl font-bold tracking-tighter leading-[0.9] italic"
+            >
+              Ready to create something{" "}
+              <span className="text-white/20">unforgettable?</span>
+            </motion.h2>
           </div>
+          <Link
+            href="/contact"
+            className="group flex items-center gap-6 text-2xl md:text-4xl font-light hover:text-blue-500 transition-colors duration-500 shrink-0"
+          >
+            Start a project
+            <div className="w-16 h-16 md:w-24 md:h-24 rounded-full border border-white/10 flex items-center justify-center group-hover:bg-white group-hover:text-black transition-all duration-500">
+              <ArrowRight className="w-8 h-8 md:w-12 md:h-12 group-hover:rotate-[-45deg] transition-transform duration-500" />
+            </div>
+          </Link>
+        </div>
+      </div>
 
-          {/* Quick Links */}
-          <div>
-            <h4 className="font-semibold text-white text-lg mb-6">
-              Quick Links
-            </h4>
-            <ul className="space-y-3">
-              {[
-                { name: "Home", href: "/" },
-                { name: "About Us", href: "/about" },
-                { name: "Services", href: "/services" },
-                { name: "Projects", href: "/projects" },
-                { name: "Blog", href: "/blog" },
-                { name: "Contact", href: "/contact" },
-              ].map((link) => (
-                <li key={link.name}>
+      {/* 2. Main Grid */}
+      <div className="max-w-[1800px] mx-auto px-6 md:px-12 py-24 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-16 md:gap-24">
+        {/* Brand & Manifesto */}
+        <div className="lg:col-span-2 space-y-10">
+          <div className="flex items-center gap-4">
+            <div className="relative w-8 h-8 rounded-full overflow-hidden border border-white/10">
+              <Image
+                src="/logos/circularlogo.svg"
+                alt="Sajilo"
+                fill
+                className="object-cover"
+              />
+            </div>
+            <span className="text-sm font-bold tracking-[0.3em] uppercase">
+              Sajilo.Digital
+            </span>
+          </div>
+          <p className="text-white/40 text-lg md:text-xl leading-relaxed max-w-sm italic">
+            "A creative technology studio focused on building high-performance
+            digital environments for visionary human-beings."
+          </p>
+          <div className="flex gap-6 pt-4">
+            <a
+              href="https://instagram.com/sajilo_digital"
+              className="text-white/30 hover:text-white transition-colors"
+            >
+              <Instagram size={20} />
+            </a>
+            <a
+              href="https://www.facebook.com/profile.php?id=61579846778258"
+              className="text-white/30 hover:text-white transition-colors"
+            >
+              <Facebook size={20} />
+            </a>
+            <a
+              href="https://github.com/sajhilodigital"
+              className="text-white/30 hover:text-white transition-colors"
+            >
+              <Github size={20} />
+            </a>
+            <a
+              href="https://youtube.com/@sajilo_digital"
+              className="text-white/30 hover:text-white transition-colors"
+            >
+              <Youtube size={20} />
+            </a>
+          </div>
+        </div>
+
+        {/* Directory */}
+        <div>
+          <h4 className="text-[10px] tracking-[0.4em] font-bold text-white/20 uppercase mb-10">
+            Directory
+          </h4>
+          <ul className="space-y-4">
+            {["Home", "Projects", "Services", "About", "Blog", "FAQ"].map(
+              (item) => (
+                <li key={item}>
                   <Link
-                    href={link.href}
-                    className="text-sm hover:text-blue-400 transition-colors duration-300 inline-flex items-center group"
+                    href={item === "Home" ? "/" : `/${item.toLowerCase()}`}
+                    className="text-sm text-white/50 hover:text-white transition-colors uppercase tracking-widest font-medium block"
                   >
-                    <span className="w-0 group-hover:w-2 h-0.5 bg-blue-400 transition-all duration-300 mr-0 group-hover:mr-2"></span>
-                    {link.name}
+                    {item}
                   </Link>
                 </li>
-              ))}
-            </ul>
-          </div>
+              )
+            )}
+          </ul>
+        </div>
 
-          {/* Services */}
-          <div>
-            <h4 className="font-semibold text-white text-lg mb-6">Services</h4>
-            <ul className="space-y-3">
-              {[
-                "Web Development",
-                "Mobile Apps",
-                "UI/UX Design",
-                "E-commerce Solutions",
-                "SEO Optimization",
-                "Maintenance & Support",
-              ].map((service) => (
-                <li key={service}>
-                  <Link
-                    href="/services"
-                    className="text-sm hover:text-blue-400 transition-colors duration-300 inline-flex items-center group"
-                  >
-                    <span className="w-0 group-hover:w-2 h-0.5 bg-blue-400 transition-all duration-300 mr-0 group-hover:mr-2"></span>
-                    {service}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Contact & Newsletter */}
-          <div>
-            <h4 className="font-semibold text-white text-lg mb-6">
-              Get In Touch
-            </h4>
-
-            {/* Contact Info */}
-            <div className="space-y-4 mb-6">
+        {/* Studio Info */}
+        <div>
+          <h4 className="text-[10px] tracking-[0.4em] font-bold text-white/20 uppercase mb-10">
+            Studio
+          </h4>
+          <div className="space-y-8 text-sm text-white/50 font-medium tracking-wide">
+            <div>
+              <span className="block text-white/20 text-[9px] uppercase tracking-widest mb-2">
+                Primary HQ
+              </span>
+              <p>
+                Horizon Chowk, Butwal-11
+                <br />
+                Rupandehi, Nepal
+              </p>
+            </div>
+            <div>
+              <span className="block text-white/20 text-[9px] uppercase tracking-widest mb-2">
+                Connect
+              </span>
               <a
                 href="mailto:info@sajilodigital.com"
-                className="flex items-start space-x-3 text-sm hover:text-blue-400 transition-colors duration-300"
+                className="hover:text-white transition-colors block mb-1"
               >
-                <Mail className="w-5 h-5 mt-0.5 shrink-0" />
-                <span>info@sajilodigital.com</span>
+                info@sajilodigital.com
               </a>
-
               <a
                 href="tel:+9779811420975"
-                className="flex items-start space-x-3 text-sm hover:text-blue-400 transition-colors duration-300"
+                className="hover:text-white transition-colors block"
               >
-                <Phone className="w-5 h-5 mt-0.5 shrink-0" />
-                <span>+977-9811420975</span>
+                +977-9811420975
               </a>
-
-              <div className="flex items-start space-x-3 text-sm">
-                <MapPin className="w-5 h-5 mt-0.5 shrink-0" />
-                <span>
-                  Butwal-11, Horizon Chowk
-                  <br />
-                  Rupandehi, Nepal
-                </span>
-              </div>
-            </div>
-
-            {/* Newsletter */}
-            <div>
-              <h5 className="font-semibold text-white text-sm mb-3">
-                Newsletter
-              </h5>
-              <form onSubmit={handleNewsletterSubmit} className="space-y-3">
-                <div className="relative">
-                  <input
-                    type="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    placeholder="Your email"
-                    required
-                    className="w-full px-4 py-2.5 bg-gray-800 border border-gray-700 rounded-lg text-sm focus:outline-none focus:border-blue-600 transition-colors duration-300"
-                  />
-                </div>
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="w-full bg-blue-600 text-white px-4 py-2.5 rounded-lg text-sm font-medium hover:bg-blue-700 transition-colors duration-300 flex items-center justify-center space-x-2 disabled:opacity-50"
-                >
-                  <span>{isSubmitting ? "Subscribing..." : "Subscribe"}</span>
-                  <Send className="w-4 h-4" />
-                </button>
-              </form>
             </div>
           </div>
         </div>
-      </div>
 
-      {/* Bottom Bar */}
-      <div className="border-t border-gray-800">
-        <div className="container-custom py-6">
-          <div className="flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0">
-            {/* Copyright */}
-            <p className="text-sm text-gray-400">
-              © {currentYear} Sajilo Digital. All rights reserved.
-            </p>
-
-            {/* Legal Links */}
-            <div className="flex flex-wrap items-center justify-center gap-6">
-              <Link
-                href="/privacy"
-                className="text-sm text-gray-400 hover:text-blue-400 transition-colors duration-300"
-              >
-                Privacy Policy
-              </Link>
-              <Link
-                href="/terms"
-                className="text-sm text-gray-400 hover:text-blue-400 transition-colors duration-300"
-              >
-                Terms of Service
-              </Link>
-              <Link
-                href="/cookies"
-                className="text-sm text-gray-400 hover:text-blue-400 transition-colors duration-300"
-              >
-                Cookie Policy
-              </Link>
-            </div>
-
-            {/* Scroll to Top Button */}
+        {/* Newsletter / Subscription */}
+        <div>
+          <h4 className="text-[10px] tracking-[0.4em] font-bold text-white/20 uppercase mb-10">
+            Subscription
+          </h4>
+          <p className="text-xs text-white/40 mb-6 leading-relaxed">
+            Join our inner circle for lunar updates on technology and design.
+          </p>
+          <form onSubmit={handleNewsletterSubmit} className="relative group">
+            <input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="Email Address"
+              className="w-full bg-transparent border-b border-white/10 py-3 text-sm focus:outline-none focus:border-blue-500 transition-colors placeholder:text-white/10"
+              required
+            />
             <button
-              onClick={scrollToTop}
-              className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-blue-600 transition-colors duration-300 group cursor-pointer"
-              aria-label="Scroll to top"
+              type="submit"
+              className="absolute right-0 top-1/2 -translate-y-1/2 text-white/20 group-hover:text-blue-500 transition-colors"
             >
-              <ArrowUp className="w-5 h-5 group-hover:transform group-hover:-translate-y-1 transition-transform duration-300" />
+              <Send size={16} />
             </button>
-          </div>
+          </form>
         </div>
       </div>
 
-      {/* Decorative gradient line */}
-      <div className="h-1 bg-linear-to-r from-blue-600 via-purple-600 to-pink-600"></div>
+      {/* 3. Bottom Utility Bar */}
+      <div className="max-w-[1800px] mx-auto px-6 md:px-12 py-10 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8">
+        <div className="flex gap-8 text-[10px] tracking-[0.2em] font-bold text-white/20 uppercase">
+          <span>© {currentYear} Sajilo Digital</span>
+          <Link href="/privacy" className="hover:text-white transition-colors">
+            Privacy
+          </Link>
+          <Link href="/terms" className="hover:text-white transition-colors">
+            Terms
+          </Link>
+        </div>
+
+        {/* Minimal Scroll Top */}
+        <button onClick={scrollToTop} className="flex items-center gap-4 group">
+          <span className="text-[10px] tracking-[0.4em] font-bold text-white/20 uppercase group-hover:text-white transition-colors">
+            Back to top
+          </span>
+          <div className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center group-hover:bg-white group-hover:text-black transition-all">
+            <ArrowUp size={16} />
+          </div>
+        </button>
+      </div>
     </footer>
   );
 }

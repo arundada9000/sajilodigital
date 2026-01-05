@@ -12,12 +12,12 @@ export const projects: Project[] = [
     client: "Himalayan Goods Pvt. Ltd.",
     duration: "3 months",
     year: "2024",
-    image: "/images/projects/ecommerce-himalayan.jpg",
+    image: "/projects/image1.png",
     images: [
-      "/images/projects/ecommerce-himalayan-1.jpg",
-      "/images/projects/ecommerce-himalayan-2.jpg",
-      "/images/projects/ecommerce-himalayan-3.jpg",
-      "/images/projects/ecommerce-himalayan-4.jpg",
+      "/projects/image1.png",
+      "/projects/image1.png",
+      "/projects/image1.png",
+      "/projects/image1.png",
     ],
     technologies: [
       "Next.js",
@@ -64,7 +64,7 @@ export const projects: Project[] = [
     client: "FitLife Health Solutions",
     duration: "4 months",
     year: "2024",
-    image: "/images/projects/fitlife-app.jpg",
+    image: "/projects/image3.png",
     images: [
       "/images/projects/fitlife-app-1.jpg",
       "/images/projects/fitlife-app-2.jpg",
@@ -115,7 +115,7 @@ export const projects: Project[] = [
     client: "Heritage Hospitality Group",
     duration: "5 months",
     year: "2024",
-    image: "/images/projects/heritage-hotels.jpg",
+    image: "/projects/image2.png",
     images: [
       "/images/projects/heritage-hotels-1.jpg",
       "/images/projects/heritage-hotels-2.jpg",
@@ -167,7 +167,7 @@ export const projects: Project[] = [
     client: "EduTech Solutions Nepal",
     duration: "6 months",
     year: "2024",
-    image: "/images/projects/edutech-lms.jpg",
+    image: "/projects/image1.png",
     images: [
       "/images/projects/edutech-lms-1.jpg",
       "/images/projects/edutech-lms-2.jpg",
@@ -219,7 +219,7 @@ export const projects: Project[] = [
     client: "TechVision Nepal Pvt. Ltd.",
     duration: "2 months",
     year: "2024",
-    image: "/images/projects/techvision-website.jpg",
+    image: "/projects/image2.png",
     images: [
       "/images/projects/techvision-website-1.jpg",
       "/images/projects/techvision-website-2.jpg",
@@ -266,7 +266,7 @@ export const projects: Project[] = [
     client: "Organic Harvest Initiative",
     duration: "4 months",
     year: "2024",
-    image: "/images/projects/organic-harvest.jpg",
+    image: "/projects/image1.png",
     images: [
       "/images/projects/organic-harvest-1.jpg",
       "/images/projects/organic-harvest-2.jpg",
@@ -317,7 +317,7 @@ export const projects: Project[] = [
     client: "PropertyHub Nepal",
     duration: "5 months",
     year: "2023",
-    image: "/images/projects/propertyhub.jpg",
+    image: "/projects/image3.png",
     images: [
       "/images/projects/propertyhub-1.jpg",
       "/images/projects/propertyhub-2.jpg",
@@ -366,7 +366,7 @@ export const projects: Project[] = [
     client: "QuickBite Technologies",
     duration: "4 months",
     year: "2023",
-    image: "/images/projects/quickbite-pos.jpg",
+    image: "/projects/image4.png",
     images: [
       "/images/projects/quickbite-pos-1.jpg",
       "/images/projects/quickbite-pos-2.jpg",

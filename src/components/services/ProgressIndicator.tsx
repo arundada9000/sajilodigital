@@ -13,17 +13,28 @@ const ProgressIndicator = ({
   const progress = ((currentSection + 1) / totalSections) * 100;
 
   return (
-    <div className="fixed top-0 left-0 right-0 z-50 h-1 bg-muted/30">
-      <motion.div
-        className="h-full origin-left"
-        style={{
-          background:
-            "linear-gradient(90deg, hsl(199 89% 48%), hsl(280 65% 55%), hsl(170 80% 45%))",
-        }}
-        initial={{ width: 0 }}
-        animate={{ width: `${progress}%` }}
-        transition={{ duration: 0.4, ease: "easeOut" }}
-      />
+    <div className="fixed right-6 md:right-10 top-1/2 -translate-y-1/2 z-[150] flex flex-col items-center gap-6">
+      <span className="text-[10px] font-bold text-white/20 uppercase tracking-[0.5em] rotate-90 mb-10 translate-y-10">
+        Section {currentSection + 1}
+      </span>
+
+      <div className="w-[2px] h-48 bg-white/5 relative rounded-full overflow-hidden">
+        <motion.div
+          className="absolute top-0 left-0 w-full bg-blue-500 origin-top"
+          initial={{ height: 0 }}
+          animate={{ height: `${progress}%` }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+        />
+      </div>
+
+      <div className="flex flex-col gap-3 mt-4">
+        {Array.from({ length: totalSections }).map((_, i) => (
+          <div
+            key={i}
+            className={`w-1 h-1 rounded-full transition-all duration-500 ${i === currentSection ? 'bg-blue-500 scale-150' : 'bg-white/10'}`}
+          />
+        ))}
+      </div>
     </div>
   );
 };

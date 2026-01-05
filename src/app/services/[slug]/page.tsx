@@ -1,310 +1,248 @@
-import type { Metadata } from "next";
-import { notFound } from "next/navigation";
-import Link from "next/link";
+"use client";
+import { useParams, useRouter } from "next/navigation";
 import { services } from "../../../data/services";
-import { CheckCircle2, ArrowLeft, Star, Zap, Shield } from "lucide-react";
+import { Service, PricingPlan } from "../../../types/service";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useEffect, useRef } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { ArrowLeft, Sparkles, MoveRight } from "lucide-react";
 
-// Generate static params for all services
-export async function generateStaticParams() {
-  return services.map((service) => ({
-    slug: service.slug,
-  }));
-}
+export default function ServiceDetail() {
+    const params = useParams();
+    const slug = params?.slug as string;
+    const router = useRouter();
+    const service = services.find((s: Service) => s.slug === slug);
+    const containerRef = useRef(null);
+    const { scrollYProgress } = useScroll({ target: containerRef });
 
-// Generate metadata for each service
-export async function generateMetadata({
-  params,
-}: {
-  params: { slug: string };
-}): Promise<Metadata> {
-  const service = services.find((s) => s.slug === params.slug);
+    useEffect(() => {
+        if (!service) {
+            router.push("/services");
+        }
+    }, [service, router]);
 
-  if (!service) {
-    return {
-      title: "Service Not Found",
-    };
-  }
+    if (!service) return null;
 
-  return {
-    title: service.title,
-    description: service.description,
-    openGraph: {
-      title: `${service.title} - sajilodigital`,
-      description: service.description,
-      url: `https://sajilodigital.com/services/${service.slug}`,
-    },
-    alternates: {
-      canonical: `https://sajilodigital.com/services/${service.slug}`,
-    },
-  };
-}
+    return (
+        <div ref={containerRef} className="bg-black text-white min-h-screen selection:bg-blue-500 selection:text-white overflow-x-hidden">
 
-export default async function ServiceDetailPage({
-  params,
-}: {
-  params: { slug: string };
-}) {
-  const { slug } = params;
-  const service = services.find((s) => s.slug === slug);
-
-  if (!service) {
-    notFound();
-  }
-
-  return (
-    <div className="min-h-screen">
-      {/* Breadcrumb & Back Button */}
-      {/* <section className="bg-gray-50 py-8 border-b">
-        <div className="container-custom">
-          <Link
-            href="/services"
-            className="inline-flex items-center space-x-2 text-blue-600 hover:text-blue-700 transition-colors duration-300 mb-4"
-          >
-            <ArrowLeft className="w-5 h-5" />
-            <span className="font-medium">Back to Services</span>
-          </Link>
-
-          <nav className="flex items-center space-x-2 text-sm text-gray-600">
-            <Link
-              href="/"
-              className="hover:text-blue-600 transition-colors duration-300"
-            >
-              Home
-            </Link>
-            <span>/</span>
-            <Link
-              href="/services"
-              className="hover:text-blue-600 transition-colors duration-300"
-            >
-              Services
-            </Link>
-            <span>/</span>
-            <span className="text-gray-900 font-medium">{service.title}</span>
-          </nav>
-        </div>
-      </section> */}
-
-      {/* Hero Section */}
-      <section className="relative bg-linear-to-br from-blue-600 via-purple-600 to-pink-600 text-white py-20">
-        <div className="absolute inset-0 bg-black/10"></div>
-        <div className="absolute inset-0 bg-[url('/images/grid.svg')] opacity-10"></div>
-
-        <div className="container-custom relative">
-          <div className="max-w-4xl">
-            <h1 className="text-5xl md:text-6xl font-bold mb-6 animate-fade-in">
-              {service.title}
-            </h1>
-            <p className="text-2xl text-gray-100 mb-4 animate-slide-up">
-              {service.tagline}
-            </p>
-            <p
-              className="text-lg text-gray-200 max-w-3xl animate-slide-up"
-              style={{ animationDelay: "100ms" }}
-            >
-              {service.description}
-            </p>
-          </div>
-        </div>
-
-        {/* Decorative Wave */}
-        <div className="absolute -bottom-1 left-0 right-0">
-          <svg
-            viewBox="0 0 1440 120"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M0 120L60 105C120 90 240 60 360 45C480 30 600 30 720 37.5C840 45 960 60 1080 67.5C1200 75 1320 75 1380 75L1440 75V120H1380C1320 120 1200 120 1080 120C960 120 840 120 720 120C600 120 480 120 360 120C240 120 120 120 60 120H0Z"
-              fill="white"
-            />
-          </svg>
-        </div>
-      </section>
-
-      {/* Pricing Section */}
-      <section className="py-20 bg-white">
-        <div className="container-custom">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Pricing Plans
-            </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              {service.priceNote}
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            {service.pricing.map((plan, index) => (
-              <div
-                key={index}
-                className={`relative bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden ${
-                  plan.popular
-                    ? "border-4 border-blue-600 scale-105"
-                    : "border border-gray-200"
-                }`}
-              >
-                {/* Popular Badge */}
-                {plan.popular && (
-                  <div className="absolute top-0 right-0 bg-blue-600 text-white px-4 py-1 text-sm font-semibold rounded-bl-lg flex items-center space-x-1">
-                    <Star className="w-4 h-4 fill-current" />
-                    <span>Popular</span>
-                  </div>
-                )}
-
-                <div className="p-8">
-                  {/* Plan Name */}
-                  <h3 className="text-2xl font-bold text-gray-900 mb-2">
-                    {plan.plan}
-                  </h3>
-                  <p className="text-gray-600 text-sm mb-6">{plan.bestFor}</p>
-
-                  {/* Price */}
-                  <div className="mb-6">
-                    <div className="flex items-baseline space-x-2">
-                      <span className="text-4xl font-bold text-gray-900">
-                        {plan.price}
-                      </span>
+            {/* Navigation */}
+            <nav className="fixed top-0 left-0 w-full z-50 p-6 md:p-8 flex justify-between items-center mix-blend-difference">
+                <Link href="/services" className="group flex items-center gap-3 md:gap-4">
+                    <div className="w-8 h-8 md:w-10 md:h-10 rounded-full border border-white/20 flex items-center justify-center group-hover:bg-white group-hover:text-black transition-all">
+                        <ArrowLeft size={16} />
                     </div>
-                    <p className="text-sm text-gray-500 mt-1">
-                      {plan.duration}
-                    </p>
-                  </div>
-
-                  {/* Features */}
-                  <ul className="space-y-4 mb-8">
-                    {plan.features.map((feature, i) => (
-                      <li key={i} className="flex items-start space-x-3">
-                        <CheckCircle2 className="w-5 h-5 text-green-500 shrink-0 mt-0.5" />
-                        <span className="text-gray-700">{feature}</span>
-                      </li>
+                    <span className="text-[9px] md:text-[10px] tracking-[0.3em] md:tracking-[0.4em] font-black uppercase opacity-40 group-hover:opacity-100 transition-opacity">Back to Origin</span>
+                </Link>
+                <div className="hidden md:flex gap-12">
+                    {["Strategy", "Performance", "Creative", "Scale"].map((item) => (
+                        <span key={item} className="text-[9px] tracking-[0.5em] font-black uppercase text-white/20">{item}</span>
                     ))}
-                  </ul>
-
-                  {/* CTA Button */}
-                  <Link
-                    href="/contact"
-                    className={`block text-center px-6 py-3 rounded-lg font-semibold transition-all duration-300 ${
-                      plan.popular
-                        ? "bg-blue-600 text-white hover:bg-blue-700 shadow-lg hover:shadow-xl"
-                        : "bg-gray-100 text-gray-900 hover:bg-gray-200"
-                    }`}
-                  >
-                    Get Started
-                  </Link>
                 </div>
-              </div>
-            ))}
-          </div>
+            </nav>
+
+            {/* Hero Section */}
+            <section className="relative h-[80vh] md:h-[90vh] flex flex-col items-center justify-center px-6 overflow-hidden">
+                <motion.div
+                    initial={{ opacity: 0, scale: 1.1 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
+                    className="absolute inset-0 z-0"
+                >
+                    <div className="absolute inset-0 bg-linear-to-b from-black/60 via-black to-black z-10" />
+                    {service.image ? (
+                        <Image
+                            src={service.image}
+                            alt={service.title}
+                            fill
+                            className="object-cover opacity-40 lg:opacity-60"
+                            priority
+                        />
+                    ) : (
+                        <div className="w-full h-full bg-blue-900/10" />
+                    )}
+                </motion.div>
+
+                <div className="relative z-20 text-center max-w-6xl w-full">
+                    <motion.div
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.5 }}
+                        className="flex items-center justify-center gap-3 md:gap-4 mb-8 md:mb-10"
+                    >
+                        <div className="w-10 md:w-16 h-[1px]" style={{ backgroundColor: service.accentColor || '#3b82f6' }} />
+                        <span className="text-[10px] md:text-[11px] tracking-[0.5em] md:tracking-[0.8em] font-black uppercase" style={{ color: service.accentColor || '#3b82f6' }}>
+                            {service.slug.replace('-', '_')}
+                        </span>
+                        <div className="w-10 md:w-16 h-[1px]" style={{ backgroundColor: service.accentColor || '#3b82f6' }} />
+                    </motion.div>
+
+                    <motion.h1
+                        initial={{ opacity: 0, y: 50 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.7, duration: 1, ease: [0.16, 1, 0.3, 1] }}
+                        className="text-5xl md:text-[140px] lg:text-[180px] font-black tracking-tighter leading-[1] md:leading-none italic uppercase mb-8 md:mb-12"
+                    >
+                        {service.title.split(' ')[0]}<br />
+                        <span className="text-white/20">{service.title.split(' ').slice(1).join(' ')}</span>
+                    </motion.h1>
+
+                    <motion.p
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ delay: 1.2 }}
+                        className="text-base md:text-2xl text-white/40 max-w-3xl mx-auto font-medium italic leading-relaxed px-4"
+                    >
+                        "{service.description}"
+                    </motion.p>
+                </div>
+
+                {/* Scroll Indicator */}
+                <motion.div
+                    style={{ opacity: useTransform(scrollYProgress, [0, 0.1], [1, 0]) }}
+                    className="absolute bottom-6 md:bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 md:gap-4"
+                >
+                    <div className="w-[1px] h-12 md:h-20 bg-linear-to-b from-transparent via-white/20 to-transparent" />
+                    <span className="text-[8px] md:text-[10px] tracking-[0.5em] font-black uppercase text-white/20">Data Stream</span>
+                </motion.div>
+            </section>
+
+            {/* Philosophy Section */}
+            <section className="py-24 md:py-40 px-6 relative border-t border-white/5">
+                <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 md:gap-24 items-center">
+                    <motion.div
+                        initial={{ opacity: 0, x: -50 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                    >
+                        <h3 className="text-[10px] md:text-[11px] tracking-[0.5em] md:tracking-[0.6em] font-black uppercase text-blue-500 mb-6 md:mb-8">Design. Philosophy.</h3>
+                        <h2 className="text-4xl md:text-7xl font-black italic uppercase leading-[1.1] md:leading-none mb-8 md:mb-12">
+                            Architecting<br />
+                            The Future <span className="text-white/20">Legacy.</span>
+                        </h2>
+                        <p className="text-lg md:text-xl text-white/40 leading-relaxed italic mb-8 md:mb-12">
+                            "Every pixel is a conscious decision. Every line of code is an architecture of intent. We don't just complete projects; we create benchmarks for excellence in the digital age."
+                        </p>
+
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8">
+                            {[
+                                { label: "Precision", val: "Pixel_Perfect" },
+                                { label: "Scale", val: "Global_Ready" },
+                                { label: "Architecture", val: "Secure_Core" },
+                                { label: "Experience", val: "Human_Centric" }
+                            ].map((m) => (
+                                <div key={m.label} className="border-l border-white/10 pl-5 md:pl-6 py-2">
+                                    <span className="text-[8px] tracking-widest uppercase font-bold text-white/20 block mb-1">{m.label}</span>
+                                    <span className="text-[9px] md:text-[10px] font-mono tracking-widest uppercase">{m.val}</span>
+                                </div>
+                            ))}
+                        </div>
+                    </motion.div>
+
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        viewport={{ once: true }}
+                        className="aspect-square relative rounded-[30px] md:rounded-[60px] overflow-hidden border border-white/10"
+                    >
+                        <Image src={service.image || '/services/the-shop.gif'} alt="Modern Design" fill className="object-cover grayscale hover:grayscale-0 transition-all duration-1000" />
+                        <div className="absolute inset-0 bg-blue-500/10 mix-blend-overlay" />
+                    </motion.div>
+                </div>
+            </section>
+
+            {/* Pricing Models */}
+            <section className="py-24 md:py-40 bg-white/[0.02] border-y border-white/5">
+                <div className="max-w-7xl mx-auto px-6">
+                    <div className="text-center mb-16 md:mb-24">
+                        <span className="text-[10px] md:text-[11px] tracking-[0.5em] md:tracking-[0.6em] font-black uppercase text-white/20 block mb-6">Investment Models</span>
+                        <h2 className="text-4xl md:text-8xl font-black italic uppercase tracking-tighter">Strategic <span className="text-white/20">Packages.</span></h2>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+                        {service.pricing.map((plan: PricingPlan, i: number) => (
+                            <motion.div
+                                key={plan.plan}
+                                initial={{ opacity: 0, y: 40 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: i * 0.1 }}
+                                className={`relative p-10 md:p-12 rounded-[30px] md:rounded-[50px] border ${plan.popular ? 'border-blue-500/50 bg-blue-500/[0.03]' : 'border-white/5 bg-white/[0.01] hover:bg-white/[0.03]'} transition-all group`}
+                            >
+                                {plan.popular && (
+                                    <div className="absolute -top-3 md:-top-4 left-1/2 -translate-x-1/2 bg-blue-500 text-black px-4 md:px-6 py-1 rounded-full text-[8px] md:text-[9px] font-black uppercase tracking-[0.2em] md:tracking-[0.3em]">
+                                        Optimal Choice
+                                    </div>
+                                )}
+                                <h4 className="text-[10px] md:text-[11px] tracking-[0.3em] md:tracking-[0.4em] font-black uppercase text-white/40 mb-8 md:mb-10">{plan.plan}</h4>
+                                <div className="mb-8 md:mb-10">
+                                    <span className="text-4xl md:text-5xl font-black italic">{plan.price.split(' ')[0]}</span>
+                                    <span className="text-xl md:text-2xl font-bold opacity-30 italic leading-none">{plan.price.split(' ').slice(1).join(' ')}</span>
+                                    <span className="block text-[9px] md:text-[10px] uppercase font-bold text-white/20 mt-2 tracking-widest">{plan.duration}</span>
+                                </div>
+
+                                <div className="space-y-4 md:space-y-6 mb-10 md:mb-12">
+                                    {plan.features.map((feat: string) => (
+                                        <div key={feat} className="flex items-center gap-3 md:gap-4">
+                                            <div className="w-1 md:w-1.5 h-1 md:h-1.5 rounded-full bg-blue-500" />
+                                            <span className="text-sm font-medium text-white/60 italic">{feat}</span>
+                                        </div>
+                                    ))}
+                                </div>
+
+                                <Link href="/contact" className="block">
+                                    <button className={`w-full py-4 md:py-5 rounded-xl md:rounded-2xl text-[9px] md:text-[10px] font-black uppercase tracking-[0.3em] md:tracking-[0.4em] transition-all flex items-center justify-center gap-3 md:gap-4 ${plan.popular ? 'bg-white text-black hover:scale-105 shadow-2xl shadow-blue-500/20' : 'bg-white/5 text-white hover:bg-white hover:text-black'}`}>
+                                        Select Path <MoveRight size={14} />
+                                    </button>
+                                </Link>
+                            </motion.div>
+                        ))}
+                    </div>
+
+                    <p className="text-center mt-16 md:mt-20 text-white/20 text-[10px] italic font-medium max-w-xl mx-auto px-4">
+                        * {service.priceNote} All models are adaptable to bespoke ecosystem requirements.
+                    </p>
+                </div>
+            </section>
+
+            {/* CTA Final */}
+            <section className="py-40 md:py-60 px-6 text-center overflow-hidden relative">
+                <motion.div
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    className="relative z-10"
+                >
+                    <Sparkles className="mx-auto text-blue-500 mb-8 md:mb-12" size={32} />
+                    <h2 className="text-5xl md:text-[120px] font-black italic uppercase leading-none mb-8 md:mb-12 tracking-tighter">
+                        Ready to <span className="text-white/20">Scale?</span>
+                    </h2>
+                    <Link href="/contact" className="inline-block">
+                        <motion.button
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                            className="bg-white text-black px-12 md:px-16 py-6 md:py-8 rounded-full text-[10px] md:text-xs font-black uppercase tracking-[0.4em] md:tracking-[0.5em] shadow-2xl shadow-blue-500/20"
+                        >
+                            Initiate Connection
+                        </motion.button>
+                    </Link>
+                </motion.div>
+
+                {/* Cinematic Background Lines */}
+                <div className="absolute top-1/2 left-0 w-full h-[1px] bg-white/5 -rotate-12" />
+                <div className="absolute top-1/3 left-0 w-full h-[1px] bg-white/5 rotate-6" />
+            </section>
+
+            {/* Minimal Footer */}
+            <footer className="p-8 md:p-12 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-8">
+                <span className="text-[9px] md:text-[10px] tracking-[0.5em] md:tracking-[1em] font-black text-white/10 uppercase">Sajilo.Digital 2026</span>
+                <div className="flex gap-6 md:gap-10">
+                    {["Instagram", "Facebook", "Github"].map(s => (
+                        <a key={s} href="#" className="text-[9px] md:text-[10px] tracking-widest font-bold text-white/30 hover:text-white transition-colors uppercase">{s}</a>
+                    ))}
+                </div>
+            </footer>
+
         </div>
-      </section>
-
-      {/* Why Choose Us Section */}
-      <section className="py-20 bg-gray-50">
-        <div className="container-custom">
-          <div className="max-w-6xl mx-auto">
-            <h2 className="text-4xl font-bold text-center text-gray-900 mb-12">
-              Why Choose Our {service.title} Service?
-            </h2>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <div className="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
-                <div className="w-14 h-14 bg-blue-100 rounded-full flex items-center justify-center mb-6">
-                  <Zap className="w-7 h-7 text-blue-600" />
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-4">
-                  Fast Delivery
-                </h3>
-                <p className="text-gray-600">
-                  We pride ourselves on delivering high-quality projects within
-                  the agreed timeline without compromising on quality.
-                </p>
-              </div>
-
-              <div className="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
-                <div className="w-14 h-14 bg-purple-100 rounded-full flex items-center justify-center mb-6">
-                  <Shield className="w-7 h-7 text-purple-600" />
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-4">
-                  Quality Assurance
-                </h3>
-                <p className="text-gray-600">
-                  Every project undergoes rigorous testing and quality checks to
-                  ensure it meets the highest standards.
-                </p>
-              </div>
-
-              <div className="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
-                <div className="w-14 h-14 bg-green-100 rounded-full flex items-center justify-center mb-6">
-                  <Star className="w-7 h-7 text-green-600" />
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-4">
-                  Expert Team
-                </h3>
-                <p className="text-gray-600">
-                  Our experienced team of professionals brings years of
-                  expertise to deliver exceptional results for your business.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-20 bg-white">
-        <div className="container-custom">
-          <div className="max-w-4xl mx-auto text-center bg-linear-to-br from-blue-600 to-purple-600 rounded-3xl p-12 text-white shadow-2xl">
-            <h2 className="text-4xl font-bold mb-4">
-              Ready to Start Your Project?
-            </h2>
-            <p className="text-xl text-gray-100 mb-8">
-              Let&apos;s discuss how we can help bring your vision to life with
-              our {service.title.toLowerCase()} service
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link
-                href="/contact"
-                className="bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-300 shadow-lg inline-flex items-center justify-center space-x-2"
-              >
-                <span>Get a Free Quote</span>
-                <ArrowLeft className="w-5 h-5 rotate-180" />
-              </Link>
-              <Link
-                href="/projects"
-                className="bg-transparent border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white/10 transition-colors duration-300"
-              >
-                View Our Portfolio
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Structured Data */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Service",
-            name: service.title,
-            description: service.description,
-            provider: {
-              "@type": "Organization",
-              name: "sajilodigital",
-              url: "https://sajilodigital.com",
-            },
-            offers: service.pricing.map((plan) => ({
-              "@type": "Offer",
-              name: plan.plan,
-              price: plan.price,
-              priceCurrency: "NPR",
-              description: plan.bestFor,
-            })),
-            url: `https://sajilodigital.com/services/${service.slug}`,
-          }),
-        }}
-      />
-    </div>
-  );
+    );
 }

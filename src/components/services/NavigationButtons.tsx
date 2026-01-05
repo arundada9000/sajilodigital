@@ -1,7 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
-import { ChevronLeft, ChevronRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { ChevronUp, ChevronDown } from "lucide-react";
 
 interface NavigationButtonsProps {
   currentSection: number;
@@ -12,55 +11,33 @@ interface NavigationButtonsProps {
 
 const NavigationButtons = ({
   currentSection,
-  totalSections,
   onPrevious,
   onNext,
+  totalSections
 }: NavigationButtonsProps) => {
   const isFirst = currentSection === 0;
   const isLast = currentSection === totalSections - 1;
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: 0.5 }}
-      className="fixed bottom-8 left-1/2 -translate-x-1/2 z-50 flex items-center gap-4"
-    >
-      <Button
-        variant="outline"
-        size="lg"
+    <div className="fixed bottom-10 right-24 md:right-32 z-[150] flex flex-col gap-4">
+      <motion.button
         onClick={onPrevious}
         disabled={isFirst}
-        className="glass border-border/50 hover:bg-muted/50 disabled:opacity-30 disabled:cursor-not-allowed group"
+        whileHover={!isFirst ? { y: -5 } : {}}
+        className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center bg-black/50 backdrop-blur-xl text-white/40 hover:text-white hover:border-white/30 disabled:opacity-0 transition-all cursor-pointer"
       >
-        <ChevronLeft className="w-5 h-5 mr-2 group-hover:-translate-x-1 transition-transform" />
-        Back
-      </Button>
+        <ChevronUp size={20} />
+      </motion.button>
 
-      <div className="flex items-center gap-2 px-4">
-        {Array.from({ length: totalSections }).map((_, index) => (
-          <motion.div
-            key={index}
-            className={`w-2 h-2 rounded-full transition-all duration-300 ${
-              index === currentSection
-                ? "bg-primary w-6"
-                : "bg-muted-foreground/30 hover:bg-muted-foreground/50"
-            }`}
-          />
-        ))}
-      </div>
-
-      <Button
-        variant="outline"
-        size="lg"
+      <motion.button
         onClick={onNext}
         disabled={isLast}
-        className="glass border-border/50 hover:bg-muted/50 disabled:opacity-30 disabled:cursor-not-allowed group"
+        whileHover={!isLast ? { y: 5 } : {}}
+        className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center bg-black/50 backdrop-blur-xl text-white/40 hover:text-white hover:border-white/30 disabled:opacity-0 transition-all cursor-pointer"
       >
-        Next
-        <ChevronRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-      </Button>
-    </motion.div>
+        <ChevronDown size={20} />
+      </motion.button>
+    </div>
   );
 };
 

@@ -1,253 +1,190 @@
-import type { Metadata } from "next";
+"use client";
+
+import React from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { motion } from "framer-motion";
 import { blogPosts } from "../../data/blog";
-import { Calendar, Clock, ArrowRight } from "lucide-react";
-
-export const metadata: Metadata = {
-  title: "Blog",
-  description:
-    "Stay updated with the latest web development trends, tutorials, and insights from our expert team. Learn about Next.js, React, design, and more.",
-  openGraph: {
-    title: "Blog - sajilodigital",
-    description:
-      "Latest articles, tutorials, and insights on web development and design.",
-    url: "https://sajilodigital.com/blog",
-  },
-  alternates: {
-    canonical: "https://sajilodigital.com/blog",
-  },
-};
+import { Calendar, Clock, ArrowRight, TrendingUp } from "lucide-react";
+import BlogCard from "../../components/blog/BlogCard";
+import ShinyText from "../../../components/ShinyText";
+import StandardLayout from "../../components/layout/StandardLayout";
+import StructuredData from "../../components/seo/StructuredData";
+import { generateBreadcrumbSchema } from "../../lib/seo/metadata";
 
 export default function BlogPage() {
-  const featuredPost = blogPosts.find((post) => post.featured);
-  const regularPosts = blogPosts.filter((post) => !post.featured);
+  const featuredPost = blogPosts.find((post) => post.featured) || blogPosts[0];
+  const regularPosts = blogPosts.filter((post) => post.slug !== featuredPost.slug);
+
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: "Home", url: "/" },
+    { name: "Blog", url: "/blog" },
+  ]);
 
   return (
-    <div className="min-h-screen">
-      {/* Hero Section */}
-      <section className="relative bg-linear-to-br from-blue-600 via-purple-600 to-pink-600 text-white py-24">
-        <div className="absolute inset-0 bg-black/10"></div>
-        <div className="absolute inset-0 bg-[url('/images/grid.svg')] opacity-10"></div>
-
-        <div className="container-custom relative z-10">
-          <div className="max-w-3xl mx-auto text-center">
-            <h1 className="text-5xl md:text-6xl font-bold mb-6 animate-fade-in">
-              Our Blog
-            </h1>
-            <p className="text-xl text-gray-100 animate-slide-up">
-              Insights, tutorials, and stories from the world of web development
-            </p>
-          </div>
+    <StandardLayout>
+      <StructuredData data={breadcrumbSchema} />
+      <div className="min-h-screen bg-[#0b0f19] text-white selection:bg-cyan-500/30 overflow-x-hidden">
+        {/* Dynamic Background Elements */}
+        <div className="fixed inset-0 pointer-events-none">
+          <div className="absolute top-0 left-1/4 w-96 h-96 bg-cyan-500/10 rounded-full blur-[120px] animate-pulse" />
+          <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-[120px] animate-pulse" style={{ animationDelay: '2s' }} />
         </div>
 
-        <div className="absolute -bottom-1 left-0 right-0">
-          <svg
-            viewBox="0 0 1440 120"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M0 120L60 105C120 90 240 60 360 45C480 30 600 30 720 37.5C840 45 960 60 1080 67.5C1200 75 1320 75 1380 75L1440 75V120H1380C1320 120 1200 120 1080 120C960 120 840 120 720 120C600 120 480 120 360 120C240 120 120 120 60 120H0Z"
-              fill="white"
-            />
-          </svg>
-        </div>
-      </section>
-
-      {/* Featured Post */}
-      {featuredPost && (
-        <section className="py-20 bg-white">
-          <div className="container-custom">
-            <div className="mb-8">
-              <span className="inline-block bg-blue-100 text-blue-600 px-4 py-2 rounded-full text-sm font-semibold">
-                Featured Post
-              </span>
-            </div>
-
-            <Link href={`/blog/${featuredPost.slug}`} className="group">
-              <div className="grid md:grid-cols-2 gap-8 bg-gray-50 rounded-2xl overflow-hidden hover:shadow-2xl transition-shadow duration-300">
-                <div className="relative h-64 md:h-full">
-                  <Image
-                    src={featuredPost.image}
-                    alt={featuredPost.title}
-                    fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-300"
-                  />
-                </div>
-
-                <div className="p-8 flex flex-col justify-center">
-                  <div className="flex items-center space-x-4 mb-4">
-                    <span className="bg-blue-600 text-white px-3 py-1 rounded-full text-xs font-semibold">
-                      {featuredPost.category}
-                    </span>
-                    <div className="flex items-center text-gray-600 text-sm">
-                      <Clock className="w-4 h-4 mr-1" />
-                      {featuredPost.readTime}
-                    </div>
-                  </div>
-
-                  <h2 className="text-3xl font-bold text-gray-900 mb-4 group-hover:text-blue-600 transition-colors duration-300">
-                    {featuredPost.title}
-                  </h2>
-
-                  <p className="text-gray-600 mb-6 line-clamp-3">
-                    {featuredPost.excerpt}
-                  </p>
-
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center space-x-3">
-                      <div className="relative w-10 h-10">
-                        <Image
-                          src={featuredPost.author.avatar}
-                          alt={featuredPost.author.name}
-                          fill
-                          className="rounded-full object-cover"
-                        />
-                      </div>
-                      <div>
-                        <p className="font-medium text-gray-900">
-                          {featuredPost.author.name}
-                        </p>
-                        <p className="text-sm text-gray-600">
-                          {featuredPost.publishedAt}
-                        </p>
-                      </div>
-                    </div>
-
-                    <ArrowRight className="w-6 h-6 text-blue-600 group-hover:translate-x-2 transition-transform duration-300" />
-                  </div>
-                </div>
+        {/* Hero Section */}
+        <section className="relative pt-32 pb-20 px-6">
+          <div className="max-w-7xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="text-center mb-16"
+            >
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-sm font-medium mb-6">
+                <TrendingUp className="w-4 h-4" />
+                <span>Latest Insights & Updates</span>
               </div>
-            </Link>
+              <h1 className="text-5xl md:text-7xl font-bold mb-6 tracking-tight">
+                <ShinyText text="Our Blog" className="block" />
+              </h1>
+              <p className="max-w-2xl mx-auto text-gray-400 text-lg md:text-xl leading-relaxed">
+                Explore the intersection of technology, design, and innovation.
+                Fresh perspectives from the Sajilo Digital team.
+              </p>
+            </motion.div>
+
+            {/* Featured Post Card */}
+            {featuredPost && (
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 0.2 }}
+                className="relative group mb-24"
+              >
+                <Link href={`/blog/${featuredPost.slug}`}>
+                  <div className="relative grid lg:grid-cols-2 gap-0 rounded-3xl overflow-hidden border border-white/10 bg-[#161b22]/40 backdrop-blur-2xl hover:border-cyan-500/30 transition-all duration-500 shadow-2xl">
+                    {/* Image Side */}
+                    <div className="relative h-72 lg:h-[450px] overflow-hidden">
+                      <Image
+                        src={featuredPost.image}
+                        alt={featuredPost.title}
+                        fill
+                        className="object-cover transition-transform duration-700 group-hover:scale-105"
+                      />
+                      <div className="absolute inset-0 bg-linear-to-r from-[#0b0f19] to-transparent opacity-60 lg:block hidden" />
+                      <div className="absolute inset-0 bg-linear-to-t from-[#0b0f19] to-transparent opacity-60 lg:hidden" />
+                    </div>
+
+                    {/* Content Side */}
+                    <div className="p-8 lg:p-12 flex flex-col justify-center">
+                      <div className="flex items-center gap-4 mb-6">
+                        <span className="px-4 py-1.5 rounded-full text-sm font-semibold bg-cyan-500 text-white shadow-[0_0_15px_rgba(6,182,212,0.5)]">
+                          Featured
+                        </span>
+                        <span className="text-gray-400 text-sm font-medium flex items-center gap-2">
+                          <Clock className="w-4 h-4" /> {featuredPost.readTime}
+                        </span>
+                      </div>
+
+                      <h2 className="text-3xl lg:text-4xl font-bold text-white mb-6 leading-tight group-hover:text-cyan-400 transition-colors duration-300">
+                        {featuredPost.title}
+                      </h2>
+
+                      <p className="text-gray-400 text-lg mb-8 line-clamp-3 leading-relaxed">
+                        {featuredPost.excerpt}
+                      </p>
+
+                      <div className="flex items-center justify-between mt-auto pt-8 border-t border-white/5">
+                        <div className="flex items-center gap-4">
+                          <div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-cyan-500/20 shadow-lg">
+                            <Image
+                              src={featuredPost.author.avatar}
+                              alt={featuredPost.author.name}
+                              fill
+                              className="object-cover"
+                            />
+                          </div>
+                          <div>
+                            <p className="font-bold text-white text-lg leading-tight">{featuredPost.author.name}</p>
+                            <p className="text-cyan-400 text-sm font-medium uppercase tracking-wider">{featuredPost.author.role}</p>
+                          </div>
+                        </div>
+
+                        <div className="flex items-center gap-2 text-cyan-400 font-bold group-hover:gap-4 transition-all duration-300">
+                          Read Story <ArrowRight className="w-5 h-5" />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </Link>
+              </motion.div>
+            )}
           </div>
         </section>
-      )}
 
-      {/* Blog Posts Grid */}
-      <section className="py-20 bg-gray-50">
-        <div className="container-custom">
-          <h2 className="text-3xl font-bold text-gray-900 mb-12">
-            Latest Articles
-          </h2>
+        {/* Grid Section */}
+        <section className="py-20 bg-[#080b12]/50 border-y border-white/5">
+          <div className="max-w-7xl mx-auto px-6">
+            <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
+              <div>
+                <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">Latest Articles</h2>
+                <div className="h-1 w-20 bg-cyan-500 rounded-full" />
+              </div>
+              <div className="flex flex-wrap gap-2">
+                {['All', 'Technology', 'Design', 'Development', 'Business'].map((cat) => (
+                  <button
+                    key={cat}
+                    className="px-4 py-2 rounded-xl text-sm font-medium bg-white/5 border border-white/10 hover:bg-white/10 hover:border-cyan-500/50 transition-all duration-300"
+                  >
+                    {cat}
+                  </button>
+                ))}
+              </div>
+            </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {regularPosts.map((post, index) => (
-              <Link
-                key={post.slug}
-                href={`/blog/${post.slug}`}
-                className="group bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 animate-slide-up"
-                style={{ animationDelay: `${index * 100}ms` }}
-              >
-                <div className="relative h-48 overflow-hidden">
-                  <Image
-                    src={post.image}
-                    alt={post.title}
-                    fill
-                    className="object-cover group-hover:scale-110 transition-transform duration-300"
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
+              {regularPosts.map((post, index) => (
+                <BlogCard key={post.slug} post={post} index={index} />
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Newsletter Section */}
+        <section className="py-32 px-6">
+          <div className="max-w-5xl mx-auto">
+            <motion.div
+              whileHover={{ scale: 1.01 }}
+              className="relative p-12 lg:p-20 rounded-[40px] overflow-hidden border border-white/10 bg-linear-to-br from-[#161b22] to-[#0b0f19] text-center"
+            >
+              <div className="absolute inset-0 bg-[url('/images/grid.svg')] opacity-5" />
+
+              <div className="relative z-10">
+                <h2 className="text-4xl md:text-6xl font-bold mb-6 text-white tracking-tight">
+                  Never miss an <span className="text-transparent bg-clip-text bg-linear-to-r from-cyan-400 to-blue-500">update.</span>
+                </h2>
+                <p className="max-w-xl mx-auto text-gray-400 text-lg mb-12">
+                  Join our community of 2,000+ developers and designers getting the best tutorials and insights every week.
+                </p>
+
+                <form className="flex flex-col sm:flex-row gap-4 max-w-lg mx-auto p-2 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm">
+                  <input
+                    type="email"
+                    placeholder="name@email.com"
+                    className="flex-1 bg-transparent px-6 py-4 text-white focus:outline-none placeholder:text-gray-500"
+                    required
                   />
-                  <div className="absolute top-4 left-4">
-                    <span className="bg-white/90 backdrop-blur-sm text-blue-600 px-3 py-1 rounded-full text-xs font-semibold">
-                      {post.category}
-                    </span>
-                  </div>
-                </div>
-
-                <div className="p-6">
-                  <div className="flex items-center space-x-4 mb-3 text-sm text-gray-600">
-                    <div className="flex items-center">
-                      <Calendar className="w-4 h-4 mr-1" />
-                      {post.publishedAt}
-                    </div>
-                    <div className="flex items-center">
-                      <Clock className="w-4 h-4 mr-1" />
-                      {post.readTime}
-                    </div>
-                  </div>
-
-                  <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors duration-300 line-clamp-2">
-                    {post.title}
-                  </h3>
-
-                  <p className="text-gray-600 mb-4 line-clamp-3">
-                    {post.excerpt}
-                  </p>
-
-                  <div className="flex items-center space-x-3 pt-4 border-t">
-                    <div className="relative w-8 h-8">
-                      <Image
-                        src={post.author.avatar}
-                        alt={post.author.name}
-                        fill
-                        className="rounded-full object-cover"
-                      />
-                    </div>
-                    <div>
-                      <p className="text-sm font-medium text-gray-900">
-                        {post.author.name}
-                      </p>
-                      <p className="text-xs text-gray-600">
-                        {post.author.role}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </Link>
-            ))}
+                  <button
+                    type="submit"
+                    className="bg-cyan-500 hover:bg-cyan-400 text-black font-bold px-8 py-4 rounded-xl transition-all duration-300 shadow-[0_0_20px_rgba(6,182,212,0.4)]"
+                  >
+                    Join Now
+                  </button>
+                </form>
+              </div>
+            </motion.div>
           </div>
-        </div>
-      </section>
-
-      {/* Newsletter CTA */}
-      <section className="py-20 bg-white">
-        <div className="container-custom">
-          <div className="max-w-4xl mx-auto bg-linear-to-br from-blue-600 to-purple-600 rounded-3xl p-12 text-center text-white">
-            <h2 className="text-4xl font-bold mb-4">
-              Subscribe to Our Newsletter
-            </h2>
-            <p className="text-xl text-gray-100 mb-8">
-              Get the latest articles and insights delivered to your inbox
-            </p>
-            <form className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
-              <input
-                type="email"
-                placeholder="Enter your email"
-                className="flex-1 px-6 py-3 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-white"
-                required
-              />
-              <button
-                type="submit"
-                className="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-300 shadow-lg"
-              >
-                Subscribe
-              </button>
-            </form>
-          </div>
-        </div>
-      </section>
-
-      {/* Structured Data */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Blog",
-            name: "sajilodigital Blog",
-            description:
-              "Latest articles, tutorials, and insights on web development and design.",
-            url: "https://sajilodigital.com/blog",
-            publisher: {
-              "@type": "Organization",
-              name: "sajilodigital",
-              logo: {
-                "@type": "ImageObject",
-                url: "https://sajilodigital.com/images/logo.png",
-              },
-            },
-          }),
-        }}
-      />
-    </div>
+        </section>
+      </div>
+    </StandardLayout>
   );
 }

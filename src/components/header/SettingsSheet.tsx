@@ -19,71 +19,57 @@ export default function SettingsSheet({
       role="dialog"
       aria-modal="true"
       aria-label="Settings"
-      className="fixed inset-0 z-60 flex items-end md:items-center justify-center"
+      className="fixed inset-0 z-[200] flex items-end md:items-center justify-center p-6"
     >
       <div
-        className="absolute inset-0 bg-black/40"
+        className="absolute inset-0 bg-black/80 backdrop-blur-md"
         onClick={() => onOpenChange(false)}
       />
-      <div className="relative w-full md:max-w-lg bg-white rounded-t-2xl md:rounded-2xl shadow-2xl p-6">
-        <div className="flex items-center justify-between mb-4">
-          <h2 className="text-lg font-semibold text-gray-900">Settings</h2>
+      <div className="relative w-full md:max-w-lg bg-[#0a0a0a]/90 backdrop-blur-3xl border border-white/10 rounded-t-[32px] md:rounded-[32px] shadow-[0_0_80px_rgba(0,0,0,0.8)] p-8 overflow-hidden z-[210]">
+        <div className="absolute top-0 left-0 w-full h-[1px] bg-linear-to-r from-transparent via-blue-500/50 to-transparent" />
+
+        <div className="flex items-center justify-between mb-10">
+          <h2 className="text-xl font-bold tracking-tight text-white uppercase italic">Preferences</h2>
           <button
             onClick={() => onOpenChange(false)}
-            className="text-gray-600 hover:text-gray-900"
+            className="text-[10px] tracking-[0.2em] uppercase text-white/40 hover:text-white transition-colors font-bold"
           >
             Close
           </button>
         </div>
 
-        <div className="space-y-6">
+        <div className="space-y-8">
           {/* Theme */}
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
-              Theme
+            <label className="block text-[10px] tracking-[0.3em] font-bold text-white/20 uppercase mb-4">
+              Appearance
             </label>
-            <div className="flex gap-2">
-              <button
-                onClick={() => setPref("theme", "light")}
-                className={`px-3 py-2 rounded border ${
-                  prefs.theme === "light"
-                    ? "border-blue-600"
-                    : "border-gray-300"
-                }`}
-              >
-                Light
-              </button>
-              <button
-                onClick={() => setPref("theme", "dark")}
-                className={`px-3 py-2 rounded border ${
-                  prefs.theme === "dark" ? "border-blue-600" : "border-gray-300"
-                }`}
-              >
-                Dark
-              </button>
-              <button
-                onClick={() => setPref("theme", "system")}
-                className={`px-3 py-2 rounded border ${
-                  prefs.theme === "system"
-                    ? "border-blue-600"
-                    : "border-gray-300"
-                }`}
-              >
-                System
-              </button>
+            <div className="grid grid-cols-3 gap-3">
+              {["light", "dark", "system"].map((t) => (
+                <button
+                  key={t}
+                  onClick={() => setPref("theme", t as any)}
+                  className={`px-4 py-3 rounded-xl border text-[10px] font-bold uppercase tracking-widest transition-all ${prefs.theme === t
+                    ? "bg-white text-black border-white"
+                    : "bg-white/5 text-white/60 border-white/5 hover:border-white/20"
+                    }`}
+                >
+                  {t}
+                </button>
+              ))}
             </div>
           </div>
 
           {/* Accent color */}
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
-              Accent color
+            <label className="block text-[10px] tracking-[0.3em] font-bold text-white/20 uppercase mb-4">
+              Accent Tone
             </label>
-            <div className="flex gap-2">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
               {[
-                { from: "#2563eb", to: "#7c3aed", name: "Blue/Purple" },
-                { from: "#16a34a", to: "#22c55e", name: "Green" },
-                { from: "#ea580c", to: "#d946ef", name: "Orange/Pink" },
+                { from: "#2563eb", to: "#7c3aed", name: "Nebula" },
+                { from: "#16a34a", to: "#22c55e", name: "Forest" },
+                { from: "#ea580c", to: "#d946ef", name: "Sunset" },
               ].map((c) => (
                 <button
                   key={c.name}
@@ -91,13 +77,11 @@ export default function SettingsSheet({
                     setPref("accentFrom", c.from);
                     setPref("accentTo", c.to);
                   }}
-                  className="px-3 py-2 rounded border border-gray-300"
-                  style={{
-                    background: `linear-gradient(135deg, ${c.from}, ${c.to})`,
-                    color: "white",
-                  }}
+                  className="px-4 py-3 rounded-xl border border-white/5 flex items-center justify-between group overflow-hidden relative"
                 >
-                  {c.name}
+                  <div className="absolute inset-0 opacity-10 group-hover:opacity-20 transition-opacity" style={{ background: `linear-gradient(135deg, ${c.from}, ${c.to})` }} />
+                  <span className="text-[10px] font-bold uppercase tracking-widest text-white/80 relative z-10">{c.name}</span>
+                  <div className="w-2 h-2 rounded-full relative z-10" style={{ backgroundColor: c.from }} />
                 </button>
               ))}
             </div>
@@ -105,9 +89,12 @@ export default function SettingsSheet({
 
           {/* Font size */}
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
-              Base font size
-            </label>
+            <div className="flex justify-between items-center mb-4">
+              <label className="text-[10px] tracking-[0.3em] font-bold text-white/20 uppercase">
+                Content Scale
+              </label>
+              <span className="text-[10px] font-mono text-white/40">{prefs.baseFont}px</span>
+            </div>
             <input
               title="Font Size"
               type="range"
@@ -115,37 +102,34 @@ export default function SettingsSheet({
               max={18}
               value={prefs.baseFont}
               onChange={(e) => setPref("baseFont", Number(e.target.value))}
-              className="w-full"
+              className="w-full h-1 bg-white/5 rounded-full appearance-none accent-blue-500 cursor-pointer"
             />
-            <div className="mt-1 text-sm text-gray-600">{prefs.baseFont}px</div>
           </div>
 
           {/* Reduced motion */}
-          <div className="flex items-center gap-2">
+          <div className="flex items-center justify-between p-4 rounded-2xl bg-white/5 border border-white/5">
+            <span className="text-[10px] tracking-[0.2em] font-bold text-white/40 uppercase">Reduced Motion</span>
             <input
               id="reducedMotion"
               type="checkbox"
               checked={prefs.reducedMotion}
               onChange={(e) => setPref("reducedMotion", e.target.checked)}
+              className="w-4 h-4 rounded border-white/10 bg-black accent-blue-500"
             />
-            <label htmlFor="reducedMotion" className="text-sm text-gray-700">
-              Reduce animations
-            </label>
           </div>
 
-          <div className="flex justify-between pt-4">
+          <div className="flex gap-4 pt-6">
             <button
               onClick={reset}
-              className="px-3 py-2 rounded border border-gray-300 text-gray-700 hover:bg-gray-50"
+              className="flex-1 py-4 rounded-2xl border border-white/5 text-[10px] font-bold uppercase tracking-[0.3em] text-white/40 hover:text-white hover:bg-white/5 transition-all"
             >
               Reset
             </button>
             <button
               onClick={() => onOpenChange(false)}
-              className="px-3 py-2 rounded bg-[var(--accent-from)] text-white hover:opacity-90"
-              style={{ backgroundColor: "var(--accent-from)" }}
+              className="flex-[2] py-4 rounded-2xl bg-blue-600 text-white text-[10px] font-extrabold uppercase tracking-[0.3em] hover:bg-blue-500 shadow-lg shadow-blue-500/20 transition-all"
             >
-              Done
+              Save Configuration
             </button>
           </div>
         </div>

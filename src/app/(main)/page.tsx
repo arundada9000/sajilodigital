@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import HeroSection from "../components/home/HeroSection";
-import CreativeSection from "../components/home/CreativeSection";
-import FeaturedProjects from "../components/home/FeaturedProjects";
-import CTASection from "../components/home/CTASection";
+import HeroSection from "../../components/home/HeroSection";
+import CreativeSection from "../../components/home/CreativeSection";
+import FeaturedProjects from "../../components/home/FeaturedProjects";
+import CTASection from "../../components/home/CTASection";
 
 // SEO Metadata for home page
 export const metadata: Metadata = {

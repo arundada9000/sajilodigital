@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import ProfileCard from "@/components/ProfileCard";
 import ProfileModal from "@/components/ProfileModal";
-import useUpsideDownScrollTop from "../../../hooks/upSideDownScrollTop";
+import useUpsideDownScrollTop from "@/src/hooks/upSideDownScrollTop";
 
 /* ---------------- TYPES ---------------- */
 

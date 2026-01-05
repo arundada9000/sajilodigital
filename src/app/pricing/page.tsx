@@ -1,5 +1,11 @@
+"use client";
+
 import Link from "next/link";
-import { CheckCircle2, Star, Zap, Shield, Rocket } from "lucide-react";
+import { CheckCircle2, Star, Zap, Shield, Rocket, ArrowRight, Minus } from "lucide-react";
+import { motion } from "framer-motion";
+import StandardLayout from "@/src/components/layout/StandardLayout";
+import StructuredData from "@/src/components/seo/StructuredData";
+import { generateBreadcrumbSchema } from "@/src/lib/seo/metadata";
 
 const pricingPlans = [
   {
@@ -7,7 +13,7 @@ const pricingPlans = [
     price: "NPR 40,000",
     description: "Perfect for small businesses and startups",
     icon: Rocket,
-    color: "blue",
+    color: "from-blue-500 to-cyan-500",
     features: [
       "Up to 5 pages",
       "Responsive design",
@@ -25,7 +31,7 @@ const pricingPlans = [
     price: "NPR 100,000",
     description: "Ideal for growing businesses",
     icon: Zap,
-    color: "purple",
+    color: "from-purple-500 to-indigo-500",
     features: [
       "Up to 15 pages",
       "Custom UI/UX design",
@@ -45,7 +51,7 @@ const pricingPlans = [
     price: "Custom",
     description: "For large-scale applications",
     icon: Shield,
-    color: "pink",
+    color: "from-rose-500 to-pink-500",
     features: [
       "Unlimited pages",
       "Custom features",
@@ -72,252 +78,231 @@ const addons = [
   { name: "Third-party API Integration", price: "From NPR 15,000" },
 ];
 
+const comparisonData = [
+  { feature: "Number of Pages", starter: "5", pro: "15", enterprise: "Unlimited" },
+  { feature: "Custom Design", starter: "Basic", pro: "Advanced", enterprise: "Elite" },
+  { feature: "SEO Optimization", starter: "Basic", pro: "Advanced", enterprise: "Full Audit" },
+  { feature: "CMS Integration", starter: "-", pro: "Included", enterprise: "Custom" },
+  { feature: "Support Duration", starter: "1 month", pro: "3 months", enterprise: "6+ months" },
+  { feature: "API Development", starter: "-", pro: "-", enterprise: "Included" },
+  { feature: "Revision Rounds", starter: "2", pro: "5", enterprise: "Unlimited" },
+];
+
 export default function PricingPage() {
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: "Home", url: "/" },
+    { name: "Pricing", url: "/pricing" },
+  ]);
+
   return (
-    <div className="min-h-screen">
-      {/* Hero Section */}
-      <section className="relative bg-linear-to-br from-blue-600 via-purple-600 to-pink-600 text-white py-24">
-        <div className="absolute inset-0 bg-black/10"></div>
-        <div className="absolute inset-0 bg-[url('/images/grid.svg')] opacity-10"></div>
+    <StandardLayout>
+      <StructuredData data={breadcrumbSchema} />
+      <div className="bg-[#050505] text-white min-h-screen selection:bg-purple-500/30">
+        {/* Background Decor */}
+        <div className="fixed inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute -top-[10%] -left-[10%] w-[40%] h-[40%] bg-blue-500/10 blur-[120px] rounded-full" />
+          <div className="absolute top-[20%] -right-[10%] w-[30%] h-[40%] bg-purple-500/10 blur-[120px] rounded-full" />
+        </div>
 
-        <div className="container-custom relative z-10">
-          <div className="max-w-3xl mx-auto text-center">
-            <h1 className="text-5xl md:text-6xl font-bold mb-6 animate-fade-in">
-              Simple, Transparent Pricing
-            </h1>
-            <p className="text-xl text-gray-100 animate-slide-up">
-              Choose the perfect plan for your business needs
-            </p>
+        {/* Hero Section */}
+        <section className="relative pt-32 pb-20 overflow-hidden">
+          <div className="container-custom relative z-10">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="max-w-4xl mx-auto text-center"
+            >
+              <div className="inline-flex items-center space-x-2 bg-white/5 border border-white/10 px-4 py-1.5 rounded-full mb-6">
+                <span className="w-2 h-2 bg-purple-500 rounded-full animate-pulse"></span>
+                <span className="text-sm font-medium text-gray-400">Transparent Pricing</span>
+              </div>
+              <h1 className="text-5xl md:text-7xl font-bold mb-8 tracking-tight">
+                Simple plans for <br />
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400">
+                  every digital goal.
+                </span>
+              </h1>
+              <p className="text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed">
+                Transparent, competitive pricing tailored for the Nepal market.
+                No hidden fees, just pure innovation.
+              </p>
+            </motion.div>
           </div>
-        </div>
+        </section>
 
-        <div className="absolute -bottom-1 left-0 right-0">
-          <svg
-            viewBox="0 0 1440 120"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M0 120L60 105C120 90 240 60 360 45C480 30 600 30 720 37.5C840 45 960 60 1080 67.5C1200 75 1320 75 1380 75L1440 75V120H1380C1320 120 1200 120 1080 120C960 120 840 120 720 120C600 120 480 120 360 120C240 120 120 120 60 120H0Z"
-              fill="white"
-            />
-          </svg>
-        </div>
-      </section>
-
-      {/* Pricing Cards */}
-      <section className="py-20 bg-white">
-        <div className="container-custom">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto">
-            {pricingPlans.map((plan, index) => {
-              const IconComponent = plan.icon;
-              return (
-                <div
-                  key={plan.name}
-                  className={`relative bg-white rounded-2xl shadow-xl overflow-hidden transition-all duration-300 hover:scale-105 animate-slide-up ${
-                    plan.popular
-                      ? "border-4 border-blue-600"
-                      : "border border-gray-200"
-                  }`}
-                  style={{ animationDelay: `${index * 100}ms` }}
-                >
-                  {plan.popular && (
-                    <div className="absolute top-0 right-0 bg-blue-600 text-white px-4 py-1 text-sm font-semibold rounded-bl-lg flex items-center space-x-1">
-                      <Star className="w-4 h-4 fill-current" />
-                      <span>Most Popular</span>
-                    </div>
-                  )}
-
-                  <div className="p-8">
-                    <div
-                      className={`w-14 h-14 bg-${plan.color}-100 rounded-full flex items-center justify-center mb-6`}
-                    >
-                      <IconComponent
-                        className={`w-7 h-7 text-${plan.color}-600`}
-                      />
-                    </div>
-
-                    <h3 className="text-2xl font-bold text-gray-900 mb-2">
-                      {plan.name}
-                    </h3>
-                    <p className="text-gray-600 mb-6">{plan.description}</p>
-
-                    <div className="mb-6">
-                      <div className="flex items-baseline space-x-2">
-                        <span className="text-4xl font-bold text-gray-900">
-                          {plan.price}
-                        </span>
+        {/* Pricing Cards */}
+        <section className="pb-32">
+          <div className="container-custom">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+              {pricingPlans.map((plan, index) => {
+                const IconComponent = plan.icon;
+                return (
+                  <motion.div
+                    key={plan.name}
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                    className={`group relative p-8 rounded-3xl border transition-all duration-500 ${plan.popular
+                      ? "bg-white/[0.03] border-purple-500/50 shadow-[0_0_40px_-15px_rgba(168,85,247,0.2)]"
+                      : "bg-white/[0.02] border-white/10 hover:border-white/20"
+                      }`}
+                  >
+                    {plan.popular && (
+                      <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-gradient-to-r from-purple-600 to-blue-600 text-white text-[10px] uppercase tracking-widest font-bold px-4 py-1 rounded-full border border-white/20 shadow-lg">
+                        Most Popular
                       </div>
-                      <p className="text-sm text-gray-500 mt-1">
-                        One-time payment
-                      </p>
+                    )}
+
+                    <div className="flex items-center justify-between mb-8">
+                      <div className={`p-3 rounded-2xl bg-gradient-to-br ${plan.color} bg-opacity-20`}>
+                        <IconComponent className="w-6 h-6 text-white" />
+                      </div>
+                      {plan.popular && <Star className="w-5 h-5 text-purple-400 fill-purple-400" />}
                     </div>
 
-                    <ul className="space-y-4 mb-8">
-                      {plan.features.map((feature, i) => (
-                        <li key={i} className="flex items-start space-x-3">
-                          <CheckCircle2 className="w-5 h-5 text-green-500 shrink-0 mt-0.5" />
-                          <span className="text-gray-700">{feature}</span>
+                    <h3 className="text-2xl font-bold mb-2">{plan.name}</h3>
+                    <p className="text-gray-400 text-sm mb-6 h-10">{plan.description}</p>
+
+                    <div className="mb-8">
+                      <div className="flex items-baseline space-x-1">
+                        <span className="text-4xl font-bold">{plan.price}</span>
+                      </div>
+                      <p className="text-xs text-gray-500 mt-2 uppercase tracking-tighter">One-time Investment</p>
+                    </div>
+
+                    <div className="h-px bg-gradient-to-r from-transparent via-white/10 to-transparent mb-8" />
+
+                    <ul className="space-y-4 mb-10">
+                      {plan.features.slice(0, 8).map((feature, i) => (
+                        <li key={i} className="flex items-center space-x-3 text-sm text-gray-300">
+                          <CheckCircle2 className="w-4 h-4 text-purple-500 shrink-0" />
+                          <span>{feature}</span>
                         </li>
                       ))}
                     </ul>
 
                     <Link
                       href="/contact"
-                      className={`block text-center px-6 py-3 rounded-lg font-semibold transition-all duration-300 ${
-                        plan.popular
-                          ? "bg-blue-600 text-white hover:bg-blue-700 shadow-lg hover:shadow-xl"
-                          : "bg-gray-100 text-gray-900 hover:bg-gray-200"
-                      }`}
+                      className={`flex items-center justify-center space-x-2 w-full py-4 rounded-xl font-semibold transition-all duration-300 ${plan.popular
+                        ? "bg-white text-black hover:bg-gray-200"
+                        : "bg-white/5 text-white border border-white/10 hover:bg-white/10"
+                        }`}
                     >
-                      Get Started
+                      <span>Get Started</span>
+                      <ArrowRight className="w-4 h-4" />
                     </Link>
-                  </div>
+                  </motion.div>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+
+        {/* Comparison Section */}
+        <section className="py-32 relative">
+          <div className="container-custom">
+            <div className="text-center mb-16">
+              <h2 className="text-3xl md:text-5xl font-bold mb-4">Detailed Comparison</h2>
+              <p className="text-gray-400">Find the perfect fit for your specific needs</p>
+            </div>
+
+            <div className="max-w-5xl mx-auto overflow-hidden rounded-3xl border border-white/10 bg-white/[0.02] backdrop-blur-sm">
+              <div className="overflow-x-auto">
+                <table className="w-full text-left border-collapse">
+                  <thead>
+                    <tr className="border-b border-white/10">
+                      <th className="p-6 text-sm font-medium text-gray-400 uppercase tracking-wider">Features</th>
+                      <th className="p-6 text-sm font-medium text-gray-400 uppercase tracking-wider text-center">Starter</th>
+                      <th className="p-6 text-sm font-medium text-purple-400 uppercase tracking-wider text-center bg-purple-500/5">Professional</th>
+                      <th className="p-6 text-sm font-medium text-gray-400 uppercase tracking-wider text-center">Enterprise</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-white/5">
+                    {comparisonData.map((row, i) => (
+                      <tr key={i} className="hover:bg-white/[0.02] transition-colors">
+                        <td className="p-6 text-gray-300">{row.feature}</td>
+                        <td className="p-6 text-center text-gray-400">{row.starter === "-" ? <Minus className="w-4 h-4 mx-auto opacity-20" /> : row.starter}</td>
+                        <td className="p-6 text-center text-white bg-purple-500/5 font-medium">{row.pro}</td>
+                        <td className="p-6 text-center text-gray-400">{row.enterprise}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Add-ons Grid */}
+        <section className="py-24 bg-white/[0.02]">
+          <div className="container-custom">
+            <div className="max-w-4xl mx-auto">
+              <div className="text-center mb-16">
+                <h2 className="text-3xl font-bold mb-4">Power-ups</h2>
+                <p className="text-gray-400">Scale your digital presence with these specialized add-ons</p>
+              </div>
+
+              <div className="grid md:grid-cols-2 gap-4">
+                {addons.map((addon, index) => (
+                  <motion.div
+                    key={index}
+                    whileHover={{ scale: 1.02 }}
+                    className="p-6 rounded-2xl bg-white/[0.03] border border-white/5 flex items-center justify-between group"
+                  >
+                    <div>
+                      <h4 className="font-semibold text-gray-200 group-hover:text-white transition-colors">
+                        {addon.name}
+                      </h4>
+                      <p className="text-purple-400 text-sm mt-1">{addon.price}</p>
+                    </div>
+                    <div className="w-8 h-8 rounded-full bg-purple-500/10 flex items-center justify-center border border-purple-500/20">
+                      <CheckCircle2 className="w-4 h-4 text-purple-500" />
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* FAQ Link or CTA */}
+        <section className="py-32">
+          <div className="container-custom">
+            <div className="relative overflow-hidden rounded-[40px] p-12 md:p-20 text-center">
+              {/* CTA Background */}
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-600/20 to-purple-600/20 blur-[80px]" />
+              <div className="absolute inset-0 border border-white/10 rounded-[40px]" />
+
+              <div className="relative z-10 max-w-3xl mx-auto">
+                <h2 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight">
+                  Not sure which plan <br /> is right for you?
+                </h2>
+                <p className="text-xl text-gray-400 mb-10">
+                  Contact our experts for a free strategy session. We&apos;ll help you
+                  map out your digital journey.
+                </p>
+                <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+                  <Link
+                    href="/contact"
+                    className="px-8 py-4 bg-white text-black rounded-xl font-bold hover:bg-gray-200 transition-all flex items-center space-x-2"
+                  >
+                    <span>Book a Consultation</span>
+                    <ArrowRight className="w-4 h-4" />
+                  </Link>
+                  <Link
+                    href="/faq"
+                    className="px-8 py-4 bg-white/5 text-white border border-white/10 rounded-xl font-bold hover:bg-white/10 transition-all"
+                  >
+                    View FAQ
+                  </Link>
                 </div>
-              );
-            })}
-          </div>
-
-          {/* Note */}
-          <div className="max-w-3xl mx-auto mt-12 text-center">
-            <p className="text-gray-600">
-              All prices are starting estimates for the Nepal market. Final cost
-              depends on design complexity, features, integrations, and project
-              scope. Contact us for a detailed quote.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Add-ons */}
-      <section className="py-20 bg-gray-50">
-        <div className="container-custom">
-          <div className="max-w-4xl mx-auto">
-            <div className="text-center mb-12">
-              <h2 className="text-4xl font-bold text-gray-900 mb-4">
-                Add-ons & Extras
-              </h2>
-              <p className="text-lg text-gray-600">
-                Enhance your package with additional features
-              </p>
-            </div>
-
-            <div className="grid md:grid-cols-2 gap-6">
-              {addons.map((addon, index) => (
-                <div
-                  key={index}
-                  className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 flex items-center justify-between"
-                >
-                  <div>
-                    <h4 className="font-semibold text-gray-900 mb-1">
-                      {addon.name}
-                    </h4>
-                    <p className="text-blue-600 font-medium">{addon.price}</p>
-                  </div>
-                  <CheckCircle2 className="w-6 h-6 text-green-500" />
-                </div>
-              ))}
+              </div>
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* Comparison Table */}
-      <section className="py-20 bg-white">
-        <div className="container-custom">
-          <div className="max-w-5xl mx-auto">
-            <h2 className="text-4xl font-bold text-gray-900 mb-12 text-center">
-              Compare Plans
-            </h2>
-
-            <div className="overflow-x-auto">
-              <table className="w-full">
-                <thead>
-                  <tr className="border-b-2 border-gray-200">
-                    <th className="text-left py-4 px-4 font-semibold text-gray-900">
-                      Features
-                    </th>
-                    <th className="text-center py-4 px-4 font-semibold text-gray-900">
-                      Starter
-                    </th>
-                    <th className="text-center py-4 px-4 font-semibold text-gray-900 bg-blue-50">
-                      Professional
-                    </th>
-                    <th className="text-center py-4 px-4 font-semibold text-gray-900">
-                      Enterprise
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr className="border-b border-gray-200">
-                    <td className="py-4 px-4 text-gray-700">Number of Pages</td>
-                    <td className="text-center py-4 px-4">5</td>
-                    <td className="text-center py-4 px-4 bg-blue-50">15</td>
-                    <td className="text-center py-4 px-4">Unlimited</td>
-                  </tr>
-                  <tr className="border-b border-gray-200">
-                    <td className="py-4 px-4 text-gray-700">Custom Design</td>
-                    <td className="text-center py-4 px-4">Basic</td>
-                    <td className="text-center py-4 px-4 bg-blue-50">✓</td>
-                    <td className="text-center py-4 px-4">✓</td>
-                  </tr>
-                  <tr className="border-b border-gray-200">
-                    <td className="py-4 px-4 text-gray-700">
-                      SEO Optimization
-                    </td>
-                    <td className="text-center py-4 px-4">Basic</td>
-                    <td className="text-center py-4 px-4 bg-blue-50">
-                      Advanced
-                    </td>
-                    <td className="text-center py-4 px-4">Advanced</td>
-                  </tr>
-                  <tr className="border-b border-gray-200">
-                    <td className="py-4 px-4 text-gray-700">CMS Integration</td>
-                    <td className="text-center py-4 px-4">-</td>
-                    <td className="text-center py-4 px-4 bg-blue-50">✓</td>
-                    <td className="text-center py-4 px-4">✓</td>
-                  </tr>
-                  <tr className="border-b border-gray-200">
-                    <td className="py-4 px-4 text-gray-700">
-                      Support Duration
-                    </td>
-                    <td className="text-center py-4 px-4">1 month</td>
-                    <td className="text-center py-4 px-4 bg-blue-50">
-                      3 months
-                    </td>
-                    <td className="text-center py-4 px-4">6+ months</td>
-                  </tr>
-                  <tr className="border-b border-gray-200">
-                    <td className="py-4 px-4 text-gray-700">API Development</td>
-                    <td className="text-center py-4 px-4">-</td>
-                    <td className="text-center py-4 px-4 bg-blue-50">-</td>
-                    <td className="text-center py-4 px-4">✓</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="py-20 bg-gray-50">
-        <div className="container-custom">
-          <div className="max-w-4xl mx-auto bg-linear-to-br from-blue-600 to-purple-600 rounded-3xl p-12 text-center text-white">
-            <h2 className="text-4xl font-bold mb-4">Need a Custom Solution?</h2>
-            <p className="text-xl text-gray-100 mb-8">
-              Let&apos;s discuss your specific requirements and create a
-              tailored plan
-            </p>
-            <Link
-              href="/contact"
-              className="inline-block bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-300 shadow-lg"
-            >
-              Request Custom Quote
-            </Link>
-          </div>
-        </div>
-      </section>
-    </div>
+        </section>
+      </div>
+    </StandardLayout>
   );
 }

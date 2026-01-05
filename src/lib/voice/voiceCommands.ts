@@ -23,9 +23,15 @@ export function handleVoiceCommand(transcript: string): Action | null {
     contact: "/contact",
     services: "/services",
     projects: "/projects",
+    portfolio: "/projects",
+    work: "/projects",
     pricing: "/pricing",
     blog: "/blog",
     faq: "/faq",
+    help: "/faq",
+    about: "/about",
+    team: "/about/team",
+    gallery: "/gallery",
   };
 
   for (const key in navMap) {

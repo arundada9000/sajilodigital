@@ -236,9 +236,11 @@ function CardContent({
   );
 }
 
+import { useMediaQuery } from "../src/hooks/useMediaQuery";
+
 /* ---------------- PROFILE CARD ---------------- */
 
-export default function ProfileCard({
+const ProfileCard = React.memo(function ProfileCard({
   id,
   name,
   role,
@@ -255,6 +257,7 @@ export default function ProfileCard({
   onClick,
 }: ProfileCardProps) {
   const prefersReducedMotion = useReducedMotion();
+  const isMobile = useMediaQuery("(max-width: 768px)");
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-80px" });
 
@@ -276,6 +279,11 @@ export default function ProfileCard({
     }
   }, [techStack]);
 
+  const cardStyles = `relative rounded-2xl border border-white/10 
+    bg-linear-to-br from-white/5 to-white/10 
+    ${isMobile ? "backdrop-blur-md shadow-md" : "backdrop-blur-xl shadow-lg"}
+    p-6`;
+
   return (
     <motion.div
       ref={ref}
@@ -285,14 +293,14 @@ export default function ProfileCard({
       animate={
         isInView
           ? {
-              opacity: 1,
-              y: 0,
-              scale: 1,
-              transition: {
-                duration: prefersReducedMotion ? 0 : 0.3,
-                ease: "easeOut",
-              },
-            }
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            transition: {
+              duration: prefersReducedMotion ? 0 : 0.3,
+              ease: "easeOut",
+            },
+          }
           : undefined
       }
       whileHover={!prefersReducedMotion ? { scale: 1.05 } : undefined}
@@ -300,13 +308,13 @@ export default function ProfileCard({
     >
       {enableTilt ? (
         <Tilt
-          glareEnable
+          glareEnable={!isMobile} // Disable glare on mobile for perf
           glareMaxOpacity={0.2}
           glareColor="#0ff"
-          scale={1.05}
-          className="relative rounded-2xl border border-white/10 
-            bg-linear-to-br from-white/5 to-white/10 backdrop-blur-xl
-            p-6 shadow-lg"
+          scale={isMobile ? 1 : 1.05} // No scale on mobile
+          tiltMaxAngleX={isMobile ? 5 : 20} // Reduce tilt angle on mobile
+          tiltMaxAngleY={isMobile ? 5 : 20}
+          className={cardStyles}
         >
           <CardContent
             id={id}
@@ -329,9 +337,7 @@ export default function ProfileCard({
         </Tilt>
       ) : (
         <div
-          className="relative rounded-2xl border border-white/10 
-            bg-linear-to-br from-white/5 to-white/10 backdrop-blur-xl
-            p-6 shadow-lg"
+          className={cardStyles}
         >
           <CardContent
             id={id}
@@ -355,7 +361,9 @@ export default function ProfileCard({
       )}
     </motion.div>
   );
-}
+});
+
+export default ProfileCard;
 
 /* ---------------- SOCIAL ---------------- */
 

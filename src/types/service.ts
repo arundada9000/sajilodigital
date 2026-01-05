@@ -14,6 +14,10 @@ export interface Service {
   description: string;
   priceNote: string;
   pricing: PricingPlan[];
+  image?: string;
+  video?: string;
+  color?: string;
+  accentColor?: string;
 }
 
 export type Services = Service[];

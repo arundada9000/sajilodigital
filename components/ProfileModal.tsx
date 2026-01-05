@@ -48,7 +48,7 @@ const socialsContainer = {
   show: {
     transition: {
       staggerChildren: 0.15,
-      delayChildren: 0.15,
+      delayChildren: 0.4, // Wait for modal to open
     },
   },
 };
@@ -106,10 +106,15 @@ function TypingText({ text }: { text: string }) {
 
 /* ---------------- MODAL ---------------- */
 
+import { useMediaQuery } from "../src/hooks/useMediaQuery";
+
+/* ---------------- MODAL ---------------- */
+
 export default function ProfileModal({ profile, onClose }: Props) {
   const iconSize = 30;
   const dragControls = useDragControls();
   const [fullscreen, setFullscreen] = useState(false);
+  const isMobile = useMediaQuery("(max-width: 768px)");
 
   /* ESC KEY CLOSE */
   useEffect(() => {
@@ -128,7 +133,8 @@ export default function ProfileModal({ profile, onClose }: Props) {
       {/* BACKDROP */}
 
       <motion.div
-        className="fixed inset-0 z-40 bg-black/70 backdrop-blur-md"
+        className={`fixed inset-0 z-40 bg-black/70 ${isMobile ? "" : "backdrop-blur-md"
+          }`}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
@@ -222,9 +228,8 @@ export default function ProfileModal({ profile, onClose }: Props) {
 
           {/* CONTENT */}
           <div
-            className={`grid md:grid-cols-2 gap-6 p-6 overflow-y-auto ${
-              fullscreen ? "h-full" : "h-[85vh] md:h-auto"
-            }`}
+            className={`grid md:grid-cols-2 gap-6 p-6 overflow-y-auto ${fullscreen ? "h-full" : "h-[85vh] md:h-auto"
+              }`}
           >
             {/* IMAGE */}
             <motion.div
@@ -266,7 +271,13 @@ export default function ProfileModal({ profile, onClose }: Props) {
 
                 <p className="mt-3 ">$ bio</p>
                 <div className="ml-4 ">
-                  <TypingText text={profile.bio} />
+                  {isMobile ? (
+                    <p className="whitespace-pre-line text-gray-300">
+                      {profile.bio}
+                    </p>
+                  ) : (
+                    <TypingText text={profile.bio} />
+                  )}
                 </div>
               </div>
 
