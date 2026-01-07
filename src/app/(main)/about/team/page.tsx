@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import TeamClient from "./TeamClient";
+import { Suspense } from "react";
 
 export const metadata: Metadata = {
   title: "Our Team | Sajilo Digital",
@@ -48,7 +49,9 @@ const leaders = [
 export default function TeamPage() {
   return (
     <>
-      <TeamClient />
+      <Suspense fallback={<div className="min-h-screen bg-[#0b0f19]" />}>
+        <TeamClient />
+      </Suspense>
       {/* Team Schema */}
       <script
         type="application/ld+json"

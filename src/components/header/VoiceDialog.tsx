@@ -42,6 +42,10 @@ export default function VoiceDialog({
           if (act.type === "navigate") setAction(`Navigating to ${act.href}`);
           else if (act.type === "call") setAction(`Calling ${act.number}`);
           else if (act.type === "email") setAction(`Emailing ${act.email}`);
+          else if (act.type === "action") {
+            setAction(act.label);
+            act.action(); // Execute immediately (like mute)
+          }
         } else {
           setAction("Command not recognized.");
         }
@@ -64,6 +68,7 @@ export default function VoiceDialog({
       case "navigate": window.location.href = act.href; break;
       case "call": window.location.href = `tel:${act.number}`; break;
       case "email": window.location.href = `mailto:${act.email}`; break;
+      case "action": act.action(); break;
     }
     onClose();
   };

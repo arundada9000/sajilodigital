@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import FAQClient from "./FAQClient";
+import { Suspense } from "react";
 
 export const metadata: Metadata = {
   title: "FAQ | Sajilo Digital",
@@ -27,7 +28,9 @@ export const metadata: Metadata = {
 export default function FAQPage() {
   return (
     <>
-      <FAQClient />
+      <Suspense fallback={<div className="min-h-screen bg-[#0b0f19] animate-pulse" />}>
+        <FAQClient />
+      </Suspense>
       {/* FAQ Schema is handled in the layouts or can be added here if needed specifically for this page */}
       <script
         type="application/ld+json"

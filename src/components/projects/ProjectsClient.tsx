@@ -80,18 +80,29 @@ export default function ProjectsClient({
                                 commitment to excellence.
                             </p>
 
-                            {/* Category Filter */}
-                            <div className="flex flex-wrap gap-4 border-b border-white/10 pb-4">
+                        </div>
+                        {/* Digital Matrix Filter */}
+                        <div className="mt-12 border-y border-white/10 py-6">
+                            <div className="flex flex-wrap gap-2 md:gap-4">
                                 {categories.map((cat) => (
                                     <button
                                         key={cat}
                                         onClick={() => setActiveCategory(cat)}
-                                        className={`text-sm uppercase tracking-widest transition-all duration-300 ${activeCategory === cat
-                                            ? "text-white"
-                                            : "text-gray-600 hover:text-gray-400"
+                                        className={`relative px-6 py-2 text-xs font-mono uppercase tracking-[0.2em] transition-all duration-300 border border-transparent overflow-hidden group ${activeCategory === cat
+                                            ? "text-black bg-white shadow-[0_0_20px_rgba(255,255,255,0.4)]"
+                                            : "text-gray-500 hover:text-white hover:border-white/20 hover:bg-white/5"
                                             }`}
                                     >
-                                        {cat}
+                                        <span className="relative z-10 flex items-center gap-2">
+                                            {activeCategory === cat && (
+                                                <span className="w-1.5 h-1.5 bg-blue-500 animate-pulse" />
+                                            )}
+                                            {cat}
+                                        </span>
+                                        {activeCategory === cat && (
+                                            <div className="absolute inset-0 bg-white" />
+                                        )}
+                                        <div className="absolute inset-0 bg-white/10 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
                                     </button>
                                 ))}
                             </div>
@@ -103,16 +114,32 @@ export default function ProjectsClient({
             {/* Projects List Section */}
             <section className="pb-40 relative px-6">
                 <div className="container-custom">
-                    <div className="flex flex-col border-t border-white/10">
-                        {filteredProjects.map((project, index) => (
-                            <ProjectItem
-                                key={project.slug}
-                                project={project}
-                                index={index}
-                                onHover={() => setHoveredProject(project.slug)}
-                                onLeave={() => setHoveredProject(null)}
-                            />
-                        ))}
+                    <div className="min-h-[500px]">
+                        <AnimatePresence mode="wait">
+                            <motion.div
+                                key={activeCategory}
+                                initial={{ opacity: 0, filter: "blur(10px)" }}
+                                animate={{ opacity: 1, filter: "blur(0px)" }}
+                                exit={{ opacity: 0, filter: "blur(10px)" }}
+                                transition={{ duration: 0.4 }}
+                                className="flex flex-col border-t border-white/10"
+                            >
+                                {filteredProjects.map((project, index) => (
+                                    <ProjectItem
+                                        key={project.slug}
+                                        project={project}
+                                        index={index}
+                                        onHover={() => setHoveredProject(project.slug)}
+                                        onLeave={() => setHoveredProject(null)}
+                                    />
+                                ))}
+                                {filteredProjects.length === 0 && (
+                                    <div className="py-20 text-center text-white/30 font-mono text-sm uppercase tracking-widest">
+                                        [NO_DATA_FOUND_IN_SECTOR]
+                                    </div>
+                                )}
+                            </motion.div>
+                        </AnimatePresence>
                     </div>
                 </div>
             </section>

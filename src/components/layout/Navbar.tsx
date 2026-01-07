@@ -7,6 +7,7 @@ import { BsTelephone } from "react-icons/bs";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { IoMdInformationCircleOutline } from "react-icons/io";
 import DockSubMenu from "@/components/DockSubMenu";
+import MobileNavbar from "./MobileNavbar";
 import { useRouter } from "next/navigation";
 
 import {
@@ -25,11 +26,13 @@ export default function Navbar() {
       icon: <GoHome size={18} />,
       label: "Home",
       onClick: () => router.push("/"),
+      href: "/",
     },
     {
       icon: <IoBriefcaseOutline size={18} />,
       label: "Services",
       onClick: () => router.push("/services"),
+      href: "/services",
     },
     {
       label: "About",
@@ -42,17 +45,19 @@ export default function Navbar() {
           ]}
         />
       ),
-      onClick: () => {},
+      onClick: () => { },
     },
     {
       icon: <BsTelephone size={18} />,
       label: "Contact",
       onClick: () => router.push("/contact"),
+      href: "/contact",
     },
     {
       icon: <FaBlog size={18} />,
       label: "Blog",
       onClick: () => router.push("/blog"),
+      href: "/blog",
     },
     {
       label: "More",
@@ -88,17 +93,24 @@ export default function Navbar() {
           ]}
         />
       ),
-      onClick: () => {},
+      onClick: () => { },
     },
   ];
 
   return (
-    <Dock
-      className=""
-      items={items}
-      panelHeight={68}
-      baseItemSize={50}
-      magnification={70}
-    />
+    <>
+      <div className="hidden md:block">
+        <Dock
+          className=""
+          items={items}
+          panelHeight={68}
+          baseItemSize={50}
+          magnification={70}
+        />
+      </div>
+      <div className="block md:hidden">
+        <MobileNavbar />
+      </div>
+    </>
   );
 }

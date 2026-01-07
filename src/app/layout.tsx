@@ -3,6 +3,8 @@ import { Inter, Poppins } from "next/font/google";
 import Header from "../components/layout/Header";
 import Navbar from "../components/layout/Navbar";
 import Footer from "../components/layout/Footer";
+import GlobalTerminal from "../components/layout/GlobalTerminal";
+import ParticlesBackground from "../components/layout/ParticlesBackground";
 import "./globals.css";
 
 // Font configurations
@@ -110,6 +112,8 @@ export default function RootLayout({
         />
       </head>
       <body className="font-sans antialiased bg-[#0b0f19] text-white">
+        <ParticlesBackground />
+        <GlobalTerminal />
         {children}
 
         {/* Schema.org structured data */}

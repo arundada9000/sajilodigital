@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import ProfileCard from "@/components/ProfileCard";
 import ProfileModal from "@/components/ProfileModal";
 import useUpsideDownScrollTop from "@/src/hooks/upSideDownScrollTop";
+import { useSearchParams } from "next/navigation";
 
 /* ---------------- TYPES ---------------- */
 
@@ -392,11 +393,24 @@ const team: TeamMember[] = [
 
 export default function TeamClient() {
   useUpsideDownScrollTop();
+  const searchParams = useSearchParams();
   const [activeMember, setActiveMember] = useState<TeamMember | null>(null);
   const [extraMembers, setExtraMembers] = useState<TeamMember[]>([]);
   const [isRecruiting, setIsRecruiting] = useState(false);
 
   const allMembers = [...team, ...extraMembers];
+
+  // Effect to handle deep linking via ?memberId=ID
+  useEffect(() => {
+    const memberId = searchParams.get("memberId");
+    if (memberId) {
+      const id = parseInt(memberId, 10);
+      const member = allMembers.find((m) => m.id === id);
+      if (member) {
+        setActiveMember(member);
+      }
+    }
+  }, [searchParams]); // Dependent on searchParams
 
   const addMember = (member: Omit<TeamMember, "id">) => {
     const newMember = {

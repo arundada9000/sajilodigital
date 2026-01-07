@@ -9,6 +9,7 @@ import {
   type SpringOptions,
   AnimatePresence,
 } from "motion/react";
+import { useRouter } from "next/navigation";
 import React, {
   Children,
   cloneElement,
@@ -25,6 +26,7 @@ export type DockItemData = {
   label: React.ReactNode;
   onClick: () => void;
   className?: string;
+  href?: string;
 };
 
 export type DockProps = {
@@ -58,9 +60,11 @@ function DockItem({
   distance,
   magnification,
   baseItemSize,
-}: DockItemProps) {
+  href,
+}: DockItemProps & { href?: string }) {
   const ref = useRef<HTMLDivElement>(null);
   const isHovered = useMotionValue(0);
+  const router = useRouter();
 
   const mouseDistance = useTransform(mouseX, (val) => {
     const rect = ref.current?.getBoundingClientRect() ?? {
@@ -77,16 +81,25 @@ function DockItem({
   );
   const size = useSpring(targetSize, spring);
 
+  const xModel = useTransform(
+    mouseDistance,
+    [-distance, 0, distance],
+    [-20, 0, 20]
+  );
+  const x = useSpring(xModel, spring);
+
   return (
     <motion.div
       ref={ref}
       style={{
         width: size,
         height: size,
+        x,
       }}
       onPointerEnter={() => {
         isHovered.set(1);
         playSound("/sounds/hover.mp3");
+        if (href) router.prefetch(href);
       }}
       onPointerLeave={() => isHovered.set(0)}
       onHoverStart={() => isHovered.set(1)}
@@ -199,7 +212,7 @@ export default function Dock({
   return (
     <motion.div
       style={{ height, scrollbarWidth: "none" }}
-      className="mx-0! sm:flex max-w-full items-center text-white fixed bottom-0 right-1/2 z-40"
+      className="mx-0! flex max-w-full items-center text-white fixed bottom-0 right-1/2 translate-x-1/2 z-40 overflow-x-auto sm:overflow-visible scrollbar-hide w-full sm:w-auto justify-center"
     >
       <motion.div
         onMouseMove={({ pageX }) => {
@@ -211,7 +224,7 @@ export default function Dock({
           isHovered.set(0);
           mouseX.set(Infinity);
         }}
-        className={`${className} absolute bottom-2 left-1/2 transform -translate-x-1/2 flex items-end w-fit gap-4 rounded-2xl border-neutral-700 border-2 pb-2 px-4 cursor-pointer`}
+        className={`${className} ${isMobile ? 'relative mx-auto mt-2 mb-2' : 'absolute bottom-2 left-1/2 transform -translate-x-1/2'} flex items-end w-fit gap-4 rounded-2xl border-neutral-700 border-2 pb-2 px-4 cursor-pointer`}
         style={{ height: panelHeight }}
         role="toolbar"
         aria-label="Application dock"
@@ -226,12 +239,13 @@ export default function Dock({
             distance={distance}
             magnification={finalMagnification}
             baseItemSize={baseItemSize}
+            href={item.href}
           >
             <DockIcon>{item.icon}</DockIcon>
             <DockLabel>{item.label}</DockLabel>
           </DockItem>
         ))}
       </motion.div>
-    </motion.div>
+    </motion.div >
   );
 }

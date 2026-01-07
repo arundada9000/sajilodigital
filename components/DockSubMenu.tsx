@@ -2,6 +2,7 @@
 
 import { motion, AnimatePresence } from "motion/react";
 import { useEffect, useRef, useState, ReactNode } from "react";
+import { createPortal } from "react-dom";
 import { usePathname, useRouter } from "next/navigation";
 import { playSound } from "../lib/sound";
 
@@ -20,24 +21,36 @@ export default function DockSubMenu({ trigger, items }: DockSubMenuProps) {
   const [open, setOpen] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
   const ref = useRef<HTMLDivElement>(null);
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   const pathname = usePathname();
   const router = useRouter();
 
-  const isTouch =
-    typeof window !== "undefined" && window.matchMedia("(hover: none)").matches;
+  // const portalRef = useRef<HTMLDivElement>(null); // No longer needed with overlay approach
+  const [isMobile, setIsMobile] = useState(false);
 
-  /* ---------------- Outside click (FIXED for mobile) ---------------- */
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
+  /* ---------------- Outside click (Desktop only - Mobile uses overlay) ---------------- */
   useEffect(() => {
     const handler = (e: PointerEvent) => {
-      if (ref.current && !ref.current.contains(e.target as Node)) {
-        setOpen(false);
+      if (!isMobile) {
+        if (ref.current && !ref.current.contains(e.target as Node)) {
+          setOpen(false);
+        }
       }
     };
 
     document.addEventListener("pointerdown", handler);
     return () => document.removeEventListener("pointerdown", handler);
-  }, []);
+  }, [isMobile]);
 
   /* ---------------- Keyboard navigation ---------------- */
   useEffect(() => {
@@ -65,6 +78,22 @@ export default function DockSubMenu({ trigger, items }: DockSubMenuProps) {
     if (index !== -1) setActiveIndex(index);
   }, [pathname, items]);
 
+  const handleEnter = () => {
+    if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    if (!isMobile && !open) {
+      playSound("/sounds/hover.mp3");
+      setOpen(true);
+    }
+  };
+
+  const handleLeave = () => {
+    if (!isMobile) {
+      timeoutRef.current = setTimeout(() => {
+        setOpen(false);
+      }, 150); // Grace period
+    }
+  };
+
   return (
     <div
       ref={ref}
@@ -72,17 +101,12 @@ export default function DockSubMenu({ trigger, items }: DockSubMenuProps) {
       onClick={(e) => {
         e.stopPropagation();
         playSound("/sounds/click.mp3");
+        // On mobile, this main toggle matters. On desktop, hover handles it.
+        // But we keep it toggle-able for consistency or click users.
         setOpen((v) => !v);
       }}
-      onPointerEnter={() => {
-        if (!isTouch) {
-          playSound("/sounds/hover.mp3");
-          setOpen(true);
-        }
-      }}
-      onPointerLeave={() => {
-        if (!isTouch) setOpen(false);
-      }}
+      onPointerEnter={handleEnter}
+      onPointerLeave={handleLeave}
     >
       {/* -------- Trigger with ACTIVE GLOW -------- */}
       <motion.div
@@ -100,57 +124,82 @@ export default function DockSubMenu({ trigger, items }: DockSubMenuProps) {
       {/* ---------------- Submenu ---------------- */}
       <AnimatePresence>
         {open && (
-          <motion.div
-            initial={{ opacity: 0, y: 10, scale: 0.95 }}
-            animate={{ opacity: 1, y: isTouch ? 0 : -12, scale: 1 }}
-            exit={{ opacity: 0, y: 10, scale: 0.95 }}
-            transition={{ duration: 0.2 }}
-            className={`
-              mx-5 z-50 rounded-xl border border-neutral-700 bg-[#060010] shadow-xl
-              ${
-                isTouch
-                  ? "fixed bottom-20 left-1/2 -translate-x-1/2 w-[90vw] max-w-xs"
-                  : "absolute bottom-full mb-3 left-1/2 -translate-x-1/2 w-52"
-              }
-            `}
-          >
-            <ul className="py-2">
-              {items.map((item, i) => {
-                const isActive = pathname.startsWith(item.href);
-
-                return (
-                  <li
-                    key={item.href}
-                    onPointerEnter={() => {
-                      if (!isTouch) {
-                        playSound("/sounds/hover.mp3");
-                        setActiveIndex(i);
-                      }
-                    }}
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      playSound("/sounds/click.mp3");
-                      router.push(item.href);
-                      setOpen(false);
-                    }}
-                    className={`
-                      flex items-center gap-3 px-4 py-2 text-sm cursor-pointer transition
-                      ${
-                        isActive || activeIndex === i
-                          ? "bg-neutral-800 text-white"
-                          : "text-neutral-300 hover:bg-neutral-800"
-                      }
-                    `}
-                  >
-                    {item.icon}
-                    {item.label}
-                  </li>
-                );
-              })}
-            </ul>
-          </motion.div>
+          isMobile ? createPortal(
+            <div
+              // Full screen invisible overlay to catch outside clicks
+              className="fixed inset-0 z-[9999] flex items-end justify-center pb-24"
+              onClick={(e) => {
+                e.stopPropagation(); // Stop bubbling to document
+                setOpen(false);
+              }}
+            >
+              <motion.div
+                initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                exit={{ opacity: 0, y: 10, scale: 0.95 }}
+                transition={{ duration: 0.2 }}
+                onClick={(e) => e.stopPropagation()} // Clicking menu shouldn't close it
+                className="w-[90vw] max-w-xs rounded-xl border border-neutral-700 bg-[#060010] shadow-xl overflow-hidden"
+              >
+                <SubMenuList items={items} pathname={pathname} router={router} setOpen={setOpen} activeIndex={activeIndex} setActiveIndex={setActiveIndex} isTouch={isMobile} />
+              </motion.div>
+            </div>,
+            document.body
+          ) : (
+            <motion.div
+              initial={{ opacity: 0, y: 10, scale: 0.95 }}
+              animate={{ opacity: 1, y: -12, scale: 1 }}
+              exit={{ opacity: 0, y: 10, scale: 0.95 }}
+              transition={{ duration: 0.2 }}
+              onPointerEnter={() => {
+                if (timeoutRef.current) clearTimeout(timeoutRef.current);
+              }}
+              onPointerLeave={handleLeave}
+              className="absolute bottom-full mb-3 left-1/2 -translate-x-1/2 w-52 z-[9999] rounded-xl border border-neutral-700 bg-[#060010] shadow-xl overflow-hidden"
+            >
+              <SubMenuList items={items} pathname={pathname} router={router} setOpen={setOpen} activeIndex={activeIndex} setActiveIndex={setActiveIndex} isTouch={isMobile} />
+            </motion.div>
+          )
         )}
       </AnimatePresence>
     </div>
   );
+}
+
+function SubMenuList({ items, pathname, router, setOpen, activeIndex, setActiveIndex, isTouch }: any) {
+  return (
+    <ul className="py-2">
+      {items.map((item: any, i: number) => {
+        const isActive = pathname.startsWith(item.href);
+
+        return (
+          <li
+            key={item.href}
+            onPointerEnter={() => {
+              if (!isTouch) {
+                playSound("/sounds/hover.mp3");
+                setActiveIndex(i);
+              }
+            }}
+            onClick={(e) => {
+              e.stopPropagation();
+              playSound("/sounds/click.mp3");
+              router.push(item.href);
+              setOpen(false);
+            }}
+            className={`
+              flex items-center gap-3 px-4 py-2 text-sm cursor-pointer transition
+              ${isActive || activeIndex === i
+                ? "bg-neutral-800 text-white"
+                : "text-neutral-300 hover:bg-neutral-800"
+              }
+            `}
+          >
+            {item.icon}
+            {item.label}
+          </li>
+        );
+      })}
+    </ul>
+  )
 }

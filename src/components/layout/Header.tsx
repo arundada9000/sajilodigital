@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { Search, Mic, Settings } from "lucide-react";
+import { Search, Mic, Settings, Volume2, VolumeX } from "lucide-react";
 import { useRouter } from "next/navigation";
 
 // External components/libs (Restored paths)
@@ -12,6 +12,7 @@ import SearchInput from "../header/SearchInput";
 import SettingsSheet from "../header/SettingsSheet";
 import VoiceDialog from "../header/VoiceDialog";
 import { voiceControl } from "../../lib/voice/voiceControl";
+import { isMuted, toggleMute, playSound } from "@/lib/sound"; // Use absolute path safely
 
 export default function Header() {
   const router = useRouter();
@@ -22,6 +23,20 @@ export default function Header() {
   const [settingsOpen, setSettingsOpen] = useState(false);
   const [voiceOpen, setVoiceOpen] = useState(false);
   const [transcript, setTranscript] = useState<string | null>(null);
+  const [muted, setMuted] = useState(false);
+
+  // Initialize mute state
+  useEffect(() => {
+    setMuted(isMuted());
+  }, []);
+
+  const handleMuteToggle = () => {
+    const newState = toggleMute();
+    setMuted(newState);
+    if (!newState) {
+      playSound("/sounds/click.mp3");
+    }
+  };
 
   // Nepal Time Logic (GMT+5:45)
   useEffect(() => {
@@ -99,6 +114,13 @@ export default function Header() {
 
               {/* Tools Capsule */}
               <div className="flex items-center gap-1 p-1 bg-white/5 backdrop-blur-xl border border-white/10 rounded-full shadow-2xl">
+                <button
+                  onClick={handleMuteToggle}
+                  className="p-2.5 rounded-full hover:bg-white/10 text-white/60 hover:text-white transition-all transform hover:scale-110 active:scale-95"
+                  title={muted ? "Unmute Sound" : "Mute Sound"}
+                >
+                  {muted ? <VolumeX size={16} /> : <Volume2 size={16} />}
+                </button>
                 <button
                   onClick={onMicClick}
                   className="p-2.5 rounded-full hover:bg-white/10 text-white/60 hover:text-white transition-all transform hover:scale-110 active:scale-95"

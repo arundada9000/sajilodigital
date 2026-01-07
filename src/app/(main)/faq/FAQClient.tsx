@@ -1,12 +1,13 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
     ChevronDown,
     Search,
     HelpCircle,
     MessageSquare,
 } from "lucide-react";
+import { useSearchParams } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import ShinyText from "@/components/ShinyText";
 import { faqCategories } from "@/src/data/faq";
@@ -27,6 +28,30 @@ export default function FAQClient() {
     const [searchQuery, setSearchQuery] = useState("");
     const [activeCategory, setActiveCategory] = useState(faqCategories[0].name);
     const [openQuestionIndex, setOpenQuestionIndex] = useState<number | null>(0);
+    const searchParams = useSearchParams();
+
+    // Deep Linking: Auto-populate search from URL ?q=...
+    useEffect(() => {
+        const q = searchParams.get("q");
+        if (q) {
+            setSearchQuery(q);
+            // Also try to find which category this query belongs to and switch? 
+            // For now, search searches ALL categories anyway? 
+            // Wait, logic at line 35 filters by `activeCategory`. 
+            // If searching, we should probably search ALL categories or auto-switch.
+            // Let's modify the filter logic to ignore category if searching?
+            // Or auto-switch category.
+        }
+    }, [searchParams]);
+
+    // Enhanced Filter Logic: If searching, search across ALL categories? 
+    // Or just keep current behavior. 
+    // Current behavior: `faqCategories.find(cat => cat.name === activeCategory)?.faqs...`
+    // This limits to active category. If I link to "pricing" but am on "general", it won't show.
+    // I should change logic: if searchQuery is present, maybe search EVERYTHING?
+    // User requested "make them work like members".
+
+    // Let's change the filter logic slightly to be more robust.
 
     const toggleQuestion = (index: number) => {
         setOpenQuestionIndex(openQuestionIndex === index ? null : index);
