@@ -84,11 +84,19 @@ function DockItem({
         width: size,
         height: size,
       }}
+      onPointerEnter={() => {
+        isHovered.set(1);
+        playSound("/sounds/hover.mp3");
+      }}
+      onPointerLeave={() => isHovered.set(0)}
       onHoverStart={() => isHovered.set(1)}
       onHoverEnd={() => isHovered.set(0)}
       onFocus={() => isHovered.set(1)}
       onBlur={() => isHovered.set(0)}
-      onClick={onClick}
+      onClick={(e) => {
+        playSound("/sounds/click.mp3");
+        onClick?.();
+      }}
       className={`relative inline-flex items-center justify-center rounded-full bg-[#060010] border-neutral-700 border-2 shadow-md ${className}`}
       tabIndex={0}
       role="button"
@@ -97,9 +105,9 @@ function DockItem({
       {Children.map(children, (child) =>
         React.isValidElement(child)
           ? cloneElement(
-              child as React.ReactElement<{ isHovered?: MotionValue<number> }>,
-              { isHovered }
-            )
+            child as React.ReactElement<{ isHovered?: MotionValue<number> }>,
+            { isHovered }
+          )
           : child
       )}
     </motion.div>
@@ -168,10 +176,22 @@ export default function Dock({
 }: DockProps) {
   const mouseX = useMotionValue(Infinity);
   const isHovered = useMotionValue(0);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
+  const finalMagnification = isMobile ? baseItemSize : magnification;
 
   const maxHeight = useMemo(
-    () => Math.max(dockHeight, magnification + magnification / 2 + 4),
-    [magnification]
+    () => Math.max(dockHeight, finalMagnification + finalMagnification / 2 + 4),
+    [dockHeight, finalMagnification]
   );
   const heightRow = useTransform(isHovered, [0, 1], [panelHeight, maxHeight]);
   const height = useSpring(heightRow, spring);
@@ -183,6 +203,7 @@ export default function Dock({
     >
       <motion.div
         onMouseMove={({ pageX }) => {
+          if (isMobile) return;
           isHovered.set(1);
           mouseX.set(pageX);
         }}
@@ -203,7 +224,7 @@ export default function Dock({
             mouseX={mouseX}
             spring={spring}
             distance={distance}
-            magnification={magnification}
+            magnification={finalMagnification}
             baseItemSize={baseItemSize}
           >
             <DockIcon>{item.icon}</DockIcon>

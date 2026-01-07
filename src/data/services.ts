@@ -7,8 +7,8 @@ export const services: Service[] = [
     tagline: "High-Performance Digital Ecosystems",
     description:
       "We architect ultra-fast, responsive web environments that serve as the backbone of your digital presence. Using cutting-edge frameworks, we ensure your site is not just a page, but a high-conversion engine.",
-    image: "/services/sheeps.jpg",
-    video: "/services/web-dev.mov",
+    image: "/services/theshop.png",
+    video: "/services/theshop.mp4",
     color: "#0a192f",
     accentColor: "#64ffda",
     priceNote: "Starting estimates for bespoke digital solutions.",
@@ -44,8 +44,8 @@ export const services: Service[] = [
     tagline: "Boundless Mobile Innovation",
     description:
       "From concept to App Store, we build seamless cross-platform mobile experiences. Our focus is on native performance, intuitive gestures, and scalable backend infrastructure.",
-    image: "/services/app-dev.jpg",
-    video: "/services/app-dev.mp4",
+    image: "/services/mt-glaciertrek.png",
+    video: "/services/glacier.mp4",
     color: "#1e1b4b",
     accentColor: "#818cf8",
     priceNote: "Focused on high-performance iOS and Android deployments.",
@@ -110,7 +110,7 @@ export const services: Service[] = [
     tagline: "Visual Storytelling & Brand Identity",
     description:
       "We craft visual identities that resonate. From iconic logos to immersive marketing collateral, we ensure your brand speaks a consistent, powerful language across all touchpoints.",
-    image: "/services/graphics.jpg",
+    image: "/services/graphics.png",
     video: "/services/graphics.mp4",
     color: "#0f172a",
     accentColor: "#c084fc",
@@ -143,7 +143,7 @@ export const services: Service[] = [
     tagline: "Dominating the Digital Landscape",
     description:
       "Rank higher, convert better. Our SEO strategies are built on data-driven keyword research, technical excellence, and high-authority link building to ensure you own your niche.",
-    image: "/services/seo.jpg",
+    image: "/services/seo.png",
     video: "/services/seo.mp4",
     color: "#064e3b",
     accentColor: "#34d399",
@@ -209,8 +209,8 @@ export const services: Service[] = [
     tagline: "Cinematic Visual Narratives",
     description:
       "We transform raw footage into compelling visual stories. From corporate promos to social media content, our editing suite delivers broadcast-quality results with motion graphics, color grading, and sound design.",
-    image: "/services/video.jpg",
-    video: "/services/video.mp4",
+    image: "/services/video-editing.png",
+    video: "/services/video-editing.mp4",
     color: "#1e293b",
     accentColor: "#f97316",
     priceNote: "Professional video production and post-production services.",
@@ -242,8 +242,8 @@ export const services: Service[] = [
     tagline: "Always-On Digital Reliability",
     description:
       "Keep your digital assets running at peak performance. Our proactive maintenance includes security updates, performance monitoring, bug fixes, and 24/7 technical support to ensure zero downtime.",
-    image: "/services/maintenance.jpg",
-    video: "/services/maintenance.mp4",
+    image: "/services/maintain-and-support.png",
+    video: "/services/maintain-and-support.mp4",
     color: "#0c4a6e",
     accentColor: "#38bdf8",
     priceNote: "Ongoing support packages for sustained digital excellence.",

@@ -234,6 +234,24 @@
   }
 }
 
+@keyframes shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+@keyframes shimmer-v {
+    0% { transform: translateY(-100%); }
+    100% { transform: translateY(100%); }
+}
+
+.animate-shimmer {
+    animation: shimmer 2s infinite linear;
+}
+
+.animate-shimmer-v {
+    animation: shimmer-v 2s infinite linear;
+}
+
 /* Accessibility - Screen reader only */
 .sr-only {
   position: absolute;

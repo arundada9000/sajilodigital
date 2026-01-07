@@ -4,13 +4,28 @@ import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useRouter } from "next/navigation";
 
+const JOKES = [
+    "Why do programmers prefer dark mode? Because light attracts bugs.",
+    "A SQL query walks into a bar, walks up to two tables, and asks, 'Can I join you?'",
+    "How many programmers does it take to change a light bulb? None, that's a hardware problem.",
+    "Real programmers count from 0.",
+    "Hardware: The part of a computer that you can kick."
+];
+
+const QUOTES = [
+    "Design is not just what it looks like and feels like. Design is how it works. - Steve Jobs",
+    "Simplicity is the soul of efficiency. - Austin Freeman",
+    "Make it simple, but significant. - Don Draper",
+    "Digital design is like painting, except the paint never dries. - Neville Brody"
+];
+
 const PAGES = [
     "home", "about", "blog", "contact", "faq", "gallery",
     "pricing", "projects", "services", "testimonials"
 ];
 
 const COMMANDS: Record<string, string | (() => string)> = {
-    help: "Known commands: ls, cd, status, hack, about, whoami, social, matrix, date, echo, ceo, cto, team, tech, location, coffee, clear",
+    help: "Known protocols: ls, cd, status, hack, about, whoami, social, matrix, date, echo, system, logs, joke, quote, neofetch, clear",
     about: "Sajilo Digital: A premium digital architecture firm based in Nepal. We specialize in high-performance Web Ecosystems, Neural UX/UI, and Algorithmic SEO.",
     ceo: "CEO/Founder: Arun Neupane. Vision: To architect digital legacies for global visionaries.",
     cto: "CTO: Sajilo AI Core. Status: Syncing with the future...",
@@ -27,7 +42,37 @@ const COMMANDS: Record<string, string | (() => string)> = {
     social: "Connectivity:\n> LinkedIn: linkedin.com/company/sajilodigital\n> Facebook: fb.com/sajilodigital\n> Github: github.com/sajilodigital",
     date: () => `Terminal Time: ${new Date().toLocaleString('en-US', { timeZone: 'Asia/Kathmandu' })} (NST)`,
     coffee: "Error 418: I'm a teapot. No, wait, I'm a server. Please insert Caffeine-Injection-System.",
-    pizza: "Searching for local pizza outlets... Found 4 options. Ordering disabled for security reasons.",
+    system: () => `[SYSTEM DIAGNOSTICS]
+CPU: Liquid-Cooled Neural Core v9.2
+RAM: 128TB Holographic Buffer [92% FREE]
+DISK: Quantum Lattice Storage [STABLE]
+NET: 50Gbps Fiber-Link Path 1 [CONNECTED]`,
+    logs: () => `[LOG_STREAM]
+${new Date().toISOString()} - [INFO] Indexing neural nodes...
+${new Date().toISOString()} - [WARN] Caffeine levels low in sector 7.
+${new Date().toISOString()} - [INFO] Re-rendering reality in 4K.
+${new Date().toISOString()} - [INFO] Optimizing UX for subconscious flow.`,
+    joke: () => JOKES[Math.floor(Math.random() * JOKES.length)],
+    quote: () => QUOTES[Math.floor(Math.random() * QUOTES.length)],
+    neofetch: () => `
+   ______      _ _ _
+  / ____/___ _(_) (_)___
+ / /   / __ \`/ / / / __ \\
+/ /___/ /_/ / / / / /_/ /
+\\____/\\__,_/_/_/_/\\____/ core@sajilo
+------------------------
+OS: SajiloOS v3.1.0 x86_64
+Host: Nexus Architecture v3
+Kernel: 6.1.0-SAJILO-PROD
+Uptime: 4 days, 20 hours
+Packages: 2024 (dpkg)
+Shell: sajilo-sh 1.0
+Resolution: 7680x4320
+UI: Neural-UX Custom
+CPU: Sajilo Neural Core (16) @ 5.000GHz
+GPU: NVIDIA Quantum RTX 9000
+Memory: 32768MiB / 131072MiB
+`,
     sajilo: `
    _____         _ _ _      
   |   __|___ ___|_| | |_ _  
@@ -44,6 +89,61 @@ const COMMANDS: Record<string, string | (() => string)> = {
     exit: "Process terminated. Refresh page to restart kernel.",
 };
 
+const MatrixRain = () => {
+    const canvasRef = useRef<HTMLCanvasElement>(null);
+
+    useEffect(() => {
+        const canvas = canvasRef.current;
+        if (!canvas) return;
+        const ctx = canvas.getContext('2d');
+        if (!ctx) return;
+
+        canvas.width = canvas.parentElement?.clientWidth || window.innerWidth;
+        canvas.height = canvas.parentElement?.clientHeight || window.innerHeight;
+
+        const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789$@%&*".split("");
+        const fontSize = 14;
+        const columns = canvas.width / fontSize;
+        const drops: number[] = [];
+
+        for (let i = 0; i < columns; i++) {
+            drops[i] = 1;
+        }
+
+        const draw = () => {
+            ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            ctx.fillStyle = "#06b6d4"; // Cyan-500
+            ctx.font = fontSize + "px monospace";
+
+            for (let i = 0; i < drops.length; i++) {
+                const text = characters[Math.floor(Math.random() * characters.length)];
+                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+                if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                    drops[i] = 0;
+                }
+                drops[i]++;
+            }
+        };
+
+        const interval = setInterval(draw, 33);
+        const handleResize = () => {
+            canvas.width = canvas.parentElement?.clientWidth || window.innerWidth;
+            canvas.height = canvas.parentElement?.clientHeight || window.innerHeight;
+        };
+
+        window.addEventListener('resize', handleResize);
+        return () => {
+            clearInterval(interval);
+            window.removeEventListener('resize', handleResize);
+        };
+    }, []);
+
+    return <canvas ref={canvasRef} className="absolute inset-0 z-0 opacity-40 mix-blend-screen" />;
+};
+
 export default function NexusTerminal() {
     const router = useRouter();
     const [input, setInput] = useState("");
@@ -54,8 +154,6 @@ export default function NexusTerminal() {
     const [isMinimized, setIsMinimized] = useState(false);
     const [isFullscreen, setIsFullscreen] = useState(false);
     const scrollRef = useRef<HTMLDivElement>(null);
-
-    // Fix: Prevent auto-focus on load to avoid jump
     const inputRef = useRef<HTMLInputElement>(null);
 
     useEffect(() => {
@@ -151,7 +249,6 @@ export default function NexusTerminal() {
 
                 <motion.div
                     animate={{
-                        // Fix: Isolate glitch transition from spring
                         ...(isGlitching ? {
                             x: [0, -4, 4, -4, 0],
                             skewX: [0, 8, -8, 4, 0],
@@ -164,7 +261,7 @@ export default function NexusTerminal() {
                         } : {
                             width: "100%",
                             maxWidth: "1024px",
-                            height: isMinimized ? "44px" : "500px"
+                            height: isMinimized ? "44px" : "550px"
                         })
                     }}
                     transition={isGlitching ? {
@@ -179,7 +276,7 @@ export default function NexusTerminal() {
                     className="relative mx-auto bg-black rounded-xl border border-white/10 shadow-[0_0_50px_rgba(0,0,0,0.5)] overflow-hidden font-mono text-xs md:text-sm group"
                 >
                     {/* Header */}
-                    <div className="flex items-center justify-between px-4 py-3 bg-white/5 border-b border-white/10 backdrop-blur-md cursor-default">
+                    <div className="flex items-center justify-between px-4 py-3 bg-white/5 border-b border-white/10 backdrop-blur-md cursor-default relative z-20">
                         <div className="flex gap-2.5">
                             <button onClick={() => setHistory([])} className="w-3 h-3 rounded-full bg-red-500/80 hover:bg-red-500 transition-all active:scale-90" title="Purge History" />
                             <button onClick={() => setIsMinimized(!isMinimized)} className="w-3 h-3 rounded-full bg-yellow-500/80 hover:bg-yellow-500 transition-all active:scale-90" title="Suspend Module" />
@@ -202,11 +299,7 @@ export default function NexusTerminal() {
                                 className="p-6 h-[calc(100%-44px)] flex flex-col relative"
                             >
                                 {/* Matrix Rain */}
-                                {isMatrix && (
-                                    <div className="absolute inset-0 z-0 opacity-20 pointer-events-none overflow-hidden">
-                                        <div className="absolute inset-0 bg-[url('https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHJmZGRmZGRmZGRmZGRmZGRmZGRmZGRmZGRmZGRmZGRmZGRmZGRmZGRmZGRmZGRmJmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/3o7TKMGpxVfF795PZC/giphy.gif')] bg-repeat opacity-40 mix-blend-screen" />
-                                    </div>
-                                )}
+                                {isMatrix && <MatrixRain />}
 
                                 <div
                                     ref={scrollRef}

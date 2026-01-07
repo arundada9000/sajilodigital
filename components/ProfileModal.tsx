@@ -13,8 +13,11 @@ import {
   FaGlobe,
   FaEnvelope,
   FaXmark,
+  FaCamera,
 } from "react-icons/fa6";
 import { FaLinkedin, FaFacebook } from "react-icons/fa";
+import { exportToPng } from "@/lib/export-util";
+import { useRef } from "react";
 
 /* ---------------- TYPES ---------------- */
 
@@ -108,13 +111,13 @@ function TypingText({ text }: { text: string }) {
 
 import { useMediaQuery } from "../src/hooks/useMediaQuery";
 
-/* ---------------- MODAL ---------------- */
-
 export default function ProfileModal({ profile, onClose }: Props) {
   const iconSize = 30;
   const dragControls = useDragControls();
   const [fullscreen, setFullscreen] = useState(false);
+  const [isCapturing, setIsCapturing] = useState(false);
   const isMobile = useMediaQuery("(max-width: 768px)");
+  const captureRef = useRef<HTMLDivElement>(null);
 
   /* ESC KEY CLOSE */
   useEffect(() => {
@@ -127,11 +130,16 @@ export default function ProfileModal({ profile, onClose }: Props) {
 
   if (!profile) return null;
 
+  const handleCapture = async () => {
+    if (captureRef.current) {
+      setIsCapturing(true);
+      await exportToPng(captureRef.current, profile.name);
+      setIsCapturing(false);
+    }
+  };
+
   return (
     <>
-      {/* <AnimatePresence> */}
-      {/* BACKDROP */}
-
       <motion.div
         className={`fixed inset-0 z-40 bg-black/70 ${isMobile ? "" : "backdrop-blur-md"
           }`}
@@ -191,6 +199,13 @@ export default function ProfileModal({ profile, onClose }: Props) {
               <p className="text-green-500 font-bold">SajiloDigital Pvt.Ltd</p>
             </div>
             <div className="flex gap-4">
+              <button
+                onClick={handleCapture}
+                className={`text-gray-400 hover:text-white transition-colors ${isCapturing ? "animate-pulse" : ""}`}
+                title="Save as PNG"
+              >
+                <FaCamera />
+              </button>
               {profile.cv && (
                 <a
                   href={profile.cv}
@@ -228,8 +243,10 @@ export default function ProfileModal({ profile, onClose }: Props) {
 
           {/* CONTENT */}
           <div
+            ref={captureRef}
+            key={`capture-${profile.id}`}
             className={`grid md:grid-cols-2 gap-6 p-6 overflow-y-auto ${fullscreen ? "h-full" : "h-[85vh] md:h-auto"
-              }`}
+              } bg-[#0b0f19]`}
           >
             {/* IMAGE */}
             <motion.div
@@ -240,6 +257,7 @@ export default function ProfileModal({ profile, onClose }: Props) {
                 src={profile.image}
                 alt={profile.name}
                 fill
+                unoptimized
                 className="object-cover"
               />
             </motion.div>

@@ -7,25 +7,64 @@ import { MoveRight } from "lucide-react";
 import Magnetic from "../ui/Magnetic";
 
 export default function NexusCTA() {
+    const containerRef = React.useRef<HTMLDivElement>(null);
+    const { scrollYProgress } = useScroll({
+        target: containerRef,
+        offset: ["start end", "end start"],
+    });
+
+    const x1 = useTransform(scrollYProgress, [0, 1], [-200, 200]);
+    const x2 = useTransform(scrollYProgress, [0, 1], [200, -200]);
+    const rotate1 = useTransform(scrollYProgress, [0, 1], [-12, -24]);
+    const rotate2 = useTransform(scrollYProgress, [0, 1], [6, 12]);
+
+    const title = "Ready to Scale the Abyss?";
+    const letters = title.split("");
+
     return (
-        <section className="relative py-40 md:py-60 px-6 text-center overflow-hidden bg-black">
-            {/* Background Cinematic Lines - Persistent across the scroll */}
-            <div className="absolute top-1/2 left-0 w-full h-[1px] bg-white/5 -rotate-12" />
-            <div className="absolute top-1/3 left-0 w-full h-[1px] bg-white/5 rotate-6" />
+        <section ref={containerRef} className="relative py-40 md:py-60 px-6 text-center overflow-hidden bg-black">
+            {/* Background Cinematic Lines - Parallax across the scroll */}
+            <motion.div
+                style={{ x: x1, rotate: rotate1 }}
+                className="absolute top-1/2 left-0 w-[200%] h-[1px] bg-blue-500/20 origin-center"
+            />
+            <motion.div
+                style={{ x: x2, rotate: rotate2 }}
+                className="absolute top-1/3 left-0 w-[200%] h-[1px] bg-blue-500/20 origin-center"
+            />
 
             <div className="relative z-10 container-custom">
                 <motion.div
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
                 >
-                    <h2 className="text-5xl md:text-[140px] font-black italic uppercase leading-none mb-12 tracking-tighter text-white">
-                        Ready to <br />
-                        <span className="text-white/20">Scale the Abyss?</span>
+                    <h2 className="text-5xl md:text-[140px] font-black italic uppercase leading-none mb-12 tracking-tighter text-white flex flex-wrap justify-center overflow-hidden">
+                        {letters.map((char, i) => (
+                            <motion.span
+                                key={i}
+                                initial={{ y: "100%", opacity: 0 }}
+                                whileInView={{ y: 0, opacity: 1 }}
+                                viewport={{ once: true }}
+                                transition={{
+                                    duration: 0.8,
+                                    delay: i * 0.02,
+                                    ease: [0.33, 1, 0.68, 1]
+                                }}
+                                className={char === " " ? "mr-4" : i >= 15 ? "text-white/20" : ""}
+                            >
+                                {char}
+                            </motion.span>
+                        ))}
                     </h2>
 
-                    <div className="flex justify-center mt-20">
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.6 }}
+                        className="flex justify-center mt-20"
+                    >
                         <Magnetic strength={0.2}>
                             <Link href="/contact" className="group">
                                 <motion.button
@@ -37,7 +76,7 @@ export default function NexusCTA() {
                                 </motion.button>
                             </Link>
                         </Magnetic>
-                    </div>
+                    </motion.div>
                 </motion.div>
             </div>
 
