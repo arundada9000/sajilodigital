@@ -275,8 +275,8 @@ export const services: Service[] = [
     tagline: "Seamless Launch Infrastructure",
     description:
       "From staging to production, we architect bulletproof deployment pipelines. Our DevOps expertise ensures your applications scale effortlessly with CI/CD automation, cloud optimization, and zero-downtime releases.",
-    image: "/services/deploy.jpg",
-    video: "/services/deploy.mp4",
+    image: "/services/dev-ops.png",
+    video: "/services/dev-ops.mp4",
     color: "#14532d",
     accentColor: "#4ade80",
     priceNote: "Enterprise-grade deployment and infrastructure management.",

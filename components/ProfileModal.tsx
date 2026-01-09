@@ -141,8 +141,9 @@ export default function ProfileModal({ profile, onClose }: Props) {
   return (
     <>
       <motion.div
-        className={`fixed inset-0 z-40 bg-black/70 ${isMobile ? "" : "backdrop-blur-md"
-          }`}
+        className={`fixed inset-0 z-40 bg-black/70 ${
+          isMobile ? "" : "backdrop-blur-md"
+        }`}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
@@ -152,7 +153,7 @@ export default function ProfileModal({ profile, onClose }: Props) {
 
       {/* MODAL */}
       <motion.div
-        className="fixed inset-0 z-50 flex items-end md:items-center justify-center p-4"
+        className="fixed inset-0 z-999 flex items-end md:items-center justify-center p-4"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
@@ -201,7 +202,9 @@ export default function ProfileModal({ profile, onClose }: Props) {
             <div className="flex gap-4">
               <button
                 onClick={handleCapture}
-                className={`text-gray-400 hover:text-white transition-colors ${isCapturing ? "animate-pulse" : ""}`}
+                className={`text-gray-400 hover:text-white transition-colors ${
+                  isCapturing ? "animate-pulse" : ""
+                }`}
                 title="Save as PNG"
               >
                 <FaCamera />
@@ -245,8 +248,9 @@ export default function ProfileModal({ profile, onClose }: Props) {
           <div
             ref={captureRef}
             key={`capture-${profile.id}`}
-            className={`grid md:grid-cols-2 gap-6 p-6 overflow-y-auto ${fullscreen ? "h-full" : "h-[85vh] md:h-auto"
-              } bg-[#0b0f19]`}
+            className={`grid md:grid-cols-2 gap-6 p-6 overflow-y-auto ${
+              fullscreen ? "h-full" : "h-[85vh] md:h-auto"
+            } bg-[#0b0f19]`}
           >
             {/* IMAGE */}
             <motion.div
@@ -283,7 +287,7 @@ export default function ProfileModal({ profile, onClose }: Props) {
               </div>
 
               {/* TERMINAL BIO */}
-              <div className="rounded-lg bg-black/60 p-4 font-mono text-sm text-green-400">
+              <div className="rounded-lg border border-white/10 bg-white/10 p-4 font-mono text-sm text-green-400 backdrop-blur-md shadow-xl">
                 <p>$ whoami</p>
                 <p className="ml-4 text-white">{profile.name}</p>
 

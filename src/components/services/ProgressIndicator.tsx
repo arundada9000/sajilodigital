@@ -13,7 +13,7 @@ const ProgressIndicator = ({
   const progress = ((currentSection + 1) / totalSections) * 100;
 
   return (
-    <div className="fixed right-6 md:right-10 top-1/2 -translate-y-1/2 z-[150] flex flex-col items-center gap-6">
+    <div className="fixed -right-7 md:right-10 top-1/2 -translate-y-1/2 z-[150] flex flex-col items-center gap-6">
       <span className="text-[10px] font-bold text-white/20 uppercase tracking-[0.5em] rotate-90 mb-10 translate-y-10">
         Section {currentSection + 1}
       </span>
@@ -31,7 +31,9 @@ const ProgressIndicator = ({
         {Array.from({ length: totalSections }).map((_, i) => (
           <div
             key={i}
-            className={`w-1 h-1 rounded-full transition-all duration-500 ${i === currentSection ? 'bg-blue-500 scale-150' : 'bg-white/10'}`}
+            className={`w-1 h-1 rounded-full transition-all duration-500 ${
+              i === currentSection ? "bg-blue-500 scale-150" : "bg-white/10"
+            }`}
           />
         ))}
       </div>

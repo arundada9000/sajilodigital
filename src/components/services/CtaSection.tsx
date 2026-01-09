@@ -20,7 +20,7 @@ const CtaSection = () => {
 
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Cinematic Header */}
-        <div className="grid lg:grid-cols-2 gap-12 items-end mb-20 md:mb-32">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-start mb-20 md:mb-32">
           <div>
             <motion.div
               initial={{ opacity: 0, x: -20 }}
@@ -51,7 +51,7 @@ const CtaSection = () => {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.5 }}
-            className="text-base md:text-xl text-white/50 italic font-medium leading-relaxed max-w-md lg:mb-4"
+            className="text-base md:text-xl text-white/50 italic font-medium leading-relaxed lg:self-end max-w-md lg:mb-4 lg:pb-2 md:ml-15"
           >
             "Explore our complete ecosystem of digital excellence. From
             strategic architecture to creative execution, we provide the tools
