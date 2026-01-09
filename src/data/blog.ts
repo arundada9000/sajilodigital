@@ -34,7 +34,8 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: "mastering-nextjs-16-app-router",
-    title: "Mastering Next.js 16: The Ultimate Guide to App Router Optimization",
+    title:
+      "Mastering Next.js 16: The Ultimate Guide to App Router Optimization",
     excerpt:
       "A deep dive into the latest performance features of Next.js 16 and how to build lightning-fast web experiences.",
     content: `
@@ -80,7 +81,7 @@ export const blogPosts: BlogPost[] = [
     `,
     author: {
       name: "Puspanjali Gurung",
-      avatar: "/team/puspanjali1.JPG",
+      avatar: "/team/puspanjali1.jpg",
       role: "Lead Designer",
     },
     category: "Design",
@@ -119,5 +120,5 @@ export const blogPosts: BlogPost[] = [
     readTime: "7 min read",
     image: "/gallery/slide-4.jpg",
     featured: false,
-  }
+  },
 ];
