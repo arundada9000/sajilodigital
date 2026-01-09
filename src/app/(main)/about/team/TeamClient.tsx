@@ -351,7 +351,7 @@ const team: TeamMember[] = [
   {
     id: 6,
     name: "Ashish G.M",
-    role: "Frontend Developer",
+    role: "Frontend Developer & Video Editor",
     image: "/team/ashish.jpg",
     bio: "Turning ideas into interactive websites and engaging videos.",
     techStack: [

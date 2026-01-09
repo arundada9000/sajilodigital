@@ -176,8 +176,8 @@ export const services: Service[] = [
     tagline: "Strategic Hyper-Growth",
     description:
       "We deploy multi-channel marketing campaigns that drive measurable ROI. From precision-targeted social ads to high-conversion email funnels, we find your audience where they live.",
-    image: "/services/marketing.jpg",
-    video: "/services/marketing.mp4",
+    image: "/services/digital-marketing.jpg",
+    video: "/services/digital-marketing.mp4",
     color: "#451a03",
     accentColor: "#fbbf24",
     priceNote: "Focused on conversion-led market expansion.",

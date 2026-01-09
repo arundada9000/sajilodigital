@@ -87,6 +87,7 @@ const PAGES = [
   "projects",
   "services",
   "testimonials",
+  "status",
 ];
 
 // Team Data
@@ -96,8 +97,8 @@ const TEAM_MEMBERS = [
   { id: 3, name: "Arun Neupane", role: "Chief Technology Officer" },
   { id: 4, name: "Bijay Kumar Chaudhary", role: "Frontend Developer" },
   { id: 5, name: "Sunil Paudyal", role: "QA Tester & Frontend Developer" },
-  { id: 6, name: "Ashish G.M", role: "Frontend Developer" },
-  { id: 7, name: "Puspanjali Gurung", role: "Figma Designer" },
+  { id: 6, name: "Ashish G.M", role: "Frontend Developer/Video Editor" },
+  { id: 7, name: "Puspanjali Gurung", role: "UI/UX Designer" },
 ];
 
 const COMMANDS: Record<string, string | (() => string)> = {
@@ -156,9 +157,9 @@ const COMMANDS: Record<string, string | (() => string)> = {
     );
   },
 
-  tech: "Primary Stack: Next.js 16, React, TypeScript, GSAP, Framer Motion, PostgreSQL, AWS, Vercel.",
+  tech: "Primary Stack: Next.js, React, TypeScript, GSAP, Framer Motion, PostgreSQL, AWS, Vercel, Nodejs, express, mongodb.",
   location:
-    "SajiloDigital: Horizon Chowk, Butwal, Nepal. Lat: 27.7006, Long: 83.4484.",
+    "SajiloDigital: Horizon Chowk, Butwal-11, Nepal. Lat: 27.7006, Long: 83.4484.",
   pricing:
     "Modular Architecture: Starting from 500$ (Standard) to 2000$+ (Enterprise). Type 'goto pricing' for details.",
 
@@ -177,13 +178,15 @@ const COMMANDS: Record<string, string | (() => string)> = {
     "Connectivity:\n> LinkedIn: linkedin.com/company/sajilodigital\n> Facebook: fb.com/sajilodigital\n> Github: github.com/sajilodigital\n> Instagram: instagram.com/sajilodigital",
 
   // Social Media Shortcuts
-  facebook: "Opening Facebook... https://facebook.com/sajilodigital",
-  fb: "Opening Facebook... https://facebook.com/sajilodigital",
-  instagram: "Opening Instagram... https://instagram.com/sajilodigital",
-  insta: "Opening Instagram... https://instagram.com/sajilodigital",
-  github: "Opening GitHub... https://github.com/sajilodigital",
-  linkedin: "Opening LinkedIn... https://linkedin.com/company/sajilodigital",
-  youtube: "Opening YouTube... https://youtube.com/@sajilodigital",
+  facebook:
+    "Opening Facebook... https://www.facebook.com/profile.php?id=61579846778258",
+  fb: "Opening Facebook... https://www.facebook.com/profile.php?id=61579846778258",
+  instagram: "Opening Instagram... https://instagram.com/sajilo_digital",
+  insta: "Opening Instagram... https://instagram.com/sajilo_digital",
+  github: "Opening GitHub... https://github.com/sajhilodigital",
+  linkedin: "Opening LinkedIn... https://linkedin.com/company/sajilo-digital",
+  youtube: "Opening YouTube... https://youtube.com/@sajilo_digital",
+  yt: "Opening YouTube... https://youtube.com/@sajilo_digital",
 
   date: () =>
     `Terminal Time: ${new Date().toLocaleString("en-US", {
@@ -199,9 +202,11 @@ const COMMANDS: Record<string, string | (() => string)> = {
       "Clear 🌙",
     ];
     const temp = Math.floor(Math.random() * 15) + 15; // 15-30°C
-    return `Weather in Butwal, Nepal:\n> Condition: ${conditions[Math.floor(Math.random() * conditions.length)]
-      }\n> Temperature: ${temp}°C\n> Humidity: ${Math.floor(Math.random() * 40) + 40
-      }%\n> Wind: ${Math.floor(Math.random() * 15) + 5} km/h`;
+    return `Weather in Butwal, Nepal:\n> Condition: ${
+      conditions[Math.floor(Math.random() * conditions.length)]
+    }\n> Temperature: ${temp}°C\n> Humidity: ${
+      Math.floor(Math.random() * 40) + 40
+    }%\n> Wind: ${Math.floor(Math.random() * 15) + 5} km/h`;
   },
 
   coffee:
@@ -331,7 +336,7 @@ export default function NexusTerminal({
   const router = useRouter();
   const [input, setInput] = useState("");
   const [history, setHistory] = useState<string[]>([
-    "SajiloDigital Core [Version 3.1.0]",
+    "SajiloDigital Core [Version 1.0.0]",
     "Type 'help' to see active protocols.",
   ]);
   const [commandHistory, setCommandHistory] = useState<string[]>([]);
@@ -644,39 +649,39 @@ function TerminalContent({
         animate={{
           ...(isGlitching
             ? {
-              x: [0, -4, 4, -4, 0],
-              skewX: [0, 8, -8, 4, 0],
-              filter: [
-                "hue-rotate(0deg)",
-                "hue-rotate(180deg)",
-                "hue-rotate(0deg)",
-              ],
-            }
+                x: [0, -4, 4, -4, 0],
+                skewX: [0, 8, -8, 4, 0],
+                filter: [
+                  "hue-rotate(0deg)",
+                  "hue-rotate(180deg)",
+                  "hue-rotate(0deg)",
+                ],
+              }
             : {}),
           ...(isFullscreen
             ? {
-              width: "100%",
-              maxWidth: "100%",
-              height: "85vh",
-            }
+                width: "100%",
+                maxWidth: "100%",
+                height: "85vh",
+              }
             : {
-              width: "100%",
-              maxWidth: "1024px",
-              height: isMinimized ? "44px" : "clamp(300px, 60vh, 550px)",
-            }),
+                width: "100%",
+                maxWidth: "1024px",
+                height: isMinimized ? "44px" : "clamp(300px, 60vh, 550px)",
+              }),
         }}
         transition={
           isGlitching
             ? {
-              duration: 0.5,
-              ease: "linear",
-              repeat: 0,
-            }
+                duration: 0.5,
+                ease: "linear",
+                repeat: 0,
+              }
             : {
-              type: "spring",
-              stiffness: 150,
-              damping: 20,
-            }
+                type: "spring",
+                stiffness: 150,
+                damping: 20,
+              }
         }
         className="relative mx-auto bg-black rounded-xl border border-white/10 shadow-[0_0_50px_rgba(0,0,0,0.5)] overflow-hidden font-mono text-xs md:text-sm group"
       >
