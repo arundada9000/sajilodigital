@@ -56,7 +56,7 @@ export const metadata: Metadata = {
       "Leading web development company specializing in modern web applications and custom software solutions.",
     images: [
       {
-        url: "/images/og-image.jpg",
+        url: "/images/og-image.png",
         width: 1200,
         height: 630,
         alt: "Sajilo Digital | Your Vision Our Innovation",
@@ -68,7 +68,7 @@ export const metadata: Metadata = {
     title: "Sajilo Digital | Your Vision Our Innovation",
     description:
       "Leading web development company specializing in modern web applications and custom software solutions.",
-    images: ["/images/twitter-image.jpg"],
+    images: ["/images/og-image.png"],
     creator: "@sajilodigital",
   },
   robots: {
@@ -83,9 +83,9 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    icon: "/favicon.ico",
-    shortcut: "/favicon-16x16.png",
-    apple: "/apple-touch-icon.png",
+    icon: "/favicon/favicon.ico",
+    shortcut: "/favicon/favicon-16x16.png",
+    apple: "/favicon/apple-touch-icon.png",
   },
   manifest: "/manifest.json",
 };

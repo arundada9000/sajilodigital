@@ -32,13 +32,27 @@ export const metadata: Metadata = {
 };
 
 const techStack = [
-  "Next.js", "React", "TypeScript", "GSAP", "Framer Motion",
-  "Tailwind CSS", "Node.js", "PostgreSQL", "AWS", "Vercel"
+  "Next.js",
+  "React",
+  "TypeScript",
+  "GSAP",
+  "Framer Motion",
+  "Tailwind CSS",
+  "Node.js",
+  "PostgreSQL",
+  "AWS",
+  "Vercel",
 ];
 
 const vibes = [
-  "Innovation", "Scale", "Legacy", "Future",
-  "Architecture", "Performance", "Quality", "Elegance"
+  "Innovation",
+  "Scale",
+  "Legacy",
+  "Future",
+  "Architecture",
+  "Performance",
+  "Quality",
+  "Elegance",
 ];
 
 export default function HomePage() {
@@ -99,7 +113,7 @@ export default function HomePage() {
             address: {
               "@type": "PostalAddress",
               streetAddress: "Horizon Chowk",
-              addressLocality: "Butwal",
+              addressLocality: "Butwal-11",
               addressRegion: "Lumbini",
               postalCode: "32907",
               addressCountry: "NP",
@@ -124,11 +138,18 @@ export default function HomePage() {
                 closes: "18:00",
               },
             ],
+            contactPoint: {
+              "@type": "ContactPoint",
+              telephone: "+9779842977209",
+              contactType: "customer support",
+              availableLanguage: ["English", "Nepali"],
+            },
             sameAs: [
-              "https://www.linkedin.com/company/sajilodigital",
-              "https://facebook.com/sajilodigital",
-              "https://github.com/sajilodigital",
-              "https://instagram.com/sajilodigital",
+              "https://youtube.com/@sajilo_digital",
+              "https://www.facebook.com/profile.php?id=61579846778258",
+              "https://github.com/sajhilodigital",
+              "https://instagram.com/sajilo_digital",
+              "https://wa.me/9779842977209",
             ],
           }),
         }}

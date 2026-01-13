@@ -54,12 +54,12 @@
 - ** Neural UX**: Interfaces that anticipate user intent, creating a seamless flow from landing to conversion.
 - ** Dark Mode Native**: Optimized for visually stunning dark themes that pop on OLED screens.
 
-## 📸 Gallery
+## Gallery
 
-|              **Home Hero**              | **Nexus Terminal** |
-| :-------------------------------------: | :----------------: |
-| ![Home Hero](public/images/home-og.jpg) | _Terminal Preview_ |
-|            _Cinematic Entry_            | _Interactive CLI_  |
+|              **Home Hero**               | **Nexus Terminal** |
+| :--------------------------------------: | :----------------: |
+| ![Home Hero](public/images/og-image.png) | _Terminal Preview_ |
+|            _Cinematic Entry_             | _Interactive CLI_  |
 
 ## 🛠 Tech Stack
 
@@ -96,8 +96,7 @@ The **Nexus Terminal** (`src/components/home/NexusTerminal.tsx`) is hiding secre
 
 We are constantly iterating. Here is what is on the horizon:
 
-- **Sajilo Voice**: Navigation via voice commands.
-- **Sajilo City**: A 3D WebGL interactive cityscape background.
+- **Working Timeline**: Project working timeline in real time with updates .
 - **Project Brain**: AI-powered cost and timeline estimator.
 
 ## Getting Started

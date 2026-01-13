@@ -375,7 +375,7 @@ const team: TeamMember[] = [
     id: 7,
     name: "Puspanjali Gurung",
     role: "Figma Designer",
-    image: "/team/puspanjali1.jpg",
+    image: "/team/puspanjali2.jpg",
     bio: "Designing clean, user-focused interfaces with modern design tools.",
     techStack: [
       "figma",

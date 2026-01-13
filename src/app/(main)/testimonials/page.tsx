@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import TestimonialsClient from "./TestimonialsClient";
 
-
 export const metadata: Metadata = {
   title: "Testimonials | Sajilo Digital",
   description:
@@ -27,25 +26,23 @@ export const metadata: Metadata = {
 
 const testimonials = [
   {
-    name: "Rajesh Sharma",
-    role: "CEO",
-    company: "TechVision Nepal",
+    name: "Mitralal Sapkota (Mr. LAL)",
+    role: "Lead Trekking Guide",
+    company: "Mount Glacier Alpine Adventure Tour And Treks",
+    image: "/testimonials/mitralal-sapkota.jpg",
     rating: 5,
-    text: "Outstanding work! The team delivered our e-commerce platform on time and exceeded our expectations. The website is fast, beautiful, and our sales have increased by 45% since launch.",
+    text: "I recently had my website built by Sajilo Digital, and I’m extremely satisfied with the results. The team was professional, quick, and very easy to work with. They offered me the best deal and delivered exactly what I needed clean design, smooth functionality, and great support throughout the process. Highly recommended for anyone looking for quality digital services!",
+    project: "Tour And Treks",
   },
+
   {
-    name: "Priya Thapa",
-    role: "Marketing Director",
-    company: "Himalayan Ventures",
+    name: "Daba Sherpa",
+    role: "Lead Trekking",
+    company: "Mount Glacier Alpine",
+    image: "/testimonials/daba-sherpa.jpg",
     rating: 5,
-    text: "Professional, creative, and highly skilled. They transformed our outdated website into a modern, responsive platform. The SEO improvements have been remarkable – we now rank on the first page.",
-  },
-  {
-    name: "Amit Gurung",
-    role: "Founder",
-    company: "FitLife App",
-    rating: 5,
-    text: "The mobile app they built for us is simply amazing. User feedback has been overwhelmingly positive. Their attention to detail and commitment to quality is unmatched.",
+    text: "The travel booking platform developed by the team has exceeded all expectations. The itinerary planning, we are extremely satisfied with the outcome and highly recommend their services to anyone seeking reliable and innovative travel technology solutions. Couldn't be happier!",
+    project: "Travel Booking Platform",
   },
 ];
 
@@ -61,7 +58,8 @@ export default function TestimonialsPage() {
             "@context": "https://schema.org",
             "@type": "WebPage",
             name: "Sajilo Digital Testimonials",
-            description: "Feedback and ratings from our valued clients in Nepal.",
+            description:
+              "Feedback and ratings from our valued clients in Nepal.",
             breadcrumb: {
               "@type": "BreadcrumbList",
               itemListElement: [

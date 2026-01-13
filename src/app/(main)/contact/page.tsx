@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import ContactClient from "./ContactClient";
 
-
 export const metadata: Metadata = {
   title: "Contact Us | Sajilo Digital",
   description:
@@ -37,7 +36,8 @@ export default function ContactPage() {
             "@context": "https://schema.org",
             "@type": "ContactPage",
             name: "Contact Sajilo Digital",
-            description: "Contact page for Sajilo Digital Pvt. Ltd., identifying how to reach the company for services.",
+            description:
+              "Contact page for Sajilo Digital Pvt. Ltd., identifying how to reach the company for services.",
             url: "https://sajilodigital.com.np/contact",
             mainEntity: {
               "@type": "Organization",
@@ -45,14 +45,14 @@ export default function ContactPage() {
               address: {
                 "@type": "PostalAddress",
                 streetAddress: "Horizon Chowk",
-                addressLocality: "Butwal",
+                addressLocality: "Butwal-11",
                 addressRegion: "Lumbini",
                 postalCode: "32907",
-                addressCountry: "NP"
+                addressCountry: "NP",
               },
               telephone: "+977-9811420975",
-              email: "arunneupane0000@gmail.com"
-            }
+              email: "arunneupane0000@gmail.com",
+            },
           }),
         }}
       />

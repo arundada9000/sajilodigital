@@ -9,6 +9,7 @@ export const metadata: Metadata = {
         "web development Nepal",
         "Butwal digital agency",
         "get quote",
+        "it support",
     ],
 };
 

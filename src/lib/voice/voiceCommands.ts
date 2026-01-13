@@ -38,6 +38,7 @@ export function handleVoiceCommand(transcript: string): Action | null {
       case "team": return { type: "navigate", href: "/about/team" };
       case "about": return { type: "navigate", href: "/about" };
       case "contact": return { type: "navigate", href: "/contact" };
+      case "gallery": return { type: "navigate", href: "/gallery" };
     }
   }
 
@@ -55,8 +56,14 @@ export function handleVoiceCommand(transcript: string): Action | null {
   }
 
   // 5. DIRECT QUESTIONS (FAQ/Team mapping)
-  if (cmd.includes("who is the ceo")) return { type: "navigate", href: "/about/team?memberId=2" }; // Bal Gobind
-  if (cmd.includes("cto") || cmd.includes("arun")) return { type: "navigate", href: "/about/team?memberId=3" };
+  if (cmd.includes("ceo")  || cmd.includes("balgobind")  || cmd.includes("founder")  || cmd.includes("backend") || cmd.includes("bal")) return { type: "navigate", href: "/about/team?memberId=2" }; // Bal Gobind
+  if (cmd.includes("cto") || cmd.includes("arun")  || cmd.includes("frontend")  || cmd.includes("pooja")  || cmd.includes("sama")) return { type: "navigate", href: "/about/team?memberId=3" };
+  if (cmd.includes("qa") || cmd.includes("sunil") || cmd.includes("paudyal") || cmd.includes("18")  || cmd.includes("virat kohli")) return { type: "navigate", href: "/about/team?memberId=5" };
+  if (cmd.includes("video editor") || cmd.includes("ashish") || cmd.includes("gm")  || cmd.includes("dante") ) return { type: "navigate", href: "/about/team?memberId=6" };
+  if (cmd.includes("frontend") || cmd.includes("bijay") || cmd.includes("sexy") ) return { type: "navigate", href: "/about/team?memberId=4" };
+  if (cmd.includes("chairperson") || cmd.includes("pramod") ) return { type: "navigate", href: "/about/team?memberId=1" };
+  if (cmd.includes("graphic designer") || cmd.includes("puspanjali") || cmd.includes("ui/ux designer") ) return { type: "navigate", href: "/about/team?memberId=7" };
+
 
   // 6. DEFAULT FUZZY MATCH
   // If no explicit command, try to match the whole phrase against the registry

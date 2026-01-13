@@ -1,8 +1,5 @@
 import type { Metadata } from "next";
 import { Inter, Poppins } from "next/font/google";
-import Header from "../components/layout/Header";
-import Navbar from "../components/layout/Navbar";
-import Footer from "../components/layout/Footer";
 import GlobalTerminal from "../components/layout/GlobalTerminal";
 import ParticlesBackground from "../components/layout/ParticlesBackground";
 import "./globals.css";
@@ -39,6 +36,7 @@ export const metadata: Metadata = {
     "full-stack development",
     "IT services",
     "digital solutions",
+    "sajilo digital",
   ],
   authors: [{ name: "Arun Neupane" }],
   creator: "SajiloDigital",
@@ -58,7 +56,7 @@ export const metadata: Metadata = {
       "Leading web development company specializing in modern web applications and custom software solutions.",
     images: [
       {
-        url: "/images/og-image.jpg",
+        url: "/images/home-og.jpg",
         width: 1200,
         height: 630,
         alt: "Sajilo Digital | Your Vision Our Innovation",
@@ -70,7 +68,7 @@ export const metadata: Metadata = {
     title: "Sajilo Digital | Your Vision Our Innovation",
     description:
       "Leading web development company specializing in modern web applications and custom software solutions.",
-    images: ["/images/twitter-image.jpg"],
+    images: ["/images/home-og.jpg"],
     creator: "@sajilodigital",
   },
   robots: {
@@ -86,8 +84,8 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: "/favicon.ico",
-    shortcut: "/favicon-16x16.png",
-    apple: "/apple-touch-icon.png",
+    shortcut: "/favicon/favicon-16x16.png",
+    apple: "/favicon/apple-touch-icon.png",
   },
   manifest: "/manifest.json",
 };
@@ -132,7 +130,7 @@ export default function RootLayout({
               address: {
                 "@type": "PostalAddress",
                 streetAddress: "Horizon Chowk",
-                addressLocality: "Butwal",
+                addressLocality: "Butwal-11",
                 addressRegion: "Lumbini",
                 postalCode: "32907",
                 addressCountry: "NP",
@@ -164,10 +162,11 @@ export default function RootLayout({
                 },
               ],
               sameAs: [
-                "https://www.linkedin.com/company/sajilodigital",
-                "https://facebook.com/sajilodigital",
-                "https://github.com/sajilodigital",
-                "https://instagram.com/sajilodigital",
+                "https://youtube.com/@sajilo_digital",
+                "https://www.facebook.com/profile.php?id=61579846778258",
+                "https://github.com/sajhilodigital",
+                "https://instagram.com/sajilo_digital",
+                "https://wa.me/9779842977209",
               ],
             }),
           }}

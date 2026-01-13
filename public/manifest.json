@@ -1,0 +1,36 @@
+{
+    "name": "Sajilo Digital Web Solutions",
+    "short_name": "Sajilo Digital",
+    "description": "Professional IT company offering website development, software solutions, digital services, and cloud support.",
+    "start_url": "/",
+    "scope": "/",
+    "display": "standalone",
+    "orientation": "portrait-primary",
+    "background_color": "#ffffff",
+    "theme_color": "#0f172a",
+    "icons": [
+        {
+            "src": "/favicon/android-chrome-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/favicon/android-chrome-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ],
+    "categories": [
+        "business",
+        "web development",
+        "professional services"
+    ],
+    "screenshots": [
+        {
+            "src": "/images/og-image.png",
+            "sizes": "1080x1920",
+            "type": "image/png"
+        }
+    ],
+    "lang": "en-NP"
+}
