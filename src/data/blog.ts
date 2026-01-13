@@ -2,123 +2,161 @@ import { BlogPost } from "../types/blog";
 
 export const blogPosts: BlogPost[] = [
   {
-    slug: "future-of-ai-in-web-development",
-    title: "The Future of AI in Web Development: 2026 and Beyond",
+    slug: "about-our-company",
+    title: "About Sajilo Digital",
     excerpt:
-      "Explore how Artificial Intelligence is transforming the way we build, test, and deploy web applications in the modern era.",
+      "We build digital products with care, clarity, and a deep focus on real impact.",
     content: `
-      <h2>The AI Revolution in Web Dev</h2>
-      <p>As we move into 2026, the landscape of web development is being fundamentally reshaped by AI. From Copilot-powered coding to automated UI generation, the tools we use daily are becoming smarter and more intuitive.</p>
-      
-      <h3>Key Transformations</h3>
-      <p>1. <strong>Generative UI:</strong> Frameworks are now emerging that can generate entire component libraries based on simple natural language prompts.</p>
-      <p>2. <strong>Autonomous Debugging:</strong> AI agents can now identify, triage, and even fix production bugs before developers are even aware of them.</p>
-      
-      <h3>What this means for Developers</h3>
-      <p>The role of a developer is shifting from writing syntax to architecting solutions. Understanding how to collaborate with AI is becoming the most critical skill in a developer's toolkit.</p>
-      
-      <h3>Conclusion</h3>
-      <p>At Sajilo Digital, we are embracing these tools to deliver faster, more robust solutions for our clients while maintaining the human touch that makes a product truly unique.</p>
-    `,
-    author: {
-      name: "Arun Neupane",
-      avatar: "/team/Arun.png",
-      role: "CTO",
-    },
-    category: "Technology",
-    tags: ["AI", "Web Dev", "Future", "SajiloDigital"],
-    publishedAt: "Jan 10, 2026",
-    readTime: "6 min read",
-    image: "/gallery/slide-1.jpg",
-    featured: true,
-  },
-  {
-    slug: "mastering-nextjs-16-app-router",
-    title:
-      "Mastering Next.js 16: The Ultimate Guide to App Router Optimization",
-    excerpt:
-      "A deep dive into the latest performance features of Next.js 16 and how to build lightning-fast web experiences.",
-    content: `
-      <h2>Next.js 16: The New Standard</h2>
-      <p>Next.js continues to lead the way in the React ecosystem. With version 16, performance and developer experience have reached new heights.</p>
-      
-      <h3>Partial Prerendering (PPR)</h3>
-      <p>PPR allows you to combine static and dynamic rendering in the same route, giving users the best of both worlds: instant initial loads and dynamic up-to-date data.</p>
-      
-      <h3>Optimizing for Core Web Vitals</h3>
-      <p>We'll look at how the new <Image /> component and font optimization strategies help you hit 100 on Lighthouse with ease.</p>
-      
-      <h3>Conclusion</h3>
-      <p>Next.js 16 is not just an update; it's a refined way of thinking about the web. At Sajilo Digital, it's our primary choice for building high-performance applications.</p>
-    `,
+    <h3><strong>Who We Are</strong></h2>
+    <p>We are a passionate team turning ideas into meaningful digital experiences.</p>
+    
+    <h3><strong>What Drives Us</strong></h3>
+    <p>We care deeply about quality, simplicity, and building things that truly matter.</p>
+    
+    <h3><strong>How We Work</strong></h3>
+    <p>We listen, collaborate, and build with intention at every step.</p>
+    
+    <h3><strong>Why We Exist</strong></h3>
+    <p>To help businesses grow through thoughtful and reliable technology.</p><br>
+    
+    <h3><strong>Conclusion: </strong></h3>
+    <p>"Sajilo Digital is where ideas meet purpose and progress."</p>
+    
+  `,
     author: {
       name: "Pramod Tharu",
       avatar: "/team/pramod.jpg",
       role: "Chairperson",
     },
-    category: "Development",
-    tags: ["Next.js", "React", "Frontend", "Performance"],
-    publishedAt: "Jan 05, 2026",
-    readTime: "8 min read",
-    image: "/gallery/slide-2.jpg",
+    category: "Company",
+    tags: ["AboutUs", "SajiloDigital", "Brand", "Team"],
+    publishedAt: "Jan 10, 2026",
+    readTime: "3 min read",
+    image: "/gallery/slide-1.jpg",
     featured: false,
   },
+
   {
-    slug: "designing-for-the-next-generation",
-    title: "Designing for the Next Generation: UX Trends in 2026",
+    slug: "how-we-work",
+    title: "How We Work",
     excerpt:
-      "Discover the design philosophies and aesthetic trends that are defining the digital experiences of 2026.",
+      "A simple look at how we turn ideas into successful digital products, step by step.",
     content: `
-      <h2>Esthetics vs. Functionality</h2>
-      <p>The perpetual debate in design is evolving. In 2026, we see a move towards 'Organic Futurism'—combining sleek tech aesthetics with natural, fluid interfaces.</p>
-      
-      <h3>Key Design Pillars</h3>
-      <p>1. <strong>Micro-Animations:</strong> Subtle feedback that makes the interface feel alive and responsive to every touch.</p>
-      <p>2. <strong>Bento Grids:</strong> The popular grid layout refined with more dynamic and interactive elements.</p>
-      
-      <h3>Conclusion</h3>
-      <p>Design is the first thing your users see, and it's what keeps them coming back. Our design team at Sajilo Digital focuses on creating WOW moments in every pixel.</p>
-    `,
-    author: {
-      name: "Puspanjali Gurung",
-      avatar: "/team/puspanjali1.jpg",
-      role: "Lead Designer",
-    },
-    category: "Design",
-    tags: ["UX", "Design", "Trends", "2026"],
-    publishedAt: "Jan 02, 2026",
-    readTime: "5 min read",
-    image: "/gallery/slide-3.jpg",
-    featured: false,
-  },
-  {
-    slug: "scaling-startups-with-sajilo-digital",
-    title: "How Sajilo Digital Scales Startups: From MVP to Enterprise",
-    excerpt:
-      "Learn about our proven process for taking digital products from initial concept to millions of users.",
-    content: `
-      <h2>The Sajilo Way</h2>
-      <p>Building a startup is hard. Scaling it is harder. Over the years, we've developed a blueprint for success that minimizes risk and maximizes growth.</p>
-      
-      <h3>Phase 1: The Lean MVP</h3>
-      <p>Focus on the core value proposition. We build only what's necessary to validate your idea with real users.</p>
-      
-      <h3>Phase 2: Growth Engineering</h3>
-      <p>Once validated, we optimize for conversion and scale, ensuring your platform can handle the influx of new users.</p>
-      
-      <h3>Conclusion</h3>
-      <p>Whether you're a solo founder or an established enterprise, Sajilo Digital is your partner in digital excellence.</p>
-    `,
+    <h3><strong>Our Approach</strong></h3>
+    <p>We keep things simple, transparent, and focused on your goals.</p>
+    
+    <h3><strong>Listen First</strong></h3>
+    <p>We take time to understand your idea, your users, and what success means to you.</p>
+    
+    <h3><strong>Build Together</strong></h3>
+    <p>We design and build in small steps, sharing progress and improving as we go.</p>
+    
+    <h3><strong>Launch with Confidence</strong></h3>
+    <p>We test everything carefully so your product is ready for real users.</p><br>
+   
+    <h3><strong>Conclusion</strong></h3>
+    <p>"Our friendly process helps you move fast while building the right thing."</p>
+  `,
     author: {
       name: "Bal Gobind Chaudhary",
       avatar: "/team/bal.jpg",
       role: "CEO",
     },
     category: "Business",
-    tags: ["Startups", "Scaling", "MVP", "SajiloDigital"],
+    tags: ["Process", "Team", "SajiloDigital"],
+    publishedAt: "Jan 05, 2026",
+    readTime: "8 min read",
+    image: "/gallery/slide-2.jpg",
+    featured: false,
+  },
+  {
+    slug: "ensuring-quality-of-products",
+    title: "How we ensure quality of products: The Sajilo Digital QA Approach",
+    excerpt:
+      "Learn how structured QA processes help deliver reliable, scalable, and high-quality digital products at Sajilo Digital.",
+    content: `
+      <h2><strong>Our QA Approach</strong></h2>
+      <p>At Sajilo Digital, we ensure product quality through structured testing, clear requirements, and continuous validation.</p>
+      
+      <h3>How we Ensure Quality</h3>
+      <p>1. <strong>Strategic Planning:</strong> Defining clear success criteria and mapping all functional requirements. .</p>
+      <p>2. <strong>Risk Mitigation:</strong> Prioritizing high-impact areas to optimize resources and prevent critical failures.</p>
+      <p>3. <strong>Smart Automation:</strong> Using industry-leading tools like: Selenium, Appium, JUnit for fast, consistent feedback.</p><br>
+      
+      <h3><strong>Conclusion</strong></h3>
+      <p>"Our QA-first approach helps deliver reliable, scalable, and high quality digital products you can trust."</p>
+    `,
+    author: {
+      name: "Sunil Paudyal",
+      avatar: "/team/sunilpaudyal.jpg",
+      role: "QA Tester",
+    },
+    category: "Quality Assurance",
+    tags: ["QA", "Testing", "Product Quality"],
+    publishedAt: "Jan 11, 2026",
+    readTime: "6 min read",
+    image: "/blog/qatester.jpg",
+    featured: false,
+  },
+  {
+    slug: "tech-stack-we-use",
+    title: "Tech Stack We Use: Building Scalable Startups with Sajilo Digital",
+    excerpt:
+      "Discover the modern technologies and tools Sajilo Digital uses to build fast, secure, and scalable digital products.",
+    content: `
+      <h3>Our Technology Philosophy</h3>
+      <p>Sajilo Digital uses a modern and reliable tech stack to build scalable digital products.We choose technologies that are fast, secure, and future-ready.</p>
+      
+     <h2>Powering Our Platform</h2>
+      <p>1.<strong>Frontend Technologies</strong>Our frontend is built with tools like React and Next.js for smooth user experiences.</p>
+      <p>2. <strong>Backend & Infrastructure</strong>Built with Node.js and NestJS, deployed on scalable cloud platforms like AWS and Vercel.</p>
+      <p>3. <strong>Databases & Devops</strong>Reliable databases and automated deployments ensure stability and performance.</p><br>
+     <h3><strong>Conclusion</strong></h3>
+     <p>" This tech stack helps startups grow efficiently and confidently."</p>
+
+    `,
+    author: {
+      name: "Arun Neupane",
+      avatar: "/team/Arun.png",
+      role: "CTO",
+    },
+    category: "Business",
+    tags: ["Tech Stack", "Startups", "Scaling", "SajiloDigital"],
     publishedAt: "Dec 28, 2025",
     readTime: "7 min read",
     image: "/gallery/slide-4.jpg",
+    featured: true,
+  },
+  {
+    slug: "video-editing",
+    title: "Video Editing Services",
+    excerpt:
+      "We craft powerful videos that tell your story, capture attention, and connect with your audience.",
+    content: `
+    <h3><strong>What We Do</strong></h3>
+    <p>We turn raw footage into engaging videos that feel professional and purposeful.</p>
+    
+    <h3><strong>Our Style</strong></h3>
+    <p>Clean cuts, smooth transitions, and storytelling that keeps viewers watching.</p>
+    
+    <h3><strong>Why It Matters</strong></h3>
+    <p>Great videos build trust, spark emotion, and make your brand unforgettable.</p>
+    
+    <h3><strong>How We Work</strong></h3>
+    <p>We collaborate closely to bring your vision to life, frame by frame.</p><br>
+    <h3><strong>Conclusion</strong></h3>
+    <p>"Your story deserves to be seen, felt, and remembered."</p>
+  `,
+    author: {
+      name: "Ashish G.M",
+      avatar: "/team/ashish.jpg",
+      role: "Video Editor",
+    },
+    category: "Services",
+    tags: ["VideoEditing", "Creative", "Branding", "SajiloDigital"],
+    publishedAt: "Jan 10, 2026",
+    readTime: "3 min read",
+    image: "/blog/videoedit1.png",
     featured: false,
   },
 ];
