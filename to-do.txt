@@ -1,5 +1,2 @@
 dynamic sitemap generator, proper breadcrumbs , buttons such in google searching, 
 How we work section or a page that will show real time how much client's work is done such as design , code , file structure, images, screenshots , process  , working etc.
-
-
-right now , upload all the images to images folder with proper names as i have written 

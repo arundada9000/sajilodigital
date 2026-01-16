@@ -12,7 +12,7 @@ export default function NotFound() {
       {/* 1. Background Atmosphere */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-blue-500/10 blur-[120px] rounded-full animate-pulse" />
-        <div className="absolute inset-0 bg-[url('/noise.png')] opacity-[0.03] contrast-150 brightness-150" />
+        <div className="absolute inset-0 bg-[url('/noise.svg')] opacity-[0.03] contrast-150 brightness-150" />
       </div>
 
       {/* 2. Top Branding Meta */}

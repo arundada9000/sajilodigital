@@ -93,6 +93,18 @@ export const searchRegistry: Entry[] = [
     type: "page",
     keywords: ["status", "device"],
   },
+  {
+    title: "terms",
+    href: "/terms",
+    type: "page",
+    keywords: ["terms", "conditions", "terms & conditions"],
+  },
+  {
+    title: "privacy",
+    href: "/privacy",
+    type: "page",
+    keywords: ["privacy", "policy"],
+  },
 
   // Sections
   {
@@ -266,7 +278,7 @@ export const searchRegistry: Entry[] = [
     type: "team",
     keywords: ["pramod tharu", "chairperson", "team", "member"],
   },
-  
+
   {
     title: "Bal Gobind Chaudhary",
     href: "/about/team?memberId=2",
@@ -278,7 +290,7 @@ export const searchRegistry: Entry[] = [
       "ceo",
       "team",
       "member",
-      "founder"
+      "founder",
     ],
   },
   {
@@ -487,7 +499,7 @@ export const searchRegistry: Entry[] = [
     type: "blog",
     keywords: ["Tech Stack", "Startups", "Scaling", "SajiloDigital"],
   },
-   {
+  {
     title: "Video Editing Services",
     href: "/blog/video-editing",
     type: "blog",
@@ -517,7 +529,7 @@ export const searchRegistry: Entry[] = [
     title: "Career Khoj",
     href: "/projects/career-khoj",
     type: "page",
-    keywords: ["education", "jobtool", "learning", ],
+    keywords: ["education", "jobtool", "learning"],
   },
   {
     title: "Sorting Algorithms Visualizer",
@@ -529,13 +541,13 @@ export const searchRegistry: Entry[] = [
     title: "Chroma",
     href: "/projects/easy-color-picker",
     type: "page",
-    keywords: ["learning", "webtool",],
+    keywords: ["learning", "webtool"],
   },
   {
     title: "Plantify",
     href: "/projects/Plantiify-Pomodoro",
     type: "page",
-    keywords: ["webapp",],
+    keywords: ["webapp"],
   },
   {
     title: "Code Olympiad",
@@ -543,7 +555,7 @@ export const searchRegistry: Entry[] = [
     type: "page",
     keywords: ["education"],
   },
-   {
+  {
     title: "Easy Vanilla",
     href: "/projects/easy-vanilla",
     type: "page",

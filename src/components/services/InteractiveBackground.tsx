@@ -36,7 +36,7 @@ const InteractiveBackground = () => {
     <div ref={containerRef} className="absolute inset-0 overflow-hidden bg-black select-none pointer-events-none">
 
       {/* 1. Base Grain Layer */}
-      <div className="absolute inset-0 z-0 opacity-[0.05] bg-[url('/noise.png')]" />
+      <div className="absolute inset-0 z-0 opacity-[0.05] bg-[url('/noise.svg')]" />
 
       {/* 2. Dynamic Light Streaks (Awwwards Style) */}
       <motion.div

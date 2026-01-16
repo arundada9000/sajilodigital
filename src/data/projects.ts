@@ -12,12 +12,12 @@ export const projects: Project[] = [
     client: "Mount Glacier Trek Pvt. Ltd.",
     duration: "2 months",
     year: "2025",
-    image: "/projects/mtglaicer.jpg",
+    image: "/projects/mtglacier.jpg",
     images: [
       "/projects/mtglacier1.png",
-      "/projects/mtgalicer2.png",
-      "/projects/mtgalicer3.png",
-      "/projects/mtgalicer4.png",
+      "/projects/mtglacier2.png",
+      "/projects/mtglacier3.png",
+      "/projects/mtglacier4.png",
     ],
     technologies: [
       "Next.js",
@@ -48,7 +48,7 @@ export const projects: Project[] = [
     testimonial: {
       text: "The Mount Glacier Trek & Expedition website beautifully showcases our Himalayan adventures and trip offerings. Since launching the new design, we’ve seen more inquiries from global travelers and a significant increase in engagement with our trekking packages. The detailed itineraries and visuals truly communicate the magic of the Himalayas.",
       author: "Pramod Tharu",
-      role: "Chairperson, Sajilo Didital",
+      role: "Chairperson, Sajilo Digital",
     },
   },
   {
@@ -175,7 +175,7 @@ export const projects: Project[] = [
       "Performance optimized with lazy loading",
       "Simple navigation with quick access to key sections",
     ],
-    liveUrl: "https://career-khoj-gobindtharus-projects.vercel.app/",
+    liveUrl: "https://careerkhoj.balgobindchaudhary.com.np/",
     githubUrl: "https://github.com/balgobindchaudhary/CareerKhoj",
     testimonial: {
       text: "Career Khoj made it easier to understand strengths and see clear steps toward jobs which you are interested in. Fast, easy to use, and helped for discovering paths!",
