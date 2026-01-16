@@ -29,11 +29,11 @@ export async function generateMetadata({
     openGraph: {
       title: project.title,
       description: project.description,
-      url: `https://sajilodigital.com/projects/${project.slug}`,
+      url: `https://sajilodigital.com.np/projects/${project.slug}`,
       images: [{ url: project.image }],
     },
     alternates: {
-      canonical: `https://sajilodigital.com/projects/${project.slug}`,
+      canonical: `https://sajilodigital.com.np/projects/${project.slug}`,
     },
   };
 }
@@ -71,7 +71,7 @@ export default async function ProjectDetailPage({
               name: "Sajilo Digital",
             },
             datePublished: `${project.year}-01-01`,
-            url: `https://sajilodigital.com/projects/${project.slug}`,
+            url: `https://sajilodigital.com.np/projects/${project.slug}`,
             image: project.image,
           }),
         }}
