@@ -120,53 +120,88 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
-              "@type": "Organization",
-              name: "Sajilo Digital Pvt. Ltd.",
-              alternateName: "Sajilo Digital",
-              url: "https://sajilodigital.com.np",
-              logo: "https://sajilodigital.com.np/images/logo.png",
-              description:
-                "Sajilo Digital is a leading web development company in Nepal, specializing in modern web applications, custom software solutions, and digital transformation.",
-              address: {
-                "@type": "PostalAddress",
-                streetAddress: "Horizon Chowk",
-                addressLocality: "Butwal-11",
-                addressRegion: "Lumbini",
-                postalCode: "32907",
-                addressCountry: "NP",
-              },
-              contactPoint: {
-                "@type": "ContactPoint",
-                telephone: "+977-9811420975",
-                contactType: "technical support",
-                email: "arunneupane0000@gmail.com",
-                availableLanguage: ["English", "Nepali"],
-              },
-              founder: [
+              "@graph": [
                 {
-                  "@type": "Person",
-                  name: "Bal Gobind Chaudhary",
-                  jobTitle: "CEO & Founder",
+                  "@type": "WebSite",
+                  "@id": "https://sajilodigital.com.np/#website",
+                  url: "https://sajilodigital.com.np",
+                  name: "Sajilo Digital",
+                  description: "Your Vision Our Innovation",
+                  publisher: {
+                    "@id": "https://sajilodigital.com.np/#organization",
+                  },
+                  potentialAction: {
+                    "@type": "SearchAction",
+                    target:
+                      "https://sajilodigital.com.np/search?q={search_term_string}",
+                    "query-input": "required name=search_term_string",
+                  },
                 },
                 {
-                  "@type": "Person",
-                  name: "Pramod Tharu",
-                  jobTitle: "Chairperson",
+                  "@type": "Organization",
+                  "@id": "https://sajilodigital.com.np/#organization",
+                  name: "Sajilo Digital Pvt. Ltd.",
+                  alternateName: "Sajilo Digital",
+                  url: "https://sajilodigital.com.np",
+                  logo: {
+                    "@type": "ImageObject",
+                    url: "https://sajilodigital.com.np/images/logo.png",
+                    width: 512,
+                    height: 512,
+                  },
+                  description:
+                    "Sajilo Digital is a leading web development company in Nepal, specializing in modern web applications, custom software solutions, and digital transformation.",
+                  address: {
+                    "@type": "PostalAddress",
+                    streetAddress: "Horizon Chowk",
+                    addressLocality: "Butwal - 11",
+                    addressRegion: "Lumbini",
+                    postalCode: "32907",
+                    addressCountry: "NP",
+                  },
+                  geo: {
+                    "@type": "GeoCoordinates",
+                    latitude: 27.7006,
+                    longitude: 83.4484,
+                  },
+                  contactPoint: {
+                    "@type": "ContactPoint",
+                    telephone: "+977-9811420975",
+                    contactType: "customer support",
+                    email: "arunneupane0000@gmail.com",
+                    areaServed: ["NP", "US", "AU", "UK"],
+                    availableLanguage: ["English", "Nepali"],
+                  },
+                  sameAs: [
+                    "https://youtube.com/@sajilo_digital",
+                    "https://www.facebook.com/profile.php?id=61579846778258",
+                    "https://github.com/sajhilodigital",
+                    "https://instagram.com/sajilo_digital",
+                    "https://wa.me/9779842977209",
+                    "https://linkedin.com/company/sajilo-digital",
+                  ],
+                  founder: [
+                    {
+                      "@type": "Person",
+                      name: "Bal Gobind Chaudhary",
+                      jobTitle: "CEO & Founder",
+                    },
+                  ],
+                  CTO: [
+                    {
+                      "@type": "Person",
+                      name: "Arun Neupane",
+                      jobTitle: "CTO",
+                    },
+                  ],
+                  Chairperson: [
+                    {
+                      "@type": "Person",
+                      name: "Pramod Chaudhary",
+                      jobTitle: "chairperson",
+                    },
+                  ],
                 },
-              ],
-              member: [
-                {
-                  "@type": "Person",
-                  name: "Arun Neupane",
-                  jobTitle: "CTO",
-                },
-              ],
-              sameAs: [
-                "https://youtube.com/@sajilo_digital",
-                "https://www.facebook.com/profile.php?id=61579846778258",
-                "https://github.com/sajhilodigital",
-                "https://instagram.com/sajilo_digital",
-                "https://wa.me/9779842977209",
               ],
             }),
           }}

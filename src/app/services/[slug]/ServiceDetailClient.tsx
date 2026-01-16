@@ -6,6 +6,7 @@ import { useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft, Sparkles, MoveRight } from "lucide-react";
+import Breadcrumbs from "@/src/components/common/Breadcrumbs";
 
 interface ServiceDetailClientProps {
     service: Service;
@@ -26,6 +27,9 @@ export default function ServiceDetailClient({ service }: ServiceDetailClientProp
                     </div>
                     <span className="text-[9px] md:text-[10px] tracking-[0.3em] md:tracking-[0.4em] font-black uppercase opacity-40 group-hover:opacity-100 transition-opacity">Back to Origin</span>
                 </Link>
+                <div className="hidden md:block absolute left-1/2 -translate-x-1/2 top-8 z-50">
+                    <Breadcrumbs className="mb-0 text-white/50" />
+                </div>
                 <div className="hidden md:flex gap-12">
                     {["Strategy", "Performance", "Creative", "Scale"].map((item) => (
                         <span key={item} className="text-[9px] tracking-[0.5em] font-black uppercase text-white/20">{item}</span>
@@ -233,6 +237,69 @@ export default function ServiceDetailClient({ service }: ServiceDetailClientProp
                     ))}
                 </div>
             </footer>
+
+            {/* Structured Data for Rich Results */}
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{
+                    __html: JSON.stringify({
+                        "@context": "https://schema.org",
+                        "@graph": [
+                            {
+                                "@type": "BreadcrumbList",
+                                "itemListElement": [
+                                    {
+                                        "@type": "ListItem",
+                                        "position": 1,
+                                        "name": "Home",
+                                        "item": "https://sajilodigital.com.np"
+                                    },
+                                    {
+                                        "@type": "ListItem",
+                                        "position": 2,
+                                        "name": "Services",
+                                        "item": "https://sajilodigital.com.np/services"
+                                    },
+                                    {
+                                        "@type": "ListItem",
+                                        "position": 3,
+                                        "name": service.title,
+                                        "item": `https://sajilodigital.com.np/services/${service.slug}`
+                                    }
+                                ]
+                            },
+                            {
+                                "@type": "Service",
+                                "name": service.title,
+                                "description": service.description,
+                                "provider": {
+                                    "@type": "Organization",
+                                    "name": "Sajilo Digital"
+                                },
+                                "areaServed": ["NP", "Global"],
+                                "hasOfferCatalog": {
+                                    "@type": "OfferCatalog",
+                                    "name": `${service.title} Packages`,
+                                    "itemListElement": service.pricing.map((plan) => ({
+                                        "@type": "Offer",
+                                        "itemOffered": {
+                                            "@type": "Service",
+                                            "name": `${service.title} - ${plan.plan}`
+                                        },
+                                        "priceSpecification": {
+                                            "@type": "PriceSpecification",
+                                            "price": plan.price.replace(/[^0-9.]/g, '') || "0",
+                                            "priceCurrency": "NPR",
+                                            "description": plan.features.join(", ")
+                                        }
+                                    }))
+                                }
+                            }
+                        ]
+                    })
+                }}
+            />
+
 
         </div>
     );

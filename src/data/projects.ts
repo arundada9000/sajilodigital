@@ -3,7 +3,7 @@ import { Project } from "../types/project";
 export const projects: Project[] = [
   {
     slug: "mount-glacier-trek",
-    title: "Mount Glacier Alpine Adventure Trek & Tours",
+    title: "Mount Glacier",
     category: "Travel & Tourism",
     description:
       "A professional adventure travel website showcasing Himalayan trekking, tours, and outdoor experiences with detailed itineraries and online trip discovery.",
@@ -100,7 +100,7 @@ export const projects: Project[] = [
 
   {
     slug: "sajilo-sahayata",
-    title: "Sajilo Sahayata Disaster Management ",
+    title: "Sajilo Sahayata",
     category: "Web App",
     description:
       "A real-time disaster reporting and coordination system connecting citizens, responders, and authorities for faster emergency action.",
@@ -186,7 +186,7 @@ export const projects: Project[] = [
 
   {
     slug: "easy-Sorting-Algorithms",
-    title: "Sorting Algorithms Visualizer",
+    title: "EasySorting",
     category: "Learning WebTool",
     description:
       "An interactive web app that visualizes popular sorting algorithms to help users understand how they work in real time.",

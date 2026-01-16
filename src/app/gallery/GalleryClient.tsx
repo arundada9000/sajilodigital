@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import GalleryV3 from "../../components/GalleryV3";
+import GalleryV3 from "@/src/components/gallery/GalleryV3";
 import CustomCursor from "../../../components/CustomCursor";
 import Navigation from "../../../components/Navigation";
 import Grain from "../../components/ui/Grain";

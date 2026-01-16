@@ -10,6 +10,7 @@ import ServiceSelector from "./ServiceSelector";
 import DynamicPricingCard from "./DynamicPricingCard";
 import ServiceComparisonTable from "./ServiceComparisonTable";
 import PackageBundles from "./PackageBundles";
+import { Button } from "@/src/components/common/Button";
 import { servicePricing, getServicePricing, ServicePricing } from "@/src/data/pricingData";
 
 export default function PricingClient() {
@@ -276,19 +277,21 @@ export default function PricingClient() {
                                 Contact our experts for a free strategy session. We'll help you map out your digital journey.
                             </p>
                             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                                <Link
+                                <Button
                                     href="/contact"
-                                    className="px-8 py-4 bg-white text-black rounded-xl font-bold hover:bg-gray-200 transition-all flex items-center space-x-2 group"
+                                    size="lg"
+                                    className="group space-x-2"
                                 >
                                     <span>Book a Consultation</span>
                                     <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
-                                </Link>
-                                <Link
+                                </Button>
+                                <Button
                                     href="/faq"
-                                    className="px-8 py-4 bg-white/5 text-white border border-white/10 rounded-xl font-bold hover:bg-white/10 transition-all"
+                                    variant="outline"
+                                    size="lg"
                                 >
                                     View FAQ
-                                </Link>
+                                </Button>
                             </div>
                         </div>
                     </div>

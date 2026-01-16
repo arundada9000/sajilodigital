@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { CheckCircle2, Star, ArrowRight, Sparkles } from "lucide-react";
+import { Button } from "@/src/components/common/Button";
 import { PricingTier } from "@/src/data/pricingData";
 
 interface DynamicPricingCardProps {
@@ -35,8 +36,8 @@ export default function DynamicPricingCard({
                     ease: [0.22, 1, 0.36, 1],
                 }}
                 className={`group relative p-6 md:p-8 rounded-3xl border transition-all duration-500 ${isPopular
-                        ? "bg-white/[0.04] border-purple-500/50 shadow-[0_0_40px_-15px_rgba(168,85,247,0.3)]"
-                        : "bg-white/[0.02] border-white/10 hover:border-white/20 hover:bg-white/[0.03]"
+                    ? "bg-white/[0.04] border-purple-500/50 shadow-[0_0_40px_-15px_rgba(168,85,247,0.3)]"
+                    : "bg-white/[0.02] border-white/10 hover:border-white/20 hover:bg-white/[0.03]"
                     }`}
                 whileHover={{
                     y: -8,
@@ -136,24 +137,24 @@ export default function DynamicPricingCard({
                     </ul>
 
                     {/* CTA Button */}
-                    <Link
+                    <Button
                         href="/contact"
-                        className={`group/cta flex items-center justify-center space-x-2 w-full py-4 rounded-xl font-semibold transition-all duration-300 relative overflow-hidden ${isPopular
-                                ? "bg-white text-black hover:bg-gray-200"
-                                : "bg-white/5 text-white border border-white/10 hover:bg-white/10 hover:border-white/20"
-                            }`}
+                        variant={isPopular ? "default" : "outline"}
+                        width="full"
+                        size="lg"
+                        className="group/cta space-x-2 relative overflow-hidden transition-all duration-300 rounded-xl"
                     >
                         {/* Button background animation */}
                         <motion.div
                             className={`absolute inset-0 ${isPopular
-                                    ? "bg-gradient-to-r from-purple-500 to-blue-500 opacity-0 group-hover/cta:opacity-20"
-                                    : "bg-gradient-to-r from-purple-500/20 to-blue-500/20 opacity-0 group-hover/cta:opacity-100"
+                                ? "bg-gradient-to-r from-purple-500 to-blue-500 opacity-0 group-hover/cta:opacity-20"
+                                : "bg-gradient-to-r from-purple-500/20 to-blue-500/20 opacity-0 group-hover/cta:opacity-100"
                                 } transition-opacity duration-300`}
                         />
 
                         <span className="relative z-10">Get Started</span>
                         <ArrowRight className="w-4 h-4 relative z-10 group-hover/cta:translate-x-1 transition-transform duration-300" />
-                    </Link>
+                    </Button>
                 </div>
 
                 {/* Ambient Border Glow */}

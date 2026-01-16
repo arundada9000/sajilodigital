@@ -10,6 +10,7 @@ import {
   Quote,
   ChevronRight,
 } from "lucide-react";
+import Breadcrumbs from "@/src/components/common/Breadcrumbs";
 import { Project } from "../../../../types/project";
 
 interface ProjectDetailClientProps {
@@ -37,7 +38,7 @@ export default function ProjectDetailClient({
 
       {/* Navigation Header */}
       <header className="fixed top-5 -left-10 lg:-left-10 xl:-left-70 2xl:-left-150 right-0 z-50 p-6 md:p-10 pointer-events-none">
-        <div className="container-custom flex pointer-events-auto">
+        <div className="container-custom flex pointer-events-auto items-center justify-between">
           <Link
             href="/projects"
             className="mt-10 group flex items-center space-x-3 bg-white/5 border border-white/10 backdrop-blur-md px-5 py-2.5 rounded-full hover:bg-white hover:text-black transition-all duration-500"
@@ -47,6 +48,10 @@ export default function ProjectDetailClient({
               Back
             </span>
           </Link>
+
+          <div className="mt-10 pointer-events-auto bg-black/50 backdrop-blur-md px-4 py-1.5 rounded-full border border-white/5">
+            <Breadcrumbs className="mb-0 text-white/60 text-xs" />
+          </div>
         </div>
       </header>
 
@@ -264,6 +269,56 @@ export default function ProjectDetailClient({
           </div>
         </Link>
       </section>
+
+      {/* Structured Data for Project */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@graph": [
+              {
+                "@type": "BreadcrumbList",
+                itemListElement: [
+                  {
+                    "@type": "ListItem",
+                    position: 1,
+                    name: "Home",
+                    item: "https://sajilodigital.com.np",
+                  },
+                  {
+                    "@type": "ListItem",
+                    position: 2,
+                    name: "Projects",
+                    item: "https://sajilodigital.com.np/projects",
+                  },
+                  {
+                    "@type": "ListItem",
+                    position: 3,
+                    name: project.title,
+                    item: `https://sajilodigital.com.np/projects/${project.slug}`,
+                  },
+                ],
+              },
+              {
+                "@type": "CreativeWork",
+                headline: project.title,
+                image: [project.image, ...(project.images || [])],
+                dateCreated: project.year,
+                author: {
+                  "@type": "Organization",
+                  name: "Sajilo Digital",
+                },
+                provider: {
+                  "@type": "Organization",
+                  name: project.client,
+                },
+                keywords: project.technologies.join(", "),
+              },
+            ],
+          }),
+        }}
+      />
     </div>
   );
 }
