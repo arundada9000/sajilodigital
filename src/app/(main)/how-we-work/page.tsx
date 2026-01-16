@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     title: "How We Work | Sajilo Digital",
     description:
       "Watch your software being built in real-time. Our transparent process ensures quality and zero surprises.",
-    url: "https://sajilo.digital.co.np/how-we-work",
+    url: "https://sajilo.digital.com.np/how-we-work",
     siteName: "Sajilo Digital",
     images: [
       {

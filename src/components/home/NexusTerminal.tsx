@@ -88,6 +88,7 @@ const PAGES = [
   "services",
   "testimonials",
   "status",
+  "how-we-work",
 ];
 
 // Team Data

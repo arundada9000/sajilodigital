@@ -6,6 +6,7 @@ import { FaBlog } from "react-icons/fa";
 import { BsTelephone } from "react-icons/bs";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { IoMdInformationCircleOutline } from "react-icons/io";
+import { GrStatusUnknown } from "react-icons/gr";
 import DockSubMenu from "@/components/DockSubMenu";
 import MobileNavbar from "./MobileNavbar";
 import { useRouter } from "next/navigation";
@@ -42,10 +43,11 @@ export default function Navbar() {
           items={[
             { label: "Company", href: "/about" },
             { label: "Team", href: "/about/team" },
+            { label: "How We Work", href: "/how-we-work" },
           ]}
         />
       ),
-      onClick: () => { },
+      onClick: () => {},
     },
     {
       icon: <BsTelephone size={18} />,
@@ -90,10 +92,15 @@ export default function Navbar() {
               icon: <FaQuestionCircle size={14} />,
               href: "/faq",
             },
+            {
+              label: "Status",
+              icon: <GrStatusUnknown size={14} />,
+              href: "/status",
+            },
           ]}
         />
       ),
-      onClick: () => { },
+      onClick: () => {},
     },
   ];
 

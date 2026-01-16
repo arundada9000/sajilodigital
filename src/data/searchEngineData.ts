@@ -483,9 +483,9 @@ export const searchRegistry: Entry[] = [
   },
   {
     title: "How We Work",
-    href: "/blog/how-we-work",
-    type: "blog",
-    keywords: ["Process", "Team", "SajiloDigital"],
+    href: "/how-we-work",
+    type: "page",
+    keywords: ["Process", "Team", "SajiloDigital", "how we work"],
   },
   {
     title: "How we ensure quality of products: The Sajilo Digital QA Approach",
