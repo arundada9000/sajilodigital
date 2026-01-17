@@ -1,4 +1,0 @@
-[x] dynamic sitemap generator
-[x] How we work section / Client Dashboard (Real-time progress, file structure, logs)
-- [x] proper breadcrumbs
-- [ ] buttons such in google searching

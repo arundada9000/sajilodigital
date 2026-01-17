@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import ClientDashboardDemo from "@/src/components/how-we-work/ClientDashboardDemo";
 import LiveProjectBuilder from "@/src/components/how-we-work/LiveProjectBuilder";
 import ProcessTimeline from "@/src/components/how-we-work/ProcessTimeline";
+import LiveWorkingTimeline from "@/src/components/how-we-work/LiveWorkingTimeline";
 import FeaturesBento from "@/src/components/how-we-work/FeaturesBento";
 import CTA from "@/src/components/how-we-work/CTA";
 import Grain from "@/src/components/ui/Grain";
@@ -172,14 +173,19 @@ export default function HowWeWorkPage() {
         </div>
       </div>
 
+      {/* LIVE WORKING TIMELINE (NEW) */}
+      <div className="relative z-10 border-y border-white/5 bg-[#050505]">
+        <LiveWorkingTimeline />
+      </div>
+
       {/* PROCESS TIMELINE */}
       <div className="container-custom relative z-10">
         <div className="text-center max-w-3xl mx-auto mt-32 mb-16">
-          <h2 className="text-3xl md:text-5xl font-bold mb-6">
-            From Concept to Launch
+          <h2 className="text-3xl md:text-5xl font-bold mb-6 italic uppercase tracking-tighter">
+            Standard <span className="text-blue-500">Protocol</span>
           </h2>
-          <p className="text-gray-400">
-            Our proven workflow ensures speed, quality, and no surprises.
+          <p className="text-gray-400 font-mono text-sm uppercase tracking-widest leading-relaxed">
+            Our proven engineering workflow for consistent excellence.
           </p>
         </div>
         <ProcessTimeline />
