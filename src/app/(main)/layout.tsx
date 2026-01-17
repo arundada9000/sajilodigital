@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Poppins } from "next/font/google";
 import "../globals.css";
 import Header from "../../components/layout/Header";
+import MobileHeader from "../../components/layout/MobileHeader";
 import Footer from "../../components/layout/Footer";
 import Navbar from "../../components/layout/Navbar";
 
@@ -98,6 +99,7 @@ export default function MainLayout({
   return (
     <>
       <Header />
+      <MobileHeader />
       <Navbar />
       <main id="main-content" className="min-h-screen">
         {children}

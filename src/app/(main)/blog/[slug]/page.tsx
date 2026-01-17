@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { blogPosts } from "../../../../data/blog";
 import { Calendar, Clock, ArrowLeft, Share2, Tag, BookOpen } from "lucide-react";
+import ShareButton from "../../../../components/blog/ShareButton";
 
 export async function generateStaticParams() {
   return blogPosts.map((post) => ({
@@ -127,9 +128,7 @@ export default async function BlogPostPage({
 
             <div className="h-8 w-px bg-white/10 hidden sm:block" />
 
-            <button className="p-2 rounded-full bg-white/5 border border-white/10 hover:border-cyan-500/50 hover:text-cyan-400 transition-all duration-300">
-              <Share2 className="w-5 h-5" />
-            </button>
+            <ShareButton />
           </div>
         </div>
       </header>

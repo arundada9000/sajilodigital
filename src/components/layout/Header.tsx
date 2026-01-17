@@ -77,7 +77,7 @@ export default function Header() {
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-        className={`fixed top-0 left-0 right-0 z-[120] transition-all duration-500 ${isScrolled
+        className={`fixed top-0 left-0 right-0 z-[120] transition-all duration-500 hidden md:block ${isScrolled
           ? "py-3 bg-black/60 backdrop-blur-3xl border-b border-white/5"
           : "py-6 bg-transparent"
           }`}

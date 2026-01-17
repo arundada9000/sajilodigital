@@ -169,3 +169,369 @@ This project has been architected for longevity and scaled for impact. We look f
 <div align="center">
   <small>Architecture by Arun Neupane. Engineered for Excellence.</small>
 </div>
+
+### Folder Structure
+
+```
+└── sajilo-digital/
+    ├── .env.example
+    ├── .env.local
+    ├── .gitignore
+    ├── components.json
+    ├── eslint.config.mjs
+    ├── next-env.d.ts
+    ├── next.config.ts
+    ├── package.json
+    ├── pnpm-lock.yaml
+    ├── postcss.config.mjs
+    ├── README.md
+    ├── tsconfig.json
+    ├── public/
+    │   ├── favicon.ico
+    │   ├── icon.png
+    │   ├── manifest.json
+    │   ├── noise.svg
+    │   ├── placeholder.svg
+    │   ├── robots.txt
+    │   ├── sitemap.xml
+    │   ├── testimonials/
+    │   │   ├── daba-sherpa.jpg
+    │   │   └── mitralal-sapkota.jpg
+    │   ├── team/
+    │   │   ├── Arun.png
+    │   │   ├── ashish.jpg
+    │   │   ├── bal.jpg
+    │   │   ├── bijay.jpg
+    │   │   ├── pramod.jpg
+    │   │   ├── puspanjali.jpg
+    │   │   ├── puspanjali2.jpg
+    │   │   └── sunilpaudyal.jpg
+    │   ├── sounds/
+    │   │   ├── click.mp3
+    │   │   └── hover.mp3
+    │   ├── services/
+    │   │   ├── dev-ops.mp4
+    │   │   ├── dev-ops.png
+    │   │   ├── digital-marketing.mp4
+    │   │   ├── digital-marketing.png
+    │   │   ├── glacier.mp4
+    │   │   ├── graphics.png
+    │   │   ├── maintain-and-support.mp4
+    │   │   ├── maintain-and-support.png
+    │   │   ├── mt-glaciertrek.png
+    │   │   ├── seo.mp4
+    │   │   ├── seo.png
+    │   │   ├── theshop.mp4
+    │   │   ├── theshop.png
+    │   │   ├── uiux.mp4
+    │   │   ├── video-editing.mp4
+    │   │   └── video-editing.png
+    │   ├── projects/
+    │   │   ├── career.png
+    │   │   ├── career1.png
+    │   │   ├── career2.png
+    │   │   ├── career3.png
+    │   │   ├── codeolympiad.png
+    │   │   ├── codeolympiad1.png
+    │   │   ├── codeolympiad2.png
+    │   │   ├── codeolympiad3.png
+    │   │   ├── easyvanilla.png
+    │   │   ├── easyvanilla1.png
+    │   │   ├── easyvanilla2.png
+    │   │   ├── easyvanilla3.png
+    │   │   ├── easyvanilla4.png
+    │   │   ├── mtglacier.jpg
+    │   │   ├── mtglacier1.png
+    │   │   ├── mtglacier2.png
+    │   │   ├── mtglacier3.png
+    │   │   ├── mtglacier4.png
+    │   │   ├── picker.png
+    │   │   ├── picker2.png
+    │   │   ├── picker3.png
+    │   │   ├── picker4.png
+    │   │   ├── plantify.png
+    │   │   ├── plantify1.png
+    │   │   ├── plantify2.png
+    │   │   ├── plantify3.png
+    │   │   ├── sajilosahayata.png
+    │   │   ├── sajilosahayata1.png
+    │   │   ├── sajilosahayata2.jpg
+    │   │   ├── sajilosahayata3.jpg
+    │   │   ├── sajilosahayata4.png
+    │   │   ├── sorting.png
+    │   │   ├── sorting1.png
+    │   │   ├── sorting2.png
+    │   │   ├── sorting3.png
+    │   │   ├── sorting4.png
+    │   │   ├── theshop.png
+    │   │   ├── theshop1.png
+    │   │   ├── theshop2.png
+    │   │   ├── theshop3.png
+    │   │   ├── theshop4.png
+    │   │   └── theshop5.png
+    │   ├── logos/
+    │   │   ├── CircularLogo.png
+    │   │   └── circularlogo.svg
+    │   ├── images/
+    │   │   ├── about-og.jpg
+    │   │   ├── blog-op.jpg
+    │   │   ├── contact-og.jpg
+    │   │   ├── faq-og.jpg
+    │   │   ├── grid.svg
+    │   │   ├── home-og.jpg
+    │   │   ├── how-we-work-og.jpg
+    │   │   ├── logo.png
+    │   │   ├── og-image.png
+    │   │   ├── projects-og.jpg
+    │   │   ├── services-og.jpg
+    │   │   ├── team-og.jpg
+    │   │   └── testimonals-og.jpg
+    │   ├── icons/
+    │   │   ├── c3.png
+    │   │   ├── cpp.png
+    │   │   └── csharp.png
+    │   ├── gallery/
+    │   │   ├── slide-1.jpg
+    │   │   ├── slide-2.jpg
+    │   │   ├── slide-3.jpg
+    │   │   ├── slide-4.jpg
+    │   │   ├── slide-5.jpg
+    │   │   └── slide-6.jpg
+    │   ├── favicon/
+    │   │   ├── android-chrome-192x192.png
+    │   │   ├── android-chrome-512x512.png
+    │   │   ├── apple-touch-icon-152x152.png
+    │   │   ├── apple-touch-icon-167x167.png
+    │   │   ├── apple-touch-icon-180x180.png
+    │   │   ├── apple-touch-icon.png
+    │   │   ├── favicon-16x16.png
+    │   │   ├── favicon-32x32.png
+    │   │   ├── favicon-48x48.png
+    │   │   ├── favicon.ico
+    │   │   ├── favicon.png
+    │   │   ├── favicon.svg
+    │   │   ├── README.txt
+    │   │   ├── safari-pinned-tab.svg
+    │   │   └── site.webmanifest
+    │   └── blog/
+    │       └── videoedit1.png
+    ├── lib/
+    │   ├── export-util.ts
+    │   ├── sound.ts
+    │   └── utils.ts
+    ├── hooks/
+    │   ├── use-mobile.tsx
+    │   └── use-toast.tsx
+    ├── components/
+    │   ├── CamilleGallery.tsx
+    │   ├── CustomCursor.tsx
+    │   ├── Dock.tsx
+    │   ├── DockSubMenu.tsx
+    │   ├── FullscreenSlider.tsx
+    │   ├── Navigation.tsx
+    │   ├── NavLink.tsx
+    │   ├── ProfileCard.tsx
+    │   ├── ProfileModal.tsx
+    │   ├── ShinyText.tsx
+    │   ├── Shuffle.tsx
+    │   ├── SplitText.tsx
+    │   └── ui/
+    │       ├── button.tsx
+    │       ├── toast.tsx
+    │       └── use-toast.ts
+    |
+    └── src/
+        ├── types/
+        │   ├── blog.ts
+        │   ├── index.ts
+        │   ├── project.ts
+        │   └── service.ts
+        ├── styles/
+        │   └── animations.css
+        ├── lib/
+        │   ├── constants.ts
+        │   ├── metadata.ts
+        │   ├── utils.ts
+        │   ├── validation.ts
+        │   ├── voice/
+        │   │   ├── voiceCommands.ts
+        │   │   └── voiceControl.ts
+        │   ├── seo/
+        │   │   └── metadata.ts
+        │   ├── search/
+        │   │   └── searchEngine.ts
+        │   └── preferences/
+        │       └── usePreferences.ts
+        ├── hooks/
+        │   ├── upSideDownScrollTop.ts
+        │   ├── useIntersectionsObserver.ts
+        │   ├── useMediaQuery.ts
+        │   └── useScrollProgress.ts
+        ├── data/
+        │   ├── blog.ts
+        │   ├── faq.ts
+        │   ├── gallery.ts
+        │   ├── pricingData.ts
+        │   ├── projects.ts
+        │   ├── searchEngineData.ts
+        │   ├── services.ts
+        │   ├── team.ts
+        │   ├── testimonials.ts
+        │   └── workingProjects.ts
+        ├── app/
+        │   ├── apple-icon.png
+        │   ├── favicon.ico
+        │   ├── globals.css
+        │   ├── icon.png
+        │   ├── layout.tsx
+        │   ├── loading.tsx
+        │   ├── not-found.tsx
+        │   ├── robots.ts
+        │   ├── sitemap.ts
+        │   ├── template.tsx
+        │   ├── services/
+        │   │   ├── page.tsx
+        │   │   ├── ServicesClient.tsx
+        │   │   └── [slug]/
+        │   │       ├── page.tsx
+        │   │       └── ServiceDetailClient.tsx
+        │   ├── gallery/
+        │   │   ├── About.tsx
+        │   │   ├── GalleryClient.tsx
+        │   │   ├── Index.css
+        │   │   ├── page.tsx
+        │   │   ├── prevpage.tsx
+        │   │   ├── ProjectDetail.tsx
+        │   │   └── wala-layout.tsx
+        │   ├── (main)/
+        │   │   ├── layout.tsx
+        │   │   ├── page.tsx
+        │   │   ├── testimonials/
+        │   │   │   ├── layout.tsx
+        │   │   │   ├── page.tsx
+        │   │   │   └── TestimonialsClient.tsx
+        │   │   ├── terms/
+        │   │   │   └── page.tsx
+        │   │   ├── status/
+        │   │   │   ├── page.tsx
+        │   │   │   └── StatusClient.tsx
+        │   │   ├── search/
+        │   │   │   └── page.tsx
+        │   │   ├── projects/
+        │   │   │   ├── layout.tsx
+        │   │   │   ├── page.tsx
+        │   │   │   └── [slug]/
+        │   │   │       ├── page.tsx
+        │   │   │       └── ProjectDetailClient.tsx
+        │   │   ├── privacy/
+        │   │   │   └── page.tsx
+        │   │   ├── pricing/
+        │   │   │   ├── layout.tsx
+        │   │   │   └── page.tsx
+        │   │   ├── how-we-work/
+        │   │   │   └── page.tsx
+        │   │   ├── faq/
+        │   │   │   ├── FAQClient.tsx
+        │   │   │   └── page.tsx
+        │   │   ├── contact/
+        │   │   │   ├── ContactClient.tsx
+        │   │   │   ├── layout.tsx
+        │   │   │   └── page.tsx
+        │   │   ├── blog/
+        │   │   │   ├── BlogClient.tsx
+        │   │   │   ├── layout.tsx
+        │   │   │   ├── page.tsx
+        │   │   │   ├── [slug]/
+        │   │   │   │   └── page.tsx
+        │   │   │   └── category/
+        │   │   │       └── [category]/
+        │   │   │           └── page.tsx
+        │   │   └── about/
+        │   │       ├── AboutClient.tsx
+        │   │       ├── layout.tsx
+        │   │       ├── page.tsx
+        │   │       ├── team/
+        │   │       │   ├── page.tsx
+        │   │       │   └── TeamClient.tsx
+        │   │       └── about-us/
+        │   │           └── page.tsx
+        │   └── api/
+        │       ├── newsletter/
+        │       │   └── route.ts
+        │       └── contact/
+        │           └── route.ts
+        └── components/
+            ├── ui/
+            │   ├── Badge.tsx
+            │   ├── Grain.tsx
+            │   ├── Input.tsx
+            │   ├── Magnetic.tsx
+            │   ├── Select.tsx
+            │   ├── Textarea.tsx
+            │   └── SvgLoader/
+            │       ├── svgLoader.css
+            │       └── SvgLoader.tsx
+            ├── services/
+            │   ├── CtaSection.tsx
+            │   ├── Footer.tsx
+            │   ├── HeroSection.tsx
+            │   ├── InteractiveBackground.tsx
+            │   ├── MonthSection.tsx
+            │   ├── NavigationButtons.tsx
+            │   ├── ProgressIndicator.tsx
+            │   └── ServiceSection.tsx
+            ├── seo/
+            │   └── StructuredData.tsx
+            ├── projects/
+            │   └── ProjectsClient.tsx
+            ├── pricing/
+            │   ├── DynamicPricingCard.tsx
+            │   ├── PackageBundles.tsx
+            │   ├── PricingClient.tsx
+            │   ├── ServiceComparisonTable.tsx
+            │   └── ServiceSelector.tsx
+            ├── layout/
+            │   ├── Footer.tsx
+            │   ├── GlobalTerminal.tsx
+            │   ├── Header.tsx
+            │   ├── MobileNavbar.tsx
+            │   ├── Navbar.tsx
+            │   ├── PageTransition.tsx
+            │   ├── ParticlesBackground.tsx
+            │   └── StandardLayout.tsx
+            ├── how-we-work/
+            │   ├── ClientDashboardDemo.tsx
+            │   ├── CTA.tsx
+            │   ├── FeaturesBento.tsx
+            │   ├── LiveProjectBuilder.tsx
+            │   ├── LiveWorkingTimeline.tsx
+            │   └── ProcessTimeline.tsx
+            ├── home/
+            │   ├── CreativeSection.tsx
+            │   ├── CTASection.tsx
+            │   ├── FeaturedProjects.tsx
+            │   ├── HeroSection.tsx
+            │   ├── HomeHero.tsx
+            │   ├── MissionSection.tsx
+            │   ├── NexusCTA.tsx
+            │   ├── NexusTerminal.tsx
+            │   ├── SystemArchitecture.tsx
+            │   └── TextTicker.tsx
+            ├── header/
+            │   ├── SearchInput.tsx
+            │   ├── SettingsSheet.tsx
+            │   └── VoiceDialog.tsx
+            ├── gallery/
+            │   └── GalleryV3.tsx
+            ├── common/
+            │   ├── Accordion.tsx
+            │   ├── Breadcrumbs.tsx
+            │   ├── Button.tsx
+            │   ├── Card.tsx
+            │   ├── Loading.tsx
+            │   ├── Modal.tsx
+            │   └── SEO.tsx
+            └── blog/
+                └── BlogCard.tsx
+
+```

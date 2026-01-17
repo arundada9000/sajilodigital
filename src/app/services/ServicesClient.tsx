@@ -32,6 +32,9 @@ const NavigationButtons = dynamic(
 const Header = dynamic(() => import("../../components/layout/Header"), {
     ssr: false,
 });
+const MobileHeader = dynamic(() => import("../../components/layout/MobileHeader"), {
+    ssr: false,
+});
 
 const TOTAL_SECTIONS = services.length + 2; // Hero + Services + Catalog
 
@@ -137,8 +140,9 @@ export default function ServicesClient() {
                     key="cta"
                     className="h-full flex flex-col bg-black overflow-y-auto custom-scrollbar"
                 >
-                    {/* Conditional Header - Only in last section */}
+                    {/* Conditional Headers - Only in last section */}
                     <Header />
+                    <MobileHeader />
                     <Navbar />
                     <CtaSection />
                     <Footer />
