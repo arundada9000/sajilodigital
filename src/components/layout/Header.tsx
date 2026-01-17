@@ -9,7 +9,6 @@ import { useRouter } from "next/navigation";
 
 // External components/libs (Restored paths)
 import SearchInput from "../header/SearchInput";
-import SettingsSheet from "../header/SettingsSheet";
 import VoiceDialog from "../header/VoiceDialog";
 import { voiceControl } from "../../lib/voice/voiceControl";
 import { isMuted, toggleMute, playSound } from "@/lib/sound"; // Use absolute path safely
@@ -20,7 +19,6 @@ export default function Header() {
   const [currentTime, setCurrentTime] = useState("");
 
   // States for tools
-  const [settingsOpen, setSettingsOpen] = useState(false);
   const [voiceOpen, setVoiceOpen] = useState(false);
   const [transcript, setTranscript] = useState<string | null>(null);
   const [muted, setMuted] = useState(false);
@@ -129,7 +127,7 @@ export default function Header() {
                   <Mic size={16} />
                 </button>
                 <button
-                  onClick={() => setSettingsOpen(true)}
+                  onClick={() => window.dispatchEvent(new CustomEvent('toggle-settings'))}
                   className="p-2.5 rounded-full hover:bg-white/10 text-white/60 hover:text-white transition-all transform hover:scale-110 active:scale-95"
                   title="Preferences"
                 >
@@ -166,7 +164,6 @@ export default function Header() {
 
       {/* External Dialogs - Moved outside motion container */}
       <VoiceDialog open={voiceOpen} onClose={() => setVoiceOpen(false)} />
-      <SettingsSheet open={settingsOpen} onOpenChange={setSettingsOpen} />
     </>
   );
 }

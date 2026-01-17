@@ -5,6 +5,8 @@ import Header from "../../components/layout/Header";
 import MobileHeader from "../../components/layout/MobileHeader";
 import Footer from "../../components/layout/Footer";
 import Navbar from "../../components/layout/Navbar";
+import GlobalSystems from "../../components/layout/GlobalSystems";
+import GlobalTerminal from "../../components/layout/GlobalTerminal";
 
 // Font configurations
 const inter = Inter({
@@ -105,6 +107,8 @@ export default function MainLayout({
         {children}
       </main>
       <Footer />
+      <GlobalSystems />
+      <GlobalTerminal />
 
       {/* Schema.org structured data */}
       <script

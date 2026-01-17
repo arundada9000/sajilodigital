@@ -7,14 +7,12 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, Search, Mic, Settings } from "lucide-react";
 import MobileActionCenter from "./MobileActionCenter";
 import VoiceDialog from "../header/VoiceDialog";
-import SettingsSheet from "../header/SettingsSheet";
 
 export default function MobileHeader() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [currentTime, setCurrentTime] = useState("");
   const [actionCenterOpen, setActionCenterOpen] = useState(false);
   const [voiceOpen, setVoiceOpen] = useState(false);
-  const [settingsOpen, setSettingsOpen] = useState(false);
 
   // Nepal Time Logic
   useEffect(() => {
@@ -109,12 +107,11 @@ export default function MobileHeader() {
         isOpen={actionCenterOpen}
         onClose={() => setActionCenterOpen(false)}
         onVoiceClick={() => setVoiceOpen(true)}
-        onSettingsClick={() => setSettingsOpen(true)}
+        onSettingsClick={() => window.dispatchEvent(new CustomEvent('toggle-settings'))}
       />
 
       {/* Re-use existing dialogs */}
       <VoiceDialog open={voiceOpen} onClose={() => setVoiceOpen(false)} />
-      <SettingsSheet open={settingsOpen} onOpenChange={setSettingsOpen} />
     </>
   );
 }
