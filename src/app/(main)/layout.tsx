@@ -110,31 +110,85 @@ export default function MainLayout({
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             "@context": "https://schema.org",
-            "@type": "Organization",
-            name: "sajilodigital",
-            url: "https://sajilodigital.com.np",
-            logo: "https://sajilodigital.com.np/images/logo.png",
-            description:
-              "Leading web development company specializing in modern web applications and custom software solutions.",
-            address: {
-              "@type": "PostalAddress",
-              streetAddress: "123 Tech Street",
-              addressLocality: "Your City",
-              addressRegion: "Your State",
-              postalCode: "12345",
-              addressCountry: "US",
-            },
-            contactPoint: {
-              "@type": "ContactPoint",
-              telephone: "+1-234-567-8900",
-              contactType: "customer service",
-              email: "info@sajilodigital.com",
-            },
-            sameAs: [
-              "https://www.linkedin.com/company/sajilodigital",
-              "https://twitter.com/sajilodigital",
-              "https://github.com/sajilodigital",
-            ],
+            "@graph": [
+              {
+                "@type": "Organization",
+                "@id": "https://sajilodigital.com.np/#organization",
+                "name": "Sajilo Digital",
+                "url": "https://sajilodigital.com.np",
+                "logo": "https://sajilodigital.com.np/images/logo.png",
+                "description": "Leading web development company specializing in modern web applications, custom software solutions, and digital transformation.",
+                "address": {
+                  "@type": "PostalAddress",
+                  "streetAddress": "Horizon Chowk",
+                  "addressLocality": "Butwal",
+                  "addressRegion": "Lumbini",
+                  "postalCode": "32907",
+                  "addressCountry": "NP"
+                },
+                "contactPoint": {
+                  "@type": "ContactPoint",
+                  "telephone": "+977-9811420975",
+                  "contactType": "customer service",
+                  "email": "arunneupane0000@gmail.com"
+                },
+                "sameAs": [
+                  "https://www.linkedin.com/company/sajilo-digital",
+                  "https://facebook.com/sajilodigital",
+                  "https://github.com/sajhilodigital",
+                  "https://instagram.com/sajilo_digital"
+                ]
+              },
+              {
+                "@type": "ItemList",
+                "@id": "https://sajilodigital.com.np/#navigation",
+                "name": "Main Navigation",
+                "itemListElement": [
+                  {
+                    "@type": "SiteNavigationElement",
+                    "position": 1,
+                    "name": "Home",
+                    "url": "https://sajilodigital.com.np"
+                  },
+                  {
+                    "@type": "SiteNavigationElement",
+                    "position": 2,
+                    "name": "Services",
+                    "url": "https://sajilodigital.com.np/services"
+                  },
+                  {
+                    "@type": "SiteNavigationElement",
+                    "position": 3,
+                    "name": "Projects",
+                    "url": "https://sajilodigital.com.np/projects"
+                  },
+                  {
+                    "@type": "SiteNavigationElement",
+                    "position": 4,
+                    "name": "Blog",
+                    "url": "https://sajilodigital.com.np/blog"
+                  },
+                  {
+                    "@type": "SiteNavigationElement",
+                    "position": 5,
+                    "name": "About",
+                    "url": "https://sajilodigital.com.np/about"
+                  },
+                  {
+                    "@type": "SiteNavigationElement",
+                    "position": 6,
+                    "name": "Pricing",
+                    "url": "https://sajilodigital.com.np/pricing"
+                  },
+                  {
+                    "@type": "SiteNavigationElement",
+                    "position": 7,
+                    "name": "Contact",
+                    "url": "https://sajilodigital.com.np/contact"
+                  }
+                ]
+              }
+            ]
           }),
         }}
       />

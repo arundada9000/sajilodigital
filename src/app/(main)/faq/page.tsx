@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import FAQClient from "./FAQClient";
 import { Suspense } from "react";
+import { faqCategories } from "../../../data/faq";
 
 export const metadata: Metadata = {
   title: "FAQ | Sajilo Digital",
@@ -26,60 +27,28 @@ export const metadata: Metadata = {
 };
 
 export default function FAQPage() {
+  // Flatten all FAQs from all categories for the schema
+  const allFaqs = faqCategories.flatMap(category => category.faqs);
+
   return (
     <>
       <Suspense fallback={<div className="min-h-screen bg-[#0b0f19] animate-pulse" />}>
         <FAQClient />
       </Suspense>
-      {/* FAQ Schema is handled in the layouts or can be added here if needed specifically for this page */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "FAQPage",
-            mainEntity: [
-              {
-                "@type": "Question",
-                name: "What makes Sajilo Digital different from other agencies?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "We transcend beyond mere development. We are architects of digital legacy. Our approach combines high-end aesthetic design with mission-critical technical architecture, ensuring your digital presence is not just beautiful, but built to scale and dominate your market.",
-                },
+            mainEntity: allFaqs.map(faq => ({
+              "@type": "Question",
+              name: faq.question,
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: faq.answer,
               },
-              {
-                "@type": "Question",
-                name: "Do you offer custom software development?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Abolutely. We specialize in bespoke software solutions tailored to complex business requirements. From high-performance web applications and mobile ecosystems to enterprise-grade automation tools, we build it all from the ground up.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "How long does a typical project take?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Excellence takes time, but efficiency is our hallmark. A flagship web platform typically spans 6-12 weeks, while more complex enterprise systems may require 3-6 months. We operate in high-velocity sprints to ensure continuous delivery.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "What are your pricing models?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "We offer three primary engagement models: Strategic Packages (fixed-scope), Dedicated Teams (monthly retainer), and Bespoke Ecosystems (custom quotes). Each is designed to provide maximum value based on your project's lifecycle stage.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "What technologies do you specialize in?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "We are masters of the modern web stack. Our core expertise lies in Next.js, React, TypeScript, Node.js, and Cloud Architecture (AWS/GCP). We prioritize technologies that offer the best performance, security, and developer experience.",
-                },
-              },
-            ],
+            })),
           }),
         }}
       />

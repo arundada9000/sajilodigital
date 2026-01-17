@@ -178,7 +178,6 @@ export default function RootLayout({
                     "https://github.com/sajhilodigital",
                     "https://instagram.com/sajilo_digital",
                     "https://wa.me/9779842977209",
-                    "https://linkedin.com/company/sajilo-digital",
                   ],
                   founder: [
                     {
