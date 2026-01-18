@@ -54,13 +54,13 @@ export const searchRegistry: Entry[] = [
     title: "Team",
     href: "/about/team",
     type: "team",
-    keywords: ["staff", "members", "employees", "our team"],
+    keywords: ["team", "staff", "members", "employees", "our team"],
   },
   {
     title: "company",
     href: "/about",
     type: "page",
-    keywords: ["team", "about us", "who we are"],
+    keywords: ["about us", "who we are"],
   },
 
   {

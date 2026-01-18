@@ -212,7 +212,7 @@ function CardContent({
                   )}
                 </div>
               );
-            }
+            },
           )}
         </motion.div>
       </div>
@@ -228,7 +228,7 @@ function CardContent({
         {facebook && <Social href={facebook} icon={<FaFacebook />} />}
         {youtube && <Social href={youtube} icon={<FaYoutube />} />}
         {instagram && <Social href={instagram} icon={<FaInstagram />} />}
-        {whatsapp && <Social href={whatsapp} icon={<FaWhatsapp />} />}
+        {whatsapp && <Social href={`tel:${whatsapp}`} icon={<FaWhatsapp />} />}
         {linkedin && <Social href={linkedin} icon={<FaLinkedin />} />}
         {twitter && <Social href={twitter} icon={<FaXTwitter />} />}
       </div>
@@ -274,7 +274,7 @@ const ProfileCard = React.memo(function ProfileCard({
   useEffect(() => {
     if (containerRef.current && contentRef.current) {
       setIsOverflowed(
-        contentRef.current.scrollWidth > containerRef.current.offsetWidth
+        contentRef.current.scrollWidth > containerRef.current.offsetWidth,
       );
     }
   }, [techStack]);
@@ -293,14 +293,14 @@ const ProfileCard = React.memo(function ProfileCard({
       animate={
         isInView
           ? {
-            opacity: 1,
-            y: 0,
-            scale: 1,
-            transition: {
-              duration: prefersReducedMotion ? 0 : 0.3,
-              ease: "easeOut",
-            },
-          }
+              opacity: 1,
+              y: 0,
+              scale: 1,
+              transition: {
+                duration: prefersReducedMotion ? 0 : 0.3,
+                ease: "easeOut",
+              },
+            }
           : undefined
       }
       whileHover={!prefersReducedMotion ? { scale: 1.05 } : undefined}
@@ -336,9 +336,7 @@ const ProfileCard = React.memo(function ProfileCard({
           />
         </Tilt>
       ) : (
-        <div
-          className={cardStyles}
-        >
+        <div className={cardStyles}>
           <CardContent
             id={id}
             name={name}

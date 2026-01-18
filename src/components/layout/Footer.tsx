@@ -139,7 +139,7 @@ export default function Footer() {
                     {item}
                   </Link>
                 </li>
-              )
+              ),
             )}
           </ul>
         </div>
@@ -165,10 +165,10 @@ export default function Footer() {
                 Connect
               </span>
               <a
-                href="mailto:info@sajilodigital.com"
+                href="mailto:info@sajilodigital.com.np"
                 className="hover:text-white transition-colors block mb-1"
               >
-                info@sajilodigital.com
+                info@sajilodigital.com.np
               </a>
               <a
                 href="tel:+9779811420975"
