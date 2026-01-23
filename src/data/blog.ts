@@ -32,7 +32,7 @@ export const blogPosts: BlogPost[] = [
     tags: ["AboutUs", "SajiloDigital", "Brand", "Team"],
     publishedAt: "Jan 10, 2026",
     readTime: "3 min read",
-    image: "/gallery/slide-1.jpg",
+    image: "/favicon/android-chrome-192x192.png",
     featured: false,
   },
 
@@ -66,7 +66,7 @@ export const blogPosts: BlogPost[] = [
     tags: ["Process", "Team", "SajiloDigital"],
     publishedAt: "Jan 05, 2026",
     readTime: "8 min read",
-    image: "/gallery/slide-2.jpg",
+    image: "/gallery/img-2.jpg",
     featured: false,
   },
   {
@@ -124,7 +124,7 @@ export const blogPosts: BlogPost[] = [
     tags: ["Tech Stack", "Startups", "Scaling", "SajiloDigital"],
     publishedAt: "Dec 28, 2025",
     readTime: "7 min read",
-    image: "/gallery/slide-4.jpg",
+    image: "/blog/nextjs.jpg",
     featured: true,
   },
   {

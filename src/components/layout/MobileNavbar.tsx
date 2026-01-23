@@ -62,7 +62,7 @@ const MENU_ITEMS = [
   },
   { label: "Pricing", href: "/pricing", icon: <FaDollarSign size={18} /> },
   { label: "FAQs", href: "/faq", icon: <FaQuestionCircle size={18} /> },
-  { label: "Status", href: "/status", icon: <GrStatusUnknown size={18} /> },
+  // { label: "Status", href: "/status", icon: <GrStatusUnknown size={18} /> },
 ];
 
 export default function MobileNavbar() {

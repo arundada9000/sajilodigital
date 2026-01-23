@@ -29,29 +29,32 @@ const Navigation = ({ onAboutClick }: NavigationProps) => {
       <div className="flex items-center gap-8 md:gap-12 pointer-events-auto text-white">
         <Link
           href="/"
-          className={`text-[10px] tracking-[0.5em] uppercase transition-all duration-300 ${activeLink === "work"
-            ? "opacity-100"
-            : "opacity-40 hover:opacity-100"
-            }`}
+          className={`text-[10px] tracking-[0.5em] uppercase transition-all duration-300 ${
+            activeLink === "work"
+              ? "opacity-100"
+              : "opacity-40 hover:opacity-100"
+          }`}
         >
-          Work
+          Projects
         </Link>
         <Link
-          href="/gallery"
-          className={`text-[10px] tracking-[0.5em] uppercase transition-all duration-300 ${activeLink === "gallery"
-            ? "opacity-100"
-            : "opacity-40 hover:opacity-100"
-            }`}
+          href="/projects"
+          className={`text-[10px] tracking-[0.5em] uppercase transition-all duration-300 ${
+            activeLink === "gallery"
+              ? "opacity-100"
+              : "opacity-40 hover:opacity-100"
+          }`}
         >
           Gallery
         </Link>
         <Link
           href="/about"
           onClick={handleAboutClick}
-          className={`text-[10px] tracking-[0.5em] uppercase transition-all duration-300 ${activeLink === "about"
-            ? "opacity-100"
-            : "opacity-40 hover:opacity-100"
-            }`}
+          className={`text-[10px] tracking-[0.5em] uppercase transition-all duration-300 ${
+            activeLink === "about"
+              ? "opacity-100"
+              : "opacity-40 hover:opacity-100"
+          }`}
         >
           About
         </Link>
