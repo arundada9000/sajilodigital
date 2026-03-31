@@ -44,13 +44,14 @@ export const projects: Project[] = [
       "Performance-focused build",
     ],
     liveUrl: "https://www.mountglaciertrek.com.np/",
-    githubUrl: "https://github.com/",
+    githubUrl: "https://github.com/arundada9000",
     testimonial: {
       text: "The Mount Glacier Trek & Expedition website beautifully showcases our Himalayan adventures and trip offerings. Since launching the new design, we’ve seen more inquiries from global travelers and a significant increase in engagement with our trekking packages. The detailed itineraries and visuals truly communicate the magic of the Himalayas.",
-      author: "Pramod Tharu",
-      role: "Chairperson, Sajilo Digital",
+      author: "Mitralal Sapkota",
+      role: "Founder",
     },
   },
+
   {
     slug: "sushila-fancy-store",
     title: "Sushila Fancy Fashion Store",
@@ -90,7 +91,7 @@ export const projects: Project[] = [
       "Community engagement call-to-action",
     ],
     liveUrl: "https://sushilafancy.vercel.app/",
-    githubUrl: "https://github.com/",
+    githubUrl: "https://github.com/arundada9000",
     testimonial: {
       text: "The Sushila Fancy site captures the essence of fashion brand with a clean and inviting design. Users can explore collections, engage with  community newsletter, and get in touch easily, providing a strong digital presence for style offerings!",
       author: "Sunil Paudyal",
