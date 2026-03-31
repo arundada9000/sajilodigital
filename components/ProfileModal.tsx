@@ -15,7 +15,7 @@ import {
   FaXmark,
   FaCamera,
 } from "react-icons/fa6";
-import { FaLinkedin, FaFacebook } from "react-icons/fa";
+import { FaLinkedin, FaFacebook, FaTiktok } from "react-icons/fa";
 import { exportToPng } from "@/lib/export-util";
 import { useRef } from "react";
 
@@ -34,6 +34,7 @@ type Profile = {
   whatsapp?: string;
   facebook?: string;
   youtube?: string;
+  tiktok?: string;
   twitter?: string;
   x?: string;
   portfolio?: string;
@@ -353,6 +354,15 @@ export default function ProfileModal({ profile, onClose }: Props) {
                       title="Facebook"
                       href={profile.facebook}
                       icon={<FaFacebook size={iconSize} />}
+                    />
+                  </motion.div>
+                )}
+                {profile.tiktok && (
+                  <motion.div variants={socialItem}>
+                    <Social
+                      title="Tiktok"
+                      href={profile.tiktok}
+                      icon={<FaTiktok size={iconSize} />}
                     />
                   </motion.div>
                 )}

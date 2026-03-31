@@ -16,6 +16,7 @@ import {
   FaInstagram,
   FaLinkedin,
   FaFacebook,
+  FaTiktok,
   FaHtml5,
   FaCss3Alt,
   FaJs,
@@ -66,6 +67,7 @@ type ProfileCardProps = {
   whatsapp?: string;
   instagram?: string;
   facebook?: string;
+  tiktok?: string;
   onClick?: () => void;
 };
 
@@ -129,6 +131,7 @@ type CardContentProps = {
   whatsapp?: string;
   instagram?: string;
   facebook?: string;
+  tiktok?: string;
   containerRef: React.RefObject<HTMLDivElement | null>;
   contentRef: React.RefObject<HTMLDivElement | null>;
   isOverflowed: boolean;
@@ -148,6 +151,7 @@ function CardContent({
   whatsapp,
   instagram,
   facebook,
+  tiktok,
   containerRef,
   contentRef,
   isOverflowed,
@@ -226,6 +230,7 @@ function CardContent({
       >
         {github && <Social href={github} icon={<FaGithub />} />}
         {facebook && <Social href={facebook} icon={<FaFacebook />} />}
+        {tiktok && <Social href={tiktok} icon={<FaTiktok />} />}
         {youtube && <Social href={youtube} icon={<FaYoutube />} />}
         {instagram && <Social href={instagram} icon={<FaInstagram />} />}
         {whatsapp && <Social href={`tel:${whatsapp}`} icon={<FaWhatsapp />} />}
@@ -254,6 +259,7 @@ const ProfileCard = React.memo(function ProfileCard({
   whatsapp,
   instagram,
   facebook,
+  tiktok,
   onClick,
 }: ProfileCardProps) {
   const prefersReducedMotion = useReducedMotion();
@@ -330,6 +336,7 @@ const ProfileCard = React.memo(function ProfileCard({
             whatsapp={whatsapp}
             instagram={instagram}
             facebook={facebook}
+            tiktok={tiktok}
             containerRef={containerRef}
             contentRef={contentRef}
             isOverflowed={isOverflowed}
@@ -351,6 +358,7 @@ const ProfileCard = React.memo(function ProfileCard({
             whatsapp={whatsapp}
             instagram={instagram}
             facebook={facebook}
+            tiktok={tiktok}
             containerRef={containerRef}
             contentRef={contentRef}
             isOverflowed={isOverflowed}

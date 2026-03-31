@@ -28,6 +28,7 @@ type TeamMember = {
   whatsapp?: string;
   instagram?: string;
   facebook?: string;
+  tiktok?: string;
   portfolio?: string;
   email?: string;
   isCustom?: boolean;
@@ -341,11 +342,12 @@ const team: TeamMember[] = [
       "c",
       "cpp",
     ],
+    email: "sunilpaudyal555@gmail.com",
     github: "https://github.com/sunilpaudyal18",
-    facebook: "https://facebook.com/sunil.paudyal.12",
-    instagram: "https://instagram.com/sunil_18_paudyal",
+    facebook: "https://facebook.com/18.sunilpaudyal",
+    instagram: "https://instagram.com/18.sunilpaudyal",
     whatsapp: "+9779867420439",
-    twitter: "https://x.com/sunilpaudyal555",
+    portfolio: "https://sunilpaudyal.vercel.app",
   },
 
   {
@@ -365,11 +367,14 @@ const team: TeamMember[] = [
       "cpp",
       "c",
     ],
+    email: "gmashish202@gmail.com",
     facebook: "https://www.facebook.com/ashish.gm.376/",
     instagram: "https://www.instagram.com/mr_ashish_magar/",
     whatsapp: "+9779748813503",
     github: "https://github.com/gmashish",
     linkedin: "https://www.linkedin.com/in/ashish-gm-1a170a29a/",
+    portfolio: "https://gmashish.vercel.app/",
+    tiktok: "https://tiktok.com/@ashish_ae",
   },
   {
     id: 7,
