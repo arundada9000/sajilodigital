@@ -147,14 +147,17 @@ const MonthSection = ({
           <div
             className={`relative rounded-3xl overflow-hidden ${glowClasses[accentColor]}`}
           >
-            <motion.img
+            <motion.video
               // src={image}
-              src="/services/the-shop.gif"
-              alt={title}
+              src="/services/theshop.mp4"
               className="w-full aspect-4/3 object-cover"
               initial={{ scale: 1.1 }}
               animate={isActive ? { scale: 1 } : { scale: 1.1 }}
               transition={{ duration: 0.8 }}
+              autoPlay
+              loop
+              muted
+              playsInline
             />
             <div className="absolute inset-0 bg-linear-to-t from-background/80 via-transparent to-transparent" />
           </div>

@@ -33,6 +33,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
                 },
             ],
         },
+        twitter: {
+            card: "summary_large_image",
+            title: `${service.title} - Sajilo Digital Services`,
+            description: service.description,
+            images: [service.image || "/images/services-og.jpg"],
+        },
         alternates: {
             canonical: `https://sajilodigital.com.np/services/${slug}`,
         },
@@ -56,22 +62,49 @@ export default async function ServiceDetailPage({ params }: Props) {
                 dangerouslySetInnerHTML={{
                     __html: JSON.stringify({
                         "@context": "https://schema.org",
-                        "@type": "Service",
-                        name: service.title,
-                        description: service.description,
-                        provider: {
-                            "@type": "Organization",
-                            name: "Sajilo Digital Pvt. Ltd.",
-                            url: "https://sajilodigital.com.np"
-                        },
-                        url: `https://sajilodigital.com.np/services/${slug}`,
-                        offers: service.pricing.map(plan => ({
-                            "@type": "Offer",
-                            name: plan.plan,
-                            price: plan.price.replace(/[^\d.]/g, ''),
-                            priceCurrency: plan.price.includes('$') ? 'USD' : 'NPR',
-                            description: plan.features.join(", ")
-                        }))
+                        "@graph": [
+                            {
+                                "@type": "Service",
+                                name: service.title,
+                                description: service.description,
+                                provider: {
+                                    "@type": "Organization",
+                                    name: "Sajilo Digital Pvt. Ltd.",
+                                    url: "https://sajilodigital.com.np"
+                                },
+                                url: `https://sajilodigital.com.np/services/${slug}`,
+                                offers: service.pricing.map((plan: any) => ({
+                                    "@type": "Offer",
+                                    name: plan.plan,
+                                    price: plan.price.replace(/[^\d.]/g, ''),
+                                    priceCurrency: plan.price.includes('$') ? 'USD' : 'NPR',
+                                    description: plan.features.join(", ")
+                                }))
+                            },
+                            {
+                                "@type": "BreadcrumbList",
+                                itemListElement: [
+                                    {
+                                        "@type": "ListItem",
+                                        position: 1,
+                                        name: "Home",
+                                        item: "https://sajilodigital.com.np"
+                                    },
+                                    {
+                                        "@type": "ListItem",
+                                        position: 2,
+                                        name: "Services",
+                                        item: "https://sajilodigital.com.np/services"
+                                    },
+                                    {
+                                        "@type": "ListItem",
+                                        position: 3,
+                                        name: service.title,
+                                        item: `https://sajilodigital.com.np/services/${slug}`
+                                    }
+                                ]
+                            }
+                        ]
                     }),
                 }}
             />

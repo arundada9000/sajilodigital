@@ -20,6 +20,12 @@ export const metadata: Metadata = {
       },
     ],
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Sajilo Digital Team - The Architects of Innovation",
+    description: "Get to know the experts driving digital transformation at Sajilo Digital Pvt. Ltd.",
+    images: ["/images/team-og.jpg"],
+  },
   alternates: {
     canonical: "https://sajilodigital.com.np/about/team",
   },

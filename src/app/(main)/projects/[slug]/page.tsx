@@ -32,6 +32,12 @@ export async function generateMetadata({
       url: `https://sajilodigital.com.np/projects/${project.slug}`,
       images: [{ url: project.image }],
     },
+    twitter: {
+      card: "summary_large_image",
+      title: project.title,
+      description: project.description,
+      images: [project.image],
+    },
     alternates: {
       canonical: `https://sajilodigital.com.np/projects/${project.slug}`,
     },
@@ -63,16 +69,43 @@ export default async function ProjectDetailPage({
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             "@context": "https://schema.org",
-            "@type": "CreativeWork",
-            name: project.title,
-            description: project.description,
-            author: {
-              "@type": "Organization",
-              name: "Sajilo Digital",
-            },
-            datePublished: `${project.year}-01-01`,
-            url: `https://sajilodigital.com.np/projects/${project.slug}`,
-            image: project.image,
+            "@graph": [
+              {
+                "@type": "CreativeWork",
+                name: project.title,
+                description: project.description,
+                author: {
+                  "@type": "Organization",
+                  name: "Sajilo Digital",
+                },
+                datePublished: `${project.year}-01-01`,
+                url: `https://sajilodigital.com.np/projects/${project.slug}`,
+                image: project.image,
+              },
+              {
+                "@type": "BreadcrumbList",
+                itemListElement: [
+                  {
+                    "@type": "ListItem",
+                    position: 1,
+                    name: "Home",
+                    item: "https://sajilodigital.com.np"
+                  },
+                  {
+                    "@type": "ListItem",
+                    position: 2,
+                    name: "Projects",
+                    item: "https://sajilodigital.com.np/projects"
+                  },
+                  {
+                    "@type": "ListItem",
+                    position: 3,
+                    name: project.title,
+                    item: `https://sajilodigital.com.np/projects/${project.slug}`
+                  }
+                ]
+              }
+            ]
           }),
         }}
       />

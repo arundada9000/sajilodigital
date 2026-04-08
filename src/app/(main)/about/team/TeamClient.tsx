@@ -198,7 +198,7 @@ function RecruitmentModal({
                     .split(",")
                     .map((s) => s.trim())
                     .filter(Boolean),
-                  image: formData.image || "/team/default.jpg",
+                  image: formData.image || "/placeholder.svg",
                 });
               }
             }}
@@ -267,6 +267,8 @@ const team: TeamMember[] = [
       "github",
       "vscode",
     ],
+    portfolio: "https://balgobind.sajilodigital.com.np/",
+    email: "gobind9800@gmail.com",
     facebook: "https://www.facebook.com/balgobindchaudhary.np",
     instagram: "https://www.instagram.com/balgobindchaudhary/",
     whatsapp: "+9779816494422",
@@ -310,7 +312,9 @@ const team: TeamMember[] = [
     instagram: "https://instagram.com/arundada9000",
     whatsapp: "+9779811420975",
     github: "https://github.com/arundada9000",
-    portfolio: "https://arunneupane.netlify.app",
+    portfolio: "https://arun.sajilodigital.com.np/",
+    linkedin: "https://www.linkedin.com/in/arundada9000/",
+    tiktok: "https://tiktok.com/@arundada9000",
   },
 
   {
@@ -348,6 +352,7 @@ const team: TeamMember[] = [
     instagram: "https://instagram.com/18.sunilpaudyal",
     whatsapp: "+9779867420439",
     portfolio: "https://sunilpaudyal.vercel.app",
+    linkedin: "https://www.linkedin.com/in/sunilpaudyal18/",
   },
 
   {

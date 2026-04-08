@@ -2,8 +2,16 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { CheckCircle2, Sparkles, ArrowRight, TrendingUp } from "lucide-react";
+import { CheckCircle2, Sparkles, ArrowRight, TrendingUp, Globe, Smartphone, Layers, Palette, Search, Film, Shield, Rocket, LucideProps } from "lucide-react";
 import { packageBundles, serviceIcons, calculateBundleSavings } from "@/src/data/pricingData";
+
+const SERVICE_ICON_MAP: Record<string, React.FC<LucideProps>> = {
+    Globe, Smartphone, Layers, Palette, Search, TrendingUp, Film, Shield, Rocket,
+};
+function ServiceIcon({ name, ...props }: { name: string } & LucideProps) {
+    const Icon = SERVICE_ICON_MAP[name];
+    return Icon ? <Icon {...props} /> : null;
+}
 
 export default function PackageBundles() {
     return (
@@ -86,10 +94,10 @@ export default function PackageBundles() {
                                         <motion.div
                                             key={serviceId}
                                             whileHover={{ scale: 1.1, rotate: 5 }}
-                                            className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-lg group-hover:bg-white/10 transition-colors duration-300"
-                                            title={serviceId}
+                                            className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-white/10 transition-colors duration-300"
+                                            title={serviceId.replace(/-/g, " ")}
                                         >
-                                            {serviceIcons[serviceId]}
+                                            <ServiceIcon name={serviceIcons[serviceId] || "Globe"} size={18} className="text-gray-300" />
                                         </motion.div>
                                     ))}
                                 </div>

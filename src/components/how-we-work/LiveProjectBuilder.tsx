@@ -523,7 +523,7 @@ function LogEntry({ log }: { log: string }) {
     const getDetails = (txt: string) => {
         if (txt.includes("Analyzing")) return ["Config found: next.config.mjs", "Loading tailwind.config.ts", "Parsing 42 routes..."];
         if (txt.includes("build")) return ["Chunk size: 342kb", "Gzip compression: 0.8s", "Edge optimization: Enable"];
-        if (txt.includes("LIVE")) return ["URL: https://sajilo.digital", "Status: 200 OK", "Region: N. Virginia (us-east-1)"];
+        if (txt.includes("LIVE")) return ["URL: https://sajilodigital.com.np", "Status: 200 OK", "Region: N. Virginia (us-east-1)"];
         return ["Process ID: " + Math.floor(Math.random() * 9000 + 1000), "Memory: 124MB", "Runtime: Node v20.10.0"];
     };
 

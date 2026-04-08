@@ -565,17 +565,17 @@ export const packageBundles: PackageBundle[] = [
   },
 ];
 
-// Service icons mapping (using service slugs)
+// Service icons mapping (using Lucide icon names)
 export const serviceIcons: Record<string, string> = {
-  "web-development": "🌐",
-  "app-development": "📱",
-  "ui-ux-design": "🎨",
-  "graphic-designing": "✨",
-  seo: "🔍",
-  "digital-marketing": "📈",
-  "video-editing": "🎬",
-  maintenance: "🛡️",
-  deployment: "🚀",
+  "web-development": "Globe",
+  "app-development": "Smartphone",
+  "ui-ux-design": "Layers",
+  "graphic-designing": "Palette",
+  seo: "Search",
+  "digital-marketing": "TrendingUp",
+  "video-editing": "Film",
+  maintenance: "Shield",
+  deployment: "Rocket",
 };
 
 // Get pricing for a specific service

@@ -103,7 +103,7 @@ export default function TermsPage() {
                                 If you have any questions about our Terms of Service, please contact our legal team for clarification.
                             </p>
                             <a
-                                href="mailto:legal@sajilodigital.com"
+                                href="mailto:info@sajilodigital.com.np"
                                 className="inline-flex items-center justify-center px-6 py-3 rounded-full bg-white text-black font-medium hover:bg-zinc-200 transition-colors"
                             >
                                 Contact Legal Team

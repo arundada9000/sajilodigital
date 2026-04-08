@@ -3,6 +3,15 @@
 import { motion } from "framer-motion";
 import { useRef, useEffect, useState } from "react";
 import { servicePricing, serviceIcons } from "@/src/data/pricingData";
+import { Globe, Smartphone, Layers, Palette, Search, TrendingUp, Film, Shield, Rocket, LayoutGrid, LucideProps } from "lucide-react";
+
+const SERVICE_ICON_MAP: Record<string, React.FC<LucideProps>> = {
+    Globe, Smartphone, Layers, Palette, Search, TrendingUp, Film, Shield, Rocket,
+};
+function ServiceIcon({ name, ...props }: { name: string } & LucideProps) {
+    const Icon = SERVICE_ICON_MAP[name];
+    return Icon ? <Icon {...props} /> : null;
+}
 
 interface ServiceSelectorProps {
     selectedService: string;
@@ -18,11 +27,11 @@ export default function ServiceSelector({
     const containerRef = useRef<HTMLDivElement>(null);
 
     const allServices = [
-        { id: "all", name: "All Services", icon: "🎯" },
+        { id: "all", name: "All Services", iconName: "LayoutGrid" as string },
         ...servicePricing.map((service) => ({
             id: service.id,
             name: service.name,
-            icon: serviceIcons[service.id] || "📦",
+            iconName: serviceIcons[service.id] || "Globe",
         })),
     ];
 
@@ -112,7 +121,11 @@ export default function ServiceSelector({
                                 )}
 
                                 <span className="relative flex items-center gap-2">
-                                    <span className="text-lg md:text-xl">{service.icon}</span>
+                                    <span className="flex items-center justify-center w-5 h-5">
+                                        {service.id === "all"
+                                            ? <LayoutGrid size={16} />
+                                            : <ServiceIcon name={service.iconName} size={16} />}
+                                    </span>
                                     <span className="hidden sm:inline">{service.name}</span>
                                     <span className="sm:hidden">
                                         {service.id === "all" ? "All" : service.name.split(" ")[0]}

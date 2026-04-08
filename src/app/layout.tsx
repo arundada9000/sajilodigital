@@ -18,6 +18,14 @@ const poppins = Poppins({
   variable: "--font-poppins",
 });
 
+// SEO Viewport configuration (Next.js 14+)
+export const viewport: import("next").Viewport = {
+  themeColor: "#0b0f19",
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+};
+
 // SEO Metadata
 export const metadata: Metadata = {
   metadataBase: new URL("https://sajilodigital.com.np"),
@@ -99,7 +107,6 @@ export default function RootLayout({
     <html lang="en" className={`${inter.variable} ${poppins.variable}`}>
       <head>
         {/* Additional SEO tags */}
-        <link rel="canonical" href="https://sajilodigital.com.np" />
 
         {/* Preconnect to external domains for performance */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />

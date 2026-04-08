@@ -15,9 +15,9 @@ export async function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
-  const { slug } = params;
+  const { slug } = await params;
   const post = blogPosts.find((p) => p.slug === slug);
 
   if (!post) {
@@ -27,13 +27,21 @@ export async function generateMetadata({
   return {
     title: `${post.title} | Sajilo Digital`,
     description: post.excerpt,
+    keywords: post.tags,
+    authors: [{ name: post.author.name }],
     openGraph: {
       title: post.title,
       description: post.excerpt,
-      url: `https://sajilodigital.com/blog/${post.slug}`,
+      url: `https://sajilodigital.com.np/blog/${post.slug}`,
       images: [{ url: post.image }],
       type: "article",
       publishedTime: post.publishedAt,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.title,
+      description: post.excerpt,
+      images: [post.image],
     },
   };
 }
@@ -236,16 +244,43 @@ export default async function BlogPostPage({
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             "@context": "https://schema.org",
-            "@type": "BlogPosting",
-            headline: post.title,
-            description: post.excerpt,
-            image: post.image,
-            author: {
-              "@type": "Person",
-              name: post.author.name,
-            },
-            datePublished: post.publishedAt,
-            url: `https://sajilodigital.com/blog/${post.slug}`,
+            "@graph": [
+              {
+                "@type": "BlogPosting",
+                headline: post.title,
+                description: post.excerpt,
+                image: post.image,
+                author: {
+                  "@type": "Person",
+                  name: post.author.name,
+                },
+                datePublished: post.publishedAt,
+                url: `https://sajilodigital.com.np/blog/${post.slug}`,
+              },
+              {
+                "@type": "BreadcrumbList",
+                itemListElement: [
+                  {
+                    "@type": "ListItem",
+                    position: 1,
+                    name: "Home",
+                    item: "https://sajilodigital.com.np"
+                  },
+                  {
+                    "@type": "ListItem",
+                    position: 2,
+                    name: "Blog",
+                    item: "https://sajilodigital.com.np/blog"
+                  },
+                  {
+                    "@type": "ListItem",
+                    position: 3,
+                    name: post.title,
+                    item: `https://sajilodigital.com.np/blog/${post.slug}`
+                  }
+                ]
+              }
+            ]
           }),
         }}
       />

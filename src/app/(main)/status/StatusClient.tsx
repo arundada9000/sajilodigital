@@ -24,7 +24,7 @@ export default function StatusClient() {
     return (
         <div className="min-h-screen bg-[#050505] text-white pt-24 pb-20 px-6 font-mono relative overflow-hidden">
             {/* Background Decor */}
-            <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 pointer-events-none"></div>
+            <div className="absolute inset-0 bg-[url('/noise.svg')] opacity-20 pointer-events-none"></div>
             <div className="absolute top-0 right-0 w-1/2 h-1/2 bg-blue-500/10 blur-[120px] rounded-full pointer-events-none"></div>
 
             <div className="container-custom relative z-10 max-w-6xl">

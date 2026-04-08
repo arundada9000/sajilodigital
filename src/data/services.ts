@@ -77,7 +77,7 @@ export const services: Service[] = [
     tagline: "Human-Centric Digital Artistry",
     description:
       "We merge psychology with aesthetics to create interfaces that feel natural. Our design process involves deep research, wireframing, and interactive prototyping to ensure every click is intentional.",
-    image: "/services/uiux.jpg",
+    image: "/services/uiux.png",
     video: "/services/uiux.mp4",
     color: "#2d0a1b",
     accentColor: "#fb7185",

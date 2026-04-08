@@ -4,7 +4,7 @@ import { useState, useEffect, useRef, useCallback } from "react";
 import { motion, AnimatePresence, useAnimation } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { X, ChevronLeft, ChevronRight, Maximize2, Grid as GridIcon, Info } from "lucide-react";
+import { X, ChevronLeft, ChevronRight, Maximize2, Grid as GridIcon, Home } from "lucide-react";
 import { galleryData, GalleryItem } from "@/src/data/gallery";
 
 const SLIDE_VARIANTS: any = {
@@ -118,14 +118,18 @@ export default function GalleryV3({ showAbout, setShowAbout }: GalleryV3Props) {
 
             {/* 2. Background Grid View */}
             <div className={`relative w-full h-full transition-all duration-[1.5s] ease-[cubic-bezier(0.76,0,0.24,1)] ${view === "slider" ? "scale-[1.2] blur-3xl opacity-0" : "scale-100 blur-0 opacity-100"}`}>
-                <div className="absolute inset-0 grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 p-6 md:p-12 overflow-y-auto custom-scrollbar content-center justify-center auto-rows-max">
-                    {galleryData.map((project, idx) => (
-                        <GridItem key={project.id} project={project} index={idx} onClick={() => handleSelect(idx)} />
-                    ))}
-                </div>
-                <div className="absolute top-10 left-10 pointer-events-none">
+                {/* Header overlay — not scrolled away */}
+                <div className="absolute top-10 left-10 pointer-events-none z-10">
                     <span className="text-[10px] tracking-[0.5em] text-blue-500 font-bold block mb-2">CURATED ARCHIVE</span>
                     <h1 className="text-4xl md:text-6xl font-bold tracking-tighter leading-none italic">Sajilo.Digital</h1>
+                </div>
+                {/* Scrollable grid — full height, proper padding so header doesn't overlap */}
+                <div className="absolute inset-0 overflow-y-auto custom-scrollbar">
+                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 p-6 md:p-12 pt-36 md:pt-40">
+                        {galleryData.map((project, idx) => (
+                            <GridItem key={project.id} project={project} index={idx} onClick={() => handleSelect(idx)} />
+                        ))}
+                    </div>
                 </div>
             </div>
 
@@ -180,11 +184,14 @@ export default function GalleryV3({ showAbout, setShowAbout }: GalleryV3Props) {
             </AnimatePresence>
 
             {/* Persistent UI Overlay */}
-            <div className="fixed top-10 right-10 z-[110] flex items-center gap-12">
+            <div className="fixed top-10 right-10 z-[110] flex items-center gap-6">
                 <button onClick={() => setShowAbout(true)} className="text-[10px] tracking-[0.5em] text-white/40 hover:text-white transition-colors uppercase font-bold">About Gallery</button>
                 <button onClick={() => setView(view === "grid" ? "slider" : "grid")} className="p-3 rounded-full border border-white/10 hover:bg-white hover:text-black transition-all group">
                     {view === "grid" ? <Maximize2 size={16} /> : <GridIcon size={16} />}
                 </button>
+                <Link href="/" className="p-3 rounded-full border border-white/10 hover:bg-white hover:text-black transition-all group" title="Back to Home">
+                    <Home size={16} />
+                </Link>
             </div>
         </div>
     );
@@ -302,8 +309,11 @@ function SliderContent({ activeProject, direction, onBack, onNext, onPrev, showD
                 )}
             </AnimatePresence>
 
-            <div className="absolute bottom-10 right-10 z-[60]">
+            <div className="absolute bottom-10 right-10 z-[60] flex items-center gap-6">
                 <button onClick={onBack} className="text-[10px] tracking-[0.5em] text-white/40 hover:text-white transition-colors uppercase font-bold">Back to Archive</button>
+                <Link href="/" className="flex items-center gap-2 text-[10px] tracking-[0.5em] text-white/40 hover:text-white transition-colors uppercase font-bold">
+                    <Home size={12} /> Home
+                </Link>
             </div>
         </div>
     );

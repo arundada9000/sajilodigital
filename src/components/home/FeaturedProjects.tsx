@@ -4,28 +4,49 @@ import { ExternalLink, ArrowRight } from "lucide-react";
 
 const featuredProjects = [
   {
-    title: "Himalayan Goods E-commerce",
-    category: "E-commerce",
-    image: "/images/projects/ecommerce-himalayan.jpg",
-    description: "A full-featured online store with 250% increase in sales",
-    slug: "ecommerce-platform-himalayan-goods",
-    tags: ["Next.js", "Stripe", "Tailwind"],
+    slug: "mount-glacier-trek",
+    title: "Mount Glacier",
+    category: "Travel & Tourism",
+    description:
+      "A professional adventure travel website showcasing Himalayan trekking, tours, and outdoor experiences with detailed itineraries and online trip discovery.",
+    image: "/projects/mtglacier.jpg",
+    tags: [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "Responsive Web Design",
+      "SEO Optimization",
+      "Interactive UI Components",
+      "Google Analytics",
+    ],
   },
   {
-    title: "FitLife Fitness App",
-    category: "Mobile App",
-    image: "/images/projects/fitlife-app.jpg",
-    description: "Comprehensive fitness tracking with 10k+ downloads",
-    slug: "fitlife-fitness-tracking-app",
-    tags: ["React Native", "Firebase", "Redux"],
+    slug: "sushila-fancy-store",
+    title: "Sushila Fancy Fashion Store",
+    category: "E-Commerce",
+    description:
+      "A stylish fashion storefront website presenting collections and lifestyle products with community engagement and brand identity.",
+    image: "/projects/theshop.png",
+    tags: ["Next.js", "React", "JavaScript", "tailwind", "MongoDB", "UI/UX"],
   },
   {
-    title: "Heritage Hotels Booking",
-    category: "Web Application",
-    image: "/images/projects/heritage-hotels.jpg",
-    description: "Real-time booking system reducing errors by 95%",
-    slug: "heritage-hotel-booking-system",
-    tags: ["Next.js", "PostgreSQL", "AWS"],
+    slug: "sajilo-static-template",
+    title: "SajiloStore",
+    category: "Static Website Template",
+    description:
+      "A high-performance, visually striking static website template suitable for individuals, businesses, and shop owners who want to showcase their products online",
+    image: "/projects/statictemplate.png",
+    tags: [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "Framer Motion",
+      "GSAP",
+      "Responsive Web Design",
+      "SEO Optimization",
+    ],
   },
 ];
 

@@ -44,7 +44,7 @@ export default function FeaturesBento() {
                         title="You Are Part of the Team"
                         description="Forget weekly email updates. Join our Slack channel, attend standups if you want, and see the work happen live. We treat you like a partner, not a ticket."
                     >
-                        <div className="absolute inset-0 z-0 opacity-20 bg-[url('/grid-pattern.svg')] bg-center mask-image-gradient" />
+                        <div className="absolute inset-0 z-0 opacity-20 bg-[url('/images/grid.svg')] bg-center mask-image-gradient" />
                         <div className="absolute bottom-0 right-0 w-64 h-64 bg-blue-500/20 rounded-full blur-[100px]" />
                     </BentoCard>
 

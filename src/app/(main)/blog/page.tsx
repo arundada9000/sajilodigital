@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     url: "https://sajilodigital.com.np/blog",
     images: [
       {
-        url: "/images/blog-og.jpg",
+        url: "/images/blog-op.jpg",
         width: 1200,
         height: 630,
         alt: "Sajilo Digital Blog",
@@ -45,12 +45,13 @@ export default function BlogPage() {
             "@context": "https://schema.org",
             "@type": "Blog",
             name: "Sajilo Digital Blog",
-            description: "Latest insights on technology, design, and innovation from Sajilo Digital.",
+            description:
+              "Latest insights on technology, design, and innovation from Sajilo Digital.",
             publisher: {
               "@type": "Organization",
               name: "Sajilo Digital Pvt. Ltd.",
-              url: "https://sajilodigital.com.np"
-            }
+              url: "https://sajilodigital.com.np",
+            },
           }),
         }}
       />

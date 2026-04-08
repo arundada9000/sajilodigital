@@ -90,7 +90,7 @@ export const projects: Project[] = [
       "Footer with company info and contact",
       "Community engagement call-to-action",
     ],
-    liveUrl: "https://sushilafancy.vercel.app/",
+    liveUrl: "https://sushilafancy.com.np/",
     githubUrl: "https://github.com/arundada9000",
     testimonial: {
       text: "The Sushila Fancy site captures the essence of fashion brand with a clean and inviting design. Users can explore collections, engage with  community newsletter, and get in touch easily, providing a strong digital presence for style offerings!",
@@ -192,7 +192,7 @@ export const projects: Project[] = [
       "Media upload and management",
       "Performance optimized architecture",
     ],
-    liveUrl: "https://codeforchangenepal.vercel.app/",
+    liveUrl: "https://codeforchange.sajilodigital.com.np/",
     githubUrl: "https://github.com/arundada9000",
     testimonial: {
       text: "The Code for Change Nepal platform has transformed how we manage our community. From handling members and events to publishing blogs and opportunities, everything is now streamlined and efficient. It has significantly improved our digital presence and engagement within the tech community.",
@@ -378,7 +378,7 @@ export const projects: Project[] = [
       "Clean UI with clear visual cues and feedback",
       "Progressive enhancement for learning outcomes",
     ],
-    liveUrl: "https://easysorting.netlify.app/",
+    liveUrl: "https://sorting.sajilodigital.com.np/",
     githubUrl: "https://github.com/arundada9000/Sorting",
     testimonial: {
       text: "EasySorting makes learning sorting algorithms intuitive and visual. Users can interactively see how each algorithm behaves step by step, which is especially useful for students and developers who want to deepen their understanding of algorithm mechanics.",

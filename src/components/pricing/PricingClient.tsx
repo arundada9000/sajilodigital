@@ -3,15 +3,23 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowRight } from "lucide-react";
-
+import { ArrowRight, Globe, Smartphone, Layers, Palette, Search, TrendingUp, Film, Shield, Rocket, LucideProps } from "lucide-react";
 import Grain from "../ui/Grain";
 import ServiceSelector from "./ServiceSelector";
 import DynamicPricingCard from "./DynamicPricingCard";
 import ServiceComparisonTable from "./ServiceComparisonTable";
 import PackageBundles from "./PackageBundles";
 import { Button } from "@/src/components/common/Button";
-import { servicePricing, getServicePricing, ServicePricing } from "@/src/data/pricingData";
+import { servicePricing, getServicePricing, ServicePricing, serviceIcons } from "@/src/data/pricingData";
+
+// Dynamic icon renderer for service cards
+const SERVICE_ICON_MAP: Record<string, React.FC<LucideProps>> = {
+    Globe, Smartphone, Layers, Palette, Search, TrendingUp, Film, Shield, Rocket,
+};
+function ServiceIcon({ name, ...props }: { name: string } & LucideProps) {
+    const Icon = SERVICE_ICON_MAP[name];
+    return Icon ? <Icon {...props} /> : null;
+}
 
 export default function PricingClient() {
     const [selectedService, setSelectedService] = useState<string>("all");
@@ -138,20 +146,16 @@ export default function PricingClient() {
                                 >
                                     <div className="flex items-center justify-between mb-4">
                                         <div
-                                            className="p-3 rounded-2xl text-2xl"
+                                            className="p-3 rounded-2xl flex items-center justify-center"
                                             style={{
                                                 background: `linear-gradient(135deg, ${service.accentColor}20, ${service.color}20)`,
                                             }}
                                         >
-                                            {service.icon === "web-development" && "🌐"}
-                                            {service.icon === "app-development" && "📱"}
-                                            {service.icon === "ui-ux-design" && "🎨"}
-                                            {service.icon === "graphic-designing" && "✨"}
-                                            {service.icon === "seo" && "🔍"}
-                                            {service.icon === "digital-marketing" && "📈"}
-                                            {service.icon === "video-editing" && "🎬"}
-                                            {service.icon === "maintenance" && "🛡️"}
-                                            {service.icon === "deployment" && "🚀"}
+                                            <ServiceIcon
+                                                name={serviceIcons[service.icon] ?? "Globe"}
+                                                size={24}
+                                                style={{ color: service.accentColor }}
+                                            />
                                         </div>
                                         <span
                                             className="text-xs font-medium px-3 py-1 rounded-full"

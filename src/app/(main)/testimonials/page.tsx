@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     url: "https://sajilodigital.com.np/testimonials",
     images: [
       {
-        url: "/images/testimonials-og.jpg",
+        url: "/images/testimonals-og.jpg",
         width: 1200,
         height: 630,
         alt: "Sajilo Digital Testimonials",

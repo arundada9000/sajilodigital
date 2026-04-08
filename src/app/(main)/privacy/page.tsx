@@ -126,7 +126,7 @@ export default function PrivacyPage() {
                                 If you have any questions or concerns about this Privacy Policy, please don't hesitate to reach out to our data protection team.
                             </p>
                             <a
-                                href="mailto:privacy@sajilodigital.com"
+                                href="mailto:info@sajilodigital.com.np"
                                 className="inline-flex items-center justify-center px-6 py-3 rounded-full bg-white text-black font-medium hover:bg-zinc-200 transition-colors"
                             >
                                 Contact Privacy Team
