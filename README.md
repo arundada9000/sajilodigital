@@ -1,4 +1,4 @@
-<div align="center">
+﻿<div align="center">
 
 ```text
    _____         _ _ _         ____  _       _ _        _
@@ -535,3 +535,9 @@ This project has been architected for longevity and scaled for impact. We look f
                 └── BlogCard.tsx
 
 ```
+
+---
+
+## License
+
+This project is for educational and personal learning purposes only. Commercial use, public deployment, or any revenue-generating use requires explicit written permission from the author. See [LICENSE](LICENSE) for details.
