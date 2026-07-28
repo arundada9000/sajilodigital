@@ -158,7 +158,8 @@ export default async function BlogPostPage({
 
           {/* Article Body */}
           <div className="max-w-3xl mx-auto">
-            <div className="prose prose-invert prose-lg md:prose-xl max-w-none 
+            <article
+              className="prose prose-invert prose-lg md:prose-xl max-w-none 
               prose-headings:text-white prose-headings:font-bold prose-headings:tracking-tight
               prose-p:text-gray-300 prose-p:leading-relaxed
               prose-a:text-cyan-400 prose-a:no-underline hover:prose-a:text-cyan-300
@@ -168,7 +169,7 @@ export default async function BlogPostPage({
               mb-20"
             >
               <div dangerouslySetInnerHTML={{ __html: post.content }} />
-            </div>
+            </article>
 
             {/* Tags Section */}
             <div className="pt-12 border-t border-white/10 flex flex-wrap items-center gap-3">
