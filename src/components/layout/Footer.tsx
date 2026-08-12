@@ -174,7 +174,7 @@ export default function Footer() {
                 href="tel:+9779811420975"
                 className="hover:text-white transition-colors block"
               >
-                +977-9811420975
+                +977-9842977207
               </a>
             </div>
           </div>

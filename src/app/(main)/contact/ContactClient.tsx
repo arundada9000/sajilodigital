@@ -79,7 +79,7 @@ const socials = [
     {
         name: "WhatsApp",
         icon: <FaWhatsapp />,
-        href: "https://wa.me/9779811420975",
+        href: "https://wa.me/9779842977207",
         color: "hover:text-green-500",
     },
 ];
@@ -274,7 +274,7 @@ export default function ContactClient() {
                                                 info@sajilodigital.com.np
                                             </p>
                                             <p className="text-gray-400 group-hover:text-white transition-colors">
-                                                arunneupane0000@gmail.com
+                                                sajhilodigital@gmail.com
                                             </p>
                                         </div>
                                     </div>
@@ -292,7 +292,7 @@ export default function ContactClient() {
                                         <div>
                                             <h3 className="text-lg font-bold mb-2">Phone Lines</h3>
                                             <p className="text-gray-400 group-hover:text-white transition-colors">
-                                                +977-9811420975
+                                                +977-9842977207
                                             </p>
                                         </div>
                                     </div>
@@ -380,7 +380,7 @@ export default function ContactClient() {
                                                         name="name"
                                                         value={formData.name}
                                                         onChange={handleChange}
-                                                        placeholder="John Doe"
+                                                        placeholder="Arun Neupane"
                                                         className={`w-full bg-white/5 border ${errors.name
                                                             ? "border-red-500/50 bg-red-500/5"
                                                             : "border-white/10"
@@ -413,7 +413,7 @@ export default function ContactClient() {
                                                         name="email"
                                                         value={formData.email}
                                                         onChange={handleChange}
-                                                        placeholder="john@example.com"
+                                                        placeholder="arun@sajilodigitalpvtltd.com"
                                                         className={`w-full bg-white/5 border ${errors.email
                                                             ? "border-red-500/50 bg-red-500/5"
                                                             : "border-white/10"
