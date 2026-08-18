@@ -51,8 +51,8 @@ export default function MobileHeader() {
             pointer-events-auto
             flex items-center justify-between
             w-full max-w-[400px] h-14 px-4
-            rounded-full bg-black/40 backdrop-blur-2xl
-            border border-white/10 shadow-[0_10px_30px_rgba(0,0,0,0.3)]
+            rounded-full bg-background/80 backdrop-blur-2xl
+            border border-border shadow-[0_10px_30px_rgba(0,0,0,0.3)]
             transition-all duration-500
             ${isScrolled ? "scale-95 opacity-90" : "scale-100 opacity-100"}
           `}
@@ -62,7 +62,7 @@ export default function MobileHeader() {
             href="/"
             className="flex items-center gap-3 active:scale-95 transition-transform"
           >
-            <div className="relative w-8 h-8 overflow-hidden rounded-full border border-white/20 bg-white/5">
+            <div className="relative w-8 h-8 overflow-hidden rounded-full border border-border bg-accent/5">
               <Image
                 src="/logos/circularlogo.svg"
                 alt="Sajilo"
@@ -71,7 +71,7 @@ export default function MobileHeader() {
               />
             </div>
             <div className="flex flex-col">
-              <span className="text-[10px] font-bold tracking-[0.2em] text-white leading-none uppercase">
+              <span className="text-[10px] font-bold tracking-[0.2em] text-foreground leading-none uppercase">
                 Sajilo
               </span>
               <span className="text-[7px] tracking-[0.3em] text-blue-400 font-bold uppercase mt-0.5 animate-pulse">
@@ -82,7 +82,7 @@ export default function MobileHeader() {
 
           {/* Center: Meta Info */}
           <div className="flex flex-col items-center">
-            <span className="text-[9px] font-mono tracking-widest text-white/40 uppercase">
+            <span className="text-[9px] font-mono tracking-widest text-muted-foreground uppercase">
               {currentTime}
             </span>
           </div>
@@ -90,13 +90,13 @@ export default function MobileHeader() {
           {/* Right: Action Trigger */}
           <button
             onClick={() => setActionCenterOpen(true)}
-            className="flex items-center gap-2 p-1.5 pl-3 rounded-full bg-white/10 border border-white/10 hover:bg-white/20 transition-all active:scale-90"
+            className="flex items-center gap-2 p-1.5 pl-3 rounded-full bg-accent border border-border hover:bg-accent/80 transition-all active:scale-90"
           >
-            <span className="text-[10px] font-bold uppercase tracking-widest text-white/70">
+            <span className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">
               Menu
             </span>
             <div className="p-1 rounded-full bg-blue-500 shadow-[0_0_10px_rgba(59,130,246,0.5)]">
-              <Menu size={14} className="text-white" />
+              <Menu size={14} className="text-foreground" />
             </div>
           </button>
         </motion.div>

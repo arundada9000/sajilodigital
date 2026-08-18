@@ -116,7 +116,7 @@ export default function RootLayout({
           crossOrigin="anonymous"
         />
       </head>
-      <body className="font-sans antialiased bg-[#0b0f19] text-white">
+      <body className="font-sans antialiased bg-background text-foreground">
         <ParticlesBackground />
         <GlobalTerminal />
         {children}

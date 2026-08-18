@@ -91,7 +91,7 @@ export default function MobileNavbar() {
 
   return (
     <>
-      <nav className="fixed bottom-6 left-1/2 -translate-x-1/2 w-[90vw] max-w-[400px] z-[50] flex items-center justify-between px-2 py-2 rounded-3xl bg-[#060010]/60 backdrop-blur-xl border border-white/10 shadow-[0_0_20px_rgba(0,0,0,0.5)]">
+      <nav className="fixed bottom-6 left-1/2 -translate-x-1/2 w-[90vw] max-w-[400px] z-[50] flex items-center justify-between px-2 py-2 rounded-3xl bg-background/80 backdrop-blur-xl border border-border shadow-[0_0_20px_rgba(0,0,0,0.5)]">
         {/* Active Indicator Background */}
         {/* We could use layoutId here for a moving background, but fixed positions are safer for now. 
              Let's use simple icon highlighting for cleaner look on small screens. */}
@@ -110,8 +110,8 @@ export default function MobileNavbar() {
                    text-2xl transition-all duration-300
                    ${
                      isActive
-                       ? "text-[#00ffe1] scale-110 drop-shadow-[0_0_8px_rgba(0,255,225,0.6)]"
-                       : "text-neutral-400 group-hover:text-white"
+                       ? "text-primary scale-110 drop-shadow-[0_0_8px_rgba(6,182,212,0.6)]"
+                       : "text-muted-foreground group-hover:text-foreground"
                    }
                  `}
               >
@@ -120,8 +120,8 @@ export default function MobileNavbar() {
               <span
                 className={`text-[10px] font-medium transition-all duration-300 ${
                   isActive
-                    ? "text-white opacity-100"
-                    : "text-neutral-500 opacity-60"
+                    ? "text-foreground opacity-100"
+                    : "text-muted-foreground opacity-60"
                 }`}
               >
                 {tab.label}
@@ -131,7 +131,7 @@ export default function MobileNavbar() {
               {isActive && (
                 <motion.div
                   layoutId="mobile-nav-dot"
-                  className="absolute -bottom-1 w-1 h-1 rounded-full bg-[#00ffe1] shadow-[0_0_5px_rgba(0,255,225,0.8)]"
+                  className="absolute -bottom-1 w-1 h-1 rounded-full bg-primary shadow-[0_0_5px_rgba(6,182,212,0.8)]"
                 />
               )}
             </button>
@@ -146,7 +146,7 @@ export default function MobileNavbar() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[60] bg-black/60 backdrop-blur-sm"
+            className="fixed inset-0 z-[60] bg-black/60 dark:bg-black/60 bg-black/30 backdrop-blur-sm"
             onClick={() => setMenuOpen(false)}
           >
             <motion.div
@@ -155,19 +155,19 @@ export default function MobileNavbar() {
               exit={{ y: "100%" }}
               transition={{ type: "spring", damping: 25, stiffness: 200 }}
               onClick={(e) => e.stopPropagation()}
-              className="absolute bottom-0 left-0 w-full bg-[#0a0a14] rounded-t-[32px] border-t border-white/10 overflow-hidden shadow-2xl pb-32 pt-8 px-6"
+              className="absolute bottom-0 left-0 w-full bg-background rounded-t-[32px] border-t border-border overflow-hidden shadow-2xl pb-32 pt-8 px-6"
             >
               {/* Handle Bar */}
-              <div className="absolute top-4 left-1/2 -translate-x-1/2 w-16 h-1.5 bg-neutral-700/50 rounded-full" />
+              <div className="absolute top-4 left-1/2 -translate-x-1/2 w-16 h-1.5 bg-muted rounded-full" />
 
               {/* Header */}
               <div className="flex items-center justify-between mb-8">
-                <h2 className="text-2xl font-bold text-white tracking-tight">
+                <h2 className="text-2xl font-bold text-foreground tracking-tight">
                   More
                 </h2>
                 <button
                   onClick={() => setMenuOpen(false)}
-                  className="p-2 rounded-full bg-neutral-800 text-neutral-400 hover:text-white hover:bg-neutral-700 transition"
+                  className="p-2 rounded-full bg-muted text-muted-foreground hover:text-foreground hover:bg-accent transition"
                 >
                   <IoMdClose size={24} />
                 </button>
@@ -186,12 +186,12 @@ export default function MobileNavbar() {
                       router.push(item.href);
                       setMenuOpen(false);
                     }}
-                    className="flex flex-col items-start p-4 rounded-2xl bg-white/5 border border-white/5 hover:bg-white/10 hover:border-white/20 transition active:scale-95 text-left gap-3"
+                    className="flex flex-col items-start p-4 rounded-2xl bg-accent/5 border border-border hover:bg-accent hover:border-primary/20 transition active:scale-95 text-left gap-3"
                   >
-                    <div className="p-2 rounded-xl bg-[#00ffe1]/10 text-[#00ffe1] shadow-[0_0_10px_rgba(0,255,225,0.2)]">
+                    <div className="p-2 rounded-xl bg-primary/10 text-primary shadow-[0_0_10px_rgba(6,182,212,0.2)]">
                       {item.icon}
                     </div>
-                    <span className="text-sm font-medium text-neutral-200">
+                    <span className="text-sm font-medium text-foreground">
                       {item.label}
                     </span>
                   </motion.button>

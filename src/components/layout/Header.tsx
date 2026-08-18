@@ -76,7 +76,7 @@ export default function Header() {
         animate={{ y: 0 }}
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         className={`fixed top-0 left-0 right-0 z-[120] transition-all duration-500 hidden md:block ${isScrolled
-          ? "py-3 bg-black/60 backdrop-blur-3xl border-b border-white/5"
+          ? "py-3 bg-background/80 backdrop-blur-3xl border-b border-border"
           : "py-6 bg-transparent"
           }`}
       >
@@ -85,7 +85,7 @@ export default function Header() {
 
             {/* 1. Left: Branding */}
             <Link href="/" className="group flex items-center gap-4 justify-self-start">
-              <div className="relative w-9 h-9 overflow-hidden rounded-full border border-white/10 group-hover:border-white/30 transition-colors bg-white/5">
+              <div className="relative w-9 h-9 overflow-hidden rounded-full border border-border group-hover:border-primary/30 transition-colors bg-accent/5">
                 <Image
                   src="/logos/circularlogo.svg"
                   alt="Sajilo"
@@ -94,8 +94,8 @@ export default function Header() {
                 />
               </div>
               <div className="flex flex-col">
-                <span className="text-xs font-bold tracking-[0.25em] uppercase text-white leading-none">Sajilo.Digital</span>
-                <span className="text-[9px] tracking-[0.3em] uppercase text-white/40 mt-1 transition-all group-hover:text-blue-500">Creative Tech</span>
+                <span className="text-xs font-bold tracking-[0.25em] uppercase text-foreground leading-none">Sajilo.Digital</span>
+                <span className="text-[9px] tracking-[0.3em] uppercase text-muted-foreground mt-1 transition-all group-hover:text-primary">Creative Tech</span>
               </div>
             </Link>
 
@@ -111,24 +111,24 @@ export default function Header() {
             <div className="flex items-center gap-6 md:gap-10 justify-self-end">
 
               {/* Tools Capsule */}
-              <div className="flex items-center gap-1 p-1 bg-white/5 backdrop-blur-xl border border-white/10 rounded-full shadow-2xl">
+              <div className="flex items-center gap-1 p-1 bg-accent/5 backdrop-blur-xl border border-border rounded-full shadow-2xl">
                 <button
                   onClick={handleMuteToggle}
-                  className="p-2.5 rounded-full hover:bg-white/10 text-white/60 hover:text-white transition-all transform hover:scale-110 active:scale-95"
+                  className="p-2.5 rounded-full hover:bg-accent text-muted-foreground hover:text-foreground transition-all transform hover:scale-110 active:scale-95"
                   title={muted ? "Unmute Sound" : "Mute Sound"}
                 >
                   {muted ? <VolumeX size={16} /> : <Volume2 size={16} />}
                 </button>
                 <button
                   onClick={onMicClick}
-                  className="p-2.5 rounded-full hover:bg-white/10 text-white/60 hover:text-white transition-all transform hover:scale-110 active:scale-95"
+                  className="p-2.5 rounded-full hover:bg-accent text-muted-foreground hover:text-foreground transition-all transform hover:scale-110 active:scale-95"
                   title="Voice Search"
                 >
                   <Mic size={16} />
                 </button>
                 <button
                   onClick={() => window.dispatchEvent(new CustomEvent('toggle-settings'))}
-                  className="p-2.5 rounded-full hover:bg-white/10 text-white/60 hover:text-white transition-all transform hover:scale-110 active:scale-95"
+                  className="p-2.5 rounded-full hover:bg-accent text-muted-foreground hover:text-foreground transition-all transform hover:scale-110 active:scale-95"
                   title="Preferences"
                 >
                   <Settings size={16} />
@@ -136,14 +136,14 @@ export default function Header() {
               </div>
 
               {/* Desktop Meta */}
-              <div className="hidden lg:flex items-center gap-8 pl-6 border-l border-white/10">
+              <div className="hidden lg:flex items-center gap-8 pl-6 border-l border-border">
                 <div className="flex flex-col items-end">
-                  <span className="text-[9px] tracking-[0.4em] uppercase text-white/30 font-bold">BTN / NP</span>
-                  <span className="text-[10px] tracking-widest text-white/70 font-mono mt-1">{currentTime}</span>
+                  <span className="text-[9px] tracking-[0.4em] uppercase text-muted-foreground/50 font-bold">BTN / NP</span>
+                  <span className="text-[10px] tracking-widest text-muted-foreground font-mono mt-1">{currentTime}</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <div className="flex flex-col items-end">
-                    <span className="text-[9px] tracking-[0.4em] uppercase text-white/30 font-bold">STATUS</span>
+                    <span className="text-[9px] tracking-[0.4em] uppercase text-muted-foreground/50 font-bold">STATUS</span>
                     <span className="text-[9px] tracking-widest text-blue-400 font-bold mt-1 uppercase">Live</span>
                   </div>
                   <div className="relative w-1.5 h-1.5 bg-blue-500 rounded-full shadow-[0_0_10px_rgba(59,130,246,0.5)]">
@@ -154,7 +154,7 @@ export default function Header() {
 
               {/* Mobile simplified meta */}
               <div className="lg:hidden flex items-center gap-2">
-                <span className="text-[9px] tracking-[0.2em] text-white/40 font-mono">{currentTime}</span>
+                <span className="text-[9px] tracking-[0.2em] text-muted-foreground font-mono">{currentTime}</span>
               </div>
 
             </div>
