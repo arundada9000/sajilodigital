@@ -125,6 +125,7 @@ export default function ContactClient() {
     const [errors, setErrors] = useState<FormErrors>({});
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [isSuccess, setIsSuccess] = useState(false);
+    const [submitError, setSubmitError] = useState<string | null>(null);
     const [mapMode, setMapMode] = useState<"map" | "street">("map");
 
     // Clear success message after 5 seconds
@@ -140,7 +141,7 @@ export default function ContactClient() {
         if (!formData.name.trim()) newErrors.name = "Full Name is required";
         if (!formData.email.trim()) {
             newErrors.email = "Email is required";
-        } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+        } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
             newErrors.email = "Invalid email format";
         }
         if (formData.phone && !/^\+?[0-9\s-]{7,15}$/.test(formData.phone)) {
@@ -160,18 +161,16 @@ export default function ContactClient() {
         if (!validateForm()) return;
 
         setIsSubmitting(true);
+        setSubmitError(null);
 
         try {
-            const response = await fetch("https://api.web3forms.com/submit", {
+            const response = await fetch("/api/contact", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
                     Accept: "application/json",
                 },
-                body: JSON.stringify({
-                    access_key: "a70b99ba-e904-480f-9f8b-e420787fbc0d",
-                    ...formData,
-                }),
+                body: JSON.stringify(formData),
             });
 
             const result = await response.json();
@@ -186,12 +185,12 @@ export default function ContactClient() {
                     budget: "",
                 });
             } else {
-                console.error("Web3Forms Error:", result.message);
-                alert("Something went wrong. Please try again later.");
+                console.error("Contact form error:", result.message);
+                setSubmitError("Something went wrong. Please try again later.");
             }
         } catch (err) {
             console.error("Submission error:", err);
-            alert("Something went wrong. Please check your connection.");
+            setSubmitError("Something went wrong. Please check your connection.");
         } finally {
             setIsSubmitting(false);
         }
@@ -208,6 +207,7 @@ export default function ContactClient() {
         if (errors[name as keyof FormErrors]) {
             setErrors((prev) => ({ ...prev, [name]: undefined }));
         }
+        if (submitError) setSubmitError(null);
     };
 
     return (
@@ -544,6 +544,21 @@ export default function ContactClient() {
                                                 )}
                                             </AnimatePresence>
                                         </div>
+
+                                        {/* Submit Error */}
+                                        <AnimatePresence>
+                                            {submitError && (
+                                                <motion.div
+                                                    initial={{ opacity: 0, y: -10 }}
+                                                    animate={{ opacity: 1, y: 0 }}
+                                                    exit={{ opacity: 0, y: -10 }}
+                                                    className="flex items-center gap-2 text-sm text-red-500 bg-red-500/10 border border-red-500/20 rounded-xl px-4 py-3"
+                                                >
+                                                    <AlertCircle className="w-4 h-4 shrink-0" />
+                                                    {submitError}
+                                                </motion.div>
+                                            )}
+                                        </AnimatePresence>
 
                                         {/* Submit Button */}
                                         <div className="pt-4">
