@@ -68,7 +68,7 @@ export default function ProjectsClient({
                     >
                         <h1 className="text-5xl md:text-[10rem] font-bold leading-[0.85] tracking-tighter mb-12">
                             OUR <br />
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-400 to-white italic">
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-muted-foreground to-foreground italic">
                                 HIGHLIGHTS.
                             </span>
                         </h1>
@@ -82,29 +82,32 @@ export default function ProjectsClient({
 
                         </div>
                         {/* Digital Matrix Filter */}
-                        <div className="mt-12 border-y border-border py-6">
-                            <div className="flex flex-wrap gap-2 md:gap-4">
-                                {categories.map((cat) => (
-                                    <button
-                                        key={cat}
-                                        onClick={() => setActiveCategory(cat)}
-                                        className={`relative px-6 py-2 text-xs font-mono uppercase tracking-[0.2em] transition-all duration-300 border border-transparent overflow-hidden group ${activeCategory === cat
-                                            ? "text-background bg-foreground shadow-[0_0_20px_rgba(255,255,255,0.4)]"
-                                            : "text-muted-foreground hover:text-foreground hover:border-border hover:bg-surface-elevated"
-                                            }`}
-                                    >
-                                        <span className="relative z-10 flex items-center gap-2">
-                                            {activeCategory === cat && (
-                                                <span className="w-1.5 h-1.5 bg-blue-500 animate-pulse" />
-                                            )}
-                                            {cat}
-                                        </span>
-                                        {activeCategory === cat && (
-                                            <div className="absolute inset-0 bg-foreground" />
-                                        )}
-                                        <div className="absolute inset-0 bg-foreground/10 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
-                                    </button>
-                                ))}
+                        <div className="mt-12">
+                            <div className="flex items-center gap-3 overflow-x-auto pb-2 scrollbar-hide -mx-1 px-1">
+                                {categories.map((cat) => {
+                                    const count = cat === "All"
+                                        ? initialProjects.length
+                                        : initialProjects.filter((p) => p.category === cat).length;
+                                    const isActive = activeCategory === cat;
+                                    return (
+                                        <button
+                                            key={cat}
+                                            onClick={() => setActiveCategory(cat)}
+                                            className={`relative flex-shrink-0 flex items-center gap-2.5 px-5 py-2.5 rounded-full text-xs font-medium tracking-wide transition-all duration-300 border ${isActive
+                                                ? "bg-foreground text-background border-foreground shadow-[0_0_20px_rgba(255,255,255,0.15)]"
+                                                : "bg-foreground/5 text-muted-foreground border-border hover:border-foreground/30 hover:text-foreground hover:bg-foreground/10"
+                                                }`}
+                                        >
+                                            <span className="whitespace-nowrap">{cat}</span>
+                                            <span className={`inline-flex items-center justify-center min-w-[1.25rem] h-5 px-1.5 rounded-full text-[10px] font-bold tabular-nums ${isActive
+                                                ? "bg-background/20 text-background"
+                                                : "bg-foreground/10 text-muted-foreground"
+                                                }`}>
+                                                {count}
+                                            </span>
+                                        </button>
+                                    );
+                                })}
                             </div>
                         </div>
                     </motion.div>
