@@ -68,10 +68,10 @@ export default function SystemArchitecture() {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   return (
-    <section className="relative py-40 bg-[#050505] overflow-hidden">
+    <section className="relative py-40 bg-background overflow-hidden">
       {/* Background Grid Lines */}
-      <div className="absolute inset-x-0 top-0 h-px bg-linear-to-r from-transparent via-white/10 to-transparent" />
-      <div className="absolute inset-x-0 bottom-0 h-px bg-linear-to-r from-transparent via-white/10 to-transparent" />
+      <div className="absolute inset-x-0 top-0 h-px bg-linear-to-r from-transparent via-foreground/10 to-transparent" />
+      <div className="absolute inset-x-0 bottom-0 h-px bg-linear-to-r from-transparent via-foreground/10 to-transparent" />
 
       {/* Neural Connections Layer */}
       <div className="absolute inset-0 z-0 pointer-events-none opacity-20">
@@ -125,9 +125,9 @@ export default function SystemArchitecture() {
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="text-[10px] items-center gap-2 font-black uppercase tracking-[0.8em] text-white/40 mb-8 flex"
+            className="text-[10px] items-center gap-2 font-black uppercase tracking-[0.8em] text-muted-foreground mb-8 flex"
           >
-            <span className="w-12 h-px bg-white/20" />
+            <span className="w-12 h-px bg-foreground/20" />
             System Capabilities
           </motion.h2>
           <motion.h3
@@ -138,14 +138,14 @@ export default function SystemArchitecture() {
               duration: 1,
               ease: [0.16, 1, 0.3, 1],
             }}
-            className="text-4xl md:text-7xl font-black italic uppercase tracking-tighter text-white"
+            className="text-4xl md:text-7xl font-black italic uppercase tracking-tighter text-foreground"
           >
             Architecture of <br />
             <span className="text-blue-500">Excellence.</span>
           </motion.h3>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-white/10 border border-white/10 overflow-hidden rounded-[2rem]">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-foreground/10 border border-foreground/10 overflow-hidden rounded-[2rem]">
           {modules.map((module, index) => (
             <motion.div
               key={index}
@@ -162,32 +162,32 @@ export default function SystemArchitecture() {
                 href={module.link}
                 onMouseEnter={() => setHoveredIndex(index)}
                 onMouseLeave={() => setHoveredIndex(null)}
-                className="group relative bg-[#0a0a0a] p-12 hover:bg-[#0f0f0f] h-full transition-all duration-500 overflow-hidden block"
+                className="group relative bg-surface-alt p-12 hover:bg-accent h-full transition-all duration-500 overflow-hidden block"
               >
                 <div className="relative z-10 h-full flex flex-col justify-between min-h-[300px]">
                   <div>
                     <div className="flex justify-between items-start mb-12">
-                      <div className="w-12 h-12 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white group-hover:shadow-[0_0_20px_rgba(37,99,235,0.4)] transition-all duration-500">
+                      <div className="w-12 h-12 rounded-lg bg-foreground/5 border border-foreground/10 flex items-center justify-center group-hover:bg-blue-600 group-hover:text-foreground group-hover:shadow-[0_0_20px_rgba(37,99,235,0.4)] transition-all duration-500">
                         <module.icon className="w-6 h-6" />
                       </div>
-                      <span className="text-[10px] font-black uppercase tracking-widest text-white/20 group-hover:text-white/40 transition-colors">
+                      <span className="text-[10px] font-black uppercase tracking-widest text-muted-foreground group-hover:text-foreground/40 transition-colors">
                         {module.tag}
                       </span>
                     </div>
 
-                    <h4 className="text-2xl font-black italic uppercase tracking-tighter text-white mb-4 group-hover:translate-x-2 transition-transform duration-500">
+                    <h4 className="text-2xl font-black italic uppercase tracking-tighter text-foreground mb-4 group-hover:translate-x-2 transition-transform duration-500">
                       {module.title}
                     </h4>
-                    <p className="text-white/40 leading-relaxed text-sm max-w-[240px] group-hover:text-white/60 transition-colors duration-500">
+                    <p className="text-muted-foreground leading-relaxed text-sm max-w-[240px] group-hover:text-foreground/60 transition-colors duration-500">
                       {module.description}
                     </p>
                   </div>
 
                   <div className="mt-12 flex justify-between items-end">
-                    <span className="text-xs font-mono text-white/10">
+                    <span className="text-xs font-mono text-muted-foreground/30">
                       MOD-{index + 101}
                     </span>
-                    <ArrowUpRight className="w-6 h-6 text-white/0 group-hover:text-blue-600 transition-all duration-500 group-hover:rotate-45" />
+                    <ArrowUpRight className="w-6 h-6 text-transparent group-hover:text-blue-600 transition-all duration-500 group-hover:rotate-45" />
                   </div>
                 </div>
 

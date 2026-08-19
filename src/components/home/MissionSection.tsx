@@ -21,7 +21,7 @@ export default function MissionSection() {
     return (
         <section
             ref={containerRef}
-            className="relative min-h-[120vh] flex items-center justify-center bg-[#050505] overflow-hidden py-40"
+            className="relative min-h-[120vh] flex items-center justify-center bg-background overflow-hidden py-40"
         >
             {/* Background Decorative Element with Parallax */}
             <div className="absolute inset-0 z-0 pointer-events-none opacity-30">
@@ -33,8 +33,8 @@ export default function MissionSection() {
                     style={{ y: y2 }}
                     className="absolute bottom-1/4 left-0 w-full h-px bg-linear-to-r from-transparent via-blue-500/20 to-transparent"
                 />
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-[1px] bg-white/5" />
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1px] h-full bg-white/5" />
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-[1px] bg-foreground/5" />
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1px] h-full bg-foreground/5" />
             </div>
 
             <motion.div
@@ -50,7 +50,7 @@ export default function MissionSection() {
                     Our Philosophy
                 </motion.h2>
 
-                <div className="text-4xl md:text-8xl font-black italic tracking-tighter leading-tight text-white uppercase max-w-6xl mx-auto flex flex-wrap justify-center gap-x-[0.3em] gap-y-[0.1em]">
+                <div className="text-4xl md:text-8xl font-black italic tracking-tighter leading-tight text-foreground uppercase max-w-6xl mx-auto flex flex-wrap justify-center gap-x-[0.3em] gap-y-[0.1em]">
                     {words.map((word, i) => (
                         <motion.span
                             key={i}
@@ -62,7 +62,7 @@ export default function MissionSection() {
                                 delay: i * 0.05,
                                 ease: [0.215, 0.61, 0.355, 1]
                             }}
-                            className={i >= 2 && i <= 3 ? "text-white/20" : i >= 7 ? "text-blue-500 italic" : "text-white"}
+                            className={i >= 2 && i <= 3 ? "text-muted-foreground/40" : i >= 7 ? "text-blue-500 italic" : "text-foreground"}
                         >
                             {word}
                         </motion.span>
@@ -75,7 +75,7 @@ export default function MissionSection() {
                     transition={{ delay: 1.5 }}
                     className="mt-20 flex justify-center"
                 >
-                    <div className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center animate-bounce">
+                    <div className="w-12 h-12 rounded-full border border-foreground/10 flex items-center justify-center animate-bounce">
                         <span className="text-blue-500 text-sm">↓</span>
                     </div>
                 </motion.div>

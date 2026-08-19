@@ -14,7 +14,7 @@ export default function TextTicker({ items, speed = 40, direction = "left" }: Te
     const content = [...items, ...items, ...items];
 
     return (
-        <div className="relative w-full overflow-hidden bg-white/5 border-y border-white/10 py-8 backdrop-blur-sm">
+        <div className="relative w-full overflow-hidden bg-foreground/5 border-y border-foreground/10 py-8 backdrop-blur-sm">
             <motion.div
                 className="flex whitespace-nowrap gap-16"
                 animate={{
@@ -29,7 +29,7 @@ export default function TextTicker({ items, speed = 40, direction = "left" }: Te
                 {content.map((item, index) => (
                     <span
                         key={index}
-                        className="text-4xl md:text-6xl font-black uppercase tracking-tighter text-white/20 hover:text-cyan-500 transition-colors duration-500 cursor-default"
+                        className="text-4xl md:text-6xl font-black uppercase tracking-tighter text-muted-foreground/40 hover:text-cyan-500 transition-colors duration-500 cursor-default"
                     >
                         {item}
                     </span>

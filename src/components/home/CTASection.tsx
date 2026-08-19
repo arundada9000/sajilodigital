@@ -9,7 +9,7 @@ import {
 
 export default function CTASection() {
   return (
-    <section className="py-20 bg-white">
+    <section className="py-20 bg-background">
       <div className="container-custom">
         {/* Main CTA */}
         <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-blue-600 via-purple-600 to-pink-600 p-12 md:p-16 mb-12">
@@ -25,7 +25,7 @@ export default function CTASection() {
             <h2 className="text-4xl md:text-5xl font-bold mb-6">
               Ready to Start Your Project?
             </h2>
-            <p className="text-xl text-gray-100 mb-8 max-w-2xl mx-auto">
+            <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
               Let's discuss your ideas and create something amazing together.
               Get a free consultation and quote today!
             </p>
@@ -67,7 +67,7 @@ export default function CTASection() {
 
         {/* Testimonial Highlight */}
         <div className="grid md:grid-cols-3 gap-8">
-          <div className="bg-gray-50 rounded-2xl p-8 hover:shadow-xl transition-shadow duration-300">
+          <div className="bg-surface rounded-2xl p-8 hover:shadow-xl transition-shadow duration-300">
             <div className="flex items-center space-x-1 mb-4">
               {[...Array(5)].map((_, i) => (
                 <Star
@@ -76,7 +76,7 @@ export default function CTASection() {
                 />
               ))}
             </div>
-            <p className="text-gray-700 mb-4 italic">
+            <p className="text-muted-foreground mb-4 italic">
               "Outstanding work! The team delivered exactly what we needed and
               our sales increased by 45%."
             </p>
@@ -85,13 +85,13 @@ export default function CTASection() {
                 R
               </div>
               <div>
-                <p className="font-semibold text-gray-900">Rajesh Sharma</p>
-                <p className="text-sm text-gray-600">CEO, TechVision</p>
+                <p className="font-semibold text-foreground">Rajesh Sharma</p>
+                <p className="text-sm text-muted-foreground">CEO, TechVision</p>
               </div>
             </div>
           </div>
 
-          <div className="bg-gray-50 rounded-2xl p-8 hover:shadow-xl transition-shadow duration-300">
+          <div className="bg-surface rounded-2xl p-8 hover:shadow-xl transition-shadow duration-300">
             <div className="flex items-center space-x-1 mb-4">
               {[...Array(5)].map((_, i) => (
                 <Star
@@ -100,7 +100,7 @@ export default function CTASection() {
                 />
               ))}
             </div>
-            <p className="text-gray-700 mb-4 italic">
+            <p className="text-muted-foreground mb-4 italic">
               "Professional and creative team. They transformed our website into
               a modern, responsive platform."
             </p>
@@ -109,15 +109,15 @@ export default function CTASection() {
                 P
               </div>
               <div>
-                <p className="font-semibold text-gray-900">Priya Thapa</p>
-                <p className="text-sm text-gray-600">
+                <p className="font-semibold text-foreground">Priya Thapa</p>
+                <p className="text-sm text-muted-foreground">
                   Director, Himalayan Ventures
                 </p>
               </div>
             </div>
           </div>
 
-          <div className="bg-gray-50 rounded-2xl p-8 hover:shadow-xl transition-shadow duration-300">
+          <div className="bg-surface rounded-2xl p-8 hover:shadow-xl transition-shadow duration-300">
             <div className="flex items-center space-x-1 mb-4">
               {[...Array(5)].map((_, i) => (
                 <Star
@@ -126,7 +126,7 @@ export default function CTASection() {
                 />
               ))}
             </div>
-            <p className="text-gray-700 mb-4 italic">
+            <p className="text-muted-foreground mb-4 italic">
               "The mobile app is amazing! User feedback has been overwhelmingly
               positive with 4.8 stars."
             </p>
@@ -135,8 +135,8 @@ export default function CTASection() {
                 A
               </div>
               <div>
-                <p className="font-semibold text-gray-900">Amit Gurung</p>
-                <p className="text-sm text-gray-600">Founder, FitLife</p>
+                <p className="font-semibold text-foreground">Amit Gurung</p>
+                <p className="text-sm text-muted-foreground">Founder, FitLife</p>
               </div>
             </div>
           </div>
@@ -148,22 +148,22 @@ export default function CTASection() {
             <div>
               <Users className="w-8 h-8 mx-auto mb-2 opacity-80" />
               <div className="text-3xl font-bold mb-1">100+</div>
-              <div className="text-sm text-gray-200">Happy Clients</div>
+              <div className="text-sm text-white/70">Happy Clients</div>
             </div>
             <div>
               <CheckCircle className="w-8 h-8 mx-auto mb-2 opacity-80" />
               <div className="text-3xl font-bold mb-1">150+</div>
-              <div className="text-sm text-gray-200">Projects Done</div>
+              <div className="text-sm text-white/70">Projects Done</div>
             </div>
             <div>
               <Star className="w-8 h-8 mx-auto mb-2 opacity-80" />
               <div className="text-3xl font-bold mb-1">4.9/5</div>
-              <div className="text-sm text-gray-200">Client Rating</div>
+              <div className="text-sm text-white/70">Client Rating</div>
             </div>
             <div>
               <MessageSquare className="w-8 h-8 mx-auto mb-2 opacity-80" />
               <div className="text-3xl font-bold mb-1">98%</div>
-              <div className="text-sm text-gray-200">Satisfaction</div>
+              <div className="text-sm text-white/70">Satisfaction</div>
             </div>
           </div>
         </div>

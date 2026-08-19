@@ -93,17 +93,17 @@ export default function CreativeSection() {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   return (
-    <section className="py-20 bg-white">
+    <section className="py-20 bg-background">
       <div className="container-custom">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <span className="inline-block bg-blue-100 text-blue-600 px-4 py-2 rounded-full text-sm font-semibold mb-4">
+          <span className="inline-block bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-semibold mb-4">
             What We Do
           </span>
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
             Our Services
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
             Comprehensive digital solutions tailored to your business needs
           </p>
         </div>
@@ -119,7 +119,7 @@ export default function CreativeSection() {
                 onMouseEnter={() => setHoveredIndex(index)}
                 onMouseLeave={() => setHoveredIndex(null)}
               >
-                <div className="relative bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 h-full border border-gray-100 overflow-hidden">
+                <div className="relative bg-surface rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 h-full border border-border overflow-hidden">
                   {/* Background Gradient on Hover */}
                   <div
                     className={`absolute inset-0 bg-gradient-to-br ${service.color} opacity-0 group-hover:opacity-5 transition-opacity duration-500`}
@@ -136,10 +136,10 @@ export default function CreativeSection() {
 
                   {/* Content */}
                   <div className="relative">
-                    <h3 className="text-2xl font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors duration-300">
+                    <h3 className="text-2xl font-bold text-foreground mb-3 group-hover:text-blue-600 transition-colors duration-300">
                       {service.title}
                     </h3>
-                    <p className="text-gray-600 mb-6 leading-relaxed">
+                    <p className="text-muted-foreground mb-6 leading-relaxed">
                       {service.description}
                     </p>
 
@@ -148,7 +148,7 @@ export default function CreativeSection() {
                       {service.features.map((feature, i) => (
                         <li
                           key={i}
-                          className="flex items-center text-sm text-gray-600 transform transition-all duration-300"
+                          className="flex items-center text-sm text-muted-foreground transform transition-all duration-300"
                           style={{
                             transitionDelay:
                               hoveredIndex === index ? `${i * 50}ms` : "0ms",
@@ -173,7 +173,7 @@ export default function CreativeSection() {
                   </div>
 
                   {/* Decorative Corner Element */}
-                  <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-gray-50 to-transparent rounded-bl-full opacity-50 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-surface-deep to-transparent rounded-bl-full opacity-50 group-hover:opacity-100 transition-opacity duration-500"></div>
                 </div>
               </div>
             );
@@ -192,7 +192,7 @@ export default function CreativeSection() {
             </Link>
             <Link
               href="/contact"
-              className="bg-white text-gray-900 border-2 border-gray-200 px-8 py-4 rounded-lg font-semibold hover:border-blue-600 hover:text-blue-600 transition-all duration-300"
+              className="bg-background text-foreground border-2 border-border px-8 py-4 rounded-lg font-semibold hover:border-blue-600 hover:text-blue-600 transition-all duration-300"
             >
               Get a Free Quote
             </Link>
@@ -203,10 +203,10 @@ export default function CreativeSection() {
       {/* Process Section */}
       <div className="container-custom mt-32" id="our-process">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
             Our Process
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
             A proven approach to delivering exceptional results
           </p>
         </div>
@@ -252,10 +252,10 @@ export default function CreativeSection() {
               </div>
 
               {/* Content */}
-              <h3 className="text-xl font-bold text-gray-900 mb-2">
+              <h3 className="text-xl font-bold text-foreground mb-2">
                 {process.title}
               </h3>
-              <p className="text-gray-600">{process.description}</p>
+              <p className="text-muted-foreground">{process.description}</p>
             </div>
           ))}
         </div>

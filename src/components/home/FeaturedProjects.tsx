@@ -52,17 +52,17 @@ const featuredProjects = [
 
 export default function FeaturedProjects() {
   return (
-    <section className="py-20 bg-gray-50">
+    <section className="py-20 bg-surface-alt">
       <div className="container-custom">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <span className="inline-block bg-purple-100 text-purple-600 px-4 py-2 rounded-full text-sm font-semibold mb-4">
+          <span className="inline-block bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-semibold mb-4">
             Our Work
           </span>
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
             Featured Projects
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
             Explore some of our recent work and success stories
           </p>
         </div>
@@ -73,7 +73,7 @@ export default function FeaturedProjects() {
             <Link
               key={index}
               href={`/projects/${project.slug}`}
-              className="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 animate-slide-up"
+              className="group bg-surface rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 animate-slide-up"
               style={{ animationDelay: `${index * 100}ms` }}
             >
               {/* Project Image */}
@@ -91,7 +91,7 @@ export default function FeaturedProjects() {
                 </div>
                 {/* Category Badge */}
                 <div className="absolute top-4 left-4">
-                  <span className="bg-white/90 backdrop-blur-sm text-gray-900 px-3 py-1 rounded-full text-xs font-semibold">
+                  <span className="bg-surface-elevated/90 backdrop-blur-sm text-foreground px-3 py-1 rounded-full text-xs font-semibold">
                     {project.category}
                   </span>
                 </div>
@@ -99,17 +99,17 @@ export default function FeaturedProjects() {
 
               {/* Project Info */}
               <div className="p-6">
-                <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors duration-300">
+                <h3 className="text-xl font-bold text-foreground mb-2 group-hover:text-blue-600 transition-colors duration-300">
                   {project.title}
                 </h3>
-                <p className="text-gray-600 mb-4">{project.description}</p>
+                <p className="text-muted-foreground mb-4">{project.description}</p>
 
                 {/* Tech Tags */}
                 <div className="flex flex-wrap gap-2">
                   {project.tags.map((tag, i) => (
                     <span
                       key={i}
-                      className="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-xs font-medium"
+                      className="bg-muted text-muted-foreground px-3 py-1 rounded-full text-xs font-medium"
                     >
                       {tag}
                     </span>

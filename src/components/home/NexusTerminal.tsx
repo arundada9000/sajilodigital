@@ -590,14 +590,14 @@ export default function NexusTerminal({
       />
     </div>
   ) : (
-    <section className="relative py-20 bg-[#050505] px-6">
+    <section className="relative py-20 bg-background px-6">
       <div className="container-custom">
         <div className="mb-12">
-          <h2 className="text-[10px] items-center gap-2 font-black uppercase tracking-[0.8em] text-white/40 mb-4 flex">
-            <span className="w-12 h-px bg-white/20" />
+          <h2 className="text-[10px] items-center gap-2 font-black uppercase tracking-[0.8em] text-muted-foreground mb-4 flex">
+            <span className="w-12 h-px bg-foreground/20" />
             Core Diagnostics
           </h2>
-          <h3 className="text-3xl md:text-5xl font-black italic uppercase tracking-tighter text-white">
+          <h3 className="text-3xl md:text-5xl font-black italic uppercase tracking-tighter text-foreground">
             Sajilo Terminal <span className="text-blue-500">v1.0</span>
           </h3>
         </div>
@@ -684,10 +684,10 @@ function TerminalContent({
                 damping: 20,
               }
         }
-        className="relative mx-auto bg-black rounded-xl border border-white/10 shadow-[0_0_50px_rgba(0,0,0,0.5)] overflow-hidden font-mono text-xs md:text-sm group"
+        className="relative mx-auto bg-surface-deep rounded-xl border border-foreground/10 shadow-[0_0_50px_rgba(0,0,0,0.5)] overflow-hidden font-mono text-xs md:text-sm group"
       >
         {/* Header */}
-        <div className="flex items-center justify-between px-4 py-3 bg-white/5 border-b border-white/10 backdrop-blur-md cursor-default relative z-20">
+        <div className="flex items-center justify-between px-4 py-3 bg-foreground/5 border-b border-foreground/10 backdrop-blur-md cursor-default relative z-20">
           <div className="flex gap-2.5">
             <button
               onClick={() => setHistory([])}
@@ -705,7 +705,7 @@ function TerminalContent({
               title="Maximize Throughput"
             />
           </div>
-          <span className="text-white/30 text-[9px] font-black uppercase tracking-[0.4em]">
+          <span className="text-muted-foreground text-[9px] font-black uppercase tracking-[0.4em]">
             sajilodigital_kernel.bin@localhost
           </span>
           <div className="w-12 text-right">
@@ -726,7 +726,7 @@ function TerminalContent({
 
               <div
                 ref={scrollRef}
-                className="relative z-10 flex-1 overflow-y-auto space-y-2 mb-6 scrollbar-hide text-cyan-500/80 font-medium selection:bg-cyan-500/30 selection:text-white"
+                className="relative z-10 flex-1 overflow-y-auto space-y-2 mb-6 scrollbar-hide text-cyan-500/80 font-medium selection:bg-cyan-500/30 selection:text-foreground"
               >
                 {history.map((line: string, i: number) => (
                   <pre
@@ -740,7 +740,7 @@ function TerminalContent({
 
               <form
                 onSubmit={handleCommand}
-                className="relative z-10 flex items-center gap-3 border-t border-white/5 pt-5"
+                className="relative z-10 flex items-center gap-3 border-t border-foreground/5 pt-5"
               >
                 <span className="text-green-500 font-black tracking-tighter">
                   root@sajilo:~$
@@ -751,7 +751,7 @@ function TerminalContent({
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
                   onKeyDown={handleKeyDown}
-                  className="flex-1 bg-transparent border-none outline-none text-white focus:ring-0 p-0 placeholder:text-white/10"
+                  className="flex-1 bg-transparent border-none outline-none text-foreground focus:ring-0 p-0 placeholder:text-foreground/10"
                   placeholder="execute protocol..."
                   spellCheck={false}
                   autoComplete="off"

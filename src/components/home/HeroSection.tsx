@@ -71,12 +71,12 @@ export default function HeroSection() {
     <section className="relative min-h-screen flex items-center overflow-hidden bg-linear-to-br from-blue-600 via-purple-600 to-pink-600">
       {/* Animated Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute w-96 h-96 bg-white/10 rounded-full -top-48 -left-48 animate-pulse"></div>
+        <div className="absolute w-96 h-96 bg-foreground/10 rounded-full -top-48 -left-48 animate-pulse"></div>
         <div
-          className="absolute w-96 h-96 bg-white/10 rounded-full -bottom-48 -right-48 animate-pulse"
+          className="absolute w-96 h-96 bg-foreground/10 rounded-full -bottom-48 -right-48 animate-pulse"
           style={{ animationDelay: "1s" }}
         ></div>
-        <div className="absolute w-64 h-64 bg-white/5 rounded-full top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 animate-spin-slow"></div>
+        <div className="absolute w-64 h-64 bg-foreground/5 rounded-full top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 animate-spin-slow"></div>
       </div>
 
       {/* Grid Pattern */}
@@ -85,8 +85,8 @@ export default function HeroSection() {
       <div className="container-custom relative z-10 py-20">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Content */}
-          <div className="text-white">
-            <div className="inline-flex items-center space-x-2 bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full mb-6 animate-fade-in">
+          <div className="text-foreground">
+            <div className="inline-flex items-center space-x-2 bg-foreground/20 backdrop-blur-sm px-4 py-2 rounded-full mb-6 animate-fade-in">
               <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
               <span className="text-sm font-medium">
                 Available for new projects
@@ -101,7 +101,7 @@ export default function HeroSection() {
             </h1>
 
             <p
-              className="text-xl md:text-2xl text-gray-100 mb-8 leading-relaxed animate-slide-up"
+              className="text-xl md:text-2xl text-muted-foreground mb-8 leading-relaxed animate-slide-up"
               style={{ animationDelay: "100ms" }}
             >
               Transform your ideas into powerful digital solutions with our
@@ -113,7 +113,7 @@ export default function HeroSection() {
               className="flex items-center space-x-3 mb-8 animate-slide-up"
               style={{ animationDelay: "200ms" }}
             >
-              <span className="text-lg text-gray-200">Specialized in:</span>
+              <span className="text-lg text-muted-foreground">Specialized in:</span>
               <div className="relative h-8 w-48 overflow-hidden">
                 {services.map((service, index) => {
                   const Icon = service.icon;
@@ -127,7 +127,7 @@ export default function HeroSection() {
                       }`}
                     >
                       <Icon className="w-6 h-6 text-yellow-400" />
-                      <span className="font-semibold text-white">
+                      <span className="font-semibold text-foreground">
                         {service.text}
                       </span>
                     </div>
@@ -143,7 +143,7 @@ export default function HeroSection() {
             >
               <Link
                 href="/contact"
-                className="group inline-flex items-center justify-center space-x-2 bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition-all duration-300 shadow-2xl hover:shadow-3xl"
+                className="group inline-flex items-center justify-center space-x-2 bg-foreground text-background px-8 py-4 rounded-lg font-semibold hover:bg-foreground/90 transition-all duration-300 shadow-2xl hover:shadow-3xl"
               >
                 <span>Start Your Project</span>
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
@@ -151,7 +151,7 @@ export default function HeroSection() {
 
               <Link
                 href="/projects"
-                className="inline-flex items-center justify-center space-x-2 bg-white/10 backdrop-blur-sm text-white border-2 border-white px-8 py-4 rounded-lg font-semibold hover:bg-white/20 transition-all duration-300"
+                className="inline-flex items-center justify-center space-x-2 bg-foreground/10 backdrop-blur-sm text-foreground border-2 border-foreground px-8 py-4 rounded-lg font-semibold hover:bg-foreground/20 transition-all duration-300"
               >
                 <span>View Our Work</span>
               </Link>
@@ -159,20 +159,20 @@ export default function HeroSection() {
 
             {/* Stats */}
             <div
-              className="grid grid-cols-3 gap-8 mt-12 pt-12 border-t border-white/20 animate-fade-in"
+              className="grid grid-cols-3 gap-8 mt-12 pt-12 border-t border-foreground/20 animate-fade-in"
               style={{ animationDelay: "400ms" }}
             >
               <div>
                 <div className="text-4xl font-bold mb-1">150+</div>
-                <div className="text-gray-200 text-sm">Projects Done</div>
+                <div className="text-muted-foreground text-sm">Projects Done</div>
               </div>
               <div>
                 <div className="text-4xl font-bold mb-1">100+</div>
-                <div className="text-gray-200 text-sm">Happy Clients</div>
+                <div className="text-muted-foreground text-sm">Happy Clients</div>
               </div>
               <div>
                 <div className="text-4xl font-bold mb-1">5+</div>
-                <div className="text-gray-200 text-sm">Years Experience</div>
+                <div className="text-muted-foreground text-sm">Years Experience</div>
               </div>
             </div>
           </div>
@@ -184,31 +184,31 @@ export default function HeroSection() {
           >
             <div className="relative w-full h-150">
               {/* Main Card */}
-              <div className="absolute top-0 right-0 w-80 bg-white rounded-2xl shadow-2xl p-6 animate-float">
+              <div className="absolute top-0 right-0 w-80 bg-surface rounded-2xl shadow-2xl p-6 animate-float">
                 <div className="w-full h-48 bg-linear-to-br from-blue-400 to-purple-400 rounded-xl mb-4"></div>
                 <div className="space-y-3">
-                  <div className="h-4 bg-gray-200 rounded w-3/4"></div>
-                  <div className="h-4 bg-gray-200 rounded w-1/2"></div>
+                  <div className="h-4 bg-muted rounded w-3/4"></div>
+                  <div className="h-4 bg-muted rounded w-1/2"></div>
                 </div>
               </div>
 
               {/* Floating Card 1 */}
               <div
-                className="absolute bottom-20 left-0 w-64 bg-white rounded-xl shadow-xl p-4 animate-float"
+                className="absolute bottom-20 left-0 w-64 bg-surface rounded-xl shadow-xl p-4 animate-float"
                 style={{ animationDelay: "1s" }}
               >
                 <div className="flex items-center space-x-3">
                   <div className="w-12 h-12 bg-green-400 rounded-full"></div>
                   <div className="flex-1 space-y-2">
-                    <div className="h-3 bg-gray-200 rounded w-full"></div>
-                    <div className="h-3 bg-gray-200 rounded w-2/3"></div>
+                    <div className="h-3 bg-muted rounded w-full"></div>
+                    <div className="h-3 bg-muted rounded w-2/3"></div>
                   </div>
                 </div>
               </div>
 
               {/* Floating Card 2 */}
               <div
-                className="absolute top-32 left-12 w-56 bg-white rounded-xl shadow-xl p-4 animate-float"
+                className="absolute top-32 left-12 w-56 bg-surface rounded-xl shadow-xl p-4 animate-float"
                 style={{ animationDelay: "1.5s" }}
               >
                 <div className="flex items-center justify-between mb-3">
@@ -218,15 +218,15 @@ export default function HeroSection() {
                   </div>
                 </div>
                 <div className="space-y-2">
-                  <div className="h-2 bg-gray-200 rounded w-full"></div>
-                  <div className="h-2 bg-gray-200 rounded w-4/5"></div>
+                  <div className="h-2 bg-muted rounded w-full"></div>
+                  <div className="h-2 bg-muted rounded w-4/5"></div>
                 </div>
               </div>
 
               {/* Decorative Elements */}
-              <div className="absolute top-48 right-32 w-16 h-16 border-4 border-white/30 rounded-full animate-pulse"></div>
+              <div className="absolute top-48 right-32 w-16 h-16 border-4 border-foreground/30 rounded-full animate-pulse"></div>
               <div
-                className="absolute bottom-32 right-0 w-12 h-12 border-4 border-white/30 rounded-full animate-pulse"
+                className="absolute bottom-32 right-0 w-12 h-12 border-4 border-foreground/30 rounded-full animate-pulse"
                 style={{ animationDelay: "0.5s" }}
               ></div>
             </div>
@@ -236,8 +236,8 @@ export default function HeroSection() {
 
       {/* Scroll Indicator */}
       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-        <div className="w-6 h-10 border-2 border-white rounded-full flex items-start justify-center p-2">
-          <div className="w-1 h-2 bg-white rounded-full"></div>
+        <div className="w-6 h-10 border-2 border-foreground rounded-full flex items-start justify-center p-2">
+          <div className="w-1 h-2 bg-foreground rounded-full"></div>
         </div>
       </div>
 
@@ -250,7 +250,7 @@ export default function HeroSection() {
         >
           <path
             d="M0 120L60 105C120 90 240 60 360 45C480 30 600 30 720 37.5C840 45 960 60 1080 67.5C1200 75 1320 75 1380 75L1440 75V120H1380C1320 120 1200 120 1080 120C960 120 840 120 720 120C600 120 480 120 360 120C240 120 120 120 60 120H0Z"
-            fill="white"
+            fill="var(--background)"
           />
         </svg>
       </div>

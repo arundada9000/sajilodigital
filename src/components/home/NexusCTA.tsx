@@ -22,7 +22,7 @@ export default function NexusCTA() {
     const letters = title.split("");
 
     return (
-        <section ref={containerRef} className="relative py-40 md:py-60 px-6 text-center overflow-hidden bg-black">
+        <section ref={containerRef} className="relative py-40 md:py-60 px-6 text-center overflow-hidden bg-background">
             {/* Background Cinematic Lines - Parallax across the scroll */}
             <motion.div
                 style={{ x: x1, rotate: rotate1 }}
@@ -39,7 +39,7 @@ export default function NexusCTA() {
                     whileInView={{ opacity: 1 }}
                     viewport={{ once: true }}
                 >
-                    <h2 className="text-5xl md:text-[140px] font-black italic uppercase leading-none mb-12 tracking-tighter text-white flex flex-wrap justify-center overflow-hidden">
+                    <h2 className="text-5xl md:text-[140px] font-black italic uppercase leading-none mb-12 tracking-tighter text-foreground flex flex-wrap justify-center overflow-hidden">
                         {letters.map((char, i) => (
                             <motion.span
                                 key={i}
@@ -51,7 +51,7 @@ export default function NexusCTA() {
                                     delay: i * 0.02,
                                     ease: [0.33, 1, 0.68, 1]
                                 }}
-                                className={char === " " ? "mr-4" : i >= 15 ? "text-white/20" : ""}
+                                className={char === " " ? "mr-4" : i >= 15 ? "text-muted-foreground/40" : ""}
                             >
                                 {char}
                             </motion.span>
@@ -70,7 +70,7 @@ export default function NexusCTA() {
                                 <motion.button
                                     whileHover={{ scale: 1.05 }}
                                     whileTap={{ scale: 0.95 }}
-                                    className="bg-white text-black px-12 md:px-20 py-8 md:py-10 rounded-full text-xs md:text-sm font-black uppercase tracking-[0.5em] shadow-2xl shadow-blue-500/20 transition-all flex items-center gap-4 group-hover:bg-blue-600 group-hover:text-white"
+                                    className="bg-foreground text-background px-12 md:px-20 py-8 md:py-10 rounded-full text-xs md:text-sm font-black uppercase tracking-[0.5em] shadow-2xl shadow-blue-500/20 transition-all flex items-center gap-4 group-hover:bg-blue-600 group-hover:text-white"
                                 >
                                     Initiate Sync <MoveRight className="w-6 h-6 group-hover:translate-x-2 transition-transform" />
                                 </motion.button>
