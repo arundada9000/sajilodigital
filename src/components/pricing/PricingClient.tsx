@@ -68,7 +68,7 @@ export default function PricingClient() {
     const showAllServices = selectedService === "all";
 
     return (
-        <div className="bg-[#050505] text-white min-h-screen selection:bg-purple-500/30 relative">
+        <div className="bg-surface-deep text-foreground min-h-screen selection:bg-purple-500/30 relative">
             <Grain opacity={0.03} />
 
             {/* Background Decor */}
@@ -87,9 +87,9 @@ export default function PricingClient() {
                         transition={{ duration: 0.6 }}
                         className="max-w-4xl mx-auto text-center"
                     >
-                        <div className="inline-flex items-center space-x-2 bg-white/5 border border-white/10 px-4 py-1.5 rounded-full mb-6">
+                        <div className="inline-flex items-center space-x-2 bg-foreground/5 border border-border px-4 py-1.5 rounded-full mb-6">
                             <span className="w-2 h-2 bg-purple-500 rounded-full animate-pulse" />
-                            <span className="text-sm font-medium text-gray-400">Transparent Pricing</span>
+                            <span className="text-sm font-medium text-muted-foreground">Transparent Pricing</span>
                         </div>
                         <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 md:mb-8 tracking-tight">
                             Pricing tailored for{" "}
@@ -98,7 +98,7 @@ export default function PricingClient() {
                                 every digital goal
                             </span>
                         </h1>
-                        <p className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed">
+                        <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
                             Choose from our comprehensive services or bundles. Transparent pricing, no hidden fees, just pure innovation.
                         </p>
                     </motion.div>
@@ -128,7 +128,7 @@ export default function PricingClient() {
                             <h2 className="text-3xl md:text-4xl font-bold mb-4">
                                 All Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-blue-400">Services</span>
                             </h2>
-                            <p className="text-gray-400 max-w-2xl mx-auto">
+                            <p className="text-muted-foreground max-w-2xl mx-auto">
                                 Explore our complete range of digital services. Click on any service to see detailed pricing.
                             </p>
                         </motion.div>
@@ -142,7 +142,7 @@ export default function PricingClient() {
                                     transition={{ duration: 0.5, delay: index * 0.05 }}
                                     whileHover={{ y: -8 }}
                                     onClick={() => handleServiceChange(service.id)}
-                                    className="group relative p-6 md:p-8 rounded-3xl border border-white/10 bg-white/[0.02] hover:bg-white/[0.04] hover:border-white/20 cursor-pointer transition-all duration-500"
+                                    className="group relative p-6 md:p-8 rounded-3xl border border-border bg-foreground/[0.02] hover:bg-foreground/[0.04] hover:border-foreground/20 cursor-pointer transition-all duration-500"
                                 >
                                     <div className="flex items-center justify-between mb-4">
                                         <div
@@ -171,16 +171,16 @@ export default function PricingClient() {
                                     <h3 className="text-xl md:text-2xl font-bold mb-2 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-purple-400 group-hover:to-blue-400 transition-all duration-300">
                                         {service.name}
                                     </h3>
-                                    <p className="text-sm text-gray-400 mb-6">{service.shortDescription}</p>
+                                    <p className="text-sm text-muted-foreground mb-6">{service.shortDescription}</p>
 
                                     <div className="flex items-center justify-between">
                                         <div>
-                                            <span className="text-sm text-gray-500">Starting at</span>
+                                            <span className="text-sm text-muted-foreground">Starting at</span>
                                             <div className="text-2xl font-bold" style={{ color: service.accentColor }}>
                                                 {service.pricing[0].price}
                                             </div>
                                         </div>
-                                        <ArrowRight className="w-5 h-5 text-gray-400 group-hover:text-purple-400 group-hover:translate-x-1 transition-all duration-300" />
+                                        <ArrowRight className="w-5 h-5 text-muted-foreground group-hover:text-purple-400 group-hover:translate-x-1 transition-all duration-300" />
                                     </div>
 
                                     {/* Ambient glow */}
@@ -215,7 +215,7 @@ export default function PricingClient() {
                                         Pricing
                                     </span>
                                 </h2>
-                                <p className="text-gray-400 text-lg">{currentServiceData.shortDescription}</p>
+                                <p className="text-muted-foreground text-lg">{currentServiceData.shortDescription}</p>
                             </motion.div>
                         </div>
                     </section>
@@ -245,7 +245,7 @@ export default function PricingClient() {
                         <div className="container-custom">
                             <div className="text-center mb-12 md:mb-16">
                                 <h2 className="text-3xl md:text-5xl font-bold mb-4">Detailed Comparison</h2>
-                                <p className="text-gray-400">Find the perfect tier for your specific needs</p>
+                                <p className="text-muted-foreground">Find the perfect tier for your specific needs</p>
                             </div>
 
                             <AnimatePresence mode="wait">
@@ -270,14 +270,14 @@ export default function PricingClient() {
                     <div className="relative overflow-hidden rounded-[40px] p-12 md:p-20 text-center">
                         {/* CTA Background */}
                         <div className="absolute inset-0 bg-gradient-to-br from-blue-600/20 to-purple-600/20 blur-[80px]" />
-                        <div className="absolute inset-0 border border-white/10 rounded-[40px]" />
+                        <div className="absolute inset-0 border border-border rounded-[40px]" />
 
                         <div className="relative z-10 max-w-3xl mx-auto">
                             <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-6 tracking-tight">
                                 Not sure which {!showAllServices ? "tier" : "service"}
                                 <br className="hidden md:block" /> is right for you?
                             </h2>
-                            <p className="text-lg md:text-xl text-gray-400 mb-10">
+                            <p className="text-lg md:text-xl text-muted-foreground mb-10">
                                 Contact our experts for a free strategy session. We'll help you map out your digital journey.
                             </p>
                             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">

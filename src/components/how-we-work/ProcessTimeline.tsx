@@ -80,7 +80,7 @@ export default function ProcessTimeline() {
       {/* Circuit lines background (optional) */}
       <div className="absolute inset-0 opacity-10 pointer-events-none bg-[url('/noise.svg')] bg-repeat" />
 
-      <div className="absolute left-[39px] md:left-1/2 top-0 bottom-0 w-px bg-white/5 -translate-x-1/2" />
+      <div className="absolute left-[39px] md:left-1/2 top-0 bottom-0 w-px bg-border/5 -translate-x-1/2" />
 
       {/* Animated Beam */}
       <motion.div
@@ -123,7 +123,7 @@ function TimelineStep({ step, index }: { step: any; index: number }) {
       {/* Icon (Center) */}
       <div className="absolute left-[39px] md:left-1/2 -translate-x-1/2 z-20">
         <div
-          className={`w-20 h-20 rounded-full bg-[#0A0A0A] border-2 border-white/10 flex items-center justify-center relative group`}
+          className={`w-20 h-20 rounded-full bg-background border-2 border-border/10 flex items-center justify-center relative group`}
         >
           {/* Pulsing ring */}
           <div
@@ -145,7 +145,7 @@ function TimelineStep({ step, index }: { step: any; index: number }) {
         className={`pl-24 md:pl-0 w-full md:w-1/2 ${isEven ? "md:pr-16 md:text-right" : "md:pl-16 md:text-left"}`}
       >
         <div
-          className={`relative p-8 rounded-2xl bg-white/[0.02] border border-white/5 hover:border-white/10 transition-all duration-300 group hover:bg-white/[0.04] hover:${step.shadow} hover:shadow-2xl`}
+          className={`relative p-8 rounded-2xl bg-foreground/[0.02] border border-border/5 hover:border-border/10 transition-all duration-300 group hover:bg-foreground/[0.04] hover:${step.shadow} hover:shadow-2xl`}
         >
           {/* Corner accents */}
           <div
@@ -160,10 +160,10 @@ function TimelineStep({ step, index }: { step: any; index: number }) {
           >
             0{step.id} // {step.title.toUpperCase()}
           </span>
-          <h3 className="text-3xl font-bold mb-4 text-white group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-white group-hover:to-gray-400 transition-all">
+          <h3 className="text-3xl font-bold mb-4 text-foreground group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-foreground group-hover:to-gray-400 transition-all">
             {step.title}
           </h3>
-          <p className="text-gray-400 leading-relaxed text-lg">
+          <p className="text-muted-foreground leading-relaxed text-lg">
             {step.description}
           </p>
         </div>

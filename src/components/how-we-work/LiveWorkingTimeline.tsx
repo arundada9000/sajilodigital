@@ -35,7 +35,7 @@ export default function LiveWorkingTimeline() {
     const [hoveredProject, setHoveredProject] = useState<string | null>(null);
 
     return (
-        <div className="py-24 relative overflow-hidden bg-[#050505]">
+        <div className="py-24 relative overflow-hidden bg-surface-deep">
             {/* Decorative Lines */}
             <div className="absolute inset-0 pointer-events-none opacity-20">
                 <div className="absolute top-0 left-[10%] w-px h-full bg-gradient-to-b from-transparent via-blue-500/50 to-transparent" />
@@ -55,7 +55,7 @@ export default function LiveWorkingTimeline() {
                     <h2 className="text-3xl md:text-5xl font-bold mb-6 italic uppercase tracking-tighter">
                         Active <span className="text-blue-500">Workspace</span>
                     </h2>
-                    <p className="text-gray-400 font-mono text-sm uppercase tracking-widest">
+                    <p className="text-muted-foreground font-mono text-sm uppercase tracking-widest">
                         Real-time feed of current architecture builds.
                     </p>
                 </div>
@@ -105,7 +105,7 @@ function ProjectRow({
             <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12">
                 {/* Status Indicator (Left) */}
                 <div className="relative">
-                    <div className="w-20 h-20 rounded-xl bg-white/[0.03] border border-white/10 flex items-center justify-center relative z-20 overflow-hidden group-hover:border-blue-500/50 transition-colors">
+                    <div className="w-20 h-20 rounded-xl bg-foreground/[0.03] border border-border/10 flex items-center justify-center relative z-20 overflow-hidden group-hover:border-blue-500/50 transition-colors">
                         <Icon className={`w-8 h-8 ${colorClass} group-hover:scale-110 transition-transform`} />
                         <div className={`absolute inset-0 bg-gradient-to-br from-blue-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity`} />
                     </div>
@@ -114,62 +114,62 @@ function ProjectRow({
 
                 {/* Content Card (Right) */}
                 <div className="flex-1 w-full">
-                    <div className="p-8 rounded-2xl bg-white/[0.02] border border-white/5 backdrop-blur-md relative overflow-hidden group-hover:bg-white/[0.04] transition-all duration-500">
+                    <div className="p-8 rounded-2xl bg-foreground/[0.02] border border-border/5 backdrop-blur-md relative overflow-hidden group-hover:bg-foreground/[0.04] transition-all duration-500">
                         {/* Scanline Effect */}
                         <div className="absolute inset-0 w-full h-full bg-[linear-gradient(to_bottom,transparent,rgba(255,255,255,0.05)_50%,transparent)] bg-[length:100%_4px] opacity-10 animate-scanline pointer-events-none" />
 
                         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mb-8 relative z-10">
                             <div>
                                 <div className="flex items-center gap-3 mb-2">
-                                    <span className={`text-[10px] font-mono font-black uppercase tracking-widest px-2 py-0.5 rounded ${colorClass} bg-white/5 border border-white/5`}>
+                                    <span className={`text-[10px] font-mono font-black uppercase tracking-widest px-2 py-0.5 rounded ${colorClass} bg-foreground/5 border border-border/5`}>
                                         {project.status}
                                     </span>
-                                    <span className="text-[10px] font-mono text-white/30 uppercase tracking-[0.3em]">
+                                    <span className="text-[10px] font-mono text-foreground/30 uppercase tracking-[0.3em]">
                                         {project.id}
                                     </span>
                                 </div>
-                                <h3 className="text-2xl md:text-3xl font-bold text-white group-hover:text-blue-400 transition-colors">
+                                <h3 className="text-2xl md:text-3xl font-bold text-foreground group-hover:text-blue-400 transition-colors">
                                     {project.name}
                                 </h3>
-                                <p className="text-white/40 text-sm font-mono mt-1">CLIENT: {project.client.toUpperCase()}</p>
+                                <p className="text-foreground/40 text-sm font-mono mt-1">CLIENT: {project.client.toUpperCase()}</p>
                             </div>
 
                             <div className="text-right flex flex-col items-end">
-                                <div className="text-3xl font-black italic tracking-tighter text-white mb-1">
+                                <div className="text-3xl font-black italic tracking-tighter text-foreground mb-1">
                                     {project.progress}%
                                 </div>
-                                <div className="text-[9px] font-mono uppercase tracking-[0.4em] text-white/20">
+                                <div className="text-[9px] font-mono uppercase tracking-[0.4em] text-foreground/20">
                                     Total_Throughput
                                 </div>
                             </div>
                         </div>
 
                         {/* Progress Bar */}
-                        <div className="relative h-2 w-full bg-white/5 rounded-full overflow-hidden mb-8">
+                        <div className="relative h-2 w-full bg-foreground/5 rounded-full overflow-hidden mb-8">
                             <motion.div
                                 initial={{ width: 0 }}
                                 whileInView={{ width: `${project.progress}%` }}
                                 transition={{ duration: 1.5, ease: "circOut" }}
                                 className={`absolute inset-0 h-full bg-gradient-to-r from-blue-600 to-cyan-400 rounded-full`}
                             >
-                                <div className="absolute inset-0 w-full h-full bg-white/20 animate-shimmer" />
+                                <div className="absolute inset-0 w-full h-full bg-foreground/20 animate-shimmer" />
                             </motion.div>
                         </div>
 
                         {/* Recent Activity Mini-Feed */}
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                             {project.activities.slice(0, 2).map((activity, i) => (
-                                <div key={i} className="flex items-start gap-3 p-3 rounded-lg bg-black/40 border border-white/5 hover:border-white/10 transition-colors">
-                                    <div className={`mt-1.5 w-1.5 h-1.5 rounded-full ${i === 0 ? "bg-blue-500 animate-pulse" : "bg-white/20"}`} />
+                                <div key={i} className="flex items-start gap-3 p-3 rounded-lg bg-background/40 border border-border/5 hover:border-border/10 transition-colors">
+                                    <div className={`mt-1.5 w-1.5 h-1.5 rounded-full ${i === 0 ? "bg-blue-500 animate-pulse" : "bg-foreground/20"}`} />
                                     <div>
-                                        <p className="text-xs text-white/80 leading-relaxed">{activity.message}</p>
-                                        <p className="text-[9px] font-mono text-white/30 uppercase tracking-widest mt-1.5">{activity.time}</p>
+                                        <p className="text-xs text-foreground/80 leading-relaxed">{activity.message}</p>
+                                        <p className="text-[9px] font-mono text-foreground/30 uppercase tracking-widest mt-1.5">{activity.time}</p>
                                     </div>
                                 </div>
                             ))}
                             <Link
                                 href="/status"
-                                className="flex items-center justify-center gap-2 p-3 rounded-lg border border-dashed border-white/10 text-white/40 hover:text-white hover:border-blue-500/50 hover:bg-blue-500/5 transition-all group/link"
+                                className="flex items-center justify-center gap-2 p-3 rounded-lg border border-dashed border-border/10 text-foreground/40 hover:text-foreground hover:border-blue-500/50 hover:bg-blue-500/5 transition-all group/link"
                             >
                                 <span className="text-[10px] font-mono uppercase tracking-widest">Full_Diagnostics</span>
                                 <ArrowRight className="w-3 h-3 group-hover/link:translate-x-1 transition-transform" />

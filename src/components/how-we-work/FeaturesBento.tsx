@@ -17,12 +17,12 @@ export default function FeaturesBento() {
     return (
         <section className="py-24 relative overflow-hidden">
             {/* Radial gradient background */}
-            <div className="absolute inset-0 bg-[radial-gradient(circle_500px_at_50%_200px,#1a1a1a,transparent)] pointer-events-none" />
+            <div className="absolute inset-0 bg-[radial-gradient(circle_500px_at_50%_200px,var(--surface-deep),transparent)] pointer-events-none" />
 
             <div className="container-custom relative z-10">
                 <div className="text-center max-w-2xl mx-auto mb-16">
                     <h2 className="text-3xl md:text-5xl font-bold mb-4">Why Clients Love This Process</h2>
-                    <p className="text-gray-400">We've eliminated the "black box" of agency work. You're part of the team, not just a spectator.</p>
+                    <p className="text-muted-foreground">We've eliminated the "black box" of agency work. You're part of the team, not just a spectator.</p>
                 </div>
 
                 <div
@@ -50,7 +50,7 @@ export default function FeaturesBento() {
 
                     {/* Medium Card: Ownership */}
                     <BentoCard
-                        className="bg-white/5"
+                        className="bg-foreground/5"
                         icon={Github}
                         title="100% Code Ownership"
                         description="You own the repository. No vendor lock-in. If you want to leave (you won't), you take your code with you."
@@ -58,7 +58,7 @@ export default function FeaturesBento() {
 
                     {/* Medium Card: Communication */}
                     <BentoCard
-                        className="bg-white/5"
+                        className="bg-foreground/5"
                         icon={MessageSquare}
                         title="Direct Dev Access"
                         description="Don't talk to a project manager who talks to a dev. Talk directly to the person building your product."
@@ -74,20 +74,20 @@ function BentoCard({ className, icon: Icon, title, description, children }: any)
         <motion.div
             whileHover={{ scale: 0.98 }}
             className={cn(
-                "relative p-8 rounded-2xl border border-white/10 overflow-hidden group flex flex-col justify-end bg-black/40 backdrop-blur-sm z-10",
+                "relative p-8 rounded-2xl border border-border/10 overflow-hidden group flex flex-col justify-end bg-background/40 backdrop-blur-sm z-10",
                 className
             )}
         >
             {/* Inner spotlight for individual cards */}
-            <div className="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            <div className="absolute inset-0 bg-foreground/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
             {children}
             <div className="relative z-10">
-                <div className="w-12 h-12 rounded-lg bg-white/10 flex items-center justify-center mb-4 text-white group-hover:bg-white group-hover:text-black transition-all duration-300">
+                <div className="w-12 h-12 rounded-lg bg-foreground/10 flex items-center justify-center mb-4 text-foreground group-hover:bg-foreground group-hover:text-background transition-all duration-300">
                     <Icon className="w-6 h-6" aria-hidden="true" />
                 </div>
-                <h3 className="text-xl font-bold mb-2 text-white">{title}</h3>
-                <p className="text-gray-400 text-sm leading-relaxed group-hover:text-gray-300 transition-colors">{description}</p>
+                <h3 className="text-xl font-bold mb-2 text-foreground">{title}</h3>
+                <p className="text-muted-foreground text-sm leading-relaxed group-hover:text-foreground/70 transition-colors">{description}</p>
             </div>
         </motion.div>
     )

@@ -29,12 +29,12 @@ export default function ServiceComparisonTable({
     };
 
     return (
-        <div className="max-w-5xl mx-auto overflow-hidden rounded-3xl border border-white/10 bg-white/[0.02] backdrop-blur-sm">
-            <div className="overflow-x-auto scrollbar-thin scrollbar-thumb-white/10 scrollbar-track-transparent">
+        <div className="max-w-5xl mx-auto overflow-hidden rounded-3xl border border-border bg-foreground/[0.02] backdrop-blur-sm">
+            <div className="overflow-x-auto scrollbar-thin scrollbar-thumb-foreground/10 scrollbar-track-transparent">
                 <table className="w-full text-left border-collapse min-w-[640px]">
                     <thead>
-                        <tr className="border-b border-white/10">
-                            <th className="p-4 md:p-6 text-xs md:text-sm font-medium text-gray-400 uppercase tracking-wider sticky left-0 bg-[#050505] z-10">
+                        <tr className="border-b border-border">
+                            <th className="p-4 md:p-6 text-xs md:text-sm font-medium text-muted-foreground uppercase tracking-wider sticky left-0 bg-surface-deep z-10">
                                 Features
                             </th>
                             {tierNames.map((name, index) => (
@@ -42,7 +42,7 @@ export default function ServiceComparisonTable({
                                     key={name}
                                     className={`p-4 md:p-6 text-xs md:text-sm font-medium uppercase tracking-wider text-center transition-all duration-300 ${index === popularTierIndex
                                             ? "text-purple-400 bg-purple-500/5"
-                                            : "text-gray-400"
+                                            : "text-muted-foreground"
                                         }`}
                                 >
                                     <motion.div
@@ -56,7 +56,7 @@ export default function ServiceComparisonTable({
                             ))}
                         </tr>
                     </thead>
-                    <tbody className="divide-y divide-white/5">
+                    <tbody className="divide-y divide-foreground/5">
                         <AnimatePresence mode="wait">
                             {comparisonData.map((row, rowIndex) => (
                                 <motion.tr
@@ -69,9 +69,9 @@ export default function ServiceComparisonTable({
                                         delay: rowIndex * 0.03,
                                         ease: [0.22, 1, 0.36, 1],
                                     }}
-                                    className="hover:bg-white/[0.02] transition-colors group"
+                                    className="hover:bg-foreground/[0.02] transition-colors group"
                                 >
-                                    <td className="p-4 md:p-6 text-sm md:text-base text-gray-300 font-medium sticky left-0 bg-[#050505] group-hover:bg-white/[0.02] z-10">
+                                    <td className="p-4 md:p-6 text-sm md:text-base text-foreground/70 font-medium sticky left-0 bg-surface-deep group-hover:bg-foreground/[0.02] z-10">
                                         <motion.div
                                             whileHover={{ x: 4 }}
                                             transition={{ duration: 0.2 }}
@@ -87,14 +87,14 @@ export default function ServiceComparisonTable({
                                             initial={{ opacity: 0, scale: 0.8 }}
                                             animate={{ opacity: 1, scale: 1 }}
                                             transition={{ delay: rowIndex * 0.03 + 0.1 }}
-                                            className="text-gray-400"
+                                            className="text-muted-foreground"
                                         >
                                             {renderCellContent(row.tier1)}
                                         </motion.div>
                                     </td>
                                     <td
                                         className={`p-4 md:p-6 text-center text-sm md:text-base transition-all duration-300 ${popularTierIndex === 1
-                                                ? "bg-purple-500/5 text-white font-medium"
+                                                ? "bg-purple-500/5 text-foreground font-medium"
                                                 : ""
                                             }`}
                                     >
@@ -102,7 +102,7 @@ export default function ServiceComparisonTable({
                                             initial={{ opacity: 0, scale: 0.8 }}
                                             animate={{ opacity: 1, scale: 1 }}
                                             transition={{ delay: rowIndex * 0.03 + 0.15 }}
-                                            className={popularTierIndex === 1 ? "text-white" : "text-gray-400"}
+                                            className={popularTierIndex === 1 ? "text-foreground" : "text-muted-foreground"}
                                         >
                                             {renderCellContent(row.tier2)}
                                         </motion.div>
@@ -115,7 +115,7 @@ export default function ServiceComparisonTable({
                                             initial={{ opacity: 0, scale: 0.8 }}
                                             animate={{ opacity: 1, scale: 1 }}
                                             transition={{ delay: rowIndex * 0.03 + 0.2 }}
-                                            className="text-gray-400"
+                                            className="text-muted-foreground"
                                         >
                                             {renderCellContent(row.tier3)}
                                         </motion.div>
@@ -129,7 +129,7 @@ export default function ServiceComparisonTable({
 
             {/* Mobile Scroll Hint */}
             <div className="md:hidden p-4 text-center">
-                <p className="text-xs text-gray-500 flex items-center justify-center gap-2">
+                <p className="text-xs text-muted-foreground flex items-center justify-center gap-2">
                     <motion.span
                         animate={{ x: [0, 10, 0] }}
                         transition={{ repeat: Infinity, duration: 1.5 }}

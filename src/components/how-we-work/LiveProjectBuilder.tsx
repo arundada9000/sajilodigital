@@ -88,8 +88,8 @@ function PlanningView({ projectName }: { projectName: string }) {
             {/* Tool Bar */}
             <div className="absolute top-4 left-1/2 -translate-x-1/2 bg-white shadow-xl rounded-lg px-4 py-2 flex gap-4 border border-gray-200 z-10 pointer-events-none">
                 <div className="w-6 h-6 rounded bg-blue-100 text-blue-600 flex items-center justify-center"><LayoutTemplate size={14} /></div>
-                <div className="w-6 h-6 rounded hover:bg-gray-100 flex items-center justify-center text-gray-400"><Search size={14} /></div>
-                <div className="w-6 h-6 rounded hover:bg-gray-100 flex items-center justify-center text-gray-400"><Menu size={14} /></div>
+                <div className="w-6 h-6 rounded hover:bg-gray-100 flex items-center justify-center text-muted-foreground"><Search size={14} /></div>
+                <div className="w-6 h-6 rounded hover:bg-gray-100 flex items-center justify-center text-muted-foreground"><Menu size={14} /></div>
             </div>
 
             {/* Nodes */}
@@ -138,7 +138,7 @@ function PlanningView({ projectName }: { projectName: string }) {
 
             {/* Drag Handle Hint */}
             <div className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity bg-black/10 p-1 rounded">
-                <Move size={12} className="text-gray-500" />
+                <Move size={12} className="text-muted-foreground" />
             </div>
         </motion.div>
     )
@@ -178,11 +178,11 @@ function DesignView({ pixelPerfect, projectName, isReworking }: { pixelPerfect: 
             <div className="flex-1 flex relative">
                 {/* Sidebar */}
                 <div className="w-48 bg-[#2c2c2c] border-r border-black p-2 hidden md:block pointer-events-none">
-                    <div className="text-[10px] text-gray-400 font-bold mb-2">LAYERS</div>
+                    <div className="text-[10px] text-muted-foreground font-bold mb-2">LAYERS</div>
                     <div className="space-y-1">
                         <div className="flex items-center gap-2 text-white text-xs bg-blue-500/20 p-1 rounded"><LayoutTemplate size={10} /> Landing Page</div>
-                        <div className="flex items-center gap-2 text-gray-400 text-xs p-1 pl-4"><LayoutTemplate size={10} /> Hero Section</div>
-                        <div className="flex items-center gap-2 text-gray-400 text-xs p-1 pl-4"><LayoutTemplate size={10} /> Navbar</div>
+                        <div className="flex items-center gap-2 text-muted-foreground text-xs p-1 pl-4"><LayoutTemplate size={10} /> Hero Section</div>
+                        <div className="flex items-center gap-2 text-muted-foreground text-xs p-1 pl-4"><LayoutTemplate size={10} /> Navbar</div>
                         {isReworking && (
                             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="flex items-center gap-2 text-yellow-400 text-xs p-1 pl-4 italic"><History size={10} /> Reworking UI...</motion.div>
                         )}
@@ -247,34 +247,34 @@ function CodingView({ stage, projectName }: { stage: "frontend" | "backend", pro
             />
 
             {/* Title Bar */}
-            <div className="h-8 bg-[#252526] flex items-center px-4 text-gray-400 text-xs gap-4 select-none">
+            <div className="h-8 bg-[#252526] flex items-center px-4 text-muted-foreground text-xs gap-4 select-none">
                 <Menu size={14} />
                 <span className="truncate">{filename} - {projectName} - Visual Studio Code</span>
             </div>
 
             <div className="flex-1 flex overflow-hidden">
                 {/* Activity Bar */}
-                <div className="w-12 bg-[#333333] flex flex-col items-center py-4 gap-6 text-gray-400 pointer-events-none">
-                    <FileCode size={24} className="text-white" />
+                <div className="w-12 bg-[#333333] flex flex-col items-center py-4 gap-6 text-muted-foreground pointer-events-none">
+                    <FileCode size={24} className="text-foreground" />
                     <Search size={24} />
                     <GitBranch size={24} />
                 </div>
 
                 {/* Sidebar */}
-                <div className="w-48 bg-[#252526] text-gray-300 p-2 hidden md:block pointer-events-none">
+                <div className="w-48 bg-[#252526] text-foreground/70 p-2 hidden md:block pointer-events-none">
                     <div className="text-[10px] font-bold mb-2 pl-2">EXPLORER</div>
                     <div className="pl-2 flex items-center gap-1 text-blue-400 bg-[#37373d] py-1">
                         <FileCode size={14} className={iconColor} /> {filename}
                     </div>
-                    <div className="pl-6 text-[11px] text-gray-500 mt-2 space-y-1">
-                        <div className="hover:text-gray-300">layout.tsx</div>
-                        <div className="hover:text-gray-300">globals.css</div>
-                        <div className="hover:text-gray-300">next.config.js</div>
+                    <div className="pl-6 text-[11px] text-muted-foreground mt-2 space-y-1">
+                        <div className="hover:text-foreground/70">layout.tsx</div>
+                        <div className="hover:text-foreground/70">globals.css</div>
+                        <div className="hover:text-foreground/70">next.config.js</div>
                     </div>
                 </div>
 
                 {/* Editor */}
-                <div className="flex-1 bg-[#1e1e1e] p-4 text-gray-300 overflow-hidden cursor-text">
+                <div className="flex-1 bg-[#1e1e1e] p-4 text-foreground/70 overflow-hidden cursor-text">
                     <div className="flex gap-2 mb-4">
                         <div className="bg-[#2c2c2c] px-3 py-1 rounded-t border-t border-r border-[#333] text-blue-400 flex items-center gap-1">
                             <FileCode size={12} /> {filename}
@@ -330,7 +330,7 @@ function TestingView({ security }: { security: boolean }) {
         <motion.div
             drag
             dragConstraints={{ left: -50, right: 50, top: -50, bottom: 50 }}
-            className="w-full h-full bg-[#0d1117] p-4 font-mono text-sm text-gray-300 overflow-hidden shadow-2xl rounded-lg cursor-grab active:cursor-grabbing border border-gray-800 flex flex-col md:flex-row gap-4"
+            className="w-full h-full bg-[#0d1117] p-4 font-mono text-sm text-foreground/70 overflow-hidden shadow-2xl rounded-lg cursor-grab active:cursor-grabbing border border-gray-800 flex flex-col md:flex-row gap-4"
         >
             {/* Ghost Cursor: Ashish */}
             <GhostCursor
@@ -340,7 +340,7 @@ function TestingView({ security }: { security: boolean }) {
             />
 
             <div className="flex-1 space-y-2">
-                <div className="flex items-center gap-2 mb-4 text-gray-500 border-b border-gray-800 pb-2">
+                <div className="flex items-center gap-2 mb-4 text-muted-foreground border-b border-gray-800 pb-2">
                     <TerminalIcon size={16} />
                     <span className="text-[10px]">Runner #142 (Node.js 20.x)</span>
                 </div>
@@ -349,20 +349,20 @@ function TestingView({ security }: { security: boolean }) {
                     <div className="flex items-center gap-2 group">
                         <span className="text-green-500 font-bold">✔</span>
                         <span className="text-[11px]">Building...</span>
-                        <span className="text-gray-500 text-[9px] ml-auto">1.2s</span>
+                        <span className="text-muted-foreground text-[9px] ml-auto">1.2s</span>
                     </div>
 
                     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }} className="flex items-center gap-2">
                         <span className="text-green-500 font-bold">✔</span>
                         <span className="text-[11px]">Unit Tests...</span>
-                        <span className="text-gray-500 text-[9px] ml-auto">0.8s</span>
+                        <span className="text-muted-foreground text-[9px] ml-auto">0.8s</span>
                     </motion.div>
 
                     {security && (
                         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.0 }} className="flex items-center gap-2">
                             <span className="text-green-500 font-bold">✔</span>
                             <span className="text-[11px]">Vulnerability Audit...</span>
-                            <span className="text-gray-500 text-[9px] ml-auto">2.1s</span>
+                            <span className="text-muted-foreground text-[9px] ml-auto">2.1s</span>
                         </motion.div>
                     )}
 
@@ -376,15 +376,15 @@ function TestingView({ security }: { security: boolean }) {
             </div>
 
             {/* Responsive Morphing Preview */}
-            <div className="flex-1 bg-black/40 rounded-lg border border-white/5 p-4 flex flex-col items-center justify-center gap-2">
+            <div className="flex-1 bg-black/40 rounded-lg border border-border p-4 flex flex-col items-center justify-center gap-2">
                 <div className="flex gap-2 mb-2">
-                    <Smartphone size={12} className={cn("transition-colors", device === "mobile" ? "text-blue-400" : "text-gray-600")} />
-                    <TabletIcon size={12} className={cn("transition-colors", device === "tablet" ? "text-blue-400" : "text-gray-600")} />
-                    <Monitor size={12} className={cn("transition-colors", device === "desktop" ? "text-blue-400" : "text-gray-600")} />
+                    <Smartphone size={12} className={cn("transition-colors", device === "mobile" ? "text-blue-400" : "text-muted-foreground")} />
+                    <TabletIcon size={12} className={cn("transition-colors", device === "tablet" ? "text-blue-400" : "text-muted-foreground")} />
+                    <Monitor size={12} className={cn("transition-colors", device === "desktop" ? "text-blue-400" : "text-muted-foreground")} />
                 </div>
                 <motion.div
                     layout
-                    className={cn(deviceWidths[device], "h-32 bg-gray-800 rounded border border-white/10 overflow-hidden relative shadow-lg")}
+                    className={cn(deviceWidths[device], "h-32 bg-gray-800 rounded border border-border overflow-hidden relative shadow-lg")}
                 >
                     <div className="absolute inset-x-0 top-0 h-2 bg-gray-700" />
                     <div className="p-2 space-y-2">
@@ -393,7 +393,7 @@ function TestingView({ security }: { security: boolean }) {
                         <div className="w-full h-12 bg-gray-700/50 rounded" />
                     </div>
                 </motion.div>
-                <span className="text-[9px] text-gray-500 font-mono uppercase transition-all">Testing: {device}</span>
+                <span className="text-[9px] text-muted-foreground font-mono uppercase transition-all">Testing: {device}</span>
             </div>
         </motion.div>
     )
@@ -405,7 +405,7 @@ function DeploymentView() {
         <motion.div
             drag
             dragConstraints={{ left: -50, right: 50, top: -50, bottom: 50 }}
-            className="relative w-full h-full bg-[#050505] overflow-hidden flex items-center justify-center shadow-2xl rounded-lg cursor-grab active:cursor-grabbing border border-gray-800"
+            className="relative w-full h-full bg-surface-deep overflow-hidden flex items-center justify-center shadow-2xl rounded-lg cursor-grab active:cursor-grabbing border border-gray-800"
         >
             {/* Abstract Map Dots */}
             <div className="absolute inset-0 grid grid-cols-12 gap-4 p-8 opacity-20 pointer-events-none">
@@ -461,21 +461,21 @@ function PerformanceHUD() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             className="absolute inset-0 z-[120] flex items-center justify-center bg-black/20 backdrop-blur-[2px] pointer-events-none"
         >
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 p-6 bg-black/80 backdrop-blur-xl border border-white/10 rounded-3xl shadow-[0_0_100px_rgba(0,0,0,1)] pointer-events-auto">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 p-6 bg-background/80 backdrop-blur-xl border border-border/10 rounded-3xl shadow-[0_0_100px_rgba(0,0,0,1)] pointer-events-auto">
                 {[
                     { label: "Performance", score: 99, color: "text-green-400" },
                     { label: "Accessibility", score: 100, color: "text-green-400" },
                     { label: "Best Practices", score: 100, color: "text-green-400" },
                     { label: "SEO", score: 100, color: "text-green-400" }
                 ].map((stat, i) => (
-                    <div key={i} className="flex flex-col items-center gap-3 p-4 bg-white/5 rounded-2xl border border-white/5">
-                        <div className={cn("flex items-center justify-center w-16 h-16 rounded-full border-4 border-current bg-black", stat.color)}>
-                            <span className="text-lg font-bold text-white">{stat.score}</span>
+                    <div key={i} className="flex flex-col items-center gap-3 p-4 bg-foreground/5 rounded-2xl border border-border/5">
+                        <div className={cn("flex items-center justify-center w-16 h-16 rounded-full border-4 border-current bg-background", stat.color)}>
+                            <span className="text-lg font-bold text-foreground">{stat.score}</span>
                         </div>
-                        <span className="text-[10px] uppercase font-bold text-gray-400 tracking-wider h-4 text-center">{stat.label}</span>
+                        <span className="text-[10px] uppercase font-bold text-muted-foreground tracking-wider h-4 text-center">{stat.label}</span>
                     </div>
                 ))}
-                <div className="col-span-full pt-4 mt-2 border-t border-white/5 flex justify-between items-center text-[10px] text-gray-500 font-mono">
+                <div className="col-span-full pt-4 mt-2 border-t border-border/5 flex justify-between items-center text-[10px] text-muted-foreground font-mono">
                     <div className="flex items-center gap-2">
                         <Zap size={10} className="text-yellow-400" />
                         LCP: 0.8s
@@ -502,9 +502,9 @@ function LiveHuddle() {
                     { n: "Gobind", c: "bg-pink-500" },
                     { n: "Ashish", c: "bg-green-500" }
                 ].map((u, i) => (
-                    <div key={i} className={cn("w-5 h-5 rounded-full border border-black flex items-center justify-center text-[8px] font-bold text-white shadow-sm ring-1 ring-white/10 group relative", u.c)}>
+                    <div key={i} className={cn("w-5 h-5 rounded-full border border-background flex items-center justify-center text-[8px] font-bold text-white shadow-sm ring-1 ring-foreground/10 group relative", u.c)}>
                         {u.n[0]}
-                        <span className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 bg-black text-white px-1.5 py-0.5 rounded text-[8px] opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap z-50">{u.n}</span>
+                        <span className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 bg-background text-foreground px-1.5 py-0.5 rounded text-[8px] opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap z-50">{u.n}</span>
                     </div>
                 ))}
             </div>
@@ -530,7 +530,7 @@ function LogEntry({ log }: { log: string }) {
     return (
         <div
             className={cn(
-                "animate-fade-in break-words cursor-pointer hover:bg-white/5 p-1 rounded transition-colors group",
+                "animate-fade-in break-words cursor-pointer hover:bg-foreground/5 p-1 rounded transition-colors group",
                 isSuccess ? "text-green-400" : isInfo ? "text-blue-400/70" : "text-green-400/70"
             )}
             onClick={() => setExpanded(!expanded)}
@@ -546,10 +546,10 @@ function LogEntry({ log }: { log: string }) {
                         initial={{ height: 0, opacity: 0 }}
                         animate={{ height: "auto", opacity: 1 }}
                         exit={{ height: 0, opacity: 0 }}
-                        className="overflow-hidden pl-5 mt-1 border-l border-white/10 space-y-0.5 ml-1"
+                        className="overflow-hidden pl-5 mt-1 border-l border-border/10 space-y-0.5 ml-1"
                     >
                         {getDetails(log).map((d, i) => (
-                            <div key={i} className="text-[9px] text-gray-500 font-mono">• {d}</div>
+                            <div key={i} className="text-[9px] text-muted-foreground font-mono">• {d}</div>
                         ))}
                     </motion.div>
                 )}
@@ -565,17 +565,17 @@ function ApprovalGate({ type, onApprove, onReject }: { type: string, onApprove: 
             initial={{ scale: 0.9, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.9, opacity: 0 }}
-            className="absolute inset-0 z-[100] flex items-center justify-center bg-black/60 backdrop-blur-md"
+            className="absolute inset-0 z-[100] flex items-center justify-center bg-background/60 backdrop-blur-md"
         >
-            <div className="bg-[#0f0f0f] border border-white/10 p-8 rounded-2xl max-w-sm w-full shadow-[0_0_50px_rgba(0,0,0,1)] text-center relative overflow-hidden group">
+            <div className="bg-background border border-border/10 p-8 rounded-2xl max-w-sm w-full shadow-[0_0_50px_rgba(0,0,0,1)] text-center relative overflow-hidden group">
                 <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500" />
-                <div className="w-16 h-16 bg-white/5 rounded-2xl flex items-center justify-center mx-auto mb-6 border border-white/10 group-hover:scale-110 transition-transform">
+                <div className="w-16 h-16 bg-foreground/5 rounded-2xl flex items-center justify-center mx-auto mb-6 border border-border/10 group-hover:scale-110 transition-transform">
                     {type === "design" ? <LayoutTemplate className="w-8 h-8 text-pink-400" /> : <Shield className="w-8 h-8 text-green-400" />}
                 </div>
-                <h3 className="text-xl font-bold text-white mb-2">
+                <h3 className="text-xl font-bold text-foreground mb-2">
                     {type === "design" ? "Design Review Required" : "Ready for Deployment?"}
                 </h3>
-                <p className="text-gray-400 text-sm mb-8 leading-relaxed">
+                <p className="text-muted-foreground text-sm mb-8 leading-relaxed">
                     {type === "design"
                         ? "The team has finalized the wireframes and design system. Please review our work before we begin the coding phase."
                         : "CI pipeline passed. Security scan (Level 4) clean. Final authorization needed to propagate to production network."}
@@ -583,14 +583,14 @@ function ApprovalGate({ type, onApprove, onReject }: { type: string, onApprove: 
                 <div className="flex flex-col gap-3">
                     <button
                         onClick={onApprove}
-                        className="w-full py-4 bg-white text-black font-bold rounded-xl hover:bg-gray-200 transition-all hover:scale-[1.02] active:scale-95 shadow-lg shadow-white/5"
+                        className="w-full py-4 bg-foreground text-background font-bold rounded-xl hover:bg-foreground/80 transition-all hover:scale-[1.02] active:scale-95 shadow-lg shadow-foreground/5"
                     >
                         {type === "design" ? "APPROVE & PROCEED" : "AUTHORIZE GLOBAL LAUNCH"}
                     </button>
                     {onReject && (
                         <button
                             onClick={onReject}
-                            className="w-full py-4 bg-white/5 text-gray-400 font-bold rounded-xl hover:bg-white/10 hover:text-white transition-all border border-white/5 flex items-center justify-center gap-2"
+                            className="w-full py-4 bg-foreground/5 text-muted-foreground font-bold rounded-xl hover:bg-foreground/10 hover:text-foreground transition-all border border-border/5 flex items-center justify-center gap-2"
                         >
                             <RotateCcw size={16} /> REQUEST REWORK
                         </button>
@@ -632,14 +632,14 @@ function TeamChat() {
                         initial={{ opacity: 0, x: -30, scale: 0.8 }}
                         animate={{ opacity: 1, x: 0, scale: 1 }}
                         exit={{ opacity: 0, scale: 0.8 }}
-                        className="bg-black/90 backdrop-blur-xl border border-white/10 px-4 py-2.5 rounded-2xl text-xs flex items-center gap-3 max-w-[240px] shadow-2xl"
+                        className="bg-background/90 backdrop-blur-xl border border-border/10 px-4 py-2.5 rounded-2xl text-xs flex items-center gap-3 max-w-[240px] shadow-2xl"
                     >
-                        <div className="w-7 h-7 rounded-full bg-gradient-to-br from-gray-800 to-gray-900 border border-white/5 flex items-center justify-center shrink-0 shadow-inner">
-                            <span className="text-[10px] font-bold text-gray-300">{msg.user[0]}</span>
+                        <div className="w-7 h-7 rounded-full bg-gradient-to-br from-gray-800 to-gray-900 border border-border/5 flex items-center justify-center shrink-0 shadow-inner">
+                            <span className="text-[10px] font-bold text-foreground/70">{msg.user[0]}</span>
                         </div>
                         <div className="flex flex-col">
-                            <span className="font-bold text-white text-[10px]">{msg.user}</span>
-                            <span className="text-gray-400 leading-tight">{msg.text}</span>
+                            <span className="font-bold text-foreground text-[10px]">{msg.user}</span>
+                            <span className="text-muted-foreground leading-tight">{msg.text}</span>
                         </div>
                     </motion.div>
                 ))}
@@ -658,7 +658,7 @@ function GitPulse({ projectName }: { projectName: string }) {
 
     return (
         <div className="absolute top-24 right-6 z-[80] hidden xl:flex flex-col gap-4 pointer-events-none opacity-40 hover:opacity-100 transition-opacity">
-            <div className="flex items-center gap-2 text-[10px] font-bold text-gray-500 uppercase tracking-widest border-b border-white/5 pb-2">
+            <div className="flex items-center gap-2 text-[10px] font-bold text-muted-foreground uppercase tracking-widest border-b border-border/5 pb-2">
                 <History size={12} /> Git History ({projectName})
             </div>
             {commits.map((c, i) => (
@@ -669,9 +669,9 @@ function GitPulse({ projectName }: { projectName: string }) {
                 >
                     <div className="flex items-center gap-2">
                         <span className="text-blue-500 font-mono text-[9px]">{c.hash}</span>
-                        <span className="text-gray-300 text-[10px] font-medium">{c.msg}</span>
+                        <span className="text-foreground/70 text-[10px] font-medium">{c.msg}</span>
                     </div>
-                    <span className="text-[9px] text-gray-600">{c.time}</span>
+                    <span className="text-[9px] text-muted-foreground">{c.time}</span>
                 </motion.div>
             ))}
         </div>
@@ -719,7 +719,7 @@ function Typewriter({ text, speed = 30 }: { text: string; speed?: number }) {
             if (['function', 'return', 'const', 'export', 'default'].includes(part)) {
                 return <span key={i} className="text-purple-400 cursor-help group relative">
                     {part}
-                    <span className="absolute bottom-full left-0 mb-2 bg-white text-black text-[9px] px-2 py-1 rounded-sm opacity-0 group-hover:opacity-100 pointer-events-none z-[110] font-sans font-bold shadow-xl">
+                    <span className="absolute bottom-full left-0 mb-2 bg-foreground text-background text-[9px] px-2 py-1 rounded-sm opacity-0 group-hover:opacity-100 pointer-events-none z-[110] font-sans font-bold shadow-xl">
                         keyword inspection
                     </span>
                 </span>;
@@ -751,14 +751,14 @@ function DebugOverlay() {
     }, []);
 
     return (
-        <div className="absolute bottom-6 right-6 bg-black/90 border border-green-500/20 p-2.5 rounded-xl text-[9px] font-mono text-green-500/80 pointer-events-none z-[90] flex flex-col gap-1 tabular-nums backdrop-blur-xl shadow-2xl ring-1 ring-white/5">
+        <div className="absolute bottom-6 right-6 bg-background/90 border border-green-500/20 p-2.5 rounded-xl text-[9px] font-mono text-green-500/80 pointer-events-none z-[90] flex flex-col gap-1 tabular-nums backdrop-blur-xl shadow-2xl ring-1 ring-border/5">
             <div className="flex items-center gap-2">
                 <div className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse" />
                 <span>FPS_STABLE: {fps}</span>
             </div>
             <div>X_AXIS: {mouse.x}</div>
             <div>Y_AXIS: {mouse.y}</div>
-            <div className="text-gray-600 border-t border-white/5 mt-1 pt-1 italic">BUILD_HASH: {Math.random().toString(16).substr(2, 6)}</div>
+            <div className="text-muted-foreground border-t border-border/5 mt-1 pt-1 italic">BUILD_HASH: {Math.random().toString(16).substr(2, 6)}</div>
         </div>
     )
 }
@@ -915,7 +915,7 @@ export default function LiveProjectBuilder() {
     }
 
     return (
-        <section className="py-32 relative overflow-hidden">
+        <section className="py-32 relative overflow-hidden bg-background">
             {/* Background Decoration */}
             <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_50%,rgba(59,130,246,0.05),transparent_50%)]" />
 
@@ -930,26 +930,26 @@ export default function LiveProjectBuilder() {
                         <Zap size={14} className="fill-current" /> Interactive Simulation
                     </motion.div>
                     <h2 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight">Watch Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500">Live Workspace</span></h2>
-                    <p className="text-gray-400 text-lg leading-relaxed">Experience our workflow in real-time. Configure a project, review the work, and authorize the launch. No videos, just pure performance.</p>
+                    <p className="text-muted-foreground text-lg leading-relaxed">Experience our workflow in real-time. Configure a project, review the work, and authorize the launch. No videos, just pure performance.</p>
                 </div>
 
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:h-[650px]">
                     {/* CONTROL PANEL */}
                     <div className="lg:col-span-4 flex flex-col gap-8 h-full">
-                        <div className="rounded-2xl border border-white/10 bg-[#050505] p-8 shadow-2xl relative overflow-hidden group ring-1 ring-white/5">
+                        <div className="rounded-2xl border border-border bg-background p-8 shadow-2xl relative overflow-hidden group ring-1 ring-border/5">
                             <div className="absolute inset-0 bg-blue-500/[0.02] opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
-                            <h3 className="flex items-center gap-3 font-bold text-gray-200 mb-8 uppercase tracking-[0.2em] text-xs">
+                            <h3 className="flex items-center gap-3 font-bold text-foreground/80 mb-8 uppercase tracking-[0.2em] text-xs">
                                 <Settings className="w-4 h-4 text-blue-500" /> Configuration
                             </h3>
 
                             <div className="space-y-8">
                                 <div>
-                                    <label className="text-[10px] text-gray-500 font-mono mb-3 block tracking-widest">PROJECT_NAME</label>
+                                    <label className="text-[10px] text-muted-foreground font-mono mb-3 block tracking-widest">PROJECT_NAME</label>
                                     <input
                                         type="text"
                                         value={config.projectName}
                                         onChange={(e) => setConfig({ ...config, projectName: e.target.value })}
-                                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white font-mono focus:outline-none focus:border-blue-500 transition-all focus:ring-4 focus:ring-blue-500/10"
+                                        className="w-full bg-foreground/5 border border-border rounded-xl px-4 py-3 text-foreground font-mono focus:outline-none focus:border-blue-500 transition-all focus:ring-4 focus:ring-blue-500/10"
                                     />
                                 </div>
                                 <div className="space-y-5">
@@ -967,7 +967,7 @@ export default function LiveProjectBuilder() {
                                     "mt-10 w-full py-5 rounded-xl font-bold flex items-center justify-center gap-3 transition-all relative overflow-hidden font-mono text-sm tracking-wider",
                                     buildState === "idle" || buildState === "complete"
                                         ? "bg-gradient-to-r from-blue-600 to-blue-500 text-white shadow-xl shadow-blue-500/20 hover:scale-[1.02] active:scale-95"
-                                        : "bg-gray-800/50 text-gray-500 border border-white/5 cursor-not-allowed"
+                                        : "bg-gray-800/50 text-muted-foreground border border-border/5 cursor-not-allowed"
                                 )}
                             >
                                 {buildState === "idle" || buildState === "complete" ? (
@@ -979,10 +979,10 @@ export default function LiveProjectBuilder() {
                         </div>
 
                         {/* TERMINAL */}
-                        <div className="flex-1 rounded-2xl border border-white/10 bg-black/80 p-6 font-mono text-[11px] overflow-hidden flex flex-col relative min-h-[200px] shadow-2xl backdrop-blur-xl ring-1 ring-white/5">
+                        <div className="flex-1 rounded-2xl border border-border bg-background/80 p-6 font-mono text-[11px] overflow-hidden flex flex-col relative min-h-[200px] shadow-2xl backdrop-blur-xl ring-1 ring-border/5">
                             <div className="absolute top-0 right-0 p-4 opacity-10"><TerminalIcon className="w-8 h-8 text-green-500" /></div>
                             <div className="space-y-0.5 overflow-y-auto flex-1 custom-scrollbar">
-                                <div className="text-gray-600 mb-2 font-mono text-[9px]">// System handshake established...</div>
+                                <div className="text-muted-foreground mb-2 font-mono text-[9px]">// System handshake established...</div>
                                 {logs.map((log, i) => (
                                     <LogEntry key={i} log={log} />
                                 ))}
@@ -996,7 +996,7 @@ export default function LiveProjectBuilder() {
                         onMouseMove={handleMouseMove}
                         onMouseLeave={handleMouseLeave}
                         style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
-                        className="lg:col-span-8 rounded-2xl border border-white/10 bg-[#080808] relative flex flex-col justify-center items-center perspective-1000 shadow-[0_20px_100px_rgba(0,0,0,0.8)] h-[500px] lg:h-auto overflow-hidden ring-1 ring-white/10"
+                        className="lg:col-span-8 rounded-2xl border border-border bg-background relative flex flex-col justify-center items-center perspective-1000 shadow-[0_20px_100px_rgba(0,0,0,0.8)] h-[500px] lg:h-auto overflow-hidden ring-1 ring-border/10"
                     >
                         {/* Environment Layers */}
                         <ParallaxEnv />
@@ -1014,7 +1014,7 @@ export default function LiveProjectBuilder() {
                             )}
                         </AnimatePresence>
 
-                        <div className="absolute inset-x-0 top-0 h-8 bg-white/5 border-b border-white/5 flex items-center px-6 gap-3 z-20 backdrop-blur-md">
+                        <div className="absolute inset-x-0 top-0 h-8 bg-foreground/5 border-b border-border/5 flex items-center px-6 gap-3 z-20 backdrop-blur-md">
                             <div className="flex gap-1.5">
                                 <div className="w-2.5 h-2.5 rounded-full bg-red-500/80 shadow-sm" />
                                 <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/80 shadow-sm" />
@@ -1022,7 +1022,7 @@ export default function LiveProjectBuilder() {
                             </div>
                             <div className="ml-auto flex items-center gap-4">
                                 <LiveHuddle />
-                                <div className="text-[10px] text-gray-500 font-mono tracking-widest uppercase">
+                                <div className="text-[10px] text-muted-foreground font-mono tracking-widest uppercase">
                                     {buildState.replace("_", " ")} SESSION
                                 </div>
                             </div>
@@ -1038,8 +1038,8 @@ export default function LiveProjectBuilder() {
                                         <div className="w-24 h-24 bg-blue-500/5 rounded-3xl flex items-center justify-center mb-8 border border-blue-500/10 shadow-inner group">
                                             <Cpu className="w-12 h-12 text-blue-500/50 group-hover:text-blue-500 transition-colors duration-500" />
                                         </div>
-                                        <h3 className="text-2xl font-bold text-gray-200 mb-3 tracking-tight">System Hibernation</h3>
-                                        <p className="text-gray-500 max-w-sm mx-auto leading-relaxed">The Live Workspace is ready. Configure the project and initialize the build engine to begin.</p>
+                                        <h3 className="text-2xl font-bold text-foreground/80 mb-3 tracking-tight">System Hibernation</h3>
+                                        <p className="text-muted-foreground max-w-sm mx-auto leading-relaxed">The Live Workspace is ready. Configure the project and initialize the build engine to begin.</p>
                                     </motion.div>
                                 )}
 
@@ -1078,7 +1078,7 @@ export default function LiveProjectBuilder() {
                                 )}
 
                                 {buildState === "complete" && (
-                                    <motion.div key="complete" {...fadeIn} className="h-full flex flex-col items-center justify-center text-center bg-black rounded-xl border border-white/5 relative">
+                                    <motion.div key="complete" {...fadeIn} className="h-full flex flex-col items-center justify-center text-center bg-background rounded-xl border border-border/5 relative">
                                         <PerformanceHUD />
                                         <div className="absolute inset-0 bg-gradient-to-t from-blue-500/10 to-transparent pointer-events-none" />
                                         <motion.div
@@ -1090,9 +1090,9 @@ export default function LiveProjectBuilder() {
                                             <CheckCircle2 className="w-12 h-12 text-white" />
                                         </motion.div>
                                         <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 tracking-tight tracking-widest">{config.projectName.toUpperCase()} IS LIVE</h2>
-                                        <p className="text-gray-400 text-lg max-w-sm mx-auto">Production environment stable. Global propagation complete.</p>
+                                        <p className="text-muted-foreground text-lg max-w-sm mx-auto">Production environment stable. Global propagation complete.</p>
                                         <div className="mt-12 flex gap-4 relative z-50 pointer-events-auto">
-                                            <button onClick={() => setBuildState("idle")} className="px-6 py-2.5 rounded-full bg-white text-black text-xs font-bold hover:bg-gray-200 transition-all shadow-xl shadow-white/10">RESTART BUILD</button>
+                                            <button onClick={() => setBuildState("idle")} className="px-6 py-2.5 rounded-full bg-foreground text-background text-xs font-bold hover:bg-foreground/80 transition-all shadow-xl shadow-foreground/10">RESTART BUILD</button>
                                         </div>
                                     </motion.div>
                                 )}
@@ -1100,7 +1100,7 @@ export default function LiveProjectBuilder() {
                         </div>
 
                         {/* Progress Bar (Bottom) */}
-                        <div className="absolute bottom-0 left-0 right-0 h-1.5 bg-white/5 z-30">
+                        <div className="absolute bottom-0 left-0 right-0 h-1.5 bg-foreground/5 z-30">
                             <motion.div
                                 className="h-full bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 shadow-[0_0_20px_rgba(59,130,246,0.5)]"
                                 style={{ width: `${progress}%` }}
@@ -1147,25 +1147,25 @@ function Toggle({ label, icon: Icon, active, onClick, color = "blue" }: any) {
                 "w-full flex items-center justify-between p-4 rounded-2xl border transition-all duration-300",
                 active
                     ? colorClasses[color]
-                    : "bg-white/5 border-white/5 text-gray-500 hover:bg-white/10 hover:border-white/10"
+                    : "bg-foreground/5 border-border/5 text-muted-foreground hover:bg-foreground/10 hover:border-border/10"
             )}
         >
             <div className="flex items-center gap-4">
                 <div className={cn(
                     "w-8 h-8 rounded-lg flex items-center justify-center transition-colors",
-                    active ? colorClasses[color].replace("text-", "bg-").replace("/10", "/20") : "bg-white/5"
+                    active ? colorClasses[color].replace("text-", "bg-").replace("/10", "/20") : "bg-foreground/5"
                 )}>
-                    <Icon className={cn("w-4 h-4", active ? `text-${color}-400` : "text-gray-500")} />
+                    <Icon className={cn("w-4 h-4", active ? `text-${color}-400` : "text-muted-foreground")} />
                 </div>
                 <span className="font-bold text-xs tracking-wider uppercase">{label}</span>
             </div>
             <div className={cn(
-                "w-11 h-6 rounded-full relative transition-colors shadow-inner border border-white/5",
+                "w-11 h-6 rounded-full relative transition-colors shadow-inner border border-border/5",
                 active ? bgColors[color] : "bg-gray-800"
             )}>
                 <motion.div
                     animate={{ x: active ? 22 : 4 }}
-                    className="absolute top-1 w-3.5 h-3.5 rounded-full bg-white transition-all shadow-md"
+                    className="absolute top-1 w-3.5 h-3.5 rounded-full bg-foreground transition-all shadow-md"
                 />
             </div>
         </button>

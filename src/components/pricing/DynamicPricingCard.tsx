@@ -36,8 +36,8 @@ export default function DynamicPricingCard({
                     ease: [0.22, 1, 0.36, 1],
                 }}
                 className={`group relative p-6 md:p-8 rounded-3xl border transition-all duration-500 ${isPopular
-                    ? "bg-white/[0.04] border-purple-500/50 shadow-[0_0_40px_-15px_rgba(168,85,247,0.3)]"
-                    : "bg-white/[0.02] border-white/10 hover:border-white/20 hover:bg-white/[0.03]"
+                    ? "bg-foreground/[0.04] border-purple-500/50 shadow-[0_0_40px_-15px_rgba(168,85,247,0.3)]"
+                    : "bg-foreground/[0.02] border-border hover:border-foreground/20 hover:bg-foreground/[0.03]"
                     }`}
                 whileHover={{
                     y: -8,
@@ -49,7 +49,7 @@ export default function DynamicPricingCard({
                     <motion.div
                         initial={{ opacity: 0, y: -20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="absolute -top-4 left-1/2 -translate-x-1/2 bg-gradient-to-r from-purple-600 to-blue-600 text-white text-[10px] uppercase tracking-widest font-bold px-4 py-1.5 rounded-full border border-white/20 shadow-lg flex items-center gap-1.5"
+                        className="absolute -top-4 left-1/2 -translate-x-1/2 bg-gradient-to-r from-purple-600 to-blue-600 text-foreground text-[10px] uppercase tracking-widest font-bold px-4 py-1.5 rounded-full border border-foreground/20 shadow-lg flex items-center gap-1.5"
                     >
                         <Sparkles className="w-3 h-3" />
                         Most Popular
@@ -66,15 +66,15 @@ export default function DynamicPricingCard({
                     <div className="flex items-center justify-between mb-6">
                         <div className={`p-3 rounded-2xl bg-gradient-to-br ${gradientColor} bg-opacity-20 backdrop-blur-sm`}>
                             {isPopular ? (
-                                <Star className="w-6 h-6 text-white fill-white" />
+                                <Star className="w-6 h-6 text-foreground fill-foreground" />
                             ) : (
-                                <CheckCircle2 className="w-6 h-6 text-white" />
+                                <CheckCircle2 className="w-6 h-6 text-foreground" />
                             )}
                         </div>
                         {tier.duration && (
                             <motion.div
                                 whileHover={{ scale: 1.05 }}
-                                className="text-xs font-medium text-gray-400 bg-white/5 px-3 py-1 rounded-full"
+                                className="text-xs font-medium text-muted-foreground bg-foreground/5 px-3 py-1 rounded-full"
                             >
                                 {tier.duration}
                             </motion.div>
@@ -99,7 +99,7 @@ export default function DynamicPricingCard({
                                 transition={{ duration: 0.3 }}
                                 className="flex items-baseline space-x-1"
                             >
-                                <span className="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-300">
+                                <span className="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-foreground to-gray-300">
                                     {tier.price}
                                 </span>
                             </motion.div>
@@ -107,7 +107,7 @@ export default function DynamicPricingCard({
                     </div>
 
                     {/* Divider */}
-                    <div className="h-px bg-gradient-to-r from-transparent via-white/10 to-transparent mb-8" />
+                    <div className="h-px bg-gradient-to-r from-transparent via-foreground/10 to-transparent mb-8" />
 
                     {/* Features */}
                     <ul className="space-y-4 mb-10 min-h-[240px]">
@@ -122,13 +122,13 @@ export default function DynamicPricingCard({
                                         duration: 0.3,
                                         delay: i * 0.05,
                                     }}
-                                    className="flex items-start space-x-3 text-sm text-gray-300"
+                                    className="flex items-start space-x-3 text-sm text-foreground/70"
                                 >
                                     <CheckCircle2
                                         className="w-4 h-4 shrink-0 mt-0.5"
                                         style={{ color: accentColor }}
                                     />
-                                    <span className="group-hover:text-white transition-colors duration-300">
+                                    <span className="group-hover:text-foreground transition-colors duration-300">
                                         {feature}
                                     </span>
                                 </motion.li>

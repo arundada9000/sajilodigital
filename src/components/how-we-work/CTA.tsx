@@ -13,7 +13,7 @@ export default function CTA() {
                     Ready to see your project <br />
                     <span className="text-blue-400">come to life?</span>
                 </h2>
-                <p className="text-xl text-gray-400 mb-10 max-w-2xl mx-auto">
+                <p className="text-xl text-muted-foreground mb-10 max-w-2xl mx-auto">
                     Stop guessing. Start building with a team that values transparency as much as code quality.
                 </p>
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -26,7 +26,7 @@ export default function CTA() {
                     </Link>
                     <Link
                         href="/projects"
-                        className="inline-flex items-center justify-center px-8 py-4 text-base font-bold text-white transition-all duration-200 bg-transparent border border-white/20 rounded-full hover:bg-white/5 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white/20"
+                        className="inline-flex items-center justify-center px-8 py-4 text-base font-bold text-foreground transition-all duration-200 bg-transparent border border-border/20 rounded-full hover:bg-foreground/5 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-border/20"
                     >
                         View Our Work
                     </Link>

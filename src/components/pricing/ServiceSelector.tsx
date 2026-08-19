@@ -97,15 +97,15 @@ export default function ServiceSelector({
                                 data-service-id={service.id}
                                 onClick={() => onServiceChange(service.id)}
                                 className={`relative px-4 md:px-6 py-3 md:py-3.5 rounded-xl font-medium text-sm md:text-base whitespace-nowrap transition-all duration-300 group ${isActive
-                                        ? "text-white"
-                                        : "text-gray-400 hover:text-gray-200"
+                                        ? "text-foreground"
+                                        : "text-muted-foreground hover:text-foreground/80"
                                     }`}
                             >
                                 {/* Glassmorphism background for active tab */}
                                 {isActive && (
                                     <motion.div
                                         layoutId="activeServiceBg"
-                                        className="absolute inset-0 bg-white/[0.08] backdrop-blur-sm border border-white/10 rounded-xl"
+                                        className="absolute inset-0 bg-foreground/[0.08] backdrop-blur-sm border border-border rounded-xl"
                                         initial={false}
                                         transition={{
                                             type: "spring",
@@ -117,7 +117,7 @@ export default function ServiceSelector({
 
                                 {/* Hover effect for inactive tabs */}
                                 {!isActive && (
-                                    <div className="absolute inset-0 bg-white/[0.03] rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                                    <div className="absolute inset-0 bg-foreground/[0.03] rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                                 )}
 
                                 <span className="relative flex items-center gap-2">
@@ -149,7 +149,7 @@ export default function ServiceSelector({
                         key={service.id}
                         className={`h-1 rounded-full transition-all duration-300 ${selectedService === service.id
                                 ? "w-6 bg-purple-500"
-                                : "w-1 bg-white/20"
+                                : "w-1 bg-foreground/20"
                             }`}
                     />
                 ))}
