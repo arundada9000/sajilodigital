@@ -20,7 +20,6 @@ const poppins = Poppins({
 
 // SEO Viewport configuration (Next.js 14+)
 export const viewport: import("next").Viewport = {
-  themeColor: "#0b0f19",
   width: "device-width",
   initialScale: 1,
   maximumScale: 5,
@@ -104,9 +103,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${inter.variable} ${poppins.variable}`}>
+    <html lang="en" className={`${inter.variable} ${poppins.variable}`} suppressHydrationWarning>
       <head>
-        {/* Additional SEO tags */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var t=JSON.parse(localStorage.getItem("prefs")||"{}").theme;if(t==="dark"||(t!=="light"&&matchMedia("(prefers-color-scheme:dark)").matches))document.documentElement.classList.add("dark")}catch(e){}})()`,
+          }}
+        />
 
         {/* Preconnect to external domains for performance */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />

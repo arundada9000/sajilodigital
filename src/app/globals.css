@@ -209,7 +209,7 @@
 
   /* Glass morphism effect */
   .glass {
-    @apply bg-white/10 dark:bg-white/10 bg-black/5 backdrop-blur-lg border border-black/10 dark:border-white/20;
+    @apply bg-foreground/5 backdrop-blur-lg border border-border;
   }
 
   /* Smooth hover transitions */
@@ -369,7 +369,7 @@ h6 {
 
 /* Loading skeleton */
 .skeleton {
-  @apply animate-pulse bg-gray-200 dark:bg-white/10 rounded;
+  @apply animate-pulse bg-muted rounded;
 }
 
 /* Custom button styles */
