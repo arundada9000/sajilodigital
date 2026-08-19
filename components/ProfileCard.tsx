@@ -161,12 +161,12 @@ function CardContent({
       {/* Avatar */}
       <motion.div
         layoutId={`image-${id}`}
-        className="relative h-28 w-28 rounded-full overflow-hidden border border-white/20"
+        className="relative h-28 w-28 rounded-full overflow-hidden border border-foreground/20"
       >
         <Image src={image} alt={name} fill className="object-cover" />
       </motion.div>
 
-      <h3 className="mt-4 text-xl font-bold text-white">{name}</h3>
+      <h3 className="mt-4 text-xl font-bold text-foreground">{name}</h3>
       <p className="text-sm text-blue-400">{role}</p>
 
       <p className="mt-3 text-sm font-mono text-green-400 line-clamp-2">
@@ -225,7 +225,7 @@ function CardContent({
 
       {/* Socials */}
       <div
-        className="mt-4 flex gap-4 flex-wrap justify-center bg-[#2C333D] p-2 rounded-md"
+        className="mt-4 flex gap-4 flex-wrap justify-center bg-surface p-2 rounded-md"
         onClick={(e) => e.stopPropagation()}
       >
         {github && <Social href={github} icon={<FaGithub />} />}
@@ -285,8 +285,8 @@ const ProfileCard = React.memo(function ProfileCard({
     }
   }, [techStack]);
 
-  const cardStyles = `relative rounded-2xl border border-white/10 
-    bg-linear-to-br from-white/5 to-white/10 
+  const cardStyles = `relative rounded-2xl border border-border 
+    bg-linear-to-br from-foreground/5 to-foreground/10 
     ${isMobile ? "backdrop-blur-md shadow-md" : "backdrop-blur-xl shadow-lg"}
     p-6`;
 

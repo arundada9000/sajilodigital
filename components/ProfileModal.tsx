@@ -81,7 +81,7 @@ function TypingText({ text }: { text: string }) {
   return (
     <motion.p
       key={text}
-      className="whitespace-pre-line text-gray-300"
+className="whitespace-pre-line text-foreground/70"
       initial="hidden"
       animate="show"
       variants={{
@@ -172,15 +172,15 @@ export default function ProfileModal({ profile, onClose }: Props) {
           className={`
             relative w-full md:max-w-4xl 
             ${fullscreen ? "h-full md:h-full" : "h-[95vh] md:h-auto"}
-            bg-[#0b0f19]
+            bg-background
             rounded-t-3xl md:rounded-2xl
-            border border-white/10
+            border border-border
             shadow-2xl
             overflow-hidden
           `}
         >
           {/* HEADER */}
-          <div className="flex items-center justify-between px-6 py-4 border-b border-white/10 cursor-grab">
+          <div className="flex items-center justify-between px-6 py-4 border-b border-border cursor-grab">
             <div className="flex gap-2 cursor-default p-1">
               <span
                 onClick={onClose}
@@ -202,7 +202,7 @@ export default function ProfileModal({ profile, onClose }: Props) {
             <div className="flex gap-4">
               <button
                 onClick={handleCapture}
-                className={`text-gray-400 hover:text-white transition-colors ${isCapturing ? "animate-pulse" : ""
+                className={`text-muted-foreground hover:text-foreground transition-colors ${isCapturing ? "animate-pulse" : ""
                   }`}
                 title="Save as PNG"
               >
@@ -212,7 +212,7 @@ export default function ProfileModal({ profile, onClose }: Props) {
                 <a
                   href={profile.cv}
                   download
-                  className="text-gray-400 hover:text-white"
+                  className="text-muted-foreground hover:text-foreground"
                   title="Download CV"
                 >
                   <FaDownload />
@@ -222,7 +222,7 @@ export default function ProfileModal({ profile, onClose }: Props) {
                 <a
                   href={profile.portfolio}
                   target="_blank"
-                  className="text-gray-400 hover:text-white"
+                  className="text-muted-foreground hover:text-foreground"
                   title="Portfolio"
                 >
                   <FaGlobe />
@@ -231,14 +231,14 @@ export default function ProfileModal({ profile, onClose }: Props) {
               {profile.email && (
                 <button
                   onClick={() => navigator.clipboard.writeText(profile.email!)}
-                  className="text-gray-400 hover:text-white cursor-pointer"
+                  className="text-muted-foreground hover:text-foreground cursor-pointer"
                   title="Copy Email"
                 >
                   <FaEnvelope />
                 </button>
               )}
               <button onClick={onClose} title="Close">
-                <FaXmark className="text-gray-400 hover:text-white hover:scale-120 transition duration-150 cursor-pointer" />
+                <FaXmark className="text-muted-foreground hover:text-foreground hover:scale-120 transition duration-150 cursor-pointer" />
               </button>
             </div>
           </div>
@@ -248,7 +248,7 @@ export default function ProfileModal({ profile, onClose }: Props) {
             ref={captureRef}
             key={`capture-${profile.id}`}
             className={`grid md:grid-cols-2 gap-6 p-6 overflow-y-auto ${fullscreen ? "h-full" : "h-[85vh] md:h-auto"
-              } bg-[#0b0f19]`}
+              } bg-background`}
           >
             {/* IMAGE */}
             <motion.div
@@ -267,7 +267,7 @@ export default function ProfileModal({ profile, onClose }: Props) {
             {/* INFO */}
             <div className="flex flex-col gap-4">
               <div>
-                <h2 className="text-2xl font-bold text-white">
+                <h2 className="text-2xl font-bold text-foreground">
                   {profile.name}
                 </h2>
                 <motion.p
@@ -285,14 +285,14 @@ export default function ProfileModal({ profile, onClose }: Props) {
               </div>
 
               {/* TERMINAL BIO */}
-              <div className="rounded-lg border border-white/10 bg-white/10 p-4 font-mono text-sm text-green-400 backdrop-blur-md shadow-xl">
+              <div className="rounded-lg border border-border bg-foreground/10 p-4 font-mono text-sm text-green-400 backdrop-blur-md shadow-xl">
                 <p>$ whoami</p>
-                <p className="ml-4 text-white">{profile.name}</p>
+                <p className="ml-4 text-foreground">{profile.name}</p>
 
                 <p className="mt-3 ">$ bio</p>
                 <div className="ml-4 ">
                   {isMobile ? (
-                    <p className="whitespace-pre-line text-gray-300">
+                    <p className="whitespace-pre-line text-foreground/70">
                       {profile.bio}
                     </p>
                   ) : (
@@ -319,7 +319,7 @@ export default function ProfileModal({ profile, onClose }: Props) {
                       show: { opacity: 1, y: 0 },
                     }}
                     whileHover={{ scale: 1.15, boxShadow: "0 0 10px #0ff" }}
-                    className="px-3 py-1 text-xs rounded-md bg-white/5 border border-white/10 text-cyan-300 cursor-pointer 
+                    className="px-3 py-1 text-xs rounded-md bg-foreground/5 border border-border text-cyan-300 cursor-pointer 
              hover:bg-cyan-700 hover:text-white hover:scale-110 hover:shadow-[0_0_10px_cyan] transition-all duration-150"
                   >
                     {tech}
@@ -452,7 +452,7 @@ function Social({
       >
         {icon}
       </motion.div>
-      <span className="absolute bottom-3/4 -left-2 p-1 hidden group-hover:block bg-gray-900 text-white text-xs rounded-md">
+      <span className="absolute bottom-3/4 -left-2 p-1 hidden group-hover:block bg-background text-foreground text-xs rounded-md">
         {title}
       </span>
     </a>

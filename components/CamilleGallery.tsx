@@ -70,7 +70,7 @@ const CamilleGallery = () => {
 
     if (isMobile) {
         return (
-            <div className="bg-[#050505] text-white min-h-screen pt-24 px-6 overflow-x-hidden">
+            <div className="bg-background text-foreground min-h-screen pt-24 px-6 overflow-x-hidden">
                 <header className="mb-20">
                     <motion.div
                         initial={{ opacity: 0, y: 30 }}
@@ -93,7 +93,7 @@ const CamilleGallery = () => {
 
                 <footer className="h-screen flex items-center justify-center border-t border-white/5">
                     <Link href="/contact" className="text-center group">
-                        <span className="text-[10px] tracking-[0.6em] text-gray-500 block mb-6">NEXT STEP</span>
+                        <span className="text-[10px] tracking-[0.6em] text-muted-foreground block mb-6">NEXT STEP</span>
                         <h2 className="text-5xl font-bold tracking-tighter group-hover:italic transition-all">LET'S TALK</h2>
                     </Link>
                 </footer>
@@ -102,7 +102,7 @@ const CamilleGallery = () => {
     }
 
     return (
-        <section ref={targetRef} className="relative h-[800vh] bg-[#050505]">
+        <section ref={targetRef} className="relative h-[800vh] bg-background">
             <div className="sticky top-0 h-screen flex items-center overflow-hidden">
                 {/* Massive Animated Background Background Text */}
                 <motion.div
@@ -119,7 +119,7 @@ const CamilleGallery = () => {
                         <motion.p
                             initial={{ opacity: 0 }}
                             whileInView={{ opacity: 1 }}
-                            className="text-xs tracking-[0.6em] text-gray-500 mb-10"
+                            className="text-xs tracking-[0.6em] text-muted-foreground mb-10"
                         >
                             SCROLL TO EXPLORE — SELECTED PROJECTS 23/24
                         </motion.p>
@@ -162,7 +162,7 @@ const CamilleGallery = () => {
                             className="absolute inset-0 bg-blue-500 origin-left"
                         />
                     </div>
-                    <span className="text-[10px] tracking-widest text-gray-500 font-mono">
+                    <span className="text-[10px] tracking-widest text-muted-foreground font-mono">
                         {Math.floor(useTransform(scrollYProgress, [0, 1], [1, 100]).get())}%
                     </span>
                 </div>
@@ -205,9 +205,9 @@ const DesktopGalleryItem = ({ project, index, progress }: { project: any; index:
                     <span className="italic font-light ml-[15vw]">{project.subtitle}</span>
                 </h2>
                 <div className="flex items-center gap-6 mt-10">
-                    <span className="text-[10px] font-mono text-gray-500">{String(index + 1).padStart(2, '0')}</span>
+                    <span className="text-[10px] font-mono text-muted-foreground">{String(index + 1).padStart(2, '0')}</span>
                     <span className="h-px w-10 bg-white/20" />
-                    <span className="text-[10px] tracking-[0.4em] text-gray-400">{project.category}</span>
+                    <span className="text-[10px] tracking-[0.4em] text-muted-foreground">{project.category}</span>
                 </div>
             </motion.div>
         </div>
@@ -235,7 +235,7 @@ const MobileGalleryItem = ({ project, index }: { project: any; index: number }) 
             <div className="space-y-4">
                 <div className="flex items-center gap-4">
                     <span className="text-[10px] font-mono text-blue-500">{String(index + 1).padStart(2, '0')}</span>
-                    <span className="text-[10px] tracking-[0.4em] text-gray-500 uppercase">{project.category}</span>
+                    <span className="text-[10px] tracking-[0.4em] text-muted-foreground uppercase">{project.category}</span>
                 </div>
                 <h2 className="text-5xl font-bold tracking-tighter leading-none">
                     {project.title} <br />
