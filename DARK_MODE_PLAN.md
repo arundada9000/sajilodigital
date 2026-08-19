@@ -147,24 +147,33 @@ Replace hardcoded colors with semantic tokens defined in `globals.css`:
 |-------|-------|--------|-------|
 | 0 — Foundation | 2 | ✅ Done | Color tokens + layout body fix |
 | 1 — Core Layout | 4 | ✅ Done | Header, Footer, MobileHeader, MobileNavbar |
-| 2 — Home Page | 11 | ⬜ Not started | |
-| 3 — Contact | 1 | ⬜ Not started | |
-| 4 — About & Team | 3 | ⬜ Not started | |
-| 5 — Services | 9 | ⬜ Not started | |
-| 6 — Projects & Gallery | 3 | ⬜ Not started | |
-| 7 — Blog | 4 | ⬜ Not started | |
-| 8 — Pricing | 5 | ⬜ Not started | |
-| 9 — How We Work | 7 | ⬜ Not started | ⚠️ LiveProjectBuilder is highest risk |
-| 10 — FAQ/Testimonials/Misc | 9 | ⬜ Not started | |
-| 11 — Shared Components | 10 | ⬜ Not started | |
-| 12 — Final Polish | — | ⬜ Not started | Visual QA |
+| 2 — Home Page | 11 | ✅ Done | All components converted |
+| 3 — Contact | 1 | ✅ Done | ~50 replacements |
+| 4 — About & Team | 3 | ✅ Done | ~33 replacements |
+| 5 — Services | 9 | ✅ Done | ServiceDetailClient was heaviest |
+| 6 — Projects & Gallery | 3 | ✅ Done | ProjectDetailClient was missed, fixed |
+| 7 — Blog | 5 | ✅ Done | Including category pages |
+| 8 — Pricing | 5 | ✅ Done | Mostly text-gray fixes |
+| 9 — How We Work | 7 | ✅ Done | LiveProjectBuilder + ClientDashboardDemo converted |
+| 10 — FAQ/Testimonials/Misc | 9 | ✅ Done | search, privacy, terms, not-found converted |
+| 11 — Shared Components | 10 | ✅ Done | Overlays, modals, context menu |
+| 12 — Final Polish | — | ✅ Done | Build passes clean, no hardcoded colors remain |
 
-**Total files:** 68 | **Total refs:** ~672
+**Total files:** 68+ | **Status:** All phases complete
+
+## Additional Fixes (applied during migration)
+
+- FOUC prevention: inline `<script>` in `<head>` reads localStorage and applies `.dark` before hydration
+- `suppressHydrationWarning` on `<html>` to prevent React mismatch
+- Removed hardcoded `themeColor: "#0b0f19"` from viewport config
+- `.glass` utility: replaced `bg-white/10 dark:bg-white/10` with `bg-foreground/5`
+- `.skeleton` utility: replaced `bg-gray-200 dark:bg-white/10` with `bg-muted`
+- `FeaturesBento.tsx`: `#1a1a1a` radial gradient → `var(--surface-deep)`
 
 ## Risk Notes
 
-- `LiveProjectBuilder.tsx` (58 refs) — heavy animation + gradient usage, highest breakage risk
-- `ClientDashboardDemo.tsx` (29 refs) — interactive demo component
-- `GalleryV3.tsx` (24 refs) — image-heavy, verify overlay readability
-- Inline `style={}` color references (10 files) — cannot use Tailwind dark:, need CSS variables
-- `globals.css` `.glass` utility — uses `bg-white/10`, needs theme-aware replacement
+- `LiveProjectBuilder.tsx` (58 refs) — converted, verify interactive demo in both themes
+- `ClientDashboardDemo.tsx` (29 refs) — converted, verify dashboard layout
+- `GalleryV3.tsx` (24 refs) — already had semantic tokens, verified
+- Inline `style={}` color references — converted where possible, CSS variables used
+- `globals.css` `.glass` utility — ✅ fixed to `bg-foreground/5 backdrop-blur-lg border border-border`
