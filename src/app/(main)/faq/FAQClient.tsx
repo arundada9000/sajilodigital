@@ -67,7 +67,7 @@ export default function FAQClient() {
             ) || [];
 
     return (
-        <div className="min-h-screen bg-[#0b0f19] text-white selection:bg-cyan-500/30 overflow-x-hidden">
+        <div className="min-h-screen bg-background text-foreground selection:bg-cyan-500/30 overflow-x-hidden">
             {/* Background Ambience */}
             <div className="fixed inset-0 pointer-events-none">
                 <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-cyan-500/10 rounded-full blur-[120px] opacity-40 animate-pulse" />
@@ -89,7 +89,7 @@ export default function FAQClient() {
                         <h1 className="text-5xl md:text-8xl font-extrabold mb-8 tracking-tight">
                             <ShinyText text="Knowledge Hub" className="block" />
                         </h1>
-                        <p className="max-w-2xl mx-auto text-gray-400 text-xl leading-relaxed">
+                        <p className="max-w-2xl mx-auto text-muted-foreground text-xl leading-relaxed">
                             Explore our comprehensive database of questions and answers to
                             streamline your partnership with Sajilo Digital.
                         </p>
@@ -103,14 +103,14 @@ export default function FAQClient() {
                             className="relative group"
                         >
                             <div className="absolute inset-0 bg-linear-to-r from-cyan-500/20 to-purple-500/20 blur-xl opacity-0 group-focus-within:opacity-100 transition-opacity duration-500" />
-                            <div className="relative flex items-center bg-[#161b22]/40 backdrop-blur-xl border border-white/10 rounded-3xl overflow-hidden focus-within:border-cyan-500/50 transition-all duration-300">
-                                <Search className="w-6 h-6 ml-8 text-gray-500 group-focus-within:text-cyan-400 transition-colors" />
+                            <div className="relative flex items-center bg-surface/40 backdrop-blur-xl border border-border/10 rounded-3xl overflow-hidden focus-within:border-cyan-500/50 transition-all duration-300">
+                                <Search className="w-6 h-6 ml-8 text-muted-foreground group-focus-within:text-cyan-400 transition-colors" />
                                 <input
                                     type="text"
                                     placeholder="Ask anything about our process, pricing, or tech..."
                                     value={searchQuery}
                                     onChange={(e) => setSearchQuery(e.target.value)}
-                                    className="w-full px-6 py-6 bg-transparent text-white placeholder:text-gray-600 outline-none text-lg"
+                                    className="w-full px-6 py-6 bg-transparent text-foreground placeholder:text-muted-foreground/60 outline-none text-lg"
                                 />
                             </div>
                         </motion.div>
@@ -132,7 +132,7 @@ export default function FAQClient() {
                             className="lg:col-span-1"
                         >
                             <div className="space-y-3 sticky top-32">
-                                <h3 className="text-gray-500 font-bold uppercase tracking-widest text-xs mb-6 px-4">Categories</h3>
+                                <h3 className="text-muted-foreground font-bold uppercase tracking-widest text-xs mb-6 px-4">Categories</h3>
                                 {faqCategories.map((cat) => {
                                     const Icon = cat.icon;
                                     const isActive = activeCategory === cat.name;
@@ -146,10 +146,10 @@ export default function FAQClient() {
                                             }}
                                             className={`w-full flex items-center gap-4 px-5 py-4 rounded-2xl transition-all duration-300 group ${isActive
                                                 ? "bg-cyan-500 text-black shadow-lg shadow-cyan-500/20"
-                                                : "text-gray-400 hover:bg-white/5 hover:text-white border border-transparent hover:border-white/5"
+                                                : "text-muted-foreground hover:bg-foreground/5 hover:text-foreground border border-transparent hover:border-border/5"
                                                 }`}
                                         >
-                                            <Icon className={`w-5 h-5 ${isActive ? "text-black" : "text-gray-500 group-hover:text-cyan-400"} transition-colors`} />
+                                            <Icon className={`w-5 h-5 ${isActive ? "text-black" : "text-muted-foreground group-hover:text-cyan-400"} transition-colors`} />
                                             <span className="font-bold text-sm tracking-tight">{cat.name}</span>
                                             {isActive && (
                                                 <motion.div layoutId="activeDot" className="ml-auto w-1.5 h-1.5 rounded-full bg-black" />
@@ -172,9 +172,9 @@ export default function FAQClient() {
                                         className="space-y-4"
                                     >
                                         {filteredFaqs.length === 0 ? (
-                                            <div className="p-20 rounded-[40px] border border-white/5 bg-[#161b22]/20 backdrop-blur-sm text-center">
-                                                <MessageSquare className="w-12 h-12 text-gray-700 mx-auto mb-4" />
-                                                <p className="text-gray-500 text-lg">No results found for your search.</p>
+                                            <div className="p-20 rounded-[40px] border border-border/5 bg-surface/20 backdrop-blur-sm text-center">
+                                                <MessageSquare className="w-12 h-12 text-muted-foreground/50 mx-auto mb-4" />
+                                                <p className="text-muted-foreground text-lg">No results found for your search.</p>
                                             </div>
                                         ) : (
                                             filteredFaqs.map((faq, idx) => {
@@ -183,18 +183,18 @@ export default function FAQClient() {
                                                     <motion.div
                                                         key={idx}
                                                         className={`group rounded-[32px] border transition-all duration-500 overflow-hidden ${isOpen
-                                                            ? "bg-[#161b22]/60 border-cyan-500/30 shadow-2xl"
-                                                            : "bg-[#161b22]/20 border-white/5 hover:border-white/10"
+                                                            ? "bg-surface/60 border-cyan-500/30 shadow-2xl"
+                                                            : "bg-surface/20 border-border/5 hover:border-border/10"
                                                             }`}
                                                     >
                                                         <button
                                                             onClick={() => toggleQuestion(idx)}
                                                             className="w-full text-left px-8 py-8 flex items-center justify-between gap-6"
                                                         >
-                                                            <span className={`text-xl font-bold tracking-tight transition-colors ${isOpen ? "text-cyan-400" : "text-white group-hover:text-gray-200"}`}>
+                                                                <span className={`text-xl font-bold tracking-tight transition-colors ${isOpen ? "text-cyan-400" : "text-foreground group-hover:text-foreground/80"}`}>
                                                                 {faq.question}
                                                             </span>
-                                                            <div className={`p-2 rounded-full transition-all duration-500 ${isOpen ? "bg-cyan-500 text-black rotate-180" : "bg-white/5 text-gray-500 group-hover:text-white"}`}>
+                                                                <div className={`p-2 rounded-full transition-all duration-500 ${isOpen ? "bg-cyan-500 text-black rotate-180" : "bg-foreground/5 text-muted-foreground group-hover:text-foreground"}`}>
                                                                 <ChevronDown className="w-6 h-6" />
                                                             </div>
                                                         </button>
@@ -208,8 +208,8 @@ export default function FAQClient() {
                                                                     transition={{ duration: 0.4, ease: "easeInOut" }}
                                                                 >
                                                                     <div className="px-8 pb-10">
-                                                                        <div className="h-px bg-white/10 mb-8" />
-                                                                        <p className="text-gray-400 text-lg leading-relaxed max-w-3xl italic">
+                                                                        <div className="h-px bg-border/10 mb-8" />
+                                                                        <p className="text-muted-foreground text-lg leading-relaxed max-w-3xl italic">
                                                                             &quot;{faq.answer}&quot;
                                                                         </p>
                                                                     </div>
@@ -254,13 +254,13 @@ export default function FAQClient() {
                             <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
                                 <a
                                     href="/contact"
-                                    className="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-white text-black px-10 py-5 rounded-2xl font-bold text-lg hover:shadow-2xl hover:scale-105 transition-all duration-300"
+                                    className="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-foreground text-background px-10 py-5 rounded-2xl font-bold text-lg hover:shadow-2xl hover:scale-105 transition-all duration-300"
                                 >
                                     Contact HQ
                                 </a>
                                 <a
                                     href="/about/team"
-                                    className="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-black/20 backdrop-blur-md text-white border border-white/20 px-10 py-5 rounded-2xl font-bold text-lg hover:bg-black/30 transition-all"
+                                    className="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-background/20 backdrop-blur-md text-foreground border border-border/20 px-10 py-5 rounded-2xl font-bold text-lg hover:bg-background/30 transition-all"
                                 >
                                     Meet the Experts
                                 </a>

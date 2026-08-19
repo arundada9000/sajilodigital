@@ -157,7 +157,7 @@ const staggerContainer: Variants = {
 
 export default function AboutClient() {
   return (
-    <div className="min-h-screen bg-[#0b0f19] text-white selection:bg-cyan-500/30 overflow-x-hidden">
+    <div className="min-h-screen bg-background text-foreground selection:bg-cyan-500/30 overflow-x-hidden">
       {/* Background Ambience */}
       <div className="fixed inset-0 pointer-events-none">
         <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-cyan-500/10 rounded-full blur-[120px] opacity-40 animate-pulse" />
@@ -182,7 +182,7 @@ export default function AboutClient() {
             <h1 className="text-6xl md:text-8xl font-extrabold mb-8 tracking-tight">
               <ShinyText text="About Us" className="block" />
             </h1>
-            <p className="max-w-3xl mx-auto text-gray-400 text-xl md:text-2xl leading-relaxed">
+            <p className="max-w-3xl mx-auto text-muted-foreground text-xl md:text-2xl leading-relaxed">
               We are a team of visionaries, designers, and engineers dedicated
               to redefining the digital landscape through innovation and
               craftsmanship.
@@ -208,17 +208,17 @@ export default function AboutClient() {
                   key={idx}
                   custom={idx}
                   variants={fadeIn}
-                  className="group relative p-8 rounded-3xl border border-white/10 bg-[#161b22]/40 backdrop-blur-xl hover:bg-[#161b22]/60 transition-all duration-300"
+                  className="group relative p-8 rounded-3xl border border-border bg-surface/40 backdrop-blur-xl hover:bg-surface/60 transition-all duration-300"
                 >
                   <div
-                    className={`w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center mb-6 border border-white/5 group-hover:scale-110 transition-transform duration-300`}
+                    className={`w-12 h-12 rounded-2xl bg-foreground/5 flex items-center justify-center mb-6 border border-border group-hover:scale-110 transition-transform duration-300`}
                   >
                     <Icon className={`w-6 h-6 ${stat.color}`} />
                   </div>
                   <div className="text-4xl font-bold mb-2 tracking-tight group-hover:text-cyan-400 transition-colors">
                     {stat.value}
                   </div>
-                  <div className="text-gray-500 font-medium uppercase text-xs tracking-widest">
+                  <div className="text-muted-foreground font-medium uppercase text-xs tracking-widest">
                     {stat.label}
                   </div>
 
@@ -241,11 +241,11 @@ export default function AboutClient() {
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <h2 className="text-4xl md:text-5xl font-bold mb-8 italic flex items-center gap-4 text-white">
+              <h2 className="text-4xl md:text-5xl font-bold mb-8 italic flex items-center gap-4 text-foreground">
                 Our Story
                 <div className="h-0.5 flex-1 bg-linear-to-r from-cyan-500 to-transparent opacity-30" />
               </h2>
-              <div className="space-y-6 text-gray-400 text-lg leading-relaxed">
+              <div className="space-y-6 text-muted-foreground text-lg leading-relaxed">
                 <p>
                   Founded in{" "}
                   <span className="text-cyan-400 font-bold">2024</span>, Sajilo
@@ -283,7 +283,7 @@ export default function AboutClient() {
               className="relative group"
             >
               <div className="absolute inset-0 bg-linear-to-br from-cyan-500/20 to-purple-500/20 blur-3xl rounded-full opacity-50 group-hover:opacity-80 transition-opacity duration-700" />
-              <div className="relative h-[500px] rounded-[40px] overflow-hidden border border-white/10 shadow-3xl bg-[#161b22]">
+              <div className="relative h-[500px] rounded-[40px] overflow-hidden border border-border shadow-3xl bg-surface">
                 <Image
                   src="/gallery/slide-1.jpg"
                   alt="Team synergy"
@@ -294,9 +294,9 @@ export default function AboutClient() {
               </div>
 
               {/* Floating badge */}
-              <div className="absolute -bottom-6 -right-6 p-8 rounded-3xl bg-[#161b22]/90 backdrop-blur-2xl border border-white/10 shadow-2xl animate-bounce-slow">
+              <div className="absolute -bottom-6 -right-6 p-8 rounded-3xl bg-surface/90 backdrop-blur-2xl border border-border shadow-2xl animate-bounce-slow">
                 <div className="text-cyan-400 text-3xl font-bold mb-1">5+</div>
-                <div className="text-gray-500 text-xs font-bold tracking-widest uppercase">
+                <div className="text-muted-foreground text-xs font-bold tracking-widest uppercase">
                   Years of Impact
                 </div>
               </div>
@@ -313,15 +313,15 @@ export default function AboutClient() {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="group relative p-12 rounded-[40px] bg-linear-to-br from-[#161b22] to-[#0b0f19] border border-white/5 hover:border-cyan-500/20 transition-all duration-500 shadow-2xl"
+              className="group relative p-12 rounded-[40px] bg-linear-to-br from-surface to-background border border-border hover:border-cyan-500/20 transition-all duration-500 shadow-2xl"
             >
               <div className="w-16 h-16 bg-cyan-500 rounded-2xl flex items-center justify-center mb-8 shadow-lg shadow-cyan-500/20 group-hover:rotate-12 transition-transform">
                 <Target className="w-8 h-8 text-black" />
               </div>
-              <h3 className="text-3xl font-bold text-white mb-6 tracking-tight">
+              <h3 className="text-3xl font-bold text-foreground mb-6 tracking-tight">
                 Our Mission
               </h3>
-              <p className="text-gray-400 text-lg leading-relaxed">
+              <p className="text-muted-foreground text-lg leading-relaxed">
                 To empower global businesses with disruptive technology
                 solutions that drive exponential growth and efficiency. We are
                 committed to transparency and long-term partnership in every
@@ -334,15 +334,15 @@ export default function AboutClient() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
-              className="group relative p-12 rounded-[40px] bg-linear-to-br from-[#161b22] to-[#0b0f19] border border-white/5 hover:border-purple-500/20 transition-all duration-500 shadow-2xl"
+              className="group relative p-12 rounded-[40px] bg-linear-to-br from-surface to-background border border-border hover:border-purple-500/20 transition-all duration-500 shadow-2xl"
             >
               <div className="w-16 h-16 bg-purple-500 rounded-2xl flex items-center justify-center mb-8 shadow-lg shadow-purple-500/20 group-hover:-rotate-12 transition-transform">
                 <Eye className="w-8 h-8 text-white" />
               </div>
-              <h3 className="text-3xl font-bold text-white mb-6 tracking-tight">
+              <h3 className="text-3xl font-bold text-foreground mb-6 tracking-tight">
                 Our Vision
               </h3>
-              <p className="text-gray-400 text-lg leading-relaxed">
+              <p className="text-muted-foreground text-lg leading-relaxed">
                 To become the ultimate tech-evolution partner, setting the
                 standard for digital innovation in Nepal and the world. We
                 envision a future where technology is an accessible catalyst for
@@ -354,13 +354,13 @@ export default function AboutClient() {
       </section>
 
       {/* Core Values */}
-      <section className="py-24 px-6 bg-[#0b0f19]/50">
+      <section className="py-24 px-6 bg-background/50">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-20">
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 tracking-tight">
+            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6 tracking-tight">
               Our Core Ethos
             </h2>
-            <p className="text-gray-500 text-lg max-w-2xl mx-auto">
+            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
               Our principles aren't just words on a wall; they are the
               fundamental frequencies that guide our every decision.
             </p>
@@ -380,17 +380,17 @@ export default function AboutClient() {
                   key={idx}
                   variants={fadeIn}
                   custom={idx}
-                  className={`group relative p-10 rounded-3xl bg-[#161b22]/40 backdrop-blur-xl border border-white/10 transition-all duration-500 ${val.borderColor}`}
+                  className={`group relative p-10 rounded-3xl bg-surface/40 backdrop-blur-xl border border-border transition-all duration-500 ${val.borderColor}`}
                 >
                   <div
                     className={`w-14 h-14 ${val.iconBg} rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform`}
                   >
                     <Icon className={`w-7 h-7 ${val.iconColor}`} />
                   </div>
-                  <h3 className="text-xl font-bold text-white mb-4 tracking-tight">
+                  <h3 className="text-xl font-bold text-foreground mb-4 tracking-tight">
                     {val.title}
                   </h3>
-                  <p className="text-gray-500 leading-relaxed text-sm">
+                  <p className="text-muted-foreground leading-relaxed text-sm">
                     {val.description}
                   </p>
                 </motion.div>
@@ -404,10 +404,10 @@ export default function AboutClient() {
       <section className="py-24 px-6">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-20">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4 tracking-tight text-white">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 tracking-tight text-foreground">
               Our Journey
             </h2>
-            <p className="text-gray-500 uppercase tracking-widest text-sm font-bold">
+            <p className="text-muted-foreground uppercase tracking-widest text-sm font-bold">
               Key Evolution Milestones
             </p>
           </div>
@@ -433,21 +433,21 @@ export default function AboutClient() {
                       idx % 2 === 0 ? "md:text-right" : "md:text-left"
                     }`}
                   >
-                    <div className="group p-8 rounded-[32px] bg-[#161b22]/40 backdrop-blur-3xl border border-white/10 hover:border-cyan-500/30 transition-all duration-500">
+                    <div className="group p-8 rounded-[32px] bg-surface/40 backdrop-blur-3xl border border-border hover:border-cyan-500/30 transition-all duration-500">
                       <span className="inline-block px-4 py-1 rounded-full bg-cyan-500/10 text-cyan-400 text-xs font-bold mb-4 tracking-widest">
                         {item.year}
                       </span>
-                      <h3 className="text-2xl font-bold text-white mb-3 tracking-tight">
+                      <h3 className="text-2xl font-bold text-foreground mb-3 tracking-tight">
                         {item.title}
                       </h3>
-                      <p className="text-gray-500 leading-relaxed">
+                      <p className="text-muted-foreground leading-relaxed">
                         {item.description}
                       </p>
                     </div>
                   </div>
 
                   {/* Indicator Dot */}
-                  <div className="relative w-8 h-8 rounded-full bg-[#0b0f19] border-2 border-cyan-500 shadow-[0_0_15px_rgba(6,182,212,0.4)] z-10 hidden md:flex items-center justify-center">
+                  <div className="relative w-8 h-8 rounded-full bg-background border-2 border-cyan-500 shadow-[0_0_15px_rgba(6,182,212,0.4)] z-10 hidden md:flex items-center justify-center">
                     <div className="w-2 h-2 rounded-full bg-cyan-400 animate-ping" />
                   </div>
 
@@ -473,7 +473,7 @@ export default function AboutClient() {
             <div className="absolute inset-0 opacity-20 mix-blend-overlay bg-[url('/images/grid.svg')]" />
 
             <div className="relative z-10">
-              <div className="w-20 h-20 mx-auto rounded-3xl bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center mb-10 group-hover:rotate-12 transition-transform duration-500">
+              <div className="w-20 h-20 mx-auto rounded-3xl bg-foreground/10 backdrop-blur-md border border-white/20 flex items-center justify-center mb-10 group-hover:rotate-12 transition-transform duration-500">
                 <Users className="w-10 h-10 text-white" />
               </div>
               <h2 className="text-4xl md:text-6xl font-extrabold text-white mb-6 tracking-tight">
@@ -485,7 +485,7 @@ export default function AboutClient() {
               </p>
               <Link
                 href="/about/team"
-                className="inline-flex items-center gap-3 bg-white text-black px-10 py-5 rounded-2xl font-bold text-lg hover:shadow-2xl hover:scale-105 transition-all duration-300"
+                className="inline-flex items-center gap-3 bg-surface-elevated text-black px-10 py-5 rounded-2xl font-bold text-lg hover:shadow-2xl hover:scale-105 transition-all duration-300"
               >
                 View the Force
                 <ArrowRight className="w-5 h-5" />

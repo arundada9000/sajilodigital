@@ -57,7 +57,7 @@ const vibes = [
 
 export default function HomePage() {
   return (
-    <div className="relative bg-[#050505]">
+    <div className="relative bg-background">
       {/* Cinematic Grain Overlay */}
       <Grain />
 

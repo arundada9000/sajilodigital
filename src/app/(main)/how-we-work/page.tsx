@@ -114,7 +114,7 @@ const jsonLd = {
 
 export default function HowWeWorkPage() {
   return (
-    <main className="min-h-screen bg-[#050505] text-white pt-24 pb-0 overflow-hidden relative">
+    <main className="min-h-screen bg-surface-deep text-foreground pt-24 pb-0 overflow-hidden relative">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -130,9 +130,9 @@ export default function HowWeWorkPage() {
       <div className="container-custom relative z-10">
         {/* HERO SECTION */}
         <div className="text-center max-w-4xl mx-auto mb-20 md:mb-32">
-          <div className="inline-flex items-center space-x-2 bg-white/5 border border-white/10 px-4 py-1.5 rounded-full mb-8 animate-fade-in hover:bg-white/10 transition-colors cursor-default">
+          <div className="inline-flex items-center space-x-2 bg-foreground/5 border border-border/10 px-4 py-1.5 rounded-full mb-8 animate-fade-in hover:bg-foreground/10 transition-colors cursor-default">
             <Sparkles className="w-4 h-4 text-purple-400" />
-            <span className="text-sm font-medium text-gray-300">
+              <span className="text-sm font-medium text-foreground/70">
               Radical Transparency
             </span>
           </div>
@@ -145,7 +145,7 @@ export default function HowWeWorkPage() {
           </h1>
 
           <p
-            className="text-lg md:text-xl text-gray-400 leading-relaxed animate-slide-up max-w-2xl mx-auto"
+            className="text-lg md:text-xl text-muted-foreground leading-relaxed animate-slide-up max-w-2xl mx-auto"
             style={{ animationDelay: "0.1s" }}
           >
             We don't just send weekly reports. We give you a window into our
@@ -163,19 +163,19 @@ export default function HowWeWorkPage() {
       </div>
 
       {/* INTERACTIVE BUILDER (NEW) */}
-      <div className="relative z-20 bg-[#080808] border-y border-white/5">
+      <div className="relative z-20 bg-background border-y border-border/5">
         <LiveProjectBuilder />
       </div>
 
       {/* FEATURES BENTO GRID */}
-      <div className="relative z-10 bg-[#080808]/50 border-y border-white/5 backdrop-blur-sm">
+      <div className="relative z-10 bg-background/50 border-y border-border/5 backdrop-blur-sm">
         <div className="container-custom">
           <FeaturesBento />
         </div>
       </div>
 
       {/* LIVE WORKING TIMELINE (NEW) */}
-      <div className="relative z-10 border-y border-white/5 bg-[#050505]">
+      <div className="relative z-10 border-y border-border/5 bg-surface-deep">
         <LiveWorkingTimeline />
       </div>
 
@@ -185,7 +185,7 @@ export default function HowWeWorkPage() {
           <h2 className="text-3xl md:text-5xl font-bold mb-6 italic uppercase tracking-tighter">
             Standard <span className="text-blue-500">Protocol</span>
           </h2>
-          <p className="text-gray-400 font-mono text-sm uppercase tracking-widest leading-relaxed">
+          <p className="text-muted-foreground font-mono text-sm uppercase tracking-widest leading-relaxed">
             Our proven engineering workflow for consistent excellence.
           </p>
         </div>

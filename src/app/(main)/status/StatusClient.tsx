@@ -22,13 +22,13 @@ export default function StatusClient() {
     }, []);
 
     return (
-        <div className="min-h-screen bg-[#050505] text-white pt-24 pb-20 px-6 font-mono relative overflow-hidden">
+        <div className="min-h-screen bg-surface-deep text-foreground pt-24 pb-20 px-6 font-mono relative overflow-hidden">
             {/* Background Decor */}
             <div className="absolute inset-0 bg-[url('/noise.svg')] opacity-20 pointer-events-none"></div>
             <div className="absolute top-0 right-0 w-1/2 h-1/2 bg-blue-500/10 blur-[120px] rounded-full pointer-events-none"></div>
 
             <div className="container-custom relative z-10 max-w-6xl">
-                <header className="mb-12 border-b border-white/10 pb-6 flex flex-col md:flex-row justify-between items-end gap-6">
+                <header className="mb-12 border-b border-border pb-6 flex flex-col md:flex-row justify-between items-end gap-6">
                     <div>
                         <motion.h1
                             initial={{ opacity: 0, y: 20 }}
@@ -37,7 +37,7 @@ export default function StatusClient() {
                         >
                             System <span className="text-blue-500">Diagnostics</span>
                         </motion.h1>
-                        <div className="flex items-center gap-3 mt-4 text-xs md:text-sm text-white/50 uppercase tracking-widest">
+                        <div className="flex items-center gap-3 mt-4 text-xs md:text-sm text-foreground/50 uppercase tracking-widest">
                             <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
                             Operational
                             <span className="opacity-30">|</span>
@@ -45,7 +45,7 @@ export default function StatusClient() {
                         </div>
                     </div>
                     <div className="text-right hidden md:block">
-                        <div className="text-xs text-white/40 mb-1">Last Updated</div>
+                        <div className="text-xs text-foreground/40 mb-1">Last Updated</div>
                         <div className="font-mono text-blue-400">{new Date().toLocaleTimeString()}</div>
                     </div>
                 </header>
@@ -62,16 +62,16 @@ export default function StatusClient() {
                             initial={{ opacity: 0, scale: 0.95 }}
                             animate={{ opacity: 1, scale: 1 }}
                             transition={{ delay: i * 0.1 }}
-                            className={`p-6 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md ${metric.bg} border-l-4 border-l-${metric.color.split('-')[1]}-500/50`}
+                            className={`p-6 rounded-2xl border border-border bg-foreground/5 backdrop-blur-md ${metric.bg} border-l-4 border-l-${metric.color.split('-')[1]}-500/50`}
                         >
                             <div className="flex justify-between items-start mb-4">
                                 <metric.icon className={`w-6 h-6 ${metric.color}`} />
-                                <Activity className="w-4 h-4 text-white/20" />
+                                <Activity className="w-4 h-4 text-foreground/20" />
                             </div>
                             <div className="text-2xl font-bold mb-1 font-mono tracking-tight">{metric.value}</div>
-                            <div className="text-[10px] uppercase tracking-widest text-white/40">{metric.label}</div>
+                            <div className="text-[10px] uppercase tracking-widest text-foreground/40">{metric.label}</div>
                             {/* Mini Progress Bar */}
-                            <div className="w-full h-1 bg-white/10 mt-4 rounded-full overflow-hidden">
+                            <div className="w-full h-1 bg-foreground/10 mt-4 rounded-full overflow-hidden">
                                 <motion.div
                                     className={`h-full ${metric.color.replace('text', 'bg')}`}
                                     initial={{ width: 0 }}
@@ -86,20 +86,20 @@ export default function StatusClient() {
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
                     {/* Main Terminal Mockup */}
                     <motion.div
-                        className="lg:col-span-2 bg-[#0a0a0a] rounded-xl border border-white/10 p-6 font-mono text-xs md:text-sm h-[300px] md:h-[400px] overflow-hidden flex flex-col"
+                        className="lg:col-span-2 bg-surface-alt rounded-xl border border-border p-6 font-mono text-xs md:text-sm h-[300px] md:h-[400px] overflow-hidden flex flex-col"
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.4 }}
                     >
-                        <div className="flex items-center justify-between mb-4 border-b border-white/10 pb-4">
-                            <span className="text-white/40 uppercase tracking-widest">System Log</span>
+                        <div className="flex items-center justify-between mb-4 border-b border-border pb-4">
+                            <span className="text-foreground/40 uppercase tracking-widest">System Log</span>
                             <div className="flex gap-2">
                                 <div className="w-3 h-3 rounded-full bg-red-500/20"></div>
                                 <div className="w-3 h-3 rounded-full bg-yellow-500/20"></div>
                                 <div className="w-3 h-3 rounded-full bg-green-500/20"></div>
                             </div>
                         </div>
-                        <div className="flex-1 overflow-y-auto space-y-2 scrollbar-thin scrollbar-thumb-white/10" aria-live="polite">
+                        <div className="flex-1 overflow-y-auto space-y-2 scrollbar-thin scrollbar-thumb-foreground/10" aria-live="polite">
                             <LogEntry time="00:01" type="INFO" msg="Initializing core subsystems..." />
                             <LogEntry time="00:02" type="SUCCESS" msg="Neural engine loaded safely." />
                             <LogEntry time="00:03" type="WARN" msg="Detecting high creativity usage." />
@@ -123,12 +123,12 @@ export default function StatusClient() {
 
                     {/* Service Status */}
                     <motion.div
-                        className="bg-white/5 border border-white/10 rounded-xl p-6 backdrop-blur-sm"
+                        className="bg-foreground/5 border border-border rounded-xl p-6 backdrop-blur-sm"
                         initial={{ opacity: 0, x: 20 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: 0.5 }}
                     >
-                        <h3 className="text-sm font-black uppercase tracking-widest text-white/60 mb-6 flex items-center gap-2">
+                        <h3 className="text-sm font-black uppercase tracking-widest text-foreground/60 mb-6 flex items-center gap-2">
                             <Server className="w-4 h-4" /> Global Services
                         </h3>
                         <div className="space-y-4">
@@ -140,14 +140,14 @@ export default function StatusClient() {
                             <ServiceRow name="Analytics" status="Maintenance" color="text-blue-400" />
                         </div>
 
-                        <div className="mt-8 pt-6 border-t border-white/10">
-                            <div className="text-[10px] text-white/30 uppercase tracking-widest mb-2">Storage Usage</div>
+                        <div className="mt-8 pt-6 border-t border-border">
+                            <div className="text-[10px] text-foreground/30 uppercase tracking-widest mb-2">Storage Usage</div>
                             <div className="flex items-end gap-2 mb-1">
                                 <span className="text-2xl font-bold">842</span>
-                                <span className="text-sm text-white/50 mb-1">TB Used</span>
+                                <span className="text-sm text-foreground/50 mb-1">TB Used</span>
                             </div>
-                            <div className="w-full bg-white/10 h-1.5 rounded-full overflow-hidden">
-                                <div className="bg-white h-full w-[70%]"></div>
+                            <div className="w-full bg-foreground/10 h-1.5 rounded-full overflow-hidden">
+                                <div className="bg-foreground h-full w-[70%]"></div>
                             </div>
                         </div>
                     </motion.div>
@@ -161,9 +161,9 @@ function LogEntry({ time, type, msg, opacity = 1 }: { time: string, type: string
     const color = type === "SUCCESS" ? "text-green-400" : type === "WARN" ? "text-yellow-400" : "text-blue-300";
     return (
         <div className="flex gap-4" style={{ opacity }}>
-            <span className="text-white/30 shrink-0">[{time}]</span>
+            <span className="text-foreground/30 shrink-0">[{time}]</span>
             <span className={`font-bold w-16 shrink-0 ${color}`}>{type}</span>
-            <span className="text-white/70">{msg}</span>
+            <span className="text-foreground/70">{msg}</span>
         </div>
     )
 }
@@ -171,8 +171,8 @@ function LogEntry({ time, type, msg, opacity = 1 }: { time: string, type: string
 function ServiceRow({ name, status, color = "text-green-400" }: { name: string, status: string, color?: string }) {
     return (
         <div className="flex justify-between items-center group cursor-default">
-            <span className="text-sm text-white/70 group-hover:text-white transition-colors">{name}</span>
-            <span className={`text-xs font-mono py-1 px-2 rounded bg-white/5 ${color} border border-white/5`}>{status}</span>
+            <span className="text-sm text-foreground/70 group-hover:text-foreground transition-colors">{name}</span>
+            <span className={`text-xs font-mono py-1 px-2 rounded bg-foreground/5 ${color} border border-border`}>{status}</span>
         </div>
     )
 }

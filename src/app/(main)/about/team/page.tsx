@@ -55,7 +55,7 @@ const leaders = [
 export default function TeamPage() {
   return (
     <>
-      <Suspense fallback={<div className="min-h-screen bg-[#0b0f19]" />}>
+      <Suspense fallback={<div className="min-h-screen bg-background" />}>
         <TeamClient />
       </Suspense>
       {/* Team Schema */}

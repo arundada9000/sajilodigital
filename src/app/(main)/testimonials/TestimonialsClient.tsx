@@ -85,7 +85,7 @@ const itemVariants: Variants = {
 
 export default function TestimonialsClient() {
   return (
-    <div className="min-h-screen bg-[#0b0f19] text-white selection:bg-cyan-500/30 overflow-x-hidden">
+    <div className="min-h-screen bg-background text-foreground selection:bg-cyan-500/30 overflow-x-hidden">
       {/* Background Ambience */}
       <div className="fixed inset-0 pointer-events-none">
         <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-cyan-500/10 rounded-full blur-[120px] opacity-40 animate-pulse" />
@@ -110,7 +110,7 @@ export default function TestimonialsClient() {
             <h1 className="text-5xl md:text-7xl font-extrabold mb-8 tracking-tight">
               <ShinyText text="Clients Feedback" className="block" />
             </h1>
-            <p className="max-w-2xl mx-auto text-gray-400 text-lg md:text-xl leading-relaxed">
+            <p className="max-w-2xl mx-auto text-muted-foreground text-lg md:text-xl leading-relaxed">
               Discover how Sajilo Digital empowers businesses through disruptive
               technology and human-centric design, as told by our partners.
             </p>
@@ -121,7 +121,7 @@ export default function TestimonialsClient() {
             variants={containerVariants}
             initial="hidden"
             animate="visible"
-            className="grid grid-cols-2 md:grid-cols-4 gap-8 py-10 border-y border-white/5 bg-white/[0.02] backdrop-blur-sm rounded-[32px] md:rounded-full px-12"
+            className="grid grid-cols-2 md:grid-cols-4 gap-8 py-10 border-y border-border bg-foreground/[0.02] backdrop-blur-sm rounded-[32px] md:rounded-full px-12"
           >
             {stats.map((stat, idx) => {
               const Icon = stat.icon;
@@ -133,19 +133,19 @@ export default function TestimonialsClient() {
                 >
                   <div className="flex flex-col items-center">
                     <div
-                      className={`mb-3 p-2 rounded-xl bg-white/5 ${stat.color} group-hover:scale-110 transition-transform`}
+                      className={`mb-3 p-2 rounded-xl bg-foreground/5 ${stat.color} group-hover:scale-110 transition-transform`}
                     >
                       <Icon className="w-6 h-6" />
                     </div>
                     <div className="text-3xl md:text-4xl font-bold mb-1">
                       {stat.value}
                     </div>
-                    <div className="text-gray-500 text-xs font-bold uppercase tracking-widest">
+                    <div className="text-muted-foreground text-xs font-bold uppercase tracking-widest">
                       {stat.label}
                     </div>
                   </div>
                   {idx < stats.length - 1 && (
-                    <div className="hidden md:block absolute right-0 top-1/2 -translate-y-1/2 h-10 w-px bg-white/10" />
+                    <div className="hidden md:block absolute right-0 top-1/2 -translate-y-1/2 h-10 w-px bg-foreground/10" />
                   )}
                 </motion.div>
               );
@@ -169,7 +169,7 @@ export default function TestimonialsClient() {
                 key={index}
                 variants={itemVariants}
                 whileHover={{ y: -10 }}
-                className="group relative p-8 rounded-[40px] bg-[#161b22]/40 backdrop-blur-xl border border-white/10 hover:border-cyan-500/30 transition-all duration-500 flex flex-col justify-between"
+                className="group relative p-8 rounded-[40px] bg-surface/40 backdrop-blur-xl border border-border hover:border-cyan-500/30 transition-all duration-500 flex flex-col justify-between"
               >
                 <div>
                   <div className="flex justify-between items-start mb-8">
@@ -186,20 +186,20 @@ export default function TestimonialsClient() {
                     </div>
                   </div>
 
-                  <p className="text-gray-300 text-lg italic leading-relaxed mb-8">
+                  <p className="text-foreground/70 text-lg italic leading-relaxed mb-8">
                     &quot;{testimonial.text}&quot;
                   </p>
                 </div>
 
                 <div className="space-y-6">
-                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-bold text-gray-400 capitalize">
+                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-foreground/5 border border-border text-xs font-bold text-muted-foreground capitalize">
                     {/* Simplified project tag for consistent styling */}
                     <div className="w-1.5 h-1.5 rounded-full bg-cyan-500 shadow-[0_0_8px_rgba(6,182,212,0.5)]" />
                     {testimonial.project}
                   </div>
 
-                  <div className="flex items-center gap-4 pt-6 border-t border-white/5">
-                    <div className="relative w-14 h-14 rounded-full overflow-hidden border border-white/10 group-hover:border-cyan-500/50 transition-colors">
+                  <div className="flex items-center gap-4 pt-6 border-t border-border">
+                    <div className="relative w-14 h-14 rounded-full overflow-hidden border border-border group-hover:border-cyan-500/50 transition-colors">
                       <Image
                         src={testimonial.image}
                         alt={testimonial.name}
@@ -208,10 +208,10 @@ export default function TestimonialsClient() {
                       />
                     </div>
                     <div>
-                      <h4 className="font-bold text-white tracking-tight">
+                      <h4 className="font-bold text-foreground tracking-tight">
                         {testimonial.name}
                       </h4>
-                      <p className="text-gray-500 text-sm font-medium">
+                      <p className="text-muted-foreground text-sm font-medium">
                         {testimonial.role} at {testimonial.company}
                       </p>
                     </div>
@@ -224,7 +224,7 @@ export default function TestimonialsClient() {
       </section>
 
       {/* Video Testimonials Section */}
-      <section className="py-24 px-6 bg-[#0b0f19]/50 relative overflow-hidden">
+      <section className="py-24 px-6 bg-background/50 relative overflow-hidden">
         {/* Decorative elements */}
         <div className="absolute top-1/2 left-0 w-96 h-96 bg-cyan-500/5 rounded-full blur-[100px] -translate-x-1/2" />
 
@@ -233,7 +233,7 @@ export default function TestimonialsClient() {
             <h2 className="text-4xl md:text-5xl font-bold mb-6 tracking-tight">
               Voice of Partnerships
             </h2>
-            <p className="text-gray-500 text-lg max-w-2xl mx-auto uppercase tracking-widest font-bold text-sm">
+            <p className="text-muted-foreground text-lg max-w-2xl mx-auto uppercase tracking-widest font-bold text-sm">
               Cinematic Case Study Interviews
             </p>
           </div>
@@ -244,7 +244,7 @@ export default function TestimonialsClient() {
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              className="group relative h-[350px] rounded-[50px] overflow-hidden border border-white/10 shadow-3xl cursor-pointer"
+              className="group relative h-[350px] rounded-[50px] overflow-hidden border border-border shadow-3xl cursor-pointer"
             >
               <Image
                 src="/gallery/slide-1.jpg"
@@ -252,7 +252,7 @@ export default function TestimonialsClient() {
                 fill
                 className="object-cover group-hover:scale-110 transition-transform duration-1000 grayscale group-hover:grayscale-0"
               />
-              <div className="absolute inset-0 bg-linear-to-t from-[#0b0f19] via-transparent to-transparent opacity-60" />
+              <div className="absolute inset-0 bg-linear-to-t from-background via-transparent to-transparent opacity-60" />
 
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className="w-20 h-20 rounded-full bg-cyan-500 flex items-center justify-center shadow-[0_0_30px_rgba(6,182,212,0.4)] group-hover:scale-110 transition-all duration-500 border-4 border-white/20">
@@ -276,7 +276,7 @@ export default function TestimonialsClient() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
-              className="group relative h-[350px] rounded-[50px] overflow-hidden border border-white/10 shadow-3xl cursor-pointer"
+              className="group relative h-[350px] rounded-[50px] overflow-hidden border border-border shadow-3xl cursor-pointer"
             >
               <Image
                 src="/gallery/slide-2.jpg"
@@ -284,7 +284,7 @@ export default function TestimonialsClient() {
                 fill
                 className="object-cover group-hover:scale-110 transition-transform duration-1000 grayscale group-hover:grayscale-0"
               />
-              <div className="absolute inset-0 bg-linear-to-t from-[#0b0f19] via-transparent to-transparent opacity-60" />
+              <div className="absolute inset-0 bg-linear-to-t from-background via-transparent to-transparent opacity-60" />
 
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className="w-20 h-20 rounded-full bg-purple-500 flex items-center justify-center shadow-[0_0_30px_rgba(168,85,247,0.4)] group-hover:scale-110 transition-all duration-500 border-4 border-white/20">
@@ -306,10 +306,10 @@ export default function TestimonialsClient() {
       </section>
 
       {/* Trust Section */}
-      <section className="py-24 px-6 border-b border-white/5">
+      <section className="py-24 px-6 border-b border-border">
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col items-center mb-16">
-            <h2 className="text-2xl font-bold text-gray-500 uppercase tracking-[0.3em] text-center mb-8">
+            <h2 className="text-2xl font-bold text-muted-foreground uppercase tracking-[0.3em] text-center mb-8">
               Pioneers Who Trust Us
             </h2>
             <div className="w-24 h-1 bg-linear-to-r from-transparent via-cyan-500 to-transparent" />
@@ -320,9 +320,9 @@ export default function TestimonialsClient() {
               <motion.div
                 key={i}
                 whileHover={{ scale: 1.05, y: -5 }}
-                className="h-24 rounded-3xl bg-white/[0.03] border border-white/5 flex items-center justify-center group cursor-pointer hover:bg-white/[0.05] transition-all"
+                className="h-24 rounded-3xl bg-foreground/[0.03] border border-border flex items-center justify-center group cursor-pointer hover:bg-foreground/[0.05] transition-all"
               >
-                <div className="text-gray-600 font-black text-xl group-hover:text-cyan-400/80 transition-colors uppercase tracking-tighter">
+                <div className="text-muted-foreground font-black text-xl group-hover:text-cyan-400/80 transition-colors uppercase tracking-tighter">
                   Partner {i}
                 </div>
               </motion.div>
@@ -351,7 +351,7 @@ export default function TestimonialsClient() {
                 <br />
                 <span className="text-cyan-400">Pure Innovation.</span>
               </h2>
-              <p className="max-w-2xl mx-auto text-gray-300 text-lg md:text-xl mb-12 leading-relaxed font-medium">
+              <p className="max-w-2xl mx-auto text-foreground/70 text-lg md:text-xl mb-12 leading-relaxed font-medium">
                 Ready to become our next success story? Partner with the team
                 that turns complex challenges into elegant digital realities.
               </p>
@@ -366,7 +366,7 @@ export default function TestimonialsClient() {
                 </a>
                 <a
                   href="/projects"
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-white/5 border border-white/10 text-white px-10 py-5 rounded-2xl font-bold text-lg hover:bg-white/10 transition-all group/link"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-foreground/5 border border-border text-foreground px-10 py-5 rounded-2xl font-bold text-lg hover:bg-foreground/10 transition-all group/link"
                 >
                   View Our Portfolio
                   <ChevronRight className="w-5 h-5 group-hover/link:translate-x-1 transition-transform" />

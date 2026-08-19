@@ -68,13 +68,13 @@ const socials = [
         name: "TikTok",
         icon: <FaTiktok />,
         href: "https://tiktok.com/@sajilo_digital",
-        color: "hover:text-white",
+        color: "hover:text-foreground",
     },
     {
         name: "GitHub",
         icon: <FaGithub />,
         href: "https://github.com/sajhilodigital",
-        color: "hover:text-gray-400",
+        color: "hover:text-muted-foreground",
     },
     {
         name: "WhatsApp",
@@ -211,7 +211,7 @@ export default function ContactClient() {
     };
 
     return (
-        <div className="min-h-screen bg-[#0b0f19] text-white selection:bg-cyan-500/30 overflow-x-hidden">
+        <div className="min-h-screen bg-background text-foreground selection:bg-cyan-500/30 overflow-x-hidden">
             {/* Background Ambience */}
             <div className="fixed inset-0 pointer-events-none">
                 <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-cyan-500/10 rounded-full blur-[120px] opacity-40 animate-pulse" />
@@ -236,7 +236,7 @@ export default function ContactClient() {
                         <h1 className="text-5xl md:text-7xl font-extrabold mb-8 tracking-tight">
                             <ShinyText text="Get In Touch" className="block" />
                         </h1>
-                        <p className="max-w-2xl mx-auto text-gray-400 text-lg md:text-xl leading-relaxed">
+                        <p className="max-w-2xl mx-auto text-muted-foreground text-lg md:text-xl leading-relaxed">
                             Have a visionary project or a complex technical challenge? Partner
                             with Sajilo Digital to turn your ideas into digital reality.
                         </p>
@@ -251,7 +251,7 @@ export default function ContactClient() {
                             viewport={{ once: true }}
                             className="lg:col-span-5 space-y-8"
                         >
-                            <h2 className="text-3xl font-bold mb-8 italic text-white flex items-center gap-3">
+                            <h2 className="text-3xl font-bold mb-8 italic text-foreground flex items-center gap-3">
                                 Contact Information
                                 <div className="h-0.5 flex-1 bg-linear-to-r from-cyan-500 to-transparent opacity-30" />
                             </h2>
@@ -260,7 +260,7 @@ export default function ContactClient() {
                                 {/* Email Card */}
                                 <motion.div
                                     variants={itemVariants}
-                                    className="group p-6 rounded-2xl border border-white/10 bg-[#161b22]/40 backdrop-blur-xl hover:border-cyan-500/30 transition-all duration-300"
+                                    className="group p-6 rounded-2xl border border-border bg-surface/40 backdrop-blur-xl hover:border-cyan-500/30 transition-all duration-300"
                                 >
                                     <div className="flex items-start gap-5">
                                         <div className="p-3 rounded-xl bg-cyan-500/10 border border-cyan-500/20 group-hover:bg-cyan-500 group-hover:text-black transition-all duration-300">
@@ -270,10 +270,10 @@ export default function ContactClient() {
                                             <h3 className="text-lg font-bold mb-2">
                                                 Email Addresses
                                             </h3>
-                                            <p className="text-gray-400 group-hover:text-white transition-colors">
+                                            <p className="text-muted-foreground group-hover:text-foreground transition-colors">
                                                 info@sajilodigital.com.np
                                             </p>
-                                            <p className="text-gray-400 group-hover:text-white transition-colors">
+                                            <p className="text-muted-foreground group-hover:text-foreground transition-colors">
                                                 sajhilodigital@gmail.com
                                             </p>
                                         </div>
@@ -283,15 +283,15 @@ export default function ContactClient() {
                                 {/* Phone Card */}
                                 <motion.div
                                     variants={itemVariants}
-                                    className="group p-6 rounded-2xl border border-white/10 bg-[#161b22]/40 backdrop-blur-xl hover:border-purple-500/30 transition-all duration-300"
+                                    className="group p-6 rounded-2xl border border-border bg-surface/40 backdrop-blur-xl hover:border-purple-500/30 transition-all duration-300"
                                 >
                                     <div className="flex items-start gap-5">
-                                        <div className="p-3 rounded-xl bg-purple-500/10 border border-purple-500/20 group-hover:bg-purple-500 group-hover:text-white transition-all duration-300">
+                                        <div className="p-3 rounded-xl bg-purple-500/10 border border-purple-500/20 group-hover:bg-purple-500 group-hover:text-foreground transition-all duration-300">
                                             <Phone className="w-6 h-6" />
                                         </div>
                                         <div>
                                             <h3 className="text-lg font-bold mb-2">Phone Lines</h3>
-                                            <p className="text-gray-400 group-hover:text-white transition-colors">
+                                            <p className="text-muted-foreground group-hover:text-foreground transition-colors">
                                                 +977-9842977207
                                             </p>
                                         </div>
@@ -301,7 +301,7 @@ export default function ContactClient() {
                                 {/* Office Card */}
                                 <motion.div
                                     variants={itemVariants}
-                                    className="group p-6 rounded-2xl border border-white/10 bg-[#161b22]/40 backdrop-blur-xl hover:border-green-500/30 transition-all duration-300"
+                                    className="group p-6 rounded-2xl border border-border bg-surface/40 backdrop-blur-xl hover:border-green-500/30 transition-all duration-300"
                                 >
                                     <div className="flex items-start gap-5">
                                         <div className="p-3 rounded-xl bg-green-500/10 border border-green-500/20 group-hover:bg-green-500 group-hover:text-black transition-all duration-300">
@@ -309,10 +309,10 @@ export default function ContactClient() {
                                         </div>
                                         <div>
                                             <h3 className="text-lg font-bold mb-2">Our Studio</h3>
-                                            <p className="text-gray-400 group-hover:text-white transition-colors">
+                                            <p className="text-muted-foreground group-hover:text-foreground transition-colors">
                                                 Horizon Chowk, Butwal
                                             </p>
-                                            <p className="text-gray-400 group-hover:text-white transition-colors">
+                                            <p className="text-muted-foreground group-hover:text-foreground transition-colors">
                                                 Lumbini, Nepal
                                             </p>
                                         </div>
@@ -322,11 +322,11 @@ export default function ContactClient() {
                                 {/* Social Connect Card */}
                                 <motion.div
                                     variants={itemVariants}
-                                    className="p-8 rounded-3xl border border-white/5 bg-linear-to-br from-[#161b22] to-[#0b0f19]"
+                                    className="p-8 rounded-3xl border border-border bg-linear-to-br from-surface to-background"
                                 >
                                     <h3 className="text-xl font-bold mb-6 flex items-center gap-3">
                                         Connect With Us
-                                        <div className="h-px flex-1 bg-white/10" />
+                                        <div className="h-px flex-1 bg-foreground/10" />
                                     </h3>
                                     <div className="grid grid-cols-3 sm:grid-cols-6 gap-4">
                                         {socials.map((social) => (
@@ -336,7 +336,7 @@ export default function ContactClient() {
                                                 target="_blank"
                                                 rel="noopener noreferrer"
                                                 whileHover={{ y: -5, scale: 1.1 }}
-                                                className={`w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-xl text-gray-400 transition-all duration-300 ${social.color} hover:border-cyan-500/50 hover:bg-cyan-500/5 shadow-lg shadow-black/20`}
+                                                className={`w-12 h-12 rounded-xl bg-foreground/5 border border-border flex items-center justify-center text-xl text-muted-foreground transition-all duration-300 ${social.color} hover:border-cyan-500/50 hover:bg-cyan-500/5 shadow-lg shadow-black/20`}
                                                 aria-label={social.name}
                                             >
                                                 {social.icon}
@@ -356,12 +356,12 @@ export default function ContactClient() {
                         >
                             <div className="relative p-1 rounded-3xl bg-linear-to-br from-cyan-500/20 via-purple-500/20 to-pink-500/20 shadow-2xl overflow-hidden group">
                                 {/* Glow following mouse or pulse can go here */}
-                                <div className="relative p-8 md:p-12 rounded-[22px] bg-[#0b0f19] border border-white/5">
+                                <div className="relative p-8 md:p-12 rounded-[22px] bg-background border border-border">
                                     <div className="flex items-center gap-4 mb-10">
                                         <div className="p-3 rounded-full bg-cyan-500 text-black">
                                             <Briefcase className="w-5 h-5 font-bold" />
                                         </div>
-                                        <h2 className="text-3xl font-bold text-white tracking-tight">
+                                        <h2 className="text-3xl font-bold text-foreground tracking-tight">
                                             Project Inquiry
                                         </h2>
                                     </div>
@@ -370,21 +370,21 @@ export default function ContactClient() {
                                         <div className="grid md:grid-cols-2 gap-6">
                                             {/* Name Input */}
                                             <div className="space-y-2">
-                                                <label className="text-sm font-semibold text-gray-400 px-1">
+                                                <label className="text-sm font-semibold text-muted-foreground px-1">
                                                     Full Name
                                                 </label>
                                                 <div className="relative group">
-                                                    <User className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500 group-focus-within:text-cyan-400 transition-colors" />
+                                                    <User className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground group-focus-within:text-cyan-400 transition-colors" />
                                                     <input
                                                         type="text"
                                                         name="name"
                                                         value={formData.name}
                                                         onChange={handleChange}
                                                         placeholder="Arun Neupane"
-                                                        className={`w-full bg-white/5 border ${errors.name
+                                                        className={`w-full bg-foreground/5 border ${errors.name
                                                             ? "border-red-500/50 bg-red-500/5"
-                                                            : "border-white/10"
-                                                            } rounded-2xl px-12 py-4 text-white placeholder:text-gray-600 focus:outline-none focus:border-cyan-500/50 focus:bg-cyan-500/5 transition-all duration-300`}
+                                                            : "border-border"
+                                                            } rounded-2xl px-12 py-4 text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-cyan-500/50 focus:bg-cyan-500/5 transition-all duration-300`}
                                                     />
                                                 </div>
                                                 <AnimatePresence>
@@ -403,21 +403,21 @@ export default function ContactClient() {
 
                                             {/* Email Input */}
                                             <div className="space-y-2">
-                                                <label className="text-sm font-semibold text-gray-400 px-1">
+                                                <label className="text-sm font-semibold text-muted-foreground px-1">
                                                     Email Address
                                                 </label>
                                                 <div className="relative group">
-                                                    <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500 group-focus-within:text-cyan-400 transition-colors" />
+                                                    <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground group-focus-within:text-cyan-400 transition-colors" />
                                                     <input
                                                         type="email"
                                                         name="email"
                                                         value={formData.email}
                                                         onChange={handleChange}
                                                         placeholder="arun@sajilodigitalpvtltd.com"
-                                                        className={`w-full bg-white/5 border ${errors.email
+                                                        className={`w-full bg-foreground/5 border ${errors.email
                                                             ? "border-red-500/50 bg-red-500/5"
-                                                            : "border-white/10"
-                                                            } rounded-2xl px-12 py-4 text-white placeholder:text-gray-600 focus:outline-none focus:border-cyan-500/50 focus:bg-cyan-500/5 transition-all duration-300`}
+                                                            : "border-border"
+                                                            } rounded-2xl px-12 py-4 text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-cyan-500/50 focus:bg-cyan-500/5 transition-all duration-300`}
                                                     />
                                                 </div>
                                                 <AnimatePresence>
@@ -438,18 +438,18 @@ export default function ContactClient() {
                                         <div className="grid md:grid-cols-2 gap-6">
                                             {/* Phone Input */}
                                             <div className="space-y-2">
-                                                <label className="text-sm font-semibold text-gray-400 px-1">
+                                                <label className="text-sm font-semibold text-muted-foreground px-1">
                                                     Phone Number (Optional)
                                                 </label>
                                                 <div className="relative group">
-                                                    <Phone className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500 group-focus-within:text-cyan-400 transition-colors" />
+                                                    <Phone className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground group-focus-within:text-cyan-400 transition-colors" />
                                                     <input
                                                         type="tel"
                                                         name="phone"
                                                         value={formData.phone}
                                                         onChange={handleChange}
                                                         placeholder="+977-9811420975"
-                                                        className="w-full bg-white/5 border border-white/10 rounded-2xl px-12 py-4 text-white placeholder:text-gray-600 focus:outline-none focus:border-cyan-500/50 focus:bg-cyan-500/5 transition-all duration-300"
+                                                        className="w-full bg-foreground/5 border border-border rounded-2xl px-12 py-4 text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-cyan-500/50 focus:bg-cyan-500/5 transition-all duration-300"
                                                     />
                                                 </div>
                                                 <AnimatePresence>
@@ -467,30 +467,30 @@ export default function ContactClient() {
 
                                             {/* Budget Select */}
                                             <div className="space-y-2">
-                                                <label className="text-sm font-semibold text-gray-400 px-1">
+                                                <label className="text-sm font-semibold text-muted-foreground px-1">
                                                     Estimate Budget
                                                 </label>
                                                 <div className="relative group">
-                                                    <Hash className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500 group-focus-within:text-cyan-400 transition-colors" />
+                                                    <Hash className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground group-focus-within:text-cyan-400 transition-colors" />
                                                     <select
                                                         name="budget"
                                                         value={formData.budget}
                                                         onChange={handleChange}
-                                                        className="w-full bg-white/5 border border-white/10 rounded-2xl px-12 py-4 text-white appearance-none focus:outline-none focus:border-cyan-500/50 focus:bg-cyan-500/5 transition-all duration-300"
+                                                        className="w-full bg-foreground/5 border border-border rounded-2xl px-12 py-4 text-foreground appearance-none focus:outline-none focus:border-cyan-500/50 focus:bg-cyan-500/5 transition-all duration-300"
                                                     >
-                                                        <option value="" className="bg-[#0b0f19]">
+                                                        <option value="" className="bg-background">
                                                             Select budget range
                                                         </option>
-                                                        <option value="<50k" className="bg-[#0b0f19]">
+                                                        <option value="<50k" className="bg-background">
                                                             Less than NPR 50,000
                                                         </option>
-                                                        <option value="50k-100k" className="bg-[#0b0f19]">
+                                                        <option value="50k-100k" className="bg-background">
                                                             NPR 50,000 - 100,000
                                                         </option>
-                                                        <option value="100k-200k" className="bg-[#0b0f19]">
+                                                        <option value="100k-200k" className="bg-background">
                                                             NPR 100,000 - 200,000
                                                         </option>
-                                                        <option value="200k+" className="bg-[#0b0f19]">
+                                                        <option value="200k+" className="bg-background">
                                                             NPR 200,000+
                                                         </option>
                                                     </select>
@@ -500,7 +500,7 @@ export default function ContactClient() {
 
                                         {/* Subject Input */}
                                         <div className="space-y-2">
-                                            <label className="text-sm font-semibold text-gray-400 px-1">
+                                            <label className="text-sm font-semibold text-muted-foreground px-1">
                                                 Subject
                                             </label>
                                             <input
@@ -509,16 +509,16 @@ export default function ContactClient() {
                                                 value={formData.subject}
                                                 onChange={handleChange}
                                                 placeholder="Web Design / Mobile App / Digital Marketing"
-                                                className={`w-full bg-white/5 border ${errors.subject
+                                                className={`w-full bg-foreground/5 border ${errors.subject
                                                     ? "border-red-500/50"
-                                                    : "border-white/10"
-                                                    } rounded-2xl px-6 py-4 text-white focus:outline-none focus:border-cyan-500/50 focus:bg-cyan-500/5 transition-all duration-300`}
+                                                    : "border-border"
+                                                    } rounded-2xl px-6 py-4 text-foreground focus:outline-none focus:border-cyan-500/50 focus:bg-cyan-500/5 transition-all duration-300`}
                                             />
                                         </div>
 
                                         {/* Message Input */}
                                         <div className="space-y-2">
-                                            <label className="text-sm font-semibold text-gray-400 px-1">
+                                            <label className="text-sm font-semibold text-muted-foreground px-1">
                                                 How can we help?
                                             </label>
                                             <textarea
@@ -527,10 +527,10 @@ export default function ContactClient() {
                                                 onChange={handleChange}
                                                 rows={5}
                                                 placeholder="Describe your vision and requirements..."
-                                                className={`w-full bg-white/5 border ${errors.message
+                                                className={`w-full bg-foreground/5 border ${errors.message
                                                     ? "border-red-500/50"
-                                                    : "border-white/10"
-                                                    } rounded-2xl px-6 py-4 text-white focus:outline-none focus:border-cyan-500/50 focus:bg-cyan-500/5 transition-all duration-300 resize-none`}
+                                                    : "border-border"
+                                                    } rounded-2xl px-6 py-4 text-foreground focus:outline-none focus:border-cyan-500/50 focus:bg-cyan-500/5 transition-all duration-300 resize-none`}
                                             />
                                             <AnimatePresence>
                                                 {errors.message && (
@@ -596,20 +596,20 @@ export default function ContactClient() {
                     {/* Map Header & Toggles */}
                     <div className="flex flex-col md:flex-row items-center justify-between gap-6 mb-10">
                         <div>
-                            <h2 className="text-3xl font-bold text-white mb-2">
+                            <h2 className="text-3xl font-bold text-foreground mb-2">
                                 Find Our Base
                             </h2>
-                            <p className="text-gray-400">
+                            <p className="text-muted-foreground">
                                 Toggle between standard map and immersive street view
                             </p>
                         </div>
 
-                        <div className="flex bg-white/5 p-1 rounded-2xl border border-white/10 backdrop-blur-md">
+                        <div className="flex bg-foreground/5 p-1 rounded-2xl border border-border backdrop-blur-md">
                             <button
                                 onClick={() => setMapMode("map")}
                                 className={`px-6 py-2.5 rounded-xl text-sm font-bold transition-all duration-300 ${mapMode === "map"
                                     ? "bg-cyan-500 text-black shadow-lg shadow-cyan-500/20"
-                                    : "text-gray-400 hover:text-white"
+                                    : "text-muted-foreground hover:text-foreground"
                                     }`}
                             >
                                 Satellite Map
@@ -618,7 +618,7 @@ export default function ContactClient() {
                                 onClick={() => setMapMode("street")}
                                 className={`px-6 py-2.5 rounded-xl text-sm font-bold transition-all duration-300 ${mapMode === "street"
                                     ? "bg-cyan-500 text-black shadow-lg shadow-cyan-500/20"
-                                    : "text-gray-400 hover:text-white"
+                                    : "text-muted-foreground hover:text-foreground"
                                     }`}
                             >
                                 Street View
@@ -630,7 +630,7 @@ export default function ContactClient() {
                         initial={{ opacity: 0, y: 40 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="group relative rounded-[40px] overflow-hidden border border-white/10 shadow-3xl h-[500px] md:h-[600px]"
+                        className="group relative rounded-[40px] overflow-hidden border border-border shadow-3xl h-[500px] md:h-[600px]"
                     >
                         {/* Overlay for aesthetic */}
                         <div className="absolute inset-0 bg-linear-to-b from-[#0b0f19] via-transparent to-[#0b0f19] pointer-events-none z-10 opacity-30 pointer-events-none" />
@@ -655,12 +655,12 @@ export default function ContactClient() {
 
                         {/* Float Card */}
                         <div className="absolute bottom-6 left-1/2 -translate-x-1/2 md:translate-x-0 md:bottom-10 md:left-10 z-20 w-[calc(100%-3rem)] md:w-auto">
-                            <div className="p-6 md:p-8 rounded-[32px] bg-[#161b22]/90 backdrop-blur-2xl border border-white/10 shadow-2xl max-w-sm">
+                            <div className="p-6 md:p-8 rounded-[32px] bg-surface/90 backdrop-blur-2xl border border-border shadow-2xl max-w-sm">
                                 <h4 className="text-xl font-bold mb-3 flex items-center gap-2">
                                     <span className="w-3 h-3 rounded-full bg-cyan-500 animate-pulse" />
                                     Sajilo Digital HQ
                                 </h4>
-                                <p className="text-gray-400 text-sm leading-relaxed mb-6">
+                                <p className="text-muted-foreground text-sm leading-relaxed mb-6">
                                     Experience our workspace in Butwal. We're located at Horizon
                                     Chowk, ready to craft your next masterpiece.
                                 </p>

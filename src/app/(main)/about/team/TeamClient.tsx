@@ -75,26 +75,26 @@ function RecruitmentModal({
         initial={{ scale: 0.9, y: 20 }}
         animate={{ scale: 1, y: 0 }}
         exit={{ scale: 0.9, y: 20 }}
-        className="bg-[#0b0f19] border border-white/10 p-8 rounded-3xl w-full max-w-lg relative shadow-2xl"
+        className="bg-background border border-border p-8 rounded-3xl w-full max-w-lg relative shadow-2xl"
         onClick={(e) => e.stopPropagation()}
       >
         <button
           onClick={onClose}
-          className="absolute top-6 right-6 text-white/40 hover:text-white transition-colors"
+          className="absolute top-6 right-6 text-muted-foreground hover:text-foreground transition-colors"
         >
           <X size={24} />
         </button>
 
-        <h2 className="text-3xl font-black italic uppercase tracking-tighter text-white mb-2">
+        <h2 className="text-3xl font-black italic uppercase tracking-tighter text-foreground mb-2">
           Initiate <span className="text-blue-500">Recruitment</span>
         </h2>
-        <p className="text-white/40 text-sm mb-8 font-mono">
+        <p className="text-muted-foreground text-sm mb-8 font-mono">
           // Enter your credentials to join the core.
         </p>
 
         <div className="space-y-6">
           <div className="flex justify-center mb-4">
-            <div className="relative w-24 h-24 rounded-full border-2 border-dashed border-white/20 flex items-center justify-center cursor-pointer group overflow-hidden bg-white/5 hover:border-blue-500 transition-colors">
+            <div className="relative w-24 h-24 rounded-full border-2 border-dashed border-white/20 flex items-center justify-center cursor-pointer group overflow-hidden bg-foreground/5 hover:border-blue-500 transition-colors">
               {formData.image ? (
                 <>
                   <img
@@ -108,7 +108,7 @@ function RecruitmentModal({
                       e.stopPropagation();
                       setFormData({ ...formData, image: "" });
                     }}
-                    className="absolute inset-0 bg-black/60 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
+                    className="absolute inset-0 bg-background/60 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
                   >
                     <Trash2 size={20} className="text-red-500" />
                   </button>
@@ -118,7 +118,7 @@ function RecruitmentModal({
                   onClick={() => fileInputRef.current?.click()}
                   className="w-full h-full flex items-center justify-center"
                 >
-                  <Camera className="text-white/20 group-hover:text-blue-500 transition-colors" />
+                    <Camera className="text-muted-foreground group-hover:text-blue-500 transition-colors" />
                 </div>
               )}
               <input
@@ -133,12 +133,12 @@ function RecruitmentModal({
 
           <div className="grid grid-cols-2 gap-4">
             <div className="space-y-2">
-              <label className="text-[10px] font-black uppercase tracking-widest text-white/40 ml-1">
+              <label className="text-[10px] font-black uppercase tracking-widest text-muted-foreground ml-1">
                 Identity
               </label>
               <input
                 placeholder="Full Name"
-                className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-blue-500 transition-colors font-mono text-sm"
+                className="w-full bg-foreground/5 border border-border rounded-xl px-4 py-3 text-foreground focus:outline-none focus:border-blue-500 transition-colors font-mono text-sm"
                 value={formData.name}
                 onChange={(e) =>
                   setFormData({ ...formData, name: e.target.value })
@@ -146,12 +146,12 @@ function RecruitmentModal({
               />
             </div>
             <div className="space-y-2">
-              <label className="text-[10px] font-black uppercase tracking-widest text-white/40 ml-1">
+              <label className="text-[10px] font-black uppercase tracking-widest text-muted-foreground ml-1">
                 Protocol
               </label>
               <input
                 placeholder="Role (e.g. Architect)"
-                className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-blue-500 transition-colors font-mono text-sm"
+                className="w-full bg-foreground/5 border border-border rounded-xl px-4 py-3 text-foreground focus:outline-none focus:border-blue-500 transition-colors font-mono text-sm"
                 value={formData.role}
                 onChange={(e) =>
                   setFormData({ ...formData, role: e.target.value })
@@ -166,7 +166,7 @@ function RecruitmentModal({
             </label>
             <input
               placeholder="React, Next.js, AI"
-              className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-blue-500 transition-colors font-mono text-sm"
+              className="w-full bg-foreground/5 border border-border rounded-xl px-4 py-3 text-foreground focus:outline-none focus:border-blue-500 transition-colors font-mono text-sm"
               value={formData.techStack}
               onChange={(e) =>
                 setFormData({ ...formData, techStack: e.target.value })
@@ -181,7 +181,7 @@ function RecruitmentModal({
             <textarea
               placeholder="Briefly describe your digital essence..."
               rows={3}
-              className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-blue-500 transition-colors font-mono text-sm resize-none"
+              className="w-full bg-foreground/5 border border-border rounded-xl px-4 py-3 text-foreground focus:outline-none focus:border-blue-500 transition-colors font-mono text-sm resize-none"
               value={formData.bio}
               onChange={(e) =>
                 setFormData({ ...formData, bio: e.target.value })
@@ -399,6 +399,38 @@ const team: TeamMember[] = [
     instagram: "https://www.instagram.com/puspagurung80/",
     whatsapp: "+9779704643464",
   },
+  {
+    id: 8,
+    name: "Shiva Dahal",
+    role: "Graphic Designer",
+    image: "/team/Shiva.jpeg",
+    bio: "Hey, Am a graphic designer by heart.",
+    techStack: [
+      "html",
+      "css",
+      "js",
+      "Adobe Illustrator",
+      "Figma",
+      "c",
+      "cpp",
+      "php",
+      "csharp",
+      "vercel",
+      "netlify",
+      "vscode",
+      "git",
+      "github",
+    ],
+    email: "dahalshiva427@gmail.com",
+    youtube: "https://www.youtube.com/@nothinginteresting1",
+    facebook: "https://www.facebook.com/sk.sking.5",
+    instagram: "https://www.instagram.com/shiva_dahal427",
+    whatsapp: "+9779866140064",
+    github: "https://github.com/ShivaDahal1",
+    portfolio: "https://dahalshiva.com.np/",
+    linkedin: "https://www.linkedin.com/in/shiva-dahal-0965792a2/",
+    tiktok: "https://www.tiktok.com/@shivadahal0",
+  },
 ];
 
 export default function TeamClient() {
@@ -439,17 +471,17 @@ export default function TeamClient() {
 
   return (
     <>
-      <section className="min-h-screen bg-[#0b0f19] px-6 py-20">
+      <section className="min-h-screen bg-background px-6 py-20">
         <div className="mx-auto max-w-6xl">
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             className="text-center"
           >
-            <h1 className="text-5xl md:text-7xl font-black italic uppercase tracking-tighter text-white">
+            <h1 className="text-5xl md:text-7xl font-black italic uppercase tracking-tighter text-foreground">
               Meet Our <span className="text-blue-500">Team</span>
             </h1>
-            <p className="mt-6 text-white/40 max-w-xl mx-auto font-mono text-sm">
+            <p className="mt-6 text-muted-foreground max-w-xl mx-auto font-mono text-sm">
               // Passionate builders crafting modern digital experiences at the
               edge of possibility.
             </p>
@@ -493,15 +525,15 @@ export default function TeamClient() {
               animate={{ opacity: 1, scale: 1 }}
               whileHover={{ scale: 1.02 }}
               onClick={() => setIsRecruiting(true)}
-              className="relative rounded-2xl border-2 border-dashed border-white/10 p-12 flex flex-col items-center justify-center text-center group hover:border-blue-500/50 hover:bg-blue-500/5 transition-all min-h-[400px]"
+              className="relative rounded-2xl border-2 border-dashed border-border p-12 flex flex-col items-center justify-center text-center group hover:border-blue-500/50 hover:bg-blue-500/5 transition-all min-h-[400px]"
             >
-              <div className="w-16 h-16 rounded-full bg-white/5 border border-white/10 flex items-center justify-center mb-6 group-hover:bg-blue-600 transition-colors">
-                <Plus className="text-white group-hover:scale-125 transition-transform" />
+              <div className="w-16 h-16 rounded-full bg-foreground/5 border border-border flex items-center justify-center mb-6 group-hover:bg-blue-600 transition-colors">
+                <Plus className="text-foreground group-hover:scale-125 transition-transform" />
               </div>
-              <h3 className="text-xl font-black italic uppercase tracking-tighter text-white">
+              <h3 className="text-xl font-black italic uppercase tracking-tighter text-foreground">
                 Join the Team
               </h3>
-              <p className="mt-2 text-white/40 text-sm font-mono max-w-[180px]">
+              <p className="mt-2 text-muted-foreground text-sm font-mono max-w-[180px]">
                 // Insert your digital profile into the collective.
               </p>
             </motion.button>

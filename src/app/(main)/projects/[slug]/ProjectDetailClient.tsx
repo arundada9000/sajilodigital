@@ -27,7 +27,7 @@ export default function ProjectDetailClient({
   const scale = useTransform(scrollYProgress, [0, 0.2], [1, 0.95]);
 
   return (
-    <div className="bg-[#050505] text-white min-h-screen selection:bg-blue-500/30 font-sans overflow-x-hidden pt-0">
+    <div className="bg-background text-foreground min-h-screen selection:bg-blue-500/30 font-sans overflow-x-hidden pt-0">
       {/* Immersive Background Texture */}
       <div
         className="fixed inset-0 pointer-events-none opacity-[0.03] z-0"
@@ -41,7 +41,7 @@ export default function ProjectDetailClient({
         <div className="container-custom flex pointer-events-auto items-center justify-between">
           <Link
             href="/projects"
-            className="mt-10 group flex items-center space-x-3 bg-white/5 border border-white/10 backdrop-blur-md px-5 py-2.5 rounded-full hover:bg-white hover:text-black transition-all duration-500"
+            className="mt-10 group flex items-center space-x-3 bg-foreground/5 border border-border backdrop-blur-md px-5 py-2.5 rounded-full hover:bg-foreground hover:text-background transition-all duration-500"
           >
             <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
             <span className="text-xs uppercase tracking-widest font-bold ">
@@ -49,8 +49,8 @@ export default function ProjectDetailClient({
             </span>
           </Link>
 
-          <div className="mt-10 pointer-events-auto bg-black/50 backdrop-blur-md px-4 py-1.5 rounded-full border border-white/5">
-            <Breadcrumbs className="mb-0 text-white/60 text-xs" />
+          <div className="mt-10 pointer-events-auto bg-background/50 backdrop-blur-md px-4 py-1.5 rounded-full border border-border">
+            <Breadcrumbs className="mb-0 text-foreground/60 text-xs" />
           </div>
         </div>
       </header>
@@ -65,7 +65,7 @@ export default function ProjectDetailClient({
             className="object-cover brightness-50"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
         </motion.div>
 
         <div className="container-custom relative z-10 p-8 pb-32">
@@ -97,37 +97,37 @@ export default function ProjectDetailClient({
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="space-y-12 border-l border-white/10 pl-8"
+              className="space-y-12 border-l border-border pl-8"
             >
               <div>
-                <span className="text-xs text-gray-500 uppercase tracking-widest mb-2 block">
+                <span className="text-xs text-muted-foreground uppercase tracking-widest mb-2 block">
                   Client
                 </span>
                 <p className="text-xl font-medium">{project.client}</p>
               </div>
               <div className="grid grid-cols-2 gap-8">
                 <div>
-                  <span className="text-xs text-gray-500 uppercase tracking-widest mb-2 block">
+                  <span className="text-xs text-muted-foreground uppercase tracking-widest mb-2 block">
                     Year
                   </span>
                   <p className="text-xl font-medium">{project.year}</p>
                 </div>
                 <div>
-                  <span className="text-xs text-gray-500 uppercase tracking-widest mb-2 block">
+                  <span className="text-xs text-muted-foreground uppercase tracking-widest mb-2 block">
                     Duration
                   </span>
                   <p className="text-xl font-medium">{project.duration}</p>
                 </div>
               </div>
               <div>
-                <span className="text-xs text-gray-500 uppercase tracking-widest mb-3 block">
+                <span className="text-xs text-muted-foreground uppercase tracking-widest mb-3 block">
                   Technologies
                 </span>
                 <div className="flex flex-wrap gap-2">
                   {project.technologies.map((tech) => (
                     <span
                       key={tech}
-                      className="text-[10px] uppercase tracking-wider bg-white/5 border border-white/10 px-3 py-1.5 rounded-full hover:bg-white hover:text-black transition-colors duration-500 cursor-default"
+                      className="text-[10px] uppercase tracking-wider bg-foreground/5 border border-border px-3 py-1.5 rounded-full hover:bg-foreground hover:text-background transition-colors duration-500 cursor-default"
                     >
                       {tech}
                     </span>
@@ -139,7 +139,7 @@ export default function ProjectDetailClient({
                   <a
                     href={project.liveUrl}
                     target="_blank"
-                    className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center hover:bg-white hover:text-black transition-all group"
+                    className="w-12 h-12 rounded-full border border-foreground/20 flex items-center justify-center hover:bg-foreground hover:text-background transition-all group"
                   >
                     <ExternalLink className="w-5 h-5" />
                   </a>
@@ -148,7 +148,7 @@ export default function ProjectDetailClient({
                   <a
                     href={project.githubUrl}
                     target="_blank"
-                    className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center hover:bg-white hover:text-black transition-all group"
+                    className="w-12 h-12 rounded-full border border-foreground/20 flex items-center justify-center hover:bg-foreground hover:text-background transition-all group"
                   >
                     <Github className="w-5 h-5" />
                   </a>
@@ -163,7 +163,7 @@ export default function ProjectDetailClient({
               viewport={{ once: true }}
               className="space-y-12"
             >
-              <p className="text-2xl md:text-3xl text-gray-300 leading-relaxed font-light">
+              <p className="text-2xl md:text-3xl text-foreground/70 leading-relaxed font-light">
                 {project.longDescription}
               </p>
 
@@ -173,7 +173,7 @@ export default function ProjectDetailClient({
                     <div className="w-5 h-5 rounded-full border border-blue-500/50 flex items-center justify-center shrink-0 mt-1 group-hover:bg-blue-500 transition-colors duration-500">
                       <div className="w-1.5 h-1.5 bg-blue-500 rounded-full group-hover:bg-white" />
                     </div>
-                    <span className="text-gray-400 group-hover:text-white transition-colors duration-300">
+                    <span className="text-muted-foreground group-hover:text-foreground transition-colors duration-300">
                       {feature}
                     </span>
                   </div>
@@ -221,12 +221,12 @@ export default function ProjectDetailClient({
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              className="relative p-12 md:p-24 rounded-[3rem] bg-white/[0.02] border border-white/5 backdrop-blur-3xl overflow-hidden"
+              className="relative p-12 md:p-24 rounded-[3rem] bg-foreground/[0.02] border border-border backdrop-blur-3xl overflow-hidden"
             >
               <div className="absolute top-0 right-0 p-12 opacity-5 pointer-events-none">
                 <Quote className="w-40 h-40" />
               </div>
-              <p className="text-3xl md:text-5xl font-light leading-snug italic text-white/90 mb-12">
+              <p className="text-3xl md:text-5xl font-light leading-snug italic text-foreground/90 mb-12">
                 &ldquo;{project.testimonial.text}&rdquo;
               </p>
               <div className="flex items-center space-x-6">
@@ -235,7 +235,7 @@ export default function ProjectDetailClient({
                   <p className="text-xl font-bold">
                     {project.testimonial.author}
                   </p>
-                  <p className="text-gray-500 uppercase tracking-widest text-xs">
+                  <p className="text-muted-foreground uppercase tracking-widest text-xs">
                     {project.testimonial.role}
                   </p>
                 </div>
@@ -246,10 +246,10 @@ export default function ProjectDetailClient({
       )}
 
       {/* Next Project Teaser */}
-      <section className="py-40 bg-[#0a0a0a] group cursor-pointer overflow-hidden border-t border-white/10">
+      <section className="py-40 bg-surface-alt group cursor-pointer overflow-hidden border-t border-border">
         <Link href={`/projects/${nextProject.slug}`} className="block">
           <div className="container-custom text-center relative z-10">
-            <span className="text-xs uppercase tracking-[0.4em] text-gray-500 mb-8 block">
+            <span className="text-xs uppercase tracking-[0.4em] text-muted-foreground mb-8 block">
               Next Project
             </span>
             <div className="overflow-hidden">
@@ -262,7 +262,7 @@ export default function ProjectDetailClient({
             </div>
 
             <div className="mt-20 flex justify-center">
-              <div className="w-20 h-20 rounded-full border border-white/20 flex items-center justify-center group-hover:bg-white group-hover:text-black group-hover:scale-125 transition-all duration-700">
+              <div className="w-20 h-20 rounded-full border border-foreground/20 flex items-center justify-center group-hover:bg-foreground group-hover:text-background group-hover:scale-125 transition-all duration-700">
                 <ChevronRight className="w-8 h-8" />
               </div>
             </div>

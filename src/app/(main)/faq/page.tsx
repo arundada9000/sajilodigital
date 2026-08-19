@@ -32,7 +32,7 @@ export default function FAQPage() {
 
   return (
     <>
-      <Suspense fallback={<div className="min-h-screen bg-[#0b0f19] animate-pulse" />}>
+      <Suspense fallback={<div className="min-h-screen bg-background animate-pulse" />}>
         <FAQClient />
       </Suspense>
       <script
