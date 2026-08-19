@@ -43,7 +43,7 @@ const ContextMenuItem = ({
     className={`
       w-full flex items-center justify-between px-4 py-2.5 rounded-xl
       transition-all duration-300 group
-      ${isActive ? "bg-blue-500/20 text-blue-400" : "hover:bg-white/5 text-white/60 hover:text-white"}
+      ${isActive ? "bg-blue-500/20 text-blue-400" : "hover:bg-foreground/5 text-foreground/60 hover:text-foreground"}
     `}
   >
     <div className="flex items-center gap-3">
@@ -150,12 +150,12 @@ export default function CustomContextMenu() {
             exit={{ opacity: 0, scale: 0.95 }}
             transition={{ duration: 0.15, ease: "easeOut" }}
             style={{ top: position.y, left: position.x }}
-            className="fixed z-[99999] w-[220px] bg-[#050505]/90 backdrop-blur-3xl border border-white/10 rounded-2xl p-2 shadow-[0_20px_50px_rgba(0,0,0,0.5)] pointer-events-auto overflow-visible"
+            className="fixed z-[99999] w-[220px] bg-surface-deep/90 backdrop-blur-3xl border border-border rounded-2xl p-2 shadow-[0_20px_50px_rgba(0,0,0,0.5)] pointer-events-auto overflow-visible"
             onClick={(e) => e.stopPropagation()}
             onContextMenu={(e) => e.preventDefault()}
           >
             {/* Nav Group */}
-            <div className="space-y-0.5 mb-2 pb-2 border-b border-white/5">
+            <div className="space-y-0.5 mb-2 pb-2 border-b border-border">
               <ContextMenuItem
                 icon={ArrowLeft}
                 label="Step Back"
@@ -199,7 +199,7 @@ export default function CustomContextMenu() {
                       animate={{ opacity: 1, x: 0 }}
                       exit={{ opacity: 0, x: -10 }}
                       className={`
-                        absolute top-0 w-[180px] bg-[#050505]/95 backdrop-blur-3xl border border-white/10 rounded-2xl p-2 shadow-2xl
+                        absolute top-0 w-[180px] bg-surface-deep/95 backdrop-blur-3xl border border-border rounded-2xl p-2 shadow-2xl
                         ${position.x + 220 + 180 > window.innerWidth ? "-left-[185px]" : "left-[225px]"}
                       `}
                     >
@@ -220,7 +220,7 @@ export default function CustomContextMenu() {
                           handleAction(() => setQrOpen(true));
                         }}
                       />
-                      <div className="h-[1px] bg-white/5 my-1" />
+                      <div className="h-[1px] bg-border my-1" />
                       <ContextMenuItem
                         icon={Instagram}
                         label="Instagram"
@@ -271,8 +271,8 @@ export default function CustomContextMenu() {
             </div>
 
             {/* Branded Footer */}
-            <div className="mt-2 pt-2 border-t border-white/5 px-4 pb-1">
-              <p className="text-[7px] font-mono tracking-[0.4em] text-white/20 uppercase text-center">
+            <div className="mt-2 pt-2 border-t border-border px-4 pb-1">
+              <p className="text-[7px] font-mono tracking-[0.4em] text-muted-foreground uppercase text-center">
                 Sajilo Digital
               </p>
             </div>

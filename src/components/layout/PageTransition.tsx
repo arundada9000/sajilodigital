@@ -48,10 +48,10 @@ export default function PageTransition({ children }: { children: React.ReactNode
                                     ease: [0.22, 1, 0.36, 1], // Custom cubic-bezier for "human" snap
                                     delay: 0.2 + (i * 0.05), // Staggered reveal
                                 }}
-                                className="relative flex-1 bg-[#1a1f2e] border-r border-white/5 last:border-r-0 overflow-hidden"
+                                className="relative flex-1 bg-background border-r border-border last:border-r-0 overflow-hidden"
                             >
                                 {/* Inner decorative line to add depth/texture */}
-                                <div className="absolute bottom-0 left-0 w-full h-[1px] bg-white/10" />
+                                <div className="absolute bottom-0 left-0 w-full h-[1px] bg-foreground/10" />
 
                                 {/* Optional: Subtle brand color wash at the very bottom of the shutter */}
                                 <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-cyan-900/20 to-transparent" />

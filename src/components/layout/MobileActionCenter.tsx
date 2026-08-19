@@ -43,7 +43,7 @@ export default function MobileActionCenter({
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={onClose}
-            className="fixed inset-0 z-[150] bg-black/40 backdrop-blur-2xl"
+            className="fixed inset-0 z-[150] bg-background/40 backdrop-blur-2xl"
           />
 
           {/* Action Center Sheet */}
@@ -52,7 +52,7 @@ export default function MobileActionCenter({
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: "-100%", opacity: 0 }}
             transition={{ type: "spring", damping: 30, stiffness: 300 }}
-            className="fixed top-0 left-0 right-0 z-[160] bg-[#050505]/80 backdrop-blur-3xl border-b border-white/10 rounded-b-[40px] px-6 pt-20 pb-10 shadow-[0_20px_50px_rgba(0,0,0,0.5)]"
+            className="fixed top-0 left-0 right-0 z-[160] bg-surface-deep/80 backdrop-blur-3xl border-b border-border rounded-b-[40px] px-6 pt-20 pb-10 shadow-[0_20px_50px_rgba(0,0,0,0.5)]"
           >
             {/* Decorative Top Glow */}
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[1px] bg-linear-to-r from-transparent via-blue-500/50 to-transparent" />
@@ -61,16 +61,16 @@ export default function MobileActionCenter({
               {/* Header inside Action Center */}
               <div className="flex items-center justify-between">
                 <div>
-                  <h2 className="text-2xl font-bold text-white tracking-tight uppercase italic">
+                  <h2 className="text-2xl font-bold text-foreground tracking-tight uppercase italic">
                     Menu
                   </h2>
-                  <p className="text-[10px] tracking-[0.3em] text-white/30 uppercase font-bold mt-1">
+                  <p className="text-[10px] tracking-[0.3em] text-muted-foreground uppercase font-bold mt-1">
                     Sajilo.Digital
                   </p>
                 </div>
                 <button
                   onClick={onClose}
-                  className="p-3 rounded-full bg-white/5 border border-white/10 text-white/60 hover:text-white transition-all active:scale-90"
+                  className="p-3 rounded-full bg-foreground/5 border border-border text-foreground/60 hover:text-foreground transition-all active:scale-90"
                 >
                   <X size={20} />
                 </button>
@@ -78,7 +78,7 @@ export default function MobileActionCenter({
 
               {/* Search Section */}
               <div className="space-y-4">
-                <label className="block text-[10px] tracking-[0.4em] font-bold text-white/20 uppercase">
+                <label className="block text-[10px] tracking-[0.4em] font-bold text-muted-foreground uppercase">
                   Omni Search
                 </label>
                 <div className="relative group">
@@ -88,20 +88,20 @@ export default function MobileActionCenter({
 
               {/* Quick Utilities Grid */}
               <div className="space-y-4">
-                <label className="block text-[10px] tracking-[0.4em] font-bold text-white/20 uppercase">
+                <label className="block text-[10px] tracking-[0.4em] font-bold text-muted-foreground uppercase">
                   Quick Actions
                 </label>
                 <div className="grid grid-cols-3 gap-4">
                   <button
                     onClick={handleMuteToggle}
-                    className="flex flex-col items-center justify-center p-6 rounded-3xl bg-white/5 border border-white/5 hover:bg-white/10 transition-all active:scale-95 gap-3"
+                    className="flex flex-col items-center justify-center p-6 rounded-3xl bg-foreground/5 border border-border hover:bg-foreground/10 transition-all active:scale-95 gap-3"
                   >
                     <div
                       className={`p-3 rounded-2xl ${muted ? "bg-red-500/20 text-red-400" : "bg-blue-500/20 text-blue-400"}`}
                     >
                       {muted ? <VolumeX size={20} /> : <Volume2 size={20} />}
                     </div>
-                    <span className="text-[10px] font-bold uppercase tracking-widest text-white/60">
+                    <span className="text-[10px] font-bold uppercase tracking-widest text-foreground/60">
                       {muted ? "Unmute" : "Mute"}
                     </span>
                   </button>
@@ -111,12 +111,12 @@ export default function MobileActionCenter({
                       onClose();
                       onVoiceClick();
                     }}
-                    className="flex flex-col items-center justify-center p-6 rounded-3xl bg-white/5 border border-white/5 hover:bg-white/10 transition-all active:scale-95 gap-3"
+                    className="flex flex-col items-center justify-center p-6 rounded-3xl bg-foreground/5 border border-border hover:bg-foreground/10 transition-all active:scale-95 gap-3"
                   >
                     <div className="p-3 rounded-2xl bg-purple-500/20 text-purple-400">
                       <Mic size={20} />
                     </div>
-                    <span className="text-[10px] font-bold uppercase tracking-widest text-white/60">
+                    <span className="text-[10px] font-bold uppercase tracking-widest text-foreground/60">
                       Voice
                     </span>
                   </button>
@@ -126,12 +126,12 @@ export default function MobileActionCenter({
                       onClose();
                       onSettingsClick();
                     }}
-                    className="flex flex-col items-center justify-center p-6 rounded-3xl bg-white/5 border border-white/5 hover:bg-white/10 transition-all active:scale-95 gap-3"
+                    className="flex flex-col items-center justify-center p-6 rounded-3xl bg-foreground/5 border border-border hover:bg-foreground/10 transition-all active:scale-95 gap-3"
                   >
                     <div className="p-3 rounded-2xl bg-amber-500/20 text-amber-400">
                       <Settings size={20} />
                     </div>
-                    <span className="text-[10px] font-bold uppercase tracking-widest text-white/60">
+                    <span className="text-[10px] font-bold uppercase tracking-widest text-foreground/60">
                       Config
                     </span>
                   </button>
@@ -140,11 +140,11 @@ export default function MobileActionCenter({
 
               {/* Decorative Footer Info */}
               <div className="pt-4 flex items-center justify-center gap-4 opacity-20">
-                <div className="h-[1px] flex-1 bg-linear-to-r from-transparent to-white" />
-                <span className="text-[8px] font-mono tracking-[0.5em] uppercase text-white">
+                <div className="h-[1px] flex-1 bg-linear-to-r from-transparent to-foreground" />
+                <span className="text-[8px] font-mono tracking-[0.5em] uppercase text-foreground">
                   Sajilo Digital
                 </span>
-                <div className="h-[1px] flex-1 bg-linear-to-l from-transparent to-white" />
+                <div className="h-[1px] flex-1 bg-linear-to-l from-transparent to-foreground" />
               </div>
             </div>
           </motion.div>

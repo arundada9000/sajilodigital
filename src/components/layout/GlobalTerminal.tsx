@@ -32,7 +32,7 @@ export default function GlobalTerminal() {
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
                     transition={{ duration: 0.15 }}
-                    className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/80 backdrop-blur-sm p-4"
+                    className="fixed inset-0 z-[9999] flex items-center justify-center bg-background/80 backdrop-blur-sm p-4"
                     onClick={() => setIsOpen(false)}
                 >
                     <motion.div
@@ -49,7 +49,7 @@ export default function GlobalTerminal() {
                         onClick={(e) => e.stopPropagation()}
                     >
                         <NexusTerminal isOverlay={true} />
-                        <div className="text-center mt-4 text-white/30 text-xs font-mono uppercase tracking-widest">
+                        <div className="text-center mt-4 text-muted-foreground text-xs font-mono uppercase tracking-widest">
                             [ESC] to Hibernate • [CTRL+K] to Toggle
                         </div>
                     </motion.div>
