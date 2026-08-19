@@ -98,18 +98,18 @@ export default function GalleryV3({ showAbout, setShowAbout }: GalleryV3Props) {
     }, [view, nextSlide, prevSlide, showDetails, showAbout]);
 
     return (
-        <div className="fixed inset-0 w-full h-screen bg-[#000] text-white overflow-hidden selection:bg-white selection:text-black z-[100]">
+        <div className="fixed inset-0 w-full h-screen bg-background text-foreground overflow-hidden selection:bg-white selection:text-black z-[100]">
             {/* 1. Loading State */}
             <AnimatePresence>
                 {loading && (
                     <motion.div
                         exit={{ opacity: 0, transition: { duration: 1, ease: [0.76, 0, 0.24, 1] } }}
-                        className="fixed inset-0 z-[100] bg-black flex flex-col items-center justify-center p-6"
+                        className="fixed inset-0 z-[100] bg-background flex flex-col items-center justify-center p-6"
                     >
                         <motion.div initial={{ width: 0 }} animate={{ width: "100%", maxWidth: "300px" }} className="h-[1px] bg-white/20 relative">
                             <motion.div initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ duration: 1.5, ease: "easeInOut" }} className="absolute inset-0 bg-white origin-left" />
                         </motion.div>
-                        <motion.span initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5 }} className="mt-8 text-[10px] tracking-[0.8em] font-light text-gray-400 uppercase">
+                        <motion.span initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5 }} className="mt-8 text-[10px] tracking-[0.8em] font-light text-muted-foreground uppercase">
                             Initializing Archive
                         </motion.span>
                     </motion.div>
@@ -136,7 +136,7 @@ export default function GalleryV3({ showAbout, setShowAbout }: GalleryV3Props) {
             {/* 3. Fullscreen Slider View */}
             <AnimatePresence initial={false} custom={direction}>
                 {view === "slider" && (
-                    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="absolute inset-0 z-50 flex items-center justify-center bg-black overflow-hidden">
+                    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="absolute inset-0 z-50 flex items-center justify-center bg-background overflow-hidden">
                         <SliderContent
                             activeProject={galleryData[activeIndex]}
                             direction={direction}
@@ -153,9 +153,9 @@ export default function GalleryV3({ showAbout, setShowAbout }: GalleryV3Props) {
             {/* 4. Gallery About View */}
             <AnimatePresence>
                 {showAbout && (
-                    <motion.div initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 50 }} className="fixed inset-0 z-[120] bg-black/95 backdrop-blur-3xl flex items-center justify-center p-12">
+                    <motion.div initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 50 }} className="fixed inset-0 z-[120] bg-background/95 backdrop-blur-3xl flex items-center justify-center p-12">
                         <div className="max-w-4xl text-center">
-                            <button onClick={() => setShowAbout(false)} className="absolute top-10 right-10 text-gray-500 hover:text-white flex items-center gap-2 text-[10px] tracking-[0.5em]">
+                            <button onClick={() => setShowAbout(false)} className="absolute top-10 right-10 text-muted-foreground hover:text-foreground flex items-center gap-2 text-[10px] tracking-[0.5em]">
                                 <X size={16} /> CLOSE
                             </button>
                             <motion.span initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2 }} className="text-blue-500 text-[10px] tracking-[1em] font-bold block mb-8 uppercase">Artistic Perspective</motion.span>
@@ -165,7 +165,7 @@ export default function GalleryV3({ showAbout, setShowAbout }: GalleryV3Props) {
                                     initial={{ opacity: 0, x: -20 }}
                                     animate={{ opacity: 1, x: 0 }}
                                     transition={{ delay: 0.4 }}
-                                    className="text-gray-400 text-lg leading-relaxed"
+                                    className="text-muted-foreground text-lg leading-relaxed"
                                 >
                                     This gallery is a digital manifestation of our creative philosophy. We believe that pixels should do more than just display; they should emote, react, and inspire.
                                 </motion.p>
@@ -173,7 +173,7 @@ export default function GalleryV3({ showAbout, setShowAbout }: GalleryV3Props) {
                                     initial={{ opacity: 0, x: 20 }}
                                     animate={{ opacity: 1, x: 0 }}
                                     transition={{ delay: 0.6 }}
-                                    className="text-gray-500 text-lg leading-relaxed italic border-l border-white/10 pl-8"
+                                    className="text-muted-foreground text-lg leading-relaxed italic border-l border-border pl-8"
                                 >
                                     "Every project in this archive represents a hurdle cleared, a boundary pushed, and a new standard of digital excellence defined."
                                 </motion.p>
@@ -185,11 +185,11 @@ export default function GalleryV3({ showAbout, setShowAbout }: GalleryV3Props) {
 
             {/* Persistent UI Overlay */}
             <div className="fixed top-10 right-10 z-[110] flex items-center gap-6">
-                <button onClick={() => setShowAbout(true)} className="text-[10px] tracking-[0.5em] text-white/40 hover:text-white transition-colors uppercase font-bold">About Gallery</button>
-                <button onClick={() => setView(view === "grid" ? "slider" : "grid")} className="p-3 rounded-full border border-white/10 hover:bg-white hover:text-black transition-all group">
+                <button onClick={() => setShowAbout(true)} className="text-[10px] tracking-[0.5em] text-muted-foreground hover:text-foreground transition-colors uppercase font-bold">About Gallery</button>
+                <button onClick={() => setView(view === "grid" ? "slider" : "grid")} className="p-3 rounded-full border border-border hover:bg-foreground hover:text-background transition-all group">
                     {view === "grid" ? <Maximize2 size={16} /> : <GridIcon size={16} />}
                 </button>
-                <Link href="/" className="p-3 rounded-full border border-white/10 hover:bg-white hover:text-black transition-all group" title="Back to Home">
+                <Link href="/" className="p-3 rounded-full border border-border hover:bg-foreground hover:text-background transition-all group" title="Back to Home">
                     <Home size={16} />
                 </Link>
             </div>
@@ -216,10 +216,10 @@ function GridItem({ project, index, onClick }: { project: GalleryItem; index: nu
             transition={{ delay: index * 0.1 + 1.5, duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
             whileHover={{ y: -10, transition: { duration: 0.4 } }}
             onClick={onClick}
-            className="relative aspect-[3/4] bg-white/5 overflow-hidden cursor-pointer group rounded-lg"
+            className="relative aspect-[3/4] bg-surface-elevated overflow-hidden cursor-pointer group rounded-lg"
         >
             <Image src={project.image} alt={project.title} fill className="object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-1000" />
-            <div className="absolute inset-0 bg-linear-to-t from-black via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-6">
+            <div className="absolute inset-0 bg-linear-to-t from-background via-background/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-6">
                 <span className="text-[10px] tracking-[0.3em] font-bold text-blue-400 mb-2 uppercase">{project.category}</span>
                 <h3 className="text-xl md:text-2xl font-bold tracking-tighter leading-none italic">{project.title}</h3>
             </div>
@@ -241,7 +241,7 @@ function SliderContent({ activeProject, direction, onBack, onNext, onPrev, showD
                     className="absolute inset-0"
                 >
                     <Image src={activeProject.image} alt={activeProject.title} fill className="object-cover" priority />
-                    <div className="absolute inset-0 bg-black/40" />
+                    <div className="absolute inset-0 bg-background/40" />
 
                     {/* Transition Title */}
                     <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none p-6">
@@ -262,10 +262,10 @@ function SliderContent({ activeProject, direction, onBack, onNext, onPrev, showD
 
             {/* Navigation UI */}
             <div className="absolute inset-0 flex items-center justify-between px-6 md:px-12 pointer-events-none z-[60]">
-                <button onClick={onPrev} className="w-16 h-16 md:w-24 md:h-24 rounded-full border border-white/10 flex items-center justify-center hover:bg-white hover:text-black transition-all duration-500 group pointer-events-auto">
+                <button onClick={onPrev} className="w-16 h-16 md:w-24 md:h-24 rounded-full border border-border flex items-center justify-center hover:bg-foreground hover:text-background transition-all duration-500 group pointer-events-auto">
                     <ChevronLeft size={32} className="group-hover:-translate-x-1 transition-transform" />
                 </button>
-                <button onClick={onNext} className="w-16 h-16 md:w-24 md:h-24 rounded-full border border-white/10 flex items-center justify-center hover:bg-white hover:text-black transition-all duration-500 group pointer-events-auto">
+                <button onClick={onNext} className="w-16 h-16 md:w-24 md:h-24 rounded-full border border-border flex items-center justify-center hover:bg-foreground hover:text-background transition-all duration-500 group pointer-events-auto">
                     <ChevronRight size={32} className="group-hover:translate-x-1 transition-transform" />
                 </button>
             </div>
@@ -277,29 +277,29 @@ function SliderContent({ activeProject, direction, onBack, onNext, onPrev, showD
             <AnimatePresence>
                 {showDetails && (
                     <>
-                        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={toggleDetails} className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[80]" />
-                        <motion.div initial={{ x: "100%" }} animate={{ x: 0 }} exit={{ x: "100%" }} transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1] }} className="fixed right-0 top-0 bottom-0 w-full md:w-[500px] bg-black border-l border-white/10 z-[90] p-12 overflow-y-auto custom-scrollbar">
-                            <button onClick={toggleDetails} className="mb-16 text-gray-500 hover:text-white flex items-center gap-2 text-[10px] tracking-[0.5em] font-bold">
+                        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={toggleDetails} className="fixed inset-0 bg-background/60 backdrop-blur-sm z-[80]" />
+                        <motion.div initial={{ x: "100%" }} animate={{ x: 0 }} exit={{ x: "100%" }} transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1] }} className="fixed right-0 top-0 bottom-0 w-full md:w-[500px] bg-background border-l border-border z-[90] p-12 overflow-y-auto custom-scrollbar">
+                            <button onClick={toggleDetails} className="mb-16 text-muted-foreground hover:text-foreground flex items-center gap-2 text-[10px] tracking-[0.5em] font-bold">
                                 <X size={16} /> CLOSE
                             </button>
                             <h3 className="text-6xl font-bold tracking-tighter leading-none mb-12 uppercase italic">{activeProject.title}</h3>
                             <div className="space-y-12">
-                                <p className="text-gray-400 text-lg leading-relaxed">{activeProject.description}</p>
-                                <div className="grid grid-cols-2 gap-12 py-12 border-y border-white/5">
+                                <p className="text-muted-foreground text-lg leading-relaxed">{activeProject.description}</p>
+                                <div className="grid grid-cols-2 gap-12 py-12 border-y border-border">
                                     <div>
-                                        <span className="text-[10px] text-gray-600 block mb-2 uppercase tracking-[0.3em] font-bold">Client</span>
+                                        <span className="text-[10px] text-muted-foreground block mb-2 uppercase tracking-[0.3em] font-bold">Client</span>
                                         <span className="text-sm">{activeProject.details.client}</span>
                                     </div>
                                     <div>
-                                        <span className="text-[10px] text-gray-600 block mb-2 uppercase tracking-[0.3em] font-bold">Year</span>
+                                        <span className="text-[10px] text-muted-foreground block mb-2 uppercase tracking-[0.3em] font-bold">Year</span>
                                         <span className="text-sm">{activeProject.year}</span>
                                     </div>
                                 </div>
                                 <div>
-                                    <span className="text-[10px] text-gray-600 block mb-6 uppercase tracking-[0.3em] font-bold">Expertise</span>
+                                    <span className="text-[10px] text-muted-foreground block mb-6 uppercase tracking-[0.3em] font-bold">Expertise</span>
                                     <div className="flex flex-wrap gap-2">
                                         {activeProject.details.services.map((s: string) => (
-                                            <span key={s} className="px-4 py-2 bg-white/5 border border-white/10 text-[10px] rounded-full uppercase font-bold tracking-wider">{s}</span>
+                                            <span key={s} className="px-4 py-2 bg-surface border border-border text-[10px] rounded-full uppercase font-bold tracking-wider">{s}</span>
                                         ))}
                                     </div>
                                 </div>
@@ -310,8 +310,8 @@ function SliderContent({ activeProject, direction, onBack, onNext, onPrev, showD
             </AnimatePresence>
 
             <div className="absolute bottom-10 right-10 z-[60] flex items-center gap-6">
-                <button onClick={onBack} className="text-[10px] tracking-[0.5em] text-white/40 hover:text-white transition-colors uppercase font-bold">Back to Archive</button>
-                <Link href="/" className="flex items-center gap-2 text-[10px] tracking-[0.5em] text-white/40 hover:text-white transition-colors uppercase font-bold">
+                <button onClick={onBack} className="text-[10px] tracking-[0.5em] text-muted-foreground hover:text-foreground transition-colors uppercase font-bold">Back to Archive</button>
+                <Link href="/" className="flex items-center gap-2 text-[10px] tracking-[0.5em] text-muted-foreground hover:text-foreground transition-colors uppercase font-bold">
                     <Home size={12} /> Home
                 </Link>
             </div>

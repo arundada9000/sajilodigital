@@ -33,7 +33,7 @@ const InteractiveBackground = () => {
   }));
 
   return (
-    <div ref={containerRef} className="absolute inset-0 overflow-hidden bg-black select-none pointer-events-none">
+    <div ref={containerRef} className="absolute inset-0 overflow-hidden bg-background select-none pointer-events-none">
 
       {/* 1. Base Grain Layer */}
       <div className="absolute inset-0 z-0 opacity-[0.05] bg-[url('/noise.svg')]" />
@@ -71,7 +71,7 @@ const InteractiveBackground = () => {
             }}
           >
             <div
-              className="w-full h-full border border-white/[0.05] rounded-[30%] bg-white/[0.02] backdrop-blur-[4px] mix-blend-overlay"
+              className="w-full h-full border border-foreground/[0.05] rounded-[30%] bg-foreground/[0.02] backdrop-blur-[4px] mix-blend-overlay"
               style={{
                 clipPath: "polygon(50% 0%, 100% 38%, 81% 91%, 19% 91%, 0% 38%)",
               }}
@@ -92,7 +92,7 @@ const InteractiveBackground = () => {
       />
 
       {/* 5. Vignette */}
-      <div className="absolute inset-0 z-30 bg-linear-to-b from-black via-transparent to-black" />
+      <div className="absolute inset-0 z-30 bg-linear-to-b from-background via-transparent to-background" />
     </div>
   );
 };

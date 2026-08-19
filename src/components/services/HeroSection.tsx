@@ -8,7 +8,7 @@ interface HeroSectionProps {
 
 const HeroSection = ({ onStart }: HeroSectionProps) => {
   return (
-    <section className="relative h-screen w-full flex items-center justify-center overflow-hidden bg-black">
+    <section className="relative h-screen w-full flex items-center justify-center overflow-hidden bg-background">
       <InteractiveBackground />
 
       {/* CSS-based Grid Overlay (Replacing static SVG) */}
@@ -35,13 +35,13 @@ const HeroSection = ({ onStart }: HeroSectionProps) => {
               <div className="w-8 md:w-12 h-[1px] bg-blue-500/50" />
             </motion.div>
 
-            <h1 className="text-5xl md:text-[140px] lg:text-[180px] font-black tracking-tighter leading-[1] md:leading-[0.85] italic text-white uppercase select-none">
+            <h1 className="text-5xl md:text-[140px] lg:text-[180px] font-black tracking-tighter leading-[1] md:leading-[0.85] italic text-foreground uppercase select-none">
               Innovation<br />
-              <span className="text-white/10">Defined.</span>
+              <span className="text-foreground/10">Defined.</span>
             </h1>
           </div>
 
-          <p className="text-base md:text-xl text-white/40 max-w-2xl mx-auto mb-12 md:mb-16 font-medium italic">
+          <p className="text-base md:text-xl text-muted-foreground max-w-2xl mx-auto mb-12 md:mb-16 font-medium italic">
             "We transform complex challenges into elegant digital solutions. Explore our suite of creative technology services."
           </p>
         </motion.div>
@@ -54,7 +54,7 @@ const HeroSection = ({ onStart }: HeroSectionProps) => {
         >
           <motion.button
             onClick={onStart}
-            className="group relative px-10 md:px-12 py-5 bg-white text-black rounded-full text-[10px] md:text-xs font-black uppercase tracking-[0.3em] md:tracking-[0.4em] overflow-hidden"
+            className="group relative px-10 md:px-12 py-5 bg-foreground text-background rounded-full text-[10px] md:text-xs font-black uppercase tracking-[0.3em] md:tracking-[0.4em] overflow-hidden"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.98 }}
           >
@@ -85,7 +85,7 @@ const HeroSection = ({ onStart }: HeroSectionProps) => {
           transition={{ delay: 1.5 }}
           className="absolute bottom-6 md:bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 md:gap-4 opacity-30"
         >
-          <div className="w-[1px] h-8 md:h-12 bg-linear-to-b from-transparent via-white to-transparent" />
+          <div className="w-[1px] h-8 md:h-12 bg-linear-to-b from-transparent via-foreground to-transparent" />
           <span className="text-[7px] md:text-[8px] tracking-[0.6em] md:tracking-[0.8em] font-bold uppercase">Begin Scroll</span>
         </motion.div>
       </div>

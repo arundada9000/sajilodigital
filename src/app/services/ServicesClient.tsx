@@ -138,7 +138,7 @@ export default function ServicesClient() {
             return (
                 <div
                     key="cta"
-                    className="h-full flex flex-col bg-black overflow-y-auto custom-scrollbar"
+                    className="h-full flex flex-col bg-background overflow-y-auto custom-scrollbar"
                 >
                     {/* Conditional Headers - Only in last section */}
                     <Header />
@@ -186,7 +186,7 @@ export default function ServicesClient() {
     return (
         <div
             ref={containerRef}
-            className="bg-black h-screen w-full overflow-hidden relative"
+            className="bg-background h-screen w-full overflow-hidden relative"
         >
             {/* Background Cinematic Grain (CSS-only) */}
             <div
@@ -232,7 +232,7 @@ export default function ServicesClient() {
                     onClick={() => scrollToSection(TOTAL_SECTIONS - 1, 1)}
                     className="flex items-center gap-4 group"
                 >
-                    <div className="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center group-hover:bg-white group-hover:text-black transition-all">
+                    <div className="w-8 h-8 rounded-full border border-border flex items-center justify-center group-hover:bg-foreground group-hover:text-background transition-all">
                         <span className="text-[10px] font-black">↓</span>
                     </div>
                     <span className="text-[9px] tracking-[0.4em] font-black uppercase opacity-20 group-hover:opacity-100 transition-opacity whitespace-nowrap">

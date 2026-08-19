@@ -66,7 +66,7 @@ const ServiceSection = ({
                     initial={{ opacity: 0, scale: 0.9 }}
                     animate={isActive ? { opacity: 1, scale: 1 } : {}}
                     transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-                    className={`order-1 lg:col-span-7 relative aspect-[16/10] lg:aspect-square xl:aspect-[16/10] rounded-[30px] lg:rounded-[60px] overflow-hidden border border-white/5 shadow-2xl group ${isReversed ? "lg:order-2" : "lg:order-1"}`}
+                    className={`order-1 lg:col-span-7 relative aspect-[16/10] lg:aspect-square xl:aspect-[16/10] rounded-[30px] lg:rounded-[60px] overflow-hidden border border-border shadow-2xl group ${isReversed ? "lg:order-2" : "lg:order-1"}`}
                 >
                     <AnimatePresence>
                         {!isVideoLoaded && (
@@ -83,7 +83,7 @@ const ServiceSection = ({
                                         priority
                                     />
                                 ) : (
-                                    <div className="w-full h-full bg-white/5 flex items-center justify-center" />
+                                    <div className="w-full h-full bg-surface-elevated flex items-center justify-center" />
                                 )}
                             </motion.div>
                         )}
@@ -104,7 +104,7 @@ const ServiceSection = ({
 
                     {/* Media Overlay Info */}
                     <div className="absolute top-6 left-6 lg:top-10 lg:left-10 z-20">
-                        <div className="flex items-center gap-2 lg:gap-3 bg-black/40 backdrop-blur-md px-4 lg:px-5 py-2 rounded-full border border-white/10">
+                        <div className="flex items-center gap-2 lg:gap-3 bg-background/40 backdrop-blur-md px-4 lg:px-5 py-2 rounded-full border border-border">
                             <div className="w-1 h-1 lg:w-1.5 lg:h-1.5 rounded-full bg-blue-500 animate-pulse" />
                             <span className="text-[8px] lg:text-[9px] font-black uppercase tracking-[0.2em] lg:tracking-[0.3em] overflow-hidden whitespace-nowrap">
                                 Active System
@@ -126,18 +126,18 @@ const ServiceSection = ({
                         transition={{ delay: 0.5 }}
                         className="flex items-center gap-3 lg:gap-4 mb-6 lg:mb-8"
                     >
-                        <Zap size={12} className="text-white/40" />
-                        <span className="text-[9px] lg:text-[10px] tracking-[0.4em] lg:tracking-[0.6em] font-black uppercase text-white/40 italic">
+                        <Zap size={12} className="text-muted-foreground" />
+                        <span className="text-[9px] lg:text-[10px] tracking-[0.4em] lg:tracking-[0.6em] font-black uppercase text-muted-foreground italic">
                             {tagline}
                         </span>
                     </motion.div>
 
-                    <h2 className="text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-[900] text-white mb-6 lg:mb-10 tracking-tighter italic leading-[0.9] lg:leading-[0.85] uppercase">
+                    <h2 className="text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-[900] text-foreground mb-6 lg:mb-10 tracking-tighter italic leading-[0.9] lg:leading-[0.85] uppercase">
                         {title.split(' ')[0]}<br />
-                        <span className="text-white/20">{title.split(' ').slice(1).join(' ')}</span>
+                        <span className="text-foreground/20">{title.split(' ').slice(1).join(' ')}</span>
                     </h2>
 
-                    <p className="text-base lg:text-lg text-white/40 leading-relaxed max-w-md mb-10 lg:mb-14 font-medium italic">
+                    <p className="text-base lg:text-lg text-muted-foreground leading-relaxed max-w-md mb-10 lg:mb-14 font-medium italic">
                         "{description}"
                     </p>
 
@@ -145,7 +145,7 @@ const ServiceSection = ({
                         <motion.div
                             whileHover={{ scale: 1.02 }}
                             whileTap={{ scale: 0.98 }}
-                            className="flex items-center justify-between lg:justify-start gap-6 lg:gap-8 bg-white/5 border border-white/10 px-8 lg:px-10 py-5 lg:py-6 rounded-full hover:bg-white hover:text-black transition-all"
+                            className="flex items-center justify-between lg:justify-start gap-6 lg:gap-8 bg-surface border border-border px-8 lg:px-10 py-5 lg:py-6 rounded-full hover:bg-foreground hover:text-background transition-all"
                         >
                             <span className="text-[10px] lg:text-[11px] tracking-[0.3em] lg:tracking-[0.4em] font-black uppercase">Data Exploration</span>
                             <div className="w-8 h-8 lg:w-10 lg:h-10 rounded-full border border-current flex items-center justify-center">

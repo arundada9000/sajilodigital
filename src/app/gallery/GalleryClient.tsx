@@ -11,7 +11,7 @@ const GalleryClient = () => {
     const [showAbout, setShowAbout] = useState(false);
 
     return (
-        <main className="relative w-full h-screen bg-black selection:bg-white selection:text-black">
+        <main className="relative w-full h-screen bg-background selection:bg-white selection:text-black">
             <CustomCursor />
             <Grain opacity={0.03} />
             <Navigation onAboutClick={() => setShowAbout(true)} />

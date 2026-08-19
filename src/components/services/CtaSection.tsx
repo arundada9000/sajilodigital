@@ -6,7 +6,7 @@ import { services } from "../../data/services";
 
 const CtaSection = () => {
   return (
-    <section className="relative py-24 md:py-48 px-6 bg-black">
+    <section className="relative py-24 md:py-48 px-6 bg-background">
       {/* Background Decorative Grid (CSS-only) */}
       <div
         className="absolute inset-0 z-0 opacity-[0.02] pointer-events-none overflow-hidden"
@@ -29,7 +29,7 @@ const CtaSection = () => {
               className="flex items-center gap-4 mb-6 md:mb-8"
             >
               <Sparkles size={16} className="text-blue-500" />
-              <span className="text-[9px] md:text-[10px] tracking-[0.5em] md:tracking-[0.8em] font-black uppercase text-white/60 italic">
+              <span className="text-[9px] md:text-[10px] tracking-[0.5em] md:tracking-[0.8em] font-black uppercase text-muted-foreground italic">
                 Universal Catalog
               </span>
             </motion.div>
@@ -39,10 +39,10 @@ const CtaSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2, duration: 1 }}
-              className="text-5xl md:text-8xl xl:text-9xl font-black tracking-tighter italic uppercase text-white leading-[0.9] md:leading-[0.85]"
+              className="text-5xl md:text-8xl xl:text-9xl font-black tracking-tighter italic uppercase text-foreground leading-[0.9] md:leading-[0.85]"
             >
               Master <br />
-              <span className="text-white/10">Directory.</span>
+              <span className="text-foreground/10">Directory.</span>
             </motion.h2>
           </div>
 
@@ -51,7 +51,7 @@ const CtaSection = () => {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.5 }}
-            className="text-base md:text-xl text-white/50 italic font-medium leading-relaxed lg:self-end max-w-md lg:mb-4 lg:pb-2 md:ml-15"
+            className="text-base md:text-xl text-muted-foreground italic font-medium leading-relaxed lg:self-end max-w-md lg:mb-4 lg:pb-2 md:ml-15"
           >
             "Explore our complete ecosystem of digital excellence. From
             strategic architecture to creative execution, we provide the tools
@@ -72,7 +72,7 @@ const CtaSection = () => {
                 duration: 0.7,
                 ease: [0.16, 1, 0.3, 1],
               }}
-              className="group relative bg-white/[0.02] border border-white/10 rounded-[40px] md:rounded-[60px] p-8 md:p-12 hover:bg-white/[0.04] hover:border-white/15 transition-all duration-500 flex flex-col h-full overflow-hidden"
+              className="group relative bg-surface-elevated border border-border rounded-[40px] md:rounded-[60px] p-8 md:p-12 hover:bg-accent hover:border-foreground/15 transition-all duration-500 flex flex-col h-full overflow-hidden"
             >
               {/* Background Glow on Hover */}
               <div
@@ -83,30 +83,30 @@ const CtaSection = () => {
               {/* Header */}
               <div className="relative z-10 mb-8 md:mb-12 flex justify-between items-start">
                 <div
-                  className="w-12 h-12 md:w-14 md:h-14 rounded-2xl md:rounded-3xl flex items-center justify-center border border-white/10 bg-white/5 transition-transform duration-500 group-hover:scale-110 group-hover:rotate-12"
+                  className="w-12 h-12 md:w-14 md:h-14 rounded-2xl md:rounded-3xl flex items-center justify-center border border-border bg-surface transition-transform duration-500 group-hover:scale-110 group-hover:rotate-12"
                   style={{ color: service.accentColor || "#fff" }}
                 >
                   <Cpu size={22} />
                 </div>
-                <span className="text-[10px] font-mono text-white/30 group-hover:text-white/60 transition-colors">
+                <span className="text-[10px] font-mono text-muted-foreground group-hover:text-foreground transition-colors">
                   PKG_0{idx + 1}
                 </span>
               </div>
 
               <div className="relative z-10 flex-1 mb-8 md:mb-12">
-                <h3 className="text-2xl md:text-3xl font-black italic text-white mb-3 md:mb-4 uppercase tracking-tight">
+                <h3 className="text-2xl md:text-3xl font-black italic text-foreground mb-3 md:mb-4 uppercase tracking-tight">
                   {service.title}
                 </h3>
-                <p className="text-sm md:text-base text-white/60 italic font-medium leading-relaxed mb-8 md:mb-10 group-hover:text-white/80 transition-colors">
+                <p className="text-sm md:text-base text-muted-foreground italic font-medium leading-relaxed mb-8 md:mb-10 group-hover:text-foreground transition-colors">
                   "{service.tagline}"
                 </p>
 
                 {/* Pricing Capsule */}
-                <div className="inline-flex flex-col mb-8 md:mb-10 bg-white/5 border border-white/10 px-5 md:px-6 py-3 md:py-4 rounded-2xl md:rounded-3xl">
-                  <span className="text-[8px] tracking-[0.2em] md:tracking-[0.3em] font-black uppercase text-white/50 mb-1">
+                <div className="inline-flex flex-col mb-8 md:mb-10 bg-surface border border-border px-5 md:px-6 py-3 md:py-4 rounded-2xl md:rounded-3xl">
+                  <span className="text-[8px] tracking-[0.2em] md:tracking-[0.3em] font-black uppercase text-muted-foreground mb-1">
                     Standard Initiation
                   </span>
-                  <span className="text-xl md:text-2xl font-black italic text-white">
+                  <span className="text-xl md:text-2xl font-black italic text-foreground">
                     {service.pricing[0].price}
                   </span>
                 </div>
@@ -116,7 +116,7 @@ const CtaSection = () => {
                   {service.pricing[1]?.features.slice(0, 3).map((f) => (
                     <span
                       key={f}
-                      className="text-[7px] md:text-[8px] tracking-widest font-black uppercase px-3 py-1.5 rounded-full bg-white/[0.05] border border-white/10 text-white/50"
+                      className="text-[7px] md:text-[8px] tracking-widest font-black uppercase px-3 py-1.5 rounded-full bg-surface border border-border text-muted-foreground"
                     >
                       {f}
                     </span>
@@ -129,7 +129,7 @@ const CtaSection = () => {
                 href={`/services/${service.slug}`}
                 className="relative z-10 block"
               >
-                <button className="w-full py-5 md:py-6 rounded-2xl md:rounded-3xl border border-white/10 bg-white/5 text-[10px] md:text-[11px] font-black uppercase tracking-[0.3em] md:tracking-[0.5em] relative overflow-hidden transition-all group/btn hover:bg-white hover:text-black hover:scale-[1.02]">
+                <button className="w-full py-5 md:py-6 rounded-2xl md:rounded-3xl border border-border bg-surface text-[10px] md:text-[11px] font-black uppercase tracking-[0.3em] md:tracking-[0.5em] relative overflow-hidden transition-all group/btn hover:bg-foreground hover:text-background hover:scale-[1.02]">
                   Explore Matrix
                 </button>
               </Link>
@@ -143,7 +143,7 @@ const CtaSection = () => {
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 1 }}
-          className="relative rounded-[40px] md:rounded-[80px] overflow-hidden p-12 md:p-24 text-center border border-white/10 bg-linear-to-b from-white/[0.02] to-transparent shadow-2xl"
+          className="relative rounded-[40px] md:rounded-[80px] overflow-hidden p-12 md:p-24 text-center border border-border bg-linear-to-b from-surface-elevated to-transparent shadow-2xl"
         >
           <div
             className="absolute inset-0 z-10 pointer-events-none opacity-[0.02] md:opacity-[0.03]"
@@ -159,16 +159,16 @@ const CtaSection = () => {
             className="relative z-20 flex items-center justify-center gap-3 md:gap-4 mb-10 md:mb-14"
           >
             <div className="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-blue-500 animate-ping" />
-            <span className="text-[9px] md:text-[10px] tracking-[0.5em] md:tracking-[0.8em] font-black uppercase text-white/60">
+            <span className="text-[9px] md:text-[10px] tracking-[0.5em] md:tracking-[0.8em] font-black uppercase text-muted-foreground">
               Open for Collaboration
             </span>
           </motion.div>
 
-          <h3 className="relative z-20 text-4xl md:text-8xl font-black tracking-tighter text-white mb-10 md:mb-14 uppercase italic leading-[1] md:leading-[0.85]">
-            Ready to <span className="text-white/20">Initiate?</span>
+          <h3 className="relative z-20 text-4xl md:text-8xl font-black tracking-tighter text-foreground mb-10 md:mb-14 uppercase italic leading-[1] md:leading-[0.85]">
+            Ready to <span className="text-foreground/20">Initiate?</span>
           </h3>
 
-          <p className="relative z-20 text-white/60 text-base md:text-xl max-w-2xl mx-auto mb-14 md:mb-16 italic font-medium leading-relaxed">
+          <p className="relative z-20 text-muted-foreground text-base md:text-xl max-w-2xl mx-auto mb-14 md:mb-16 italic font-medium leading-relaxed">
             "Your vision deserves an architecture of excellence. Let's build a
             digital ecosystem that defines your industry legacy."
           </p>
@@ -176,7 +176,7 @@ const CtaSection = () => {
           <div className="relative z-20 flex flex-col sm:flex-row justify-center gap-6 md:gap-8 mb-16 md:mb-20">
             <Link
               href="/contact"
-              className="group flex items-center justify-center gap-6 md:gap-8 bg-white text-black px-10 md:px-16 py-6 md:py-8 rounded-full font-black uppercase tracking-[0.3em] md:tracking-[0.4em] text-[10px] md:text-[12px] hover:scale-105 transition-all duration-500 shadow-2xl shadow-white/10"
+              className="group flex items-center justify-center gap-6 md:gap-8 bg-foreground text-background px-10 md:px-16 py-6 md:py-8 rounded-full font-black uppercase tracking-[0.3em] md:tracking-[0.4em] text-[10px] md:text-[12px] hover:scale-105 transition-all duration-500 shadow-2xl shadow-white/10"
             >
               Start Session
               <ArrowRight
@@ -186,7 +186,7 @@ const CtaSection = () => {
             </Link>
           </div>
 
-          <div className="relative z-20 pt-10 md:pt-14 border-t border-white/10 grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 opacity-30">
+          <div className="relative z-20 pt-10 md:pt-14 border-t border-border grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 opacity-30">
             {[
               { l: "Service_Core", v: "v2.0.4" },
               { l: "Protocol", v: "Secure_AES" },
@@ -194,10 +194,10 @@ const CtaSection = () => {
               { l: "Architect", v: "Sajilo" },
             ].map((s) => (
               <div key={s.l} className="flex flex-col items-center">
-                <span className="text-[7px] md:text-[8px] font-bold uppercase tracking-widest text-white">
+                <span className="text-[7px] md:text-[8px] font-bold uppercase tracking-widest text-foreground">
                   {s.l}
                 </span>
-                <span className="text-[9px] md:text-[10px] font-mono text-white">
+                <span className="text-[9px] md:text-[10px] font-mono text-foreground">
                   {s.v}
                 </span>
               </div>

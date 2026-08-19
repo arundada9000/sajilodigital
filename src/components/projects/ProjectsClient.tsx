@@ -55,7 +55,7 @@ export default function ProjectsClient({
     });
 
     return (
-        <div className="bg-[#050505] text-white min-h-screen selection:bg-blue-500/30 font-sans overflow-x-hidden">
+        <div className="bg-surface-deep text-foreground min-h-screen selection:bg-blue-500/30 font-sans overflow-x-hidden">
             <Grain opacity={0.03} />
 
             {/* Hero Section */}
@@ -74,7 +74,7 @@ export default function ProjectsClient({
                         </h1>
 
                         <div className="flex flex-col md:flex-row justify-between items-end gap-8">
-                            <p className="max-w-md text-gray-400 text-lg leading-relaxed">
+                            <p className="max-w-md text-muted-foreground text-lg leading-relaxed">
                                 A selection of digital experiences we&apos;ve crafted for brands
                                 that dare to be different. Each project is a testament to our
                                 commitment to excellence.
@@ -82,15 +82,15 @@ export default function ProjectsClient({
 
                         </div>
                         {/* Digital Matrix Filter */}
-                        <div className="mt-12 border-y border-white/10 py-6">
+                        <div className="mt-12 border-y border-border py-6">
                             <div className="flex flex-wrap gap-2 md:gap-4">
                                 {categories.map((cat) => (
                                     <button
                                         key={cat}
                                         onClick={() => setActiveCategory(cat)}
                                         className={`relative px-6 py-2 text-xs font-mono uppercase tracking-[0.2em] transition-all duration-300 border border-transparent overflow-hidden group ${activeCategory === cat
-                                            ? "text-black bg-white shadow-[0_0_20px_rgba(255,255,255,0.4)]"
-                                            : "text-gray-500 hover:text-white hover:border-white/20 hover:bg-white/5"
+                                            ? "text-background bg-foreground shadow-[0_0_20px_rgba(255,255,255,0.4)]"
+                                            : "text-muted-foreground hover:text-foreground hover:border-border hover:bg-surface-elevated"
                                             }`}
                                     >
                                         <span className="relative z-10 flex items-center gap-2">
@@ -100,9 +100,9 @@ export default function ProjectsClient({
                                             {cat}
                                         </span>
                                         {activeCategory === cat && (
-                                            <div className="absolute inset-0 bg-white" />
+                                            <div className="absolute inset-0 bg-foreground" />
                                         )}
-                                        <div className="absolute inset-0 bg-white/10 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
+                                        <div className="absolute inset-0 bg-foreground/10 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
                                     </button>
                                 ))}
                             </div>
@@ -122,7 +122,7 @@ export default function ProjectsClient({
                                 animate={{ opacity: 1, filter: "blur(0px)" }}
                                 exit={{ opacity: 0, filter: "blur(10px)" }}
                                 transition={{ duration: 0.4 }}
-                                className="flex flex-col border-t border-white/10"
+                                className="flex flex-col border-t border-border"
                             >
                                 {filteredProjects.map((project, index) => (
                                     <ProjectItem
@@ -134,7 +134,7 @@ export default function ProjectsClient({
                                     />
                                 ))}
                                 {filteredProjects.length === 0 && (
-                                    <div className="py-20 text-center text-white/30 font-mono text-sm uppercase tracking-widest">
+                                    <div className="py-20 text-center text-muted-foreground font-mono text-sm uppercase tracking-widest">
                                         [NO_DATA_FOUND_IN_SECTOR]
                                     </div>
                                 )}
@@ -162,7 +162,7 @@ export default function ProjectsClient({
                                 translateX: "-50%",
                                 translateY: "-50%",
                             }}
-                            className="w-[400px] aspect-[4/3] rounded-2xl overflow-hidden border border-white/20 shadow-2xl"
+                            className="w-[400px] aspect-[4/3] rounded-2xl overflow-hidden border border-border shadow-2xl"
                         >
                             <Image
                                 src={
@@ -178,7 +178,7 @@ export default function ProjectsClient({
             </div>
 
             {/* CTA Section */}
-            <section className="py-40 bg-[#0a0a0a]">
+            <section className="py-40 bg-surface-alt">
                 <div className="container-custom text-center px-6">
                     <motion.div
                         initial={{ opacity: 0 }}
@@ -209,7 +209,7 @@ function ProjectItem({ project, index, onHover, onLeave }: any) {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: index * 0.05 }}
-            className="group relative border-b border-white/10"
+            className="group relative border-b border-border"
             onMouseEnter={onHover}
             onMouseLeave={onLeave}
         >
@@ -223,7 +223,7 @@ function ProjectItem({ project, index, onHover, onLeave }: any) {
                             <span className="text-xs text-blue-500 font-mono tracking-widest uppercase">
                                 {String(index + 1).padStart(2, "0")}
                             </span>
-                            <span className="text-xs text-gray-500 uppercase tracking-[0.2em]">
+                            <span className="text-xs text-muted-foreground uppercase tracking-[0.2em]">
                                 {project.category}
                             </span>
                         </div>
@@ -232,11 +232,11 @@ function ProjectItem({ project, index, onHover, onLeave }: any) {
                         </h3>
                     </div>
 
-                    <div className="flex items-center gap-12 text-gray-500">
+                    <div className="flex items-center gap-12 text-muted-foreground">
                         <span className="hidden lg:block text-lg font-mono">
                             {project.year}
                         </span>
-                        <div className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center group-hover:bg-white group-hover:text-black transition-all duration-500">
+                        <div className="w-12 h-12 rounded-full border border-border flex items-center justify-center group-hover:bg-foreground group-hover:text-background transition-all duration-500">
                             <ArrowUpRight className="w-6 h-6" />
                         </div>
                     </div>

@@ -24,7 +24,7 @@ const NavigationButtons = ({
         onClick={onPrevious}
         disabled={isFirst}
         whileHover={!isFirst ? { y: -5 } : {}}
-        className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center bg-black/50 backdrop-blur-xl text-white/40 hover:text-white hover:border-white/30 disabled:opacity-0 transition-all cursor-pointer"
+        className="w-12 h-12 rounded-full border border-border flex items-center justify-center bg-surface-deep backdrop-blur-xl text-muted-foreground hover:text-foreground hover:border-foreground/30 disabled:opacity-0 transition-all cursor-pointer"
       >
         <ChevronUp size={20} />
       </motion.button>
@@ -33,7 +33,7 @@ const NavigationButtons = ({
         onClick={onNext}
         disabled={isLast}
         whileHover={!isLast ? { y: 5 } : {}}
-        className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center bg-black/50 backdrop-blur-xl text-white/40 hover:text-white hover:border-white/30 disabled:opacity-0 transition-all cursor-pointer"
+        className="w-12 h-12 rounded-full border border-border flex items-center justify-center bg-surface-deep backdrop-blur-xl text-muted-foreground hover:text-foreground hover:border-foreground/30 disabled:opacity-0 transition-all cursor-pointer"
       >
         <ChevronDown size={20} />
       </motion.button>

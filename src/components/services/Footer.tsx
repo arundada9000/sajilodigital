@@ -11,10 +11,10 @@ const Footer = () => {
     { name: "Gallery", href: "/gallery" },
   ];
   return (
-    <footer className="py-20 px-6 border-t border-white/5 bg-black">
+    <footer className="py-20 px-6 border-t border-border bg-background">
       <div className="max-w-7xl mx-auto flex flex-col items-center gap-12">
         <div className="flex flex-col items-center gap-4">
-          <div className="relative w-12 h-12 rounded-full overflow-hidden border border-white/10">
+          <div className="relative w-12 h-12 rounded-full overflow-hidden border border-border">
             <Image
               src="/logos/circularlogo.svg"
               alt="Sajilo"
@@ -22,7 +22,7 @@ const Footer = () => {
               className="object-cover"
             />
           </div>
-          <span className="text-[10px] tracking-[0.5em] font-black uppercase text-white/40">
+          <span className="text-[10px] tracking-[0.5em] font-black uppercase text-muted-foreground">
             Sajilo.Digital
           </span>
         </div>
@@ -32,14 +32,14 @@ const Footer = () => {
             <a
               key={link.name}
               href={link.href}
-              className="text-[10px] tracking-[0.3em] font-bold uppercase text-white/20 hover:text-white transition-colors"
+              className="text-[10px] tracking-[0.3em] font-bold uppercase text-muted-foreground hover:text-foreground transition-colors"
             >
               {link.name}
             </a>
           ))}
         </div>
 
-        <p className="text-[9px] tracking-[0.2em] font-bold text-white/10 uppercase italic">
+        <p className="text-[9px] tracking-[0.2em] font-bold text-muted-foreground uppercase italic">
           © 2026 Sajilo Digital. Architecture of Innovation.
         </p>
       </div>
