@@ -25,7 +25,7 @@ export default function ShareButton() {
     return (
         <button
             onClick={handleShare}
-            className="p-2.5 rounded-full bg-white/5 border border-white/10 hover:border-cyan-500/50 hover:text-cyan-400 transition-all duration-300 relative group"
+            className="p-2.5 rounded-full bg-foreground/5 border border-border hover:border-cyan-500/50 hover:text-cyan-400 transition-all duration-300 relative group"
             title="Share Article"
         >
             <AnimatePresence mode="wait">

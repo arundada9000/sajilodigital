@@ -7,7 +7,7 @@ import Image from "next/image";
 
 export default function NotFound() {
   return (
-    <div className="min-h-screen bg-black text-white flex flex-col items-center justify-center p-6 selection:bg-white selection:text-black overflow-hidden font-sans relative">
+    <div className="min-h-screen bg-background text-foreground flex flex-col items-center justify-center p-6 selection:bg-white selection:text-black overflow-hidden font-sans relative">
 
       {/* 1. Background Atmosphere */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
@@ -17,7 +17,7 @@ export default function NotFound() {
 
       {/* 2. Top Branding Meta */}
       <div className="absolute top-10 left-10 hidden md:flex items-center gap-4 opacity-40">
-        <div className="relative w-8 h-8 rounded-full overflow-hidden border border-white/10">
+        <div className="relative w-8 h-8 rounded-full overflow-hidden border border-border">
           <Image src="/logos/circularlogo.svg" alt="Sajilo" fill className="object-cover" />
         </div>
         <span className="text-[10px] tracking-[0.4em] font-bold uppercase">Sajilo.Digital / 404</span>
@@ -81,9 +81,9 @@ export default function NotFound() {
           transition={{ delay: 0.3, duration: 0.8 }}
         >
           <h2 className="text-xl md:text-2xl font-bold tracking-tight mb-4 uppercase italic">
-            Lost in the <span className="text-white/20">Digital Archive.</span>
+            Lost in the <span className="text-foreground/20">Digital Archive.</span>
           </h2>
-          <p className="text-sm md:text-base text-white/40 max-w-sm mx-auto leading-relaxed mb-12">
+          <p className="text-sm md:text-base text-foreground/40 max-w-sm mx-auto leading-relaxed mb-12">
             The resource you are attempting to access does not exist or has been relocated to another dimension.
           </p>
         </motion.div>
@@ -92,7 +92,7 @@ export default function NotFound() {
         <div className="flex flex-col sm:flex-row items-center gap-6 justify-center mb-24">
           <Link
             href="/"
-            className="group flex items-center gap-4 bg-white text-black px-8 py-4 rounded-full font-bold uppercase tracking-[0.2em] text-[10px] hover:scale-105 transition-all duration-500 shadow-xl shadow-white/10"
+            className="group flex items-center gap-4 bg-surface-elevated text-background px-8 py-4 rounded-full font-bold uppercase tracking-[0.2em] text-[10px] hover:scale-105 transition-all duration-500 shadow-xl shadow-foreground/10"
           >
             <Home size={14} />
             Return to Origin
@@ -100,7 +100,7 @@ export default function NotFound() {
 
           <button
             onClick={() => window.history.back()}
-            className="group flex items-center gap-4 bg-transparent border border-white/10 text-white/40 px-8 py-4 rounded-full font-bold uppercase tracking-[0.2em] text-[10px] hover:text-white hover:border-white/30 transition-all duration-500"
+            className="group flex items-center gap-4 bg-transparent border border-border text-foreground/40 px-8 py-4 rounded-full font-bold uppercase tracking-[0.2em] text-[10px] hover:text-foreground hover:border-foreground/30 transition-all duration-500"
           >
             <ArrowLeft size={14} className="group-hover:-translate-x-1 transition-transform" />
             Previous Session
@@ -108,14 +108,14 @@ export default function NotFound() {
         </div>
 
         {/* Minimal Directory */}
-        <div className="pt-12 border-t border-white/5 inline-block">
-          <h3 className="text-[9px] tracking-[0.5em] font-bold text-white/20 uppercase mb-8">Reconnect</h3>
+        <div className="pt-12 border-t border-border inline-block">
+          <h3 className="text-[9px] tracking-[0.5em] font-bold text-foreground/20 uppercase mb-8">Reconnect</h3>
           <div className="flex flex-wrap justify-center gap-x-12 gap-y-4">
             {["Projects", "Services", "About", "Contact", "Gallery"].map((page) => (
               <Link
                 key={page}
                 href={`/${page.toLowerCase() === "home" ? "" : page.toLowerCase()}`}
-                className="text-[10px] tracking-[0.3em] font-bold uppercase text-white/30 hover:text-blue-500 transition-colors"
+                className="text-[10px] tracking-[0.3em] font-bold uppercase text-foreground/30 hover:text-blue-500 transition-colors"
               >
                 {page}
               </Link>
@@ -127,7 +127,7 @@ export default function NotFound() {
 
       {/* 4. Scroll Indicator (Decorative) */}
       <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 opacity-20">
-        <div className="w-[1px] h-10 bg-linear-to-b from-transparent via-white to-transparent" />
+        <div className="w-[1px] h-10 bg-linear-to-b from-transparent via-foreground to-transparent" />
         <span className="text-[8px] tracking-[0.8em] font-bold uppercase">System_End</span>
       </div>
 

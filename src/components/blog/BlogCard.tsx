@@ -25,7 +25,7 @@ export default function BlogCard({ post, index }: BlogCardProps) {
             className="group relative"
         >
             <Link href={`/blog/${post.slug}`} className="block h-full">
-                <div className="relative h-full flex flex-col rounded-2xl border border-white/10 bg-[#161b22]/40 backdrop-blur-xl overflow-hidden hover:border-cyan-500/50 transition-colors duration-300">
+                <div className="relative h-full flex flex-col rounded-2xl border border-border bg-surface/40 backdrop-blur-xl overflow-hidden hover:border-cyan-500/50 transition-colors duration-300">
 
                     {/* Image Container */}
                     <div className="relative h-56 w-full overflow-hidden">
@@ -35,7 +35,7 @@ export default function BlogCard({ post, index }: BlogCardProps) {
                             fill
                             className="object-cover transition-transform duration-500 group-hover:scale-110"
                         />
-                        <div className="absolute inset-0 bg-linear-to-t from-[#0b0f19] to-transparent opacity-60" />
+                        <div className="absolute inset-0 bg-linear-to-t from-background to-transparent opacity-60" />
                         <div className="absolute top-4 left-4">
                             <span className="px-3 py-1 rounded-full text-xs font-medium bg-cyan-500/20 text-cyan-400 border border-cyan-500/30 backdrop-blur-md">
                                 {post.category}
@@ -45,7 +45,7 @@ export default function BlogCard({ post, index }: BlogCardProps) {
 
                     {/* Content */}
                     <div className="p-6 flex flex-col flex-1">
-                        <div className="flex items-center gap-4 text-xs text-gray-400 mb-4">
+                        <div className="flex items-center gap-4 text-xs text-muted-foreground mb-4">
                             <div className="flex items-center gap-1">
                                 <Calendar className="w-3 h-3 text-cyan-500" />
                                 {post.publishedAt}
@@ -56,17 +56,17 @@ export default function BlogCard({ post, index }: BlogCardProps) {
                             </div>
                         </div>
 
-                        <h3 className="text-xl font-bold text-white mb-3 group-hover:text-cyan-400 transition-colors duration-300 line-clamp-2">
+                        <h3 className="text-xl font-bold text-foreground mb-3 group-hover:text-cyan-400 transition-colors duration-300 line-clamp-2">
                             {post.title}
                         </h3>
 
-                        <p className="text-gray-400 text-sm mb-6 line-clamp-3 leading-relaxed">
+                        <p className="text-muted-foreground text-sm mb-6 line-clamp-3 leading-relaxed">
                             {post.excerpt}
                         </p>
 
-                        <div className="mt-auto pt-6 border-t border-white/5 flex items-center justify-between">
+                        <div className="mt-auto pt-6 border-t border-foreground/5 flex items-center justify-between">
                             <div className="flex items-center gap-3">
-                                <div className="relative w-8 h-8 rounded-full overflow-hidden border border-white/20">
+                                <div className="relative w-8 h-8 rounded-full overflow-hidden border border-foreground/20">
                                     <Image
                                         src={post.author.avatar}
                                         alt={post.author.name}
@@ -75,12 +75,12 @@ export default function BlogCard({ post, index }: BlogCardProps) {
                                     />
                                 </div>
                                 <div>
-                                    <p className="text-xs font-medium text-white">{post.author.name}</p>
-                                    <p className="text-[10px] text-gray-500 uppercase tracking-wider">{post.author.role}</p>
+                                    <p className="text-xs font-medium text-foreground">{post.author.name}</p>
+                                    <p className="text-[10px] text-muted-foreground uppercase tracking-wider">{post.author.role}</p>
                                 </div>
                             </div>
 
-                            <div className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-cyan-500 transition-all duration-300 text-white group-hover:translate-x-1">
+                            <div className="w-8 h-8 rounded-full bg-foreground/5 flex items-center justify-center group-hover:bg-cyan-500 transition-all duration-300 text-foreground group-hover:translate-x-1">
                                 <ArrowRight className="w-4 h-4" />
                             </div>
                         </div>
